@@ -123,6 +123,8 @@ class BookAdminEditForm extends FormBase {
         }
       }
     }
+    kpr($row);
+    $node = $this->nodeStorage->load($row['#nid']);
 
     drupal_set_message($this->t('Updated book %title.', array('%title' => $form['#node']->label())));
   }
@@ -138,9 +140,40 @@ class BookAdminEditForm extends FormBase {
    * @see self::buildForm()
    */
   protected function bookAdminTable(NodeInterface $node, array &$form) {
+    $header = array(
+      '',
+      $this->t('Title'),
+      'Weight',
+      '',
+      '',
+      $this->t('Operations')
+    );
     $form['table'] = array(
-      '#theme' => 'book_admin_table',
-      '#tree' => TRUE,
+      '#type' => 'table',
+      '#header' => $header,
+      '#empty' => $this->t('No book content available.'),
+      '#tabledrag' => array(
+        array(
+          'action' => 'match',
+          'relationship' => 'parent',
+          'group' => 'book-pid',
+          'subgroup' => 'book-pid',
+          'source' => 'book-mid',
+          'hidden' => TRUE,
+          'limit' => MENU_MAX_DEPTH - 2,
+        ),
+        array(
+          'action' => 'depth',
+          'relationship' => 'group',
+          'group' => 'book-depth',
+          'hidden' => FALSE,
+        ),
+        array(
+          'action' => 'order',
+          'relationship' => 'sibling',
+          'group' => 'book-weight',
+        ),
+      ),
     );
 
     $tree = $this->bookManager->bookSubtreeData($node->book);
@@ -177,15 +210,29 @@ class BookAdminEditForm extends FormBase {
     $count = count($tree);
     $delta = ($count < 30) ? 15 : intval($count / 2) + 1;
 
+    $access = \Drupal::currentUser()->hasPermission('administer nodes');
+    $destination = drupal_get_destination();
     foreach ($tree as $data) {
-      $form['book-admin-' . $data['link']['nid']] = array(
+      $id = 'book-admin-' . $data['link']['nid'];
+      // TableDrag: Mark the table row as draggable.
+      $form[$id]['#attributes']['class'][] = 'draggable';
+      $form[$id] = array(
         '#item' => $data['link'],
-        'depth' => array('#type' => 'value', '#value' => $data['link']['depth']),
+        '#attributes' => array(
+          'class' => array('draggable'),
+        ),
         'title' => array(
           '#type' => 'textfield',
           '#default_value' => $data['link']['title'],
           '#maxlength' => 255,
           '#size' => 40,
+        ),
+        'depth' => array(
+          '#type' => 'hidden',
+          '#value' => $data['link']['depth'],
+          '#attributes' => array(
+            'class' => array('book-depth'),
+          ),
         ),
         'weight' => array(
           '#type' => 'weight',
@@ -195,18 +242,47 @@ class BookAdminEditForm extends FormBase {
           '#title_display' => 'invisible',
         ),
         'pid' => array(
-          '#type' => 'hidden',
+          '#type' => 'value',
           '#default_value' => $data['link']['pid'],
+          '#attributes' => array(
+            'class' => array('book-pid')
+          ),
         ),
         'nid' => array(
-          '#type' => 'hidden',
+          '#type' => 'value',
           '#default_value' => $data['link']['nid'],
         ),
       );
+
+      $form[$id]['operations'] = array(
+        '#type' => 'operations',
+      );
+      $form[$id]['operations']['#links']['view'] = array(
+        'title' => $this->t('View'),
+        'href' => 'node/' . $data['link']['nid'],
+      );
+
+      if ($access) {
+        $nid = $data['link']['nid'];
+        $form[$id]['operations']['#links']['edit'] = array(
+          'title' => $this->t('Edit'),
+          'route_name' => 'node.page_edit',
+          'route_parameters' => array('node' => $nid),
+         'query' => $destination,
+        );
+        $form[$id]['operations']['#links']['delete'] = array(
+          'title' => $this->t('Delete'),
+          'route_name' => 'node.delete_confirm',
+          'route_parameters' => array('node' => $nid),
+          'query' => $destination,
+        );
+      }
+
       if ($data['below']) {
         $this->bookAdminTableTree($data['below'], $form);
       }
     }
+    print "FORM:";
+    kpr($form);
   }
-
 }
