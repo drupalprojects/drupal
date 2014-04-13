@@ -62,10 +62,6 @@ function book_theme() {
       'variables' => array('title' => NULL, 'contents' => NULL, 'depth' => NULL),
       'template' => 'book-export-html',
     ),
-    'book_admin_table' => array(
-      'render element' => 'form',
-      'file' => 'book.admin.inc',
-    ),
     'book_all_books_block' => array(
       'render element' => 'book_menus',
       'template' => 'book-all-books-block',
