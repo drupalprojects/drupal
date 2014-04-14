@@ -15,29 +15,29 @@ function system_test_set_header() {
 }
 
 /**
- * Implements hook_modules_installed().
+ * Implements HOOK_modules_installed().
  */
 function system_test_modules_installed($modules) {
   if (\Drupal::state()->get('system_test.verbose_module_hooks')) {
     foreach ($modules as $module) {
-      drupal_set_message(t('hook_modules_installed fired for @module', array('@module' => $module)));
+      drupal_set_message(t('HOOK_modules_installed fired for @module', array('@module' => $module)));
     }
   }
 }
 
 /**
- * Implements hook_modules_uninstalled().
+ * Implements HOOK_modules_uninstalled().
  */
 function system_test_modules_uninstalled($modules) {
   if (\Drupal::state()->get('system_test.verbose_module_hooks')) {
     foreach ($modules as $module) {
-      drupal_set_message(t('hook_modules_uninstalled fired for @module', array('@module' => $module)));
+      drupal_set_message(t('HOOK_modules_uninstalled fired for @module', array('@module' => $module)));
     }
   }
 }
 
 /**
- * Implements hook_system_info_alter().
+ * Implements HOOK_system_info_alter().
  */
 function system_test_system_info_alter(&$info, Extension $file, $type) {
   // We need a static otherwise the last test will fail to alter common_test.
@@ -104,7 +104,7 @@ function system_test_lock_exit() {
 }
 
 /**
- * Implements hook_page_build().
+ * Implements HOOK_page_build().
  */
 function system_test_page_build(&$page) {
   $menu_item['path'] = \Drupal::request()->attributes->get('_system_path');
@@ -161,7 +161,7 @@ function _system_test_second_shutdown_function($arg1, $arg2) {
 }
 
 /**
- * Implements hook_filetransfer_info().
+ * Implements HOOK_filetransfer_info().
  */
 function system_test_filetransfer_info() {
   return array(
@@ -187,14 +187,14 @@ function system_test_authorize_init_page($page_title) {
 }
 
 /**
- * Implements hook_module_preinstall().
+ * Implements HOOK_module_preinstall().
  */
 function system_test_module_preinstall($module) {
   \Drupal::state()->set('system_test_preinstall_module', $module);
 }
 
 /**
- * Implements hook_module_preuninstall().
+ * Implements HOOK_module_preuninstall().
  */
 function system_test_module_preuninstall($module) {
   \Drupal::state()->set('system_test_preuninstall_module', $module);

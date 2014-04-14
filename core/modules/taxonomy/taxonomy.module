@@ -41,7 +41,7 @@ const TAXONOMY_HIERARCHY_MULTIPLE = 2;
  */
 
 /**
- * Implements hook_help().
+ * Implements HOOK_help().
  */
 function taxonomy_help($path, $arg) {
   switch ($path) {
@@ -89,7 +89,7 @@ function taxonomy_help($path, $arg) {
 }
 
 /**
- * Implements hook_permission().
+ * Implements HOOK_permission().
  */
 function taxonomy_permission() {
   $permissions = array(
@@ -113,7 +113,7 @@ function taxonomy_permission() {
 }
 
 /**
- * Implements hook_entity_bundle_info().
+ * Implements HOOK_entity_bundle_info().
  */
 function taxonomy_entity_bundle_info() {
   $bundles = array();
@@ -189,7 +189,7 @@ function taxonomy_select_nodes($tid, $pager = TRUE, $limit = FALSE, $order = arr
 }
 
 /**
- * Implements hook_theme().
+ * Implements HOOK_theme().
  */
 function taxonomy_theme() {
   return array(
@@ -282,7 +282,7 @@ function taxonomy_term_view_multiple(array $terms, $view_mode = 'full', $langcod
 }
 
 /**
- * Implements hook_theme_suggestions_HOOK().
+ * Implements HOOK_theme_suggestions_HOOK().
  */
 function taxonomy_theme_suggestions_taxonomy_term(array $variables) {
   $suggestions = array();
@@ -676,7 +676,7 @@ function taxonomy_term_load($tid) {
 }
 
 /**
- * Implements hook_file_download_access().
+ * Implements HOOK_file_download_access().
  */
 function taxonomy_file_download_access($field, EntityInterface $entity, FileInterface $file) {
   if ($entity->getEntityTypeId() == 'taxonomy_term') {
@@ -705,7 +705,7 @@ function taxonomy_implode_tags($tags, $vid = NULL) {
 }
 
 /**
- * Implements hook_field_widget_info_alter().
+ * Implements HOOK_field_widget_info_alter().
  */
 function taxonomy_field_widget_info_alter(&$info) {
   $info['options_select']['field_types'][] = 'taxonomy_term_reference';
@@ -757,7 +757,7 @@ function taxonomy_autocomplete_validate($element, &$form_state) {
  */
 
 /**
- * Implements hook_node_insert().
+ * Implements HOOK_node_insert().
  */
 function taxonomy_node_insert(EntityInterface $node) {
   // Add taxonomy index entries for the node.
@@ -815,7 +815,7 @@ function taxonomy_build_node_index($node) {
 }
 
 /**
- * Implements hook_node_update().
+ * Implements HOOK_node_update().
  */
 function taxonomy_node_update(EntityInterface $node) {
   // Always rebuild the node's taxonomy index entries on node save.
@@ -824,7 +824,7 @@ function taxonomy_node_update(EntityInterface $node) {
 }
 
 /**
- * Implements hook_node_predelete().
+ * Implements HOOK_node_predelete().
  */
 function taxonomy_node_predelete(EntityInterface $node) {
   // Clean up the {taxonomy_index} table when nodes are deleted.
@@ -844,7 +844,7 @@ function taxonomy_delete_node_index(EntityInterface $node) {
 }
 
 /**
- * Implements hook_taxonomy_term_delete().
+ * Implements HOOK_taxonomy_term_delete().
  */
 function taxonomy_taxonomy_term_delete(Term $term) {
   if (\Drupal::config('taxonomy.settings')->get('maintain_index_table')) {

@@ -35,9 +35,9 @@ interface EntityViewDisplayInterface extends EntityDisplayInterface {
    * This only includes the components handled by the Display object, but
    * excludes 'extra fields', that are typically rendered through specific,
    * ad-hoc code in EntityViewBuilderInterface::buildContent() or in
-   * hook_entity_view() implementations.
+   * HOOK_entity_view() implementations.
    *
-   * hook_entity_display_build_alter() is invoked on each entity, allowing 3rd
+   * HOOK_entity_display_build_alter() is invoked on each entity, allowing 3rd
    * party code to alter the render array.
    *
    * @param \Drupal\Core\Entity\ContentEntityInterface[] $entities
@@ -47,7 +47,7 @@ interface EntityViewDisplayInterface extends EntityDisplayInterface {
    *   A renderable array for the entities, indexed by the same keys as the
    *   $entities array parameter.
    *
-   * @see hook_entity_display_build_alter()
+   * @see HOOK_entity_display_build_alter()
    */
   public function buildMultiple(array $entities);
 

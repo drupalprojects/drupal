@@ -15,7 +15,7 @@ use Symfony\Component\Validator\ConstraintViolationInterface;
  * Plugin implementation of the 'test_field_widget_multiple' widget.
  *
  * The 'field_types' entry is left empty, and is populated through
- * hook_field_widget_info_alter().
+ * HOOK_field_widget_info_alter().
  *
  * @see field_test_field_widget_info_alter()
  *

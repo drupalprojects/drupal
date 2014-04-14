@@ -13,14 +13,14 @@ use Drupal\field\FieldConfigInterface;
 use Drupal\field\FieldConfigUpdateForbiddenException;
 
 /**
- * Implements hook_field_widget_info_alter().
+ * Implements HOOK_field_widget_info_alter().
  */
 function field_test_field_widget_info_alter(&$info) {
   $info['test_field_widget_multiple']['field_types'][] = 'test_field';
 }
 
 /**
- * Implements hook_field_config_update_forbid().
+ * Implements HOOK_field_config_update_forbid().
  */
 function field_test_field_config_update_forbid(FieldConfigInterface $field, FieldConfigInterface $prior_field) {
   if ($field->getType() == 'test_field' && $field->getSetting('unchangeable') != $prior_field->getSetting('unchangeable')) {
@@ -36,7 +36,7 @@ function field_test_default_value(EntityInterface $entity, $field, $instance) {
 }
 
 /**
- * Implements hook_entity_field_access().
+ * Implements HOOK_entity_field_access().
  */
 function field_test_entity_field_access($operation, FieldDefinitionInterface $field_definition, AccountInterface $account, FieldItemListInterface $items = NULL) {
   if ($field_definition->getName() == "field_no_{$operation}_access") {

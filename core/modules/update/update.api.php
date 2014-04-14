@@ -34,7 +34,7 @@
  * @see update_get_projects()
  * @see \Drupal\Core\Utility\ProjectInfo->processInfoList()
  */
-function hook_update_projects_alter(&$projects) {
+function HOOK_update_projects_alter(&$projects) {
   // Hide a site-specific module from the list.
   unset($projects['site_specific_module']);
 
@@ -82,7 +82,7 @@ function hook_update_projects_alter(&$projects) {
  *
  * @see update_calculate_project_data()
  */
-function hook_update_status_alter(&$projects) {
+function HOOK_update_status_alter(&$projects) {
   $settings = \Drupal::config('update_advanced.settings')->get('projects');
   foreach ($projects as $project => $project_info) {
     if (isset($settings[$project]) && isset($settings[$project]['check']) &&
@@ -119,7 +119,7 @@ function hook_update_status_alter(&$projects) {
  * @see update_manager_archive_verify()
  * @ingroup update_manager_file
  */
-function hook_verify_update_archive($project, $archive_file, $directory) {
+function HOOK_verify_update_archive($project, $archive_file, $directory) {
   $errors = array();
   if (!file_exists($directory)) {
     $errors[] = t('The %directory does not exist.', array('%directory' => $directory));

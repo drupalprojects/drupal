@@ -46,7 +46,7 @@ function xmlrpc_test_simpleStructReturnTest($number) {
 }
 
 /**
- * Implements hook_xmlrpc().
+ * Implements HOOK_xmlrpc().
  */
 function xmlrpc_test_xmlrpc() {
   return array(
@@ -63,7 +63,7 @@ function xmlrpc_test_xmlrpc() {
 }
 
 /**
- * Implements hook_xmlrpc_alter().
+ * Implements HOOK_xmlrpc_alter().
  *
  * Hide (or not) the system.methodSignature() service depending on a variable.
  */

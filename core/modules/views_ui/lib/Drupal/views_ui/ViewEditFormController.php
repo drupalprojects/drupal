@@ -353,7 +353,7 @@ class ViewEditFormController extends ViewFormControllerBase {
       $build['details'] = $this->getDisplayDetails($view, $display->display);
     }
     // In AJAX context, ViewUI::rebuildCurrentTab() returns this outside of form
-    // context, so hook_form_views_ui_edit_form_alter() is insufficient.
+    // context, so HOOK_form_views_ui_edit_form_alter() is insufficient.
     \Drupal::moduleHandler()->alter('views_ui_display_tab', $build, $view, $display_id);
     return $build;
   }

@@ -16,7 +16,7 @@ class CommentLinksAlterTest extends CommentTestBase {
 
   public static function getInfo() {
     return array(
-      'name' => 'hook_comment_links_alter()',
+      'name' => 'HOOK_comment_links_alter()',
       'description' => 'Tests comment links altering.',
       'group' => 'Comment',
     );
@@ -25,7 +25,7 @@ class CommentLinksAlterTest extends CommentTestBase {
   public function setUp() {
     parent::setUp();
 
-    // Enable comment_test.module's hook_comment_links_alter() implementation.
+    // Enable comment_test.module's HOOK_comment_links_alter() implementation.
     $this->container->get('state')->set('comment_test_links_alter_enabled', TRUE);
   }
 

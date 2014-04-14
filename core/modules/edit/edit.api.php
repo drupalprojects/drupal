@@ -23,7 +23,7 @@
  * @see \Drupal\edit\Annotation\InPlaceEditor
  * @see \Drupal\edit\Plugin\EditorManager
  */
-function hook_edit_editor_alter(&$editors) {
+function HOOK_edit_editor_alter(&$editors) {
   // Cleanly override editor.module's in-place editor plugin.
   $editors['editor']['class'] = 'Drupal\advanced_editor\Plugin\edit\editor\AdvancedEditor';
 }
@@ -69,7 +69,7 @@ function hook_edit_editor_alter(&$editors) {
  *
  * @see \Drupal\Core\Field\FieldItemListInterface::view()
  */
-function hook_edit_render_field(Drupal\Core\Entity\EntityInterface $entity, $field_name, $view_mode_id, $langcode) {
+function HOOK_edit_render_field(Drupal\Core\Entity\EntityInterface $entity, $field_name, $view_mode_id, $langcode) {
   return array(
     '#prefix' => '<div class="example-markup">',
     'field' => $entity->getTranslation($langcode)->get($field_name)->view($view_mode_id),

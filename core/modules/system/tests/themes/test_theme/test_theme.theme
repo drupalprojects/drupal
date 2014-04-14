@@ -31,7 +31,7 @@ function test_theme_theme_test_alter_alter(&$data) {
 }
 
 /**
- * Implements hook_theme_suggestions_alter().
+ * Implements HOOK_theme_suggestions_alter().
  */
 function test_theme_theme_suggestions_alter(array &$suggestions, array $variables, $hook) {
   drupal_set_message(__FUNCTION__ . '() executed.');
@@ -45,7 +45,7 @@ function test_theme_theme_suggestions_alter(array &$suggestions, array $variable
 }
 
 /**
- * Implements hook_theme_suggestions_HOOK_alter().
+ * Implements HOOK_theme_suggestions_HOOK_alter().
  */
 function test_theme_theme_suggestions_theme_test_suggestions_alter(array &$suggestions, array $variables) {
   drupal_set_message(__FUNCTION__ . '() executed.');
@@ -57,7 +57,7 @@ function test_theme_theme_suggestions_theme_test_suggestions_alter(array &$sugge
 }
 
 /**
- * Implements hook_theme_suggestions_HOOK_alter().
+ * Implements HOOK_theme_suggestions_HOOK_alter().
  */
 function test_theme_theme_suggestions_theme_test_function_suggestions_alter(array &$suggestions, array $variables) {
   // Theme alter hooks run after module alter hooks, so add this theme

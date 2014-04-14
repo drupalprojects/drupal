@@ -170,7 +170,7 @@ class FileWidget extends WidgetBase {
 
       // Add some properties that will eventually be added to the file upload
       // field. These are added here so that they may be referenced easily
-      // through a hook_form_alter().
+      // through a HOOK_form_alter().
       $elements['#file_upload_title'] = t('Add a new file');
       $elements['#file_upload_description'] = array(
         '#theme' => 'file_upload_help',

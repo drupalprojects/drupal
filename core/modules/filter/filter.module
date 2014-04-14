@@ -17,7 +17,7 @@ use Drupal\filter\FilterFormatInterface;
 use Drupal\filter\Plugin\FilterInterface;
 
 /**
- * Implements hook_help().
+ * Implements HOOK_help().
  */
 function filter_help($path, $arg) {
   switch ($path) {
@@ -53,7 +53,7 @@ function filter_help($path, $arg) {
 }
 
 /**
- * Implements hook_theme().
+ * Implements HOOK_theme().
  */
 function filter_theme() {
   return array(
@@ -82,7 +82,7 @@ function filter_theme() {
 }
 
 /**
- * Implements hook_element_info().
+ * Implements HOOK_element_info().
  *
  * @see filter_process_format()
  * @see text_format_wrapper()
@@ -97,7 +97,7 @@ function filter_element_info() {
 }
 
 /**
- * Implements hook_permission().
+ * Implements HOOK_permission().
  */
 function filter_permission() {
   $perms['administer filters'] = array(
@@ -282,7 +282,7 @@ function filter_default_format(AccountInterface $account = NULL) {
  * @return
  *   The ID of the fallback text format.
  *
- * @see hook_filter_format_disable()
+ * @see HOOK_filter_format_disable()
  * @see filter_default_format()
  */
 function filter_fallback_format() {
@@ -1096,7 +1096,7 @@ function _filter_html_image_secure_process($text) {
 }
 
 /**
- * Implements hook_filter_secure_image_alter().
+ * Implements HOOK_filter_secure_image_alter().
  *
  * Formats an image DOM element that has an invalid source.
  *
@@ -1122,7 +1122,7 @@ function filter_filter_secure_image_alter(&$image) {
  */
 
 /**
- * Implements hook_page_build().
+ * Implements HOOK_page_build().
  */
 function filter_page_build(&$page) {
   $page['#attached']['library'][] = 'filter/caption';

@@ -54,8 +54,8 @@ class ViewsThemeIntegrationTest extends ViewTestBase {
   }
 
   /**
-   * Tests for exceptions and successful execution of hook_views_pre_render()
-   * and hook_views_post_render() in theme and subtheme.
+   * Tests for exceptions and successful execution of HOOK_views_pre_render()
+   * and HOOK_views_post_render() in theme and subtheme.
    */
   public function testThemedViewPage() {
 

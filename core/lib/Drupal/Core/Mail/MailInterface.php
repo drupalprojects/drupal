@@ -24,7 +24,7 @@ interface MailInterface {
    * implementation to generate an alternate plain-text version for sending.
    *
    * @param array $message
-   *   A message array, as described in hook_mail_alter().
+   *   A message array, as described in HOOK_mail_alter().
    *
    * @return array
    *   The formatted $message.

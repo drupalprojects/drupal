@@ -67,7 +67,7 @@ class CustomBlockFormController extends ContentEntityFormController {
    *
    * Prepares the custom block object.
    *
-   * Fills in a few default values, and then invokes hook_custom_block_prepare()
+   * Fills in a few default values, and then invokes HOOK_custom_block_prepare()
    * on all modules.
    */
   protected function prepareEntity() {

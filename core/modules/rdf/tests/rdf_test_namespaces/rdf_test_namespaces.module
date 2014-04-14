@@ -6,7 +6,7 @@
  */
 
 /**
- * Implements hook_rdf_namespaces().
+ * Implements HOOK_rdf_namespaces().
  */
 function rdf_test_namespaces_rdf_namespaces() {
   return array(

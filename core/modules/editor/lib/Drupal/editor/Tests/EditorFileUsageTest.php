@@ -88,7 +88,7 @@ class EditorFileUsageTest extends EntityUnitTestBase {
     $node->save();
     $this->assertIdentical(array('editor' => array('node' => array(1 => '3'))), $file_usage->listUsage($image), 'The image has 3 usages.');
 
-    // Test hook_entity_update(): decrement, by modifying the last revision:
+    // Test HOOK_entity_update(): decrement, by modifying the last revision:
     // remove the data- attribute from the body field.
     $body = $node->get('body')->first()->get('value');
     $original_value = $body->getValue();
@@ -97,7 +97,7 @@ class EditorFileUsageTest extends EntityUnitTestBase {
     $node->save();
     $this->assertIdentical(array('editor' => array('node' => array(1 => '2'))), $file_usage->listUsage($image), 'The image has 2 usages.');
 
-    // Test hook_entity_update(): increment, by modifying the last revision:
+    // Test HOOK_entity_update(): increment, by modifying the last revision:
     // readd the data- attribute to the body field.
     $node->get('body')->first()->get('value')->setValue($original_value);
     $node->save();

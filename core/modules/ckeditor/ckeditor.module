@@ -8,7 +8,7 @@
 use Drupal\editor\Entity\Editor;
 
 /**
- * Implements hook_help().
+ * Implements HOOK_help().
  */
 function ckeditor_help($path, $arg) {
   switch ($path) {
@@ -32,7 +32,7 @@ function ckeditor_help($path, $arg) {
 }
 
 /**
- * Implements hook_theme().
+ * Implements HOOK_theme().
  */
 function ckeditor_theme() {
   return array(
@@ -45,7 +45,7 @@ function ckeditor_theme() {
 }
 
 /**
- * Implements hook_ckeditor_css_alter().
+ * Implements HOOK_ckeditor_css_alter().
  */
 function ckeditor_ckeditor_css_alter(array &$css, Editor $editor) {
   // Add the filter caption CSS if the text format associated with this text

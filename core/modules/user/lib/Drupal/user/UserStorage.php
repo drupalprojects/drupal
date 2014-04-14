@@ -94,7 +94,7 @@ class UserStorage extends ContentEntityDatabaseStorage implements UserStorageInt
     $this->addRoles($queried_users);
 
     // Call the default postLoad() method. This will add fields and call
-    // hook_user_load().
+    // HOOK_user_load().
     parent::postLoad($queried_users);
   }
 

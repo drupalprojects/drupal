@@ -7,7 +7,7 @@
  */
 
 /**
- * Implements hook_search_preprocess().
+ * Implements HOOK_search_preprocess().
  */
 function search_langcode_test_search_preprocess($text, $langcode = NULL) {
   if (isset($langcode) && $langcode == 'en') {

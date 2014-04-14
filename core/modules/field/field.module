@@ -55,7 +55,7 @@ require_once __DIR__ . '/field.deprecated.inc';
  *
  * - @link field_crud Field CRUD API @endlink: Create, updates, and deletes
  *   fields, bundles (a.k.a. "content types"), and instances. Modules use this
- *   API, often in hook_install(), to create custom data structures.
+ *   API, often in HOOK_install(), to create custom data structures.
  *
  * - @link field_attach Field Attach API @endlink: Connects entity types to the
  *   Field API. Field Attach API functions load, store, generate Form API
@@ -75,7 +75,7 @@ require_once __DIR__ . '/field.deprecated.inc';
  */
 
 /**
- * Implements hook_help().
+ * Implements HOOK_help().
  */
 function field_help($path, $arg) {
   switch ($path) {
@@ -102,7 +102,7 @@ function field_help($path, $arg) {
       sort($providers);
       foreach ($providers as $provider) {
         // Skip plugins provided by core components as they do not implement
-        // hook_help().
+        // HOOK_help().
         if (isset($info[$provider]['name'])) {
           $display = $info[$provider]['name'];
           if (\Drupal::moduleHandler()->implementsHook($provider, 'help')) {
@@ -126,7 +126,7 @@ function field_help($path, $arg) {
 }
 
 /**
- * Implements hook_cron().
+ * Implements HOOK_cron().
  */
 function field_cron() {
   // Do a pass of purging on deleted Field API data, if any exists.
@@ -135,7 +135,7 @@ function field_cron() {
 }
 
 /**
- * Implements hook_system_info_alter().
+ * Implements HOOK_system_info_alter().
  *
  * Goes through a list of all modules that provide a field type and makes them
  * required if there are any active fields of that type.
@@ -174,7 +174,7 @@ function field_system_info_alter(&$info, Extension $file, $type) {
 }
 
 /**
- * Implements hook_entity_field_storage_info().
+ * Implements HOOK_entity_field_storage_info().
  */
 function field_entity_field_storage_info(\Drupal\Core\Entity\EntityTypeInterface $entity_type) {
   // Expose storage definitions for all exposed bundle fields.
@@ -196,7 +196,7 @@ function field_entity_field_storage_info(\Drupal\Core\Entity\EntityTypeInterface
 }
 
 /**
- * Implements hook_entity_bundle_field_info().
+ * Implements HOOK_entity_bundle_field_info().
  */
 function field_entity_bundle_field_info(EntityTypeInterface $entity_type, $bundle, array $base_field_definitions) {
   if ($entity_type->isFieldable()) {
@@ -207,7 +207,7 @@ function field_entity_bundle_field_info(EntityTypeInterface $entity_type, $bundl
 }
 
 /**
- * Implements hook_entity_bundle_create().
+ * Implements HOOK_entity_bundle_create().
  */
 function field_entity_bundle_create($entity_type, $bundle) {
   // Clear the cache.
@@ -215,7 +215,7 @@ function field_entity_bundle_create($entity_type, $bundle) {
 }
 
 /**
- * Implements hook_entity_bundle_rename().
+ * Implements HOOK_entity_bundle_rename().
  */
 function field_entity_bundle_rename($entity_type, $bundle_old, $bundle_new) {
   $instances = entity_load_multiple_by_properties('field_instance_config', array('entity_type' => $entity_type, 'bundle' => $bundle_old));
@@ -234,7 +234,7 @@ function field_entity_bundle_rename($entity_type, $bundle_old, $bundle_new) {
 }
 
 /**
- * Implements hook_entity_bundle_delete().
+ * Implements HOOK_entity_bundle_delete().
  *
  * This deletes the data for the field instances as well as the field instances
  * themselves. This function actually just marks the data and field instances as
@@ -257,21 +257,21 @@ function field_entity_bundle_delete($entity_type, $bundle) {
 }
 
 /**
- * Implements hook_rebuild().
+ * Implements HOOK_rebuild().
  */
 function field_rebuild() {
   field_cache_clear();
 }
 
 /**
- * Implements hook_modules_installed().
+ * Implements HOOK_modules_installed().
  */
 function field_modules_installed($modules) {
   field_cache_clear();
 }
 
 /**
- * Implements hook_modules_uninstalled().
+ * Implements HOOK_modules_uninstalled().
  */
 function field_modules_uninstalled($modules) {
   field_cache_clear();
@@ -350,9 +350,9 @@ function _field_create_entity_from_ids($ids) {
 }
 
 /**
- * Implements hook_hook_info().
+ * Implements HOOK_HOOK_info().
  */
-function field_hook_info() {
+function field_HOOK_info() {
   $hooks['field_views_data'] = array(
     'group' => 'views',
   );

@@ -6,11 +6,11 @@
  */
 
 /**
- * Implements hook_schema().
+ * Implements HOOK_schema().
  */
 function module_test_schema() {
   $schema['module_test'] = array(
-    'description' => 'Dummy table to test the behavior of hook_schema() during module installation.',
+    'description' => 'Dummy table to test the behavior of HOOK_schema() during module installation.',
     'fields' => array(
       'data' => array(
         'type' => 'varchar',
@@ -25,7 +25,7 @@ function module_test_schema() {
 }
 
 /**
- * Implements hook_install().
+ * Implements HOOK_install().
  */
 function module_test_install() {
   $schema = drupal_get_schema('module_test');

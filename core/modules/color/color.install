@@ -6,7 +6,7 @@
  */
 
 /**
- * Implements hook_requirements().
+ * Implements HOOK_requirements().
  */
 function color_requirements($phase) {
   $requirements = array();

@@ -10,7 +10,7 @@ use Drupal\Core\Entity\EntityInterface;
 use Symfony\Component\Routing\Exception\RouteNotFoundException;
 
 /**
- * Implements hook_help().
+ * Implements HOOK_help().
  */
 function config_translation_help($path) {
   switch ($path) {
@@ -32,7 +32,7 @@ function config_translation_help($path) {
 }
 
 /**
- * Implements hook_permission().
+ * Implements HOOK_permission().
  */
 function config_translation_permission() {
   return array(
@@ -44,7 +44,7 @@ function config_translation_permission() {
 }
 
 /**
- * Implements hook_theme().
+ * Implements HOOK_theme().
  */
 function config_translation_theme() {
   return array(
@@ -56,7 +56,7 @@ function config_translation_theme() {
 }
 
 /**
- * Implements hook_entity_type_alter().
+ * Implements HOOK_entity_type_alter().
  */
 function config_translation_entity_type_alter(array &$entity_types) {
   /** @var $entity_types \Drupal\Core\Entity\EntityTypeInterface[] */
@@ -83,7 +83,7 @@ function config_translation_entity_type_alter(array &$entity_types) {
 }
 
 /**
- * Implements hook_config_translation_info().
+ * Implements HOOK_config_translation_info().
  */
 function config_translation_config_translation_info(&$info) {
   $entity_manager = \Drupal::entityManager();
@@ -144,7 +144,7 @@ function config_translation_config_translation_info(&$info) {
 }
 
 /**
- * Implements hook_entity_operation().
+ * Implements HOOK_entity_operation().
  */
 function config_translation_entity_operation(EntityInterface $entity) {
   $operations = array();
@@ -159,7 +159,7 @@ function config_translation_entity_operation(EntityInterface $entity) {
 }
 
 /**
- * Implements hook_config_translation_type_info_alter().
+ * Implements HOOK_config_translation_type_info_alter().
  */
 function config_translation_config_translation_type_info_alter(&$definitions) {
   // Enhance the text and date type definitions with classes to generate proper

@@ -12,8 +12,8 @@ use Drupal\views\Views;
 /**
  * Tests that views hooks are registered when defined in $module.views.inc.
  *
- * @see views_hook_info().
- * @see field_hook_info().
+ * @see views_HOOK_info().
+ * @see field_HOOK_info().
  */
 class ViewsHooksTest extends ViewUnitTestBase {
 
@@ -91,7 +91,7 @@ class ViewsHooksTest extends ViewUnitTestBase {
           $this->moduleHandler->invoke('views_test_data', $hook);
       }
 
-      $this->assertTrue($this->container->get('state')->get('views_hook_test_' . $hook), format_string('The %hook hook was invoked.', array('%hook' => $hook)));
+      $this->assertTrue($this->container->get('state')->get('views_HOOK_test_' . $hook), format_string('The %hook hook was invoked.', array('%hook' => $hook)));
       // Reset the module implementations cache, so we ensure that the
       // .views.inc file is loaded actively.
       $this->moduleHandler->resetImplementations();

@@ -12,9 +12,9 @@ use Drupal\field\FieldConfigInterface;
 use Drupal\field\FieldInstanceConfigInterface;
 
 /**
- * Implements hook_views_data().
+ * Implements HOOK_views_data().
  *
- * Field modules can implement hook_field_views_data() to override the default
+ * Field modules can implement HOOK_field_views_data() to override the default
  * behavior for adding fields.
  */
 function field_views_data() {
@@ -39,9 +39,9 @@ function field_views_data() {
 }
 
 /**
- * Implements hook_views_data_alter().
+ * Implements HOOK_views_data_alter().
  *
- * Field modules can implement hook_field_views_data_views_data_alter() to
+ * Field modules can implement HOOK_field_views_data_views_data_alter() to
  * alter the views data on a per field basis. This is weirdly named so as
  * not to conflict with the \Drupal::moduleHandler()->alter('field_views_data')
  * in field_views_data.

@@ -131,12 +131,12 @@ class EntityAccessTest extends EntityLanguageTestBase  {
       'name' => 'test',
     ));
 
-    // Test hook_entity_create_access() and hook_ENTITY_TYPE_create_access().
+    // Test HOOK_entity_create_access() and HOOK_ENTITY_TYPE_create_access().
     $entity->access('create');
     $this->assertEqual($state->get('entity_test_entity_create_access'), TRUE);
     $this->assertEqual($state->get('entity_test_entity_test_create_access'), TRUE);
 
-    // Test hook_entity_access() and hook_ENTITY_TYPE_access().
+    // Test HOOK_entity_access() and HOOK_ENTITY_TYPE_access().
     $entity->access('view');
     $this->assertEqual($state->get('entity_test_entity_access'), TRUE);
     $this->assertEqual($state->get('entity_test_entity_test_access'), TRUE);

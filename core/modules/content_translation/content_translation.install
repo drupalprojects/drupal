@@ -10,7 +10,7 @@ use Drupal\Core\Language\Language;
 use Drupal\language\Plugin\LanguageNegotiation\LanguageNegotiationUrl;
 
 /**
- * Implements hook_schema().
+ * Implements HOOK_schema().
  */
 function content_translation_schema() {
   $schema['content_translation'] = array(
@@ -81,11 +81,11 @@ function content_translation_schema() {
 }
 
 /**
- * Implements hook_install().
+ * Implements HOOK_install().
  */
 function content_translation_install() {
   // Assign a fairly low weight to ensure our implementation of
-  // hook_module_implements_alter() is run among the last ones.
+  // HOOK_module_implements_alter() is run among the last ones.
   module_set_weight('content_translation', 10);
   \Drupal::service('language_negotiator')->saveConfiguration(Language::TYPE_CONTENT, array(LanguageNegotiationUrl::METHOD_ID => 0));
 
@@ -104,7 +104,7 @@ function content_translation_install() {
 }
 
 /**
- * Implements hook_enable().
+ * Implements HOOK_enable().
  */
 function content_translation_enable() {
   // Translation works when at least two languages are enabled.
@@ -120,7 +120,7 @@ function content_translation_enable() {
 }
 
 /**
- * Implements hook_uninstall().
+ * Implements HOOK_uninstall().
  */
 function content_translation_uninstall() {
   $config_names = \Drupal::configFactory()->listAll('field.field.');

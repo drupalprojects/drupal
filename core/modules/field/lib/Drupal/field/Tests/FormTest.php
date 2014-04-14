@@ -109,9 +109,9 @@ class FormTest extends FieldTestBase {
     $this->assertFieldByName("{$field_name}[0][value]", '', 'Widget is displayed');
     $this->assertNoField("{$field_name}[1][value]", 'No extraneous widget is displayed');
 
-    // Check that hook_field_widget_form_alter() does not believe this is the
+    // Check that HOOK_field_widget_form_alter() does not believe this is the
     // default value form.
-    $this->assertNoText('From hook_field_widget_form_alter(): Default form is true.', 'Not default value form in hook_field_widget_form_alter().');
+    $this->assertNoText('From HOOK_field_widget_form_alter(): Default form is true.', 'Not default value form in HOOK_field_widget_form_alter().');
 
     // Submit with invalid value (field-level validation).
     $edit = array(

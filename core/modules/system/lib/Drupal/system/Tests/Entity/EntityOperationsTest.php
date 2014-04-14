@@ -40,7 +40,7 @@ class EntityOperationsTest extends WebTestBase {
   }
 
   /**
-   * Checks that hook_entity_operation_alter() can add an operation.
+   * Checks that HOOK_entity_operation_alter() can add an operation.
    *
    * @see entity_test_entity_operation_alter()
    */

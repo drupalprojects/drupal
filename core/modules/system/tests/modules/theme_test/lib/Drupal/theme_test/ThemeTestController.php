@@ -69,7 +69,7 @@ class ThemeTestController extends ControllerBase {
   }
 
 /**
- * This is for testing that the theme can have hook_*_alter() implementations
+ * This is for testing that the theme can have HOOK_*_alter() implementations
  * that run during page callback execution, even before _theme() is called for
  * the first time.
  *
@@ -107,7 +107,7 @@ class ThemeTestController extends ControllerBase {
   }
 
   /**
-   * Menu callback for testing hook_theme_suggestions_alter().
+   * Menu callback for testing HOOK_theme_suggestions_alter().
    */
   function generalSuggestionAlter() {
     return array('#theme' => 'theme_test_general_suggestions');

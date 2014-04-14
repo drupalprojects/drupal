@@ -87,7 +87,7 @@ class ViewsBlock implements ContainerDerivativeInterface {
       $executable->initDisplay();
       foreach ($executable->displayHandlers as $display) {
         // Add a block plugin definition for each block display.
-        if (isset($display) && !empty($display->definition['uses_hook_block'])) {
+        if (isset($display) && !empty($display->definition['uses_HOOK_block'])) {
           $delta = $view->id() . '-' . $display->display['id'];
           $desc = $display->getOption('block_description');
 

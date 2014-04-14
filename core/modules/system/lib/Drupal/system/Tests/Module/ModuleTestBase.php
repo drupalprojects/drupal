@@ -51,7 +51,7 @@ abstract class ModuleTestBase extends WebTestBase {
   }
 
   /**
-   * Assert that all tables defined in a module's hook_schema() exist.
+   * Assert that all tables defined in a module's HOOK_schema() exist.
    *
    * @param $module
    *   The name of the module.
@@ -69,7 +69,7 @@ abstract class ModuleTestBase extends WebTestBase {
   }
 
   /**
-   * Assert that none of the tables defined in a module's hook_schema() exist.
+   * Assert that none of the tables defined in a module's HOOK_schema() exist.
    *
    * @param $module
    *   The name of the module.

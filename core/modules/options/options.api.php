@@ -23,9 +23,9 @@
  *   - entity: The entity object the field is attached to
  *     (\Drupal\Core\Entity\EntityInterface).
  *
- * @see hook_options_list()
+ * @see HOOK_options_list()
  */
-function hook_options_list_alter(array &$options, array $context) {
+function HOOK_options_list_alter(array &$options, array $context) {
   // Check if this is the field we want to change.
   if ($context['field']->id() == 'field_option') {
     // Change the label of the empty option.

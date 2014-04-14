@@ -9,7 +9,7 @@ use Drupal\Core\Language\Language;
 use Drupal\language\Plugin\LanguageNegotiation\LanguageNegotiationSelected;
 
 /**
- * Implements hook_install().
+ * Implements HOOK_install().
  */
 function locale_install() {
   // Create the interface translations directory and ensure it's writable.
@@ -21,7 +21,7 @@ function locale_install() {
 }
 
 /**
- * Implements hook_uninstall().
+ * Implements HOOK_uninstall().
  */
 function locale_uninstall() {
   $config = \Drupal::config('locale.settings');
@@ -48,7 +48,7 @@ function locale_uninstall() {
 }
 
 /**
- * Implements hook_schema().
+ * Implements HOOK_schema().
  */
 function locale_schema() {
   $schema['locales_source'] = array(
@@ -281,7 +281,7 @@ function locale_schema() {
 }
 
 /**
- * Implements hook_requirements().
+ * Implements HOOK_requirements().
  */
 function locale_requirements($phase) {
   $requirements = array();

@@ -44,7 +44,7 @@ class FilterSettingsTest extends DrupalUnitTestBase {
     ));
     $filter_defaults_format->save();
 
-    // Verify that default weights defined in hook_filter_info() were applied.
+    // Verify that default weights defined in HOOK_filter_info() were applied.
     $saved_settings = array();
     foreach ($filter_defaults_format->filters() as $name => $filter) {
       $expected_weight = $filter_info[$name]['weight'];

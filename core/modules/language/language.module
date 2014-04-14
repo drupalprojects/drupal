@@ -16,7 +16,7 @@ use Drupal\language\Plugin\LanguageNegotiation\LanguageNegotiationUrlFallback;
 use Drupal\node\NodeTypeInterface;
 
 /**
- * Implements hook_help().
+ * Implements HOOK_help().
  */
 function language_help($path, $arg) {
   switch ($path) {
@@ -80,7 +80,7 @@ function language_access_language_edit_or_delete($language) {
 }
 
 /**
- * Implements hook_permission().
+ * Implements HOOK_permission().
  */
 function language_permission() {
   return array(
@@ -91,7 +91,7 @@ function language_permission() {
 }
 
 /**
- * Implements hook_theme().
+ * Implements HOOK_theme().
  */
 function language_theme() {
   return array(
@@ -127,7 +127,7 @@ function language_entity_supported() {
 }
 
 /**
- * Implements hook_element_info_alter().
+ * Implements HOOK_element_info_alter().
  */
 function language_element_info_alter(&$type) {
   // Alter the language_select element so that it will be rendered like a select
@@ -184,7 +184,7 @@ function language_process_language_select($element) {
 }
 
 /**
- * Implements hook_element_info().
+ * Implements HOOK_element_info().
  */
 function language_element_info() {
   $types['language_configuration'] = array(
@@ -352,7 +352,7 @@ function language_get_default_configuration_settings_key($entity_type, $bundle) 
 }
 
 /**
- * Implements hook_node_type_update().
+ * Implements HOOK_node_type_update().
  */
 function language_node_type_update(NodeTypeInterface $type) {
   if ($type->original->id() != $type->id()) {
@@ -507,7 +507,7 @@ function language_delete($langcode) {
 }
 
 /**
- * Implements hook_language_types_info().
+ * Implements HOOK_language_types_info().
  *
  * Defines the three core language types:
  * - Interface language is the only configurable language type in core. It is
@@ -591,7 +591,7 @@ function language_negotiation_url_domains_save(array $domains) {
 }
 
 /**
- * Implements hook_modules_installed().
+ * Implements HOOK_modules_installed().
  */
 function language_modules_installed($modules) {
   if (!in_array('language', $modules)) {
@@ -602,14 +602,14 @@ function language_modules_installed($modules) {
 }
 
 /**
- * Implements hook_modules_uninstalled().
+ * Implements HOOK_modules_uninstalled().
  */
 function language_modules_uninstalled($modules) {
   language_modules_installed($modules);
 }
 
 /**
- * Implements hook_ENTITY_TYPE_insert() for 'language_entity'.
+ * Implements HOOK_ENTITY_TYPE_insert() for 'language_entity'.
  */
 function language_language_entity_insert(LanguageEntity $language) {
   if (!empty($language->locked)) {
@@ -623,7 +623,7 @@ function language_language_entity_insert(LanguageEntity $language) {
 }
 
 /**
- * Implements hook_ENTITY_TYPE_delete() for 'language_entity'.
+ * Implements HOOK_ENTITY_TYPE_delete() for 'language_entity'.
  */
 function language_language_entity_delete(LanguageEntity $language) {
   // Remove language from language prefix list.
@@ -638,7 +638,7 @@ function language_language_entity_delete(LanguageEntity $language) {
 }
 
 /**
- * Implements hook_preprocess_HOOK() for block templates.
+ * Implements HOOK_preprocess_HOOK() for block templates.
  */
 function language_preprocess_block(&$variables) {
   if ($variables['configuration']['provider'] == 'language') {
@@ -675,7 +675,7 @@ function language_set_browser_drupal_langcode_mappings($mappings) {
 }
 
 /**
- * Implements hook_form_FORM_ID_alter for system_regional_settings().
+ * Implements HOOK_form_FORM_ID_alter for system_regional_settings().
  *
  * @see language_system_regional_settings_form_submit()
  */

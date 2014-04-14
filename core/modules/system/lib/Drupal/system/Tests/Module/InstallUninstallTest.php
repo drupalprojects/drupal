@@ -30,8 +30,8 @@ class InstallUninstallTest extends ModuleTestBase {
     // will display messages via drupal_set_message().
     $this->container->get('state')->set('system_test.verbose_module_hooks', TRUE);
 
-    // Install and uninstall module_test to ensure hook_preinstall_module and
-    // hook_preuninstall_module are fired as expected.
+    // Install and uninstall module_test to ensure HOOK_preinstall_module and
+    // HOOK_preuninstall_module are fired as expected.
     $this->container->get('module_handler')->install(array('module_test'));
     $this->assertEqual($this->container->get('state')->get('system_test_preinstall_module'), 'module_test');
     $this->container->get('module_handler')->uninstall(array('module_test'));
@@ -90,11 +90,11 @@ class InstallUninstallTest extends ModuleTestBase {
 
       $this->assertText(t('The configuration options have been saved.'), 'Modules status has been updated.');
 
-      // Check that hook_modules_installed() was invoked with the expected list
+      // Check that HOOK_modules_installed() was invoked with the expected list
       // of modules, that each module's database tables now exist, and that
       // appropriate messages appear in the logs.
       foreach ($modules_to_install as $module_to_install) {
-        $this->assertText(t('hook_modules_installed fired for @module', array('@module' => $module_to_install)));
+        $this->assertText(t('HOOK_modules_installed fired for @module', array('@module' => $module_to_install)));
         $this->assertModules(array($module_to_install), TRUE);
         $this->assertModuleTablesExist($module_to_install);
         $this->assertModuleConfig($module_to_install);
@@ -166,7 +166,7 @@ class InstallUninstallTest extends ModuleTestBase {
     // message appears. (But don't check for the log message if the dblog
     // module was just uninstalled, since the {watchdog} table won't be there
     // anymore.)
-    $this->assertText(t('hook_modules_uninstalled fired for @module', array('@module' => $module)));
+    $this->assertText(t('HOOK_modules_uninstalled fired for @module', array('@module' => $module)));
     $this->assertLogMessage('system', "%module module uninstalled.", array('%module' => $module), WATCHDOG_INFO);
 
     // Check that the module's database tables no longer exist.

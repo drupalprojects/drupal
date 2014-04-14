@@ -23,7 +23,7 @@ use Drupal\editor\Entity\Editor;
  *
  * @see CKEditorPluginManager
  */
-function hook_ckeditor_plugin_info_alter(array &$plugins) {
+function HOOK_ckeditor_plugin_info_alter(array &$plugins) {
   $plugins['someplugin']['label'] = t('Better name');
 }
 
@@ -51,7 +51,7 @@ function hook_ckeditor_plugin_info_alter(array &$plugins) {
  *
  * @see _ckeditor_theme_css()
  */
-function hook_ckeditor_css_alter(array &$css, Editor $editor) {
+function HOOK_ckeditor_css_alter(array &$css, Editor $editor) {
   $css[] = drupal_get_path('module', 'mymodule') . '/css/mymodule-ckeditor.css';
 }
 

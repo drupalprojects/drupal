@@ -107,7 +107,7 @@ interface NodeGrantDatabaseStorageInterface {
    *
    * @return bool|null
    *   TRUE if access was granted, FALSE if access was denied or NULL if no
-   *   module implements hook_node_grants(), the node does not (yet) have an id
+   *   module Implements HOOK_node_grants(), the node does not (yet) have an id
    *   or none of the implementing modules explicitly granted or denied access.
    */
   public function access(NodeInterface $node, $operation, $langcode, AccountInterface $account);

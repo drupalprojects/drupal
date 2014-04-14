@@ -148,7 +148,7 @@ class ConfigEntityStorage extends EntityStorageBase implements ConfigEntityStora
 
     // Pass all entities loaded from the database through $this->postLoad(),
     // which calls the
-    // entity type specific load callback, for example hook_node_type_load().
+    // entity type specific load callback, for example HOOK_node_type_load().
     if (!empty($queried_entities)) {
       $this->postLoad($queried_entities);
       $entities += $queried_entities;

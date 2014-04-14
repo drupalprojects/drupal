@@ -9,7 +9,7 @@ use Drupal\responsive_image\Entity\ResponsiveImageMapping;
 use \Drupal\Core\Template\Attribute;
 
 /**
- * Implements hook_help().
+ * Implements HOOK_help().
  */
 function responsive_image_help($path, $arg) {
   $output = '';
@@ -34,7 +34,7 @@ function responsive_image_help($path, $arg) {
 }
 
 /**
- * Implements hook_permission().
+ * Implements HOOK_permission().
  */
 function responsive_image_permission() {
   return array(
@@ -45,7 +45,7 @@ function responsive_image_permission() {
 }
 
 /**
- * Implements hook_menu().
+ * Implements HOOK_menu().
  */
 function responsive_image_menu() {
   $items = array();
@@ -87,7 +87,7 @@ function responsive_image_mapping_load($id) {
 }
 
 /**
- * Implements hook_theme().
+ * Implements HOOK_theme().
  */
 function responsive_image_theme() {
   return array(

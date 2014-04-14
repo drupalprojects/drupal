@@ -228,7 +228,7 @@ function drupal_get_profile() {
  *   A renderable array. If the '#type' key is not set then 'html_tag' will be
  *   added as the default '#type'.
  * @param $key
- *   A unique string key to allow implementations of hook_html_head_alter() to
+ *   A unique string key to allow implementations of HOOK_html_head_alter() to
  *   identify the element in $data. Required if $data is not NULL.
  *
  * @return
@@ -894,7 +894,7 @@ function format_interval($interval, $granularity = 2, $langcode = NULL) {
  *     'long', 'html_datetime', 'html_date', 'html_time',
  *     'html_yearless_date', 'html_week', 'html_month', 'html_year'.
  *   - The name of a date type defined by a module in
- *     hook_date_format_types(), if it's been assigned a format.
+ *     HOOK_date_format_types(), if it's been assigned a format.
  *   - The machine name of an administrator-defined date format.
  *   - 'custom', to use $format.
  *   Defaults to 'medium'.
@@ -1314,7 +1314,7 @@ function drupal_add_html_head_link($attributes, $header = FALSE) {
  * all typical visitors and most pages of a site. It is critical that all
  * preprocessed files are added unconditionally on every page, even if the
  * files do not happen to be needed on a page. This is normally done by calling
- * _drupal_add_css() in a hook_page_build() implementation.
+ * _drupal_add_css() in a HOOK_page_build() implementation.
  *
  * Non-preprocessed files should only be added to the page when they are
  * actually needed.
@@ -1362,7 +1362,7 @@ function drupal_add_html_head_link($attributes, $header = FALSE) {
  *     page of the website for users for whom it is present at all. This
  *     defaults to FALSE. It is set to TRUE for stylesheets added via module and
  *     theme .info.yml files. Modules that add stylesheets within
- *     hook_page_build() implementations, or from other code that ensures that
+ *     HOOK_page_build() implementations, or from other code that ensures that
  *     the stylesheet is added to all website pages, should also set this flag
  *     to TRUE. All stylesheets within the same group that have the 'every_page'
  *     flag set to TRUE and do not have 'preprocess' set to FALSE are aggregated
@@ -1920,7 +1920,7 @@ function drupal_clean_id_identifier($id) {
  * all typical visitors and most pages of a site. It is critical that all
  * preprocessed files are added unconditionally on every page, even if the
  * files are not needed on a page. This is normally done by calling
- * _drupal_add_js() in a hook_page_build() implementation.
+ * _drupal_add_js() in a HOOK_page_build() implementation.
  *
  * Non-preprocessed files should only be added to the page when they are
  * actually needed.
@@ -1963,7 +1963,7 @@ function drupal_clean_id_identifier($id) {
  *     page of the website for users for whom it is present at all. This
  *     defaults to FALSE. It is set to TRUE for JavaScript files that are added
  *     via module and theme .info.yml files. Modules that add JavaScript within
- *     hook_page_build() implementations, or from other code that ensures that
+ *     HOOK_page_build() implementations, or from other code that ensures that
  *     the JavaScript is added to all website pages, should also set this flag
  *     to TRUE. All JavaScript files within the same group and that have the
  *     'every_page' flag set to TRUE and do not have 'preprocess' set to FALSE
@@ -2055,8 +2055,8 @@ function _drupal_add_js($data = NULL, $options = NULL) {
             'weight' => 0,
             'browsers' => array(),
           );
-          // url() generates the script and prefix using hook_url_outbound_alter().
-          // Instead of running the hook_url_outbound_alter() again here, extract
+          // url() generates the script and prefix using HOOK_url_outbound_alter().
+          // Instead of running the HOOK_url_outbound_alter() again here, extract
           // them from url().
           // @todo Make this less hacky: http://drupal.org/node/1547376.
           $scriptPath = $GLOBALS['script_path'];
@@ -2140,10 +2140,10 @@ function drupal_js_defaults($data = NULL) {
  * are added to the page. Then, all settings are output, followed by 'inline'
  * JavaScript code. If running update.php, all preprocessing is disabled.
  *
- * Note that hook_js_alter(&$javascript) is called during this function call
+ * Note that HOOK_js_alter(&$javascript) is called during this function call
  * to allow alterations of the JavaScript during its presentation. Calls to
- * _drupal_add_js() from hook_js_alter() will not be added to the output
- * presentation. The correct way to add JavaScript during hook_js_alter()
+ * _drupal_add_js() from HOOK_js_alter() will not be added to the output
+ * presentation. The correct way to add JavaScript during HOOK_js_alter()
  * is to add another element to the $javascript array, deriving from
  * drupal_js_defaults(). See locale_js_alter() for an example of this.
  *
@@ -2612,7 +2612,7 @@ function drupal_process_states(&$elements) {
  *   its dependencies could not be added.
  *
  * @see \Drupal\Core\Asset\LibraryDiscovery
- * @see hook_library_info_alter()
+ * @see HOOK_library_info_alter()
  */
 function _drupal_add_library($library_name, $every_page = NULL) {
   $added = &drupal_static(__FUNCTION__, array());
@@ -3380,7 +3380,7 @@ function drupal_pre_render_dropbutton($element) {
  * @return array
  *   The processed render array for the page.
  *
- * @see hook_page_alter()
+ * @see HOOK_page_alter()
  * @see element_info()
  */
 function drupal_prepare_page($page) {
@@ -3399,7 +3399,7 @@ function drupal_prepare_page($page) {
     $page = element_info('page');
   }
 
-  // Modules can add elements to $page as needed in hook_page_build().
+  // Modules can add elements to $page as needed in HOOK_page_build().
   foreach (\Drupal::moduleHandler()->getImplementations('page_build') as $module) {
     $function = $module . '_page_build';
     $function($page);
@@ -3451,7 +3451,7 @@ function drupal_prepare_page($page) {
  * @return string
  *   Returns the rendered string.
  *
- * @see hook_page_alter()
+ * @see HOOK_page_alter()
  * @see element_info()
  */
 function drupal_render_page($page) {
@@ -3494,7 +3494,7 @@ function drupal_render_page($page) {
  *       'default'.
  *   - If this element has #type defined and the default attributes for this
  *     element have not already been merged in (#defaults_loaded = TRUE) then
- *     the defaults for this type of element, defined in hook_element_info(),
+ *     the defaults for this type of element, defined in HOOK_element_info(),
  *     are merged into the array. #defaults_loaded is set by functions that
  *     process render arrays and call element_info() before passing the array to
  *     drupal_render(), such as form_builder() in the Form API.
@@ -4288,7 +4288,7 @@ function drupal_render_cid_create($elements) {
  * Retrieves the default properties for the defined element type.
  *
  * @param $type
- *   An element type as defined by hook_element_info().
+ *   An element type as defined by HOOK_element_info().
  */
 function element_info($type) {
   // Use the advanced drupal_static() pattern, since this is called very often.
@@ -4314,7 +4314,7 @@ function element_info($type) {
  * Retrieves a single property for the defined element type.
  *
  * @param $type
- *   An element type as defined by hook_element_info().
+ *   An element type as defined by HOOK_element_info().
  * @param $property_name
  *   The property within the element type that should be returned.
  * @param $default
@@ -4450,8 +4450,8 @@ function watchdog_severity_levels() {
  * - Updates the system with latest information about extensions (modules and
  *   themes).
  * - Updates the bootstrap flag for modules implementing bootstrap_hooks().
- * - Rebuilds the full database schema information (invoking hook_schema()).
- * - Rebuilds data structures of all modules (invoking hook_rebuild()). In
+ * - Rebuilds the full database schema information (invoking HOOK_schema()).
+ * - Rebuilds data structures of all modules (invoking HOOK_rebuild()). In
  *   core this means
  *   - blocks, node types, date formats and actions are synchronized with the
  *     database
@@ -4465,13 +4465,13 @@ function watchdog_severity_levels() {
  * defined in code.
  *
  * All modules need to ensure that all of their caches are flushed when
- * hook_cache_flush() is invoked; any previously known information must no
- * longer exist. All following hook_rebuild() operations must be based on fresh
+ * HOOK_cache_flush() is invoked; any previously known information must no
+ * longer exist. All following HOOK_rebuild() operations must be based on fresh
  * and current system data. All modules must be able to rely on this contract.
  *
  * @see \Drupal\Core\Cache\CacheHelper::getBins()
- * @see hook_cache_flush()
- * @see hook_rebuild()
+ * @see HOOK_cache_flush()
+ * @see HOOK_rebuild()
  *
  * This function also resets the theme, which means it is not initialized
  * anymore and all previously added JavaScript and CSS is gone. Normally, this
@@ -4672,8 +4672,8 @@ function archiver_get_archiver($file) {
  *   The Drupal Updater class registry.
  *
  * @see \Drupal\Core\Updater\Updater
- * @see hook_updater_info()
- * @see hook_updater_info_alter()
+ * @see HOOK_updater_info()
+ * @see HOOK_updater_info_alter()
  */
 function drupal_get_updaters() {
   $updaters = &drupal_static(__FUNCTION__);
@@ -4692,8 +4692,8 @@ function drupal_get_updaters() {
  *   The Drupal FileTransfer class registry.
  *
  * @see \Drupal\Core\FileTransfer\FileTransfer
- * @see hook_filetransfer_info()
- * @see hook_filetransfer_info_alter()
+ * @see HOOK_filetransfer_info()
+ * @see HOOK_filetransfer_info_alter()
  */
 function drupal_get_filetransfer_info() {
   $info = &drupal_static(__FUNCTION__);

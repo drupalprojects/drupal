@@ -75,7 +75,7 @@ class NodeSearch extends ConfigurableSearchPluginBase implements AccessibleInter
   protected $account;
 
   /**
-   * An array of additional rankings from hook_ranking().
+   * An array of additional rankings from HOOK_ranking().
    *
    * @var array
    */
@@ -517,7 +517,7 @@ class NodeSearch extends ConfigurableSearchPluginBase implements AccessibleInter
   }
 
   /**
-   * Gathers ranking definitions from hook_ranking().
+   * Gathers ranking definitions from HOOK_ranking().
    *
    * @return array
    *   An array of ranking definitions.

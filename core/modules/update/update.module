@@ -61,7 +61,7 @@ const UPDATE_NOT_FETCHED = -3;
 const UPDATE_FETCH_PENDING = -4;
 
 /**
- * Implements hook_help().
+ * Implements HOOK_help().
  */
 function update_help($path, $arg) {
   switch ($path) {
@@ -93,7 +93,7 @@ function update_help($path, $arg) {
 }
 
 /**
- * Implements hook_page_build().
+ * Implements HOOK_page_build().
  */
 function update_page_build() {
   if (arg(0) == 'admin' && user_access('administer site configuration')) {
@@ -163,7 +163,7 @@ function update_manager_access() {
 }
 
 /**
- * Implements hook_theme().
+ * Implements HOOK_theme().
  */
 function update_theme() {
   return array(
@@ -190,7 +190,7 @@ function update_theme() {
 }
 
 /**
- * Implements hook_cron().
+ * Implements HOOK_cron().
  */
 function update_cron() {
   $update_config = \Drupal::config('update.settings');
@@ -222,7 +222,7 @@ function update_cron() {
 }
 
 /**
- * Implements hook_themes_enabled().
+ * Implements HOOK_themes_enabled().
  *
  * If themes are enabled, we invalidate the information of available updates.
  */
@@ -232,7 +232,7 @@ function update_themes_enabled($themes) {
 }
 
 /**
- * Implements hook_themes_disabled().
+ * Implements HOOK_themes_disabled().
  *
  * If themes are disabled, we invalidate the information of available updates.
  */
@@ -242,7 +242,7 @@ function update_themes_disabled($themes) {
 }
 
 /**
- * Implements hook_form_FORM_ID_alter() for system_modules().
+ * Implements HOOK_form_FORM_ID_alter() for system_modules().
  *
  * Adds a form submission handler to the system modules form, so that if a site
  * admin saves the form, we invalidate the information of available updates.
@@ -406,7 +406,7 @@ function update_fetch_data_finished($success, $results) {
 }
 
 /**
- * Implements hook_mail().
+ * Implements HOOK_mail().
  *
  * Constructs the e-mail notification message when the site is out of date.
  *
@@ -574,7 +574,7 @@ function theme_update_last_check($variables) {
 }
 
 /**
- * Implements hook_verify_update_archive().
+ * Implements HOOK_verify_update_archive().
  *
  * First, we ensure that the archive isn't a copy of Drupal core, which the
  * update manager does not yet support. See http://drupal.org/node/606592

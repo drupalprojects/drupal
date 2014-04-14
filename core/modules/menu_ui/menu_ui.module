@@ -6,7 +6,7 @@
  *
  * A menu (in this context) is a hierarchical collection of links, generally
  * used for navigation. This is not to be confused with the
- * @link menu Menu system @endlink of menu.inc and hook_menu(), which defines
+ * @link menu Menu system @endlink of menu.inc and HOOK_menu(), which defines
  * page routing requests for Drupal, and also allows the defined page routing
  * URLs to be added to the main site navigation menu.
  */
@@ -28,7 +28,7 @@ use Drupal\node\NodeInterface;
 const MENU_MAX_MENU_NAME_LENGTH_UI = 27;
 
 /**
- * Implements hook_help().
+ * Implements HOOK_help().
  */
 function menu_ui_help($path, $arg) {
   switch ($path) {
@@ -54,7 +54,7 @@ function menu_ui_help($path, $arg) {
 }
 
 /**
- * Implements hook_permission().
+ * Implements HOOK_permission().
  */
 function menu_ui_permission() {
   return array(
@@ -65,7 +65,7 @@ function menu_ui_permission() {
 }
 
 /**
- * Implements hook_entity_type_build().
+ * Implements HOOK_entity_type_build().
  */
 function menu_ui_entity_type_build(array &$entity_types) {
   /** @var $entity_types \Drupal\Core\Entity\EntityTypeInterface[] */
@@ -85,7 +85,7 @@ function menu_ui_entity_type_build(array &$entity_types) {
 }
 
 /**
- * Implements hook_entity_bundle_info().
+ * Implements HOOK_entity_bundle_info().
  */
 function menu_ui_entity_bundle_info() {
   $bundles = array();
@@ -101,7 +101,7 @@ function menu_ui_entity_bundle_info() {
 }
 
 /**
- * Implements hook_theme().
+ * Implements HOOK_theme().
  */
 function menu_ui_theme() {
   return array(
@@ -125,7 +125,7 @@ function menu_ui_load($menu_name) {
 }
 
 /**
- * Implements hook_menu_insert()
+ * Implements HOOK_menu_insert()
  */
 function menu_ui_menu_insert(Menu $menu) {
   menu_cache_clear_all();
@@ -153,7 +153,7 @@ function menu_ui_menu_insert(Menu $menu) {
 }
 
 /**
- * Implements hook_menu_update().
+ * Implements HOOK_menu_update().
  */
 function menu_ui_menu_update(Menu $menu) {
   menu_cache_clear_all();
@@ -164,7 +164,7 @@ function menu_ui_menu_update(Menu $menu) {
 }
 
 /**
- * Implements hook_menu_predelete().
+ * Implements HOOK_menu_predelete().
  */
 function menu_ui_menu_predelete(Menu $menu) {
   // Delete all links from the menu.
@@ -185,7 +185,7 @@ function menu_ui_menu_predelete(Menu $menu) {
 }
 
 /**
- * Implements hook_menu_delete().
+ * Implements HOOK_menu_delete().
  */
 function menu_ui_menu_delete(Menu $menu) {
   menu_cache_clear_all();
@@ -219,7 +219,7 @@ function menu_ui_menu_delete(Menu $menu) {
 function menu_ui_parent_options(array $menus, MenuLink $menu_link = NULL, $type = NULL) {
   // The menu_links table can be practically any size and we need a way to
   // allow contrib modules to provide more scalable pattern choosers.
-  // hook_form_alter is too late in itself because all the possible parents are
+  // HOOK_form_alter is too late in itself because all the possible parents are
   // retrieved here, unless override_parent_selector is set to TRUE.
   if (\Drupal::config('menu_ui.settings')->get('override_parent_selector')) {
     return array();
@@ -294,7 +294,7 @@ function _menu_ui_parents_recurse($tree, $menu_name, $indent, &$options, $exclud
 }
 
 /**
- * Implements hook_block_view_BASE_BLOCK_ID_alter() for 'system_menu_block'.
+ * Implements HOOK_block_view_BASE_BLOCK_ID_alter() for 'system_menu_block'.
  */
 function menu_ui_block_view_system_menu_block_alter(array &$build, BlockPluginInterface $block) {
   // Add contextual links for system menu blocks.
@@ -310,21 +310,21 @@ function menu_ui_block_view_system_menu_block_alter(array &$build, BlockPluginIn
 }
 
 /**
- * Implements hook_node_insert().
+ * Implements HOOK_node_insert().
  */
 function menu_ui_node_insert(EntityInterface $node) {
   menu_ui_node_save($node);
 }
 
 /**
- * Implements hook_node_update().
+ * Implements HOOK_node_update().
  */
 function menu_ui_node_update(EntityInterface $node) {
   menu_ui_node_save($node);
 }
 
 /**
- * Implements hook_node_type_insert().
+ * Implements HOOK_node_type_insert().
  */
 function menu_ui_node_type_insert(NodeTypeInterface $type) {
   if ($type->isSyncing()) {
@@ -337,7 +337,7 @@ function menu_ui_node_type_insert(NodeTypeInterface $type) {
 }
 
 /**
- * Implements hook_node_type_delete().
+ * Implements HOOK_node_type_delete().
  */
 function menu_ui_node_type_delete(NodeTypeInterface $type) {
   if ($type->isSyncing()) {
@@ -347,7 +347,7 @@ function menu_ui_node_type_delete(NodeTypeInterface $type) {
 }
 
 /**
- * Helper for hook_node_insert() and hook_node_update().
+ * Helper for HOOK_node_insert() and HOOK_node_update().
  */
 function menu_ui_node_save(EntityInterface $node) {
   if (isset($node->menu)) {
@@ -376,7 +376,7 @@ function menu_ui_node_save(EntityInterface $node) {
 }
 
 /**
- * Implements hook_node_predelete().
+ * Implements HOOK_node_predelete().
  */
 function menu_ui_node_predelete(EntityInterface $node) {
   // Delete all menu module links that point to this node.
@@ -391,7 +391,7 @@ function menu_ui_node_predelete(EntityInterface $node) {
 }
 
 /**
- * Implements hook_node_prepare_form().
+ * Implements HOOK_node_prepare_form().
  */
 function menu_ui_node_prepare_form(NodeInterface $node, $operation, array &$form_state) {
   if (empty($node->menu)) {
@@ -455,7 +455,7 @@ function _menu_ui_parent_depth_limit($item) {
 }
 
 /**
- * Implements hook_form_BASE_FORM_ID_alter().
+ * Implements HOOK_form_BASE_FORM_ID_alter().
  *
  * Adds menu item fields to the node form.
  *
@@ -558,7 +558,7 @@ function menu_ui_form_node_form_alter(&$form, $form_state) {
 }
 
 /**
- * Implements hook_node_submit().
+ * Implements HOOK_node_submit().
  *
  * @see menu_ui_form_node_form_alter()
  */
@@ -574,7 +574,7 @@ function menu_ui_node_submit(EntityInterface $node, $form, $form_state) {
 }
 
 /**
- * Implements hook_form_FORM_ID_alter().
+ * Implements HOOK_form_FORM_ID_alter().
  *
  * Adds menu options to the node type form.
  *
@@ -663,7 +663,7 @@ function menu_ui_get_menus($all = TRUE) {
 }
 
 /**
- * Implements hook_preprocess_HOOK() for block templates.
+ * Implements HOOK_preprocess_HOOK() for block templates.
  */
 function menu_ui_preprocess_block(&$variables) {
   if ($variables['configuration']['provider'] == 'menu_ui') {

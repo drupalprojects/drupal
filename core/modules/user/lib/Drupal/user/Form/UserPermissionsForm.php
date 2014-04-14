@@ -96,7 +96,7 @@ class UserPermissionsForm extends FormBase {
     $module_info = system_rebuild_module_data();
     $hide_descriptions = system_admin_compact_mode();
 
-    // Get a list of all the modules implementing a hook_permission() and sort by
+    // Get a list of all the modules implementing a HOOK_permission() and sort by
     // display name.
     $modules = array();
     foreach ($this->moduleHandler->getImplementations('permission') as $module) {

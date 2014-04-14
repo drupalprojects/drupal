@@ -8,7 +8,7 @@
 use Drupal\Core\Extension\Extension;
 
 /**
- * Implements hook_theme().
+ * Implements HOOK_theme().
  */
 function twig_theme($existing, $type, $theme, $path) {
   $templates = drupal_find_theme_functions($existing, array($theme));
@@ -17,14 +17,14 @@ function twig_theme($existing, $type, $theme, $path) {
 }
 
 /**
- * Implements hook_extension().
+ * Implements HOOK_extension().
  */
 function twig_extension() {
   return '.html.twig';
 }
 
 /**
- * Implements hook_init().
+ * Implements HOOK_init().
  */
 function twig_init(Extension $theme) {
   $theme->load();
@@ -54,16 +54,16 @@ function twig_render_template($template_file, $variables) {
   );
   if ($twig_service->isDebug()) {
     $output['debug_prefix'] .= "\n\n<!-- THEME DEBUG -->";
-    $output['debug_prefix'] .= "\n<!-- CALL: _theme('{$variables['theme_hook_original']}') -->";
+    $output['debug_prefix'] .= "\n<!-- CALL: _theme('{$variables['theme_HOOK_original']}') -->";
     // If there are theme suggestions, reverse the array so more specific
     // suggestions are shown first.
-    if (!empty($variables['theme_hook_suggestions'])) {
-      $variables['theme_hook_suggestions'] = array_reverse($variables['theme_hook_suggestions']);
+    if (!empty($variables['theme_HOOK_suggestions'])) {
+      $variables['theme_HOOK_suggestions'] = array_reverse($variables['theme_HOOK_suggestions']);
     }
     // Add debug output for directly called suggestions like
     // '#theme' => 'comment__node__article'.
-    if (strpos($variables['theme_hook_original'], '__') !== FALSE) {
-      $derived_suggestions[] = $hook = $variables['theme_hook_original'];
+    if (strpos($variables['theme_HOOK_original'], '__') !== FALSE) {
+      $derived_suggestions[] = $hook = $variables['theme_HOOK_original'];
       while ($pos = strrpos($hook, '__')) {
         $hook = substr($hook, 0, $pos);
         $derived_suggestions[] = $hook;
@@ -71,17 +71,17 @@ function twig_render_template($template_file, $variables) {
       // Get the value of the base hook (last derived suggestion) and append it
       // to the end of all theme suggestions.
       $base_hook = array_pop($derived_suggestions);
-      $variables['theme_hook_suggestions'] = array_merge($derived_suggestions, $variables['theme_hook_suggestions']);
-      $variables['theme_hook_suggestions'][] = $base_hook;
+      $variables['theme_HOOK_suggestions'] = array_merge($derived_suggestions, $variables['theme_HOOK_suggestions']);
+      $variables['theme_HOOK_suggestions'][] = $base_hook;
     }
-    if (!empty($variables['theme_hook_suggestions'])) {
+    if (!empty($variables['theme_HOOK_suggestions'])) {
       $extension = twig_extension();
       $current_template = basename($template_file);
-      $suggestions = $variables['theme_hook_suggestions'];
+      $suggestions = $variables['theme_HOOK_suggestions'];
       // Only add the original theme hook if it wasn't a directly called
       // suggestion.
-      if (strpos($variables['theme_hook_original'], '__') === FALSE) {
-        $suggestions[] = $variables['theme_hook_original'];
+      if (strpos($variables['theme_HOOK_original'], '__') === FALSE) {
+        $suggestions[] = $variables['theme_HOOK_original'];
       }
       foreach ($suggestions as &$suggestion) {
         $template = strtr($suggestion, '_', '-') . $extension;

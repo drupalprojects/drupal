@@ -32,7 +32,7 @@
    * The Drupal toolbar allows modules to register top-level tabs. These may point
    * directly to a resource or toggle the visibility of a tray.
    *
-   * Modules register tabs with hook_toolbar().
+   * Modules register tabs with HOOK_toolbar().
    */
   Drupal.behaviors.toolbar = {
 

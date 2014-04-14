@@ -185,7 +185,7 @@ function _content_translation_get_switch_links($path) {
 function content_translation_add_page(EntityInterface $entity, Language $source = NULL, Language $target = NULL) {
   $source = !empty($source) ? $source : $entity->language();
   $target = !empty($target) ? $target : \Drupal::languageManager()->getCurrentLanguage(Language::TYPE_CONTENT);
-  // @todo Exploit the upcoming hook_entity_prepare() when available.
+  // @todo Exploit the upcoming HOOK_entity_prepare() when available.
   content_translation_prepare_translation($entity, $source, $target);
   $form_state['langcode'] = $target->id;
   $form_state['content_translation']['source'] = $source;

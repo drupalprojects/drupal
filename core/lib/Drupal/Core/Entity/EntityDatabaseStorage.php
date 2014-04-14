@@ -130,7 +130,7 @@ class EntityDatabaseStorage extends EntityStorageBase {
 
     // Pass all entities loaded from the database through $this->postLoad(),
     // which attaches fields (if supported by the entity type) and calls the
-    // entity type specific load callback, for example hook_node_load().
+    // entity type specific load callback, for example HOOK_node_load().
     if (!empty($queried_entities)) {
       $this->postLoad($queried_entities);
       $entities += $queried_entities;

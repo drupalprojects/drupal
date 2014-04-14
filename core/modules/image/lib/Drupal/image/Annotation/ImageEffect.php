@@ -12,7 +12,7 @@ use Drupal\Component\Annotation\Plugin;
 /**
  * Defines an image effect annotation object.
  *
- * @see hook_image_effect_info_alter()
+ * @see HOOK_image_effect_info_alter()
  *
  * @Annotation
  */

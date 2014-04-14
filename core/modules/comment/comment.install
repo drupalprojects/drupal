@@ -6,7 +6,7 @@
  */
 
 /**
- * Implements hook_uninstall().
+ * Implements HOOK_uninstall().
  */
 function comment_uninstall() {
   // Remove the comment fields.
@@ -21,7 +21,7 @@ function comment_uninstall() {
 }
 
 /**
- * Implements hook_install().
+ * Implements HOOK_install().
  */
 function comment_install() {
   // By default, maintain entity statistics for comments.
@@ -30,7 +30,7 @@ function comment_install() {
 }
 
 /**
- * Implements hook_schema().
+ * Implements HOOK_schema().
  */
 function comment_schema() {
   $schema['comment'] = array(

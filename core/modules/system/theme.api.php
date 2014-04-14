@@ -37,19 +37,19 @@
  * @endcode
  *
  * @section sec_theme_hooks Theme Hooks
- * Modules register theme hooks within a hook_theme() implementation and provide
+ * Modules register theme hooks within a HOOK_theme() implementation and provide
  * a default implementation via a function named theme_HOOK(). For instance, to
  * theme a taxonomy term, the theme hook name is 'taxonomy_term'. If theming is
  * handled via a function then the corresponding function name is
  * theme_taxonomy_term(). If theming is handled via a template then the file
  * should be named according to the value of the 'template' key registered with
- * the theme hook (see hook_theme() for details). Default templates are
+ * the theme hook (see HOOK_theme() for details). Default templates are
  * implemented with the Twig rendering engine and are named the same as the
  * theme hook, with underscores changed to hyphens, so for the 'taxonomy_term'
  * theme hook, the default template is 'taxonomy-term.html.twig'.
  *
  * @subsection sub_overriding_theme_hooks Overriding Theme Hooks
- * Themes may register new theme hooks within a hook_theme()
+ * Themes may register new theme hooks within a HOOK_theme()
  * implementation, but it is more common for themes to override default
  * implementations provided by modules than to register entirely new theme
  * hooks. Themes can override a default implementation by implementing a
@@ -72,9 +72,9 @@
  *   for all theme hooks with template implementations.
  * - template_preprocess_HOOK(&$variables): Should be implemented by the module
  *   that registers the theme hook, to set up default variables.
- * - MODULE_preprocess(&$variables, $hook): hook_preprocess() is invoked on all
+ * - MODULE_preprocess(&$variables, $hook): HOOK_preprocess() is invoked on all
  *   implementing modules.
- * - MODULE_preprocess_HOOK(&$variables): hook_preprocess_HOOK() is invoked on
+ * - MODULE_preprocess_HOOK(&$variables): HOOK_preprocess_HOOK() is invoked on
  *   all implementing modules, so that modules that didn't define the theme hook
  *   can alter the variables.
  * - ENGINE_engine_preprocess(&$variables, $hook): Allows the theme engine to
@@ -95,8 +95,8 @@
  *
  * @subsection sub_alternate_suggestions Suggesting Alternate Hooks
  * Alternate hooks can be suggested by implementing the hook-specific
- * hook_theme_suggestions_HOOK_alter() or the generic
- * hook_theme_suggestions_alter(). These alter hooks are used to manipulate an
+ * HOOK_theme_suggestions_HOOK_alter() or the generic
+ * HOOK_theme_suggestions_alter(). These alter hooks are used to manipulate an
  * array of suggested alternate theme hooks to use, in reverse order of
  * priority. _theme() will use the highest priority implementation that exists.
  * If none exists, _theme() will use the implementation for the theme hook it
@@ -108,7 +108,7 @@
  *
  * @see drupal_render()
  * @see _theme()
- * @see hook_theme()
+ * @see HOOK_theme()
  * @see hooks
  * @see callbacks
  * @see system_element_info()
@@ -132,7 +132,7 @@
  * @param $form_state
  *   A keyed array containing the current state of the form.
  */
-function hook_form_system_theme_settings_alter(&$form, &$form_state) {
+function HOOK_form_system_theme_settings_alter(&$form, &$form_state) {
   // Add a checkbox to toggle the breadcrumb trail.
   $form['toggle_breadcrumb'] = array(
     '#type' => 'checkbox',
@@ -147,7 +147,7 @@ function hook_form_system_theme_settings_alter(&$form, &$form_state) {
  *
  * This hook allows modules to preprocess theme variables for theme templates.
  * It is called for all theme hooks implemented as templates, but not for theme
- * hooks implemented as functions. hook_preprocess_HOOK() can be used to
+ * hooks implemented as functions. HOOK_preprocess_HOOK() can be used to
  * preprocess variables for a specific theme hook, whether implemented as a
  * template or function.
  *
@@ -158,7 +158,7 @@ function hook_form_system_theme_settings_alter(&$form, &$form_state) {
  * @param $hook
  *   The name of the theme hook.
  */
-function hook_preprocess(&$variables, $hook) {
+function HOOK_preprocess(&$variables, $hook) {
  static $hooks;
 
   // Add contextual links to the variables, if the user has permission.
@@ -204,7 +204,7 @@ function hook_preprocess(&$variables, $hook) {
  * @param $variables
  *   The variables array (modify in place).
  */
-function hook_preprocess_HOOK(&$variables) {
+function HOOK_preprocess_HOOK(&$variables) {
   // This example is from rdf_preprocess_image(). It adds an RDF attribute
   // to the image hook's variables.
   $variables['attributes']['typeof'] = array('foaf:Image');
@@ -213,15 +213,15 @@ function hook_preprocess_HOOK(&$variables) {
 /**
  * Provides alternate named suggestions for a specific theme hook.
  *
- * This hook allows the module implementing hook_theme() for a theme hook to
+ * This hook allows the module implementing HOOK_theme() for a theme hook to
  * provide alternative theme function or template name suggestions. This hook is
- * only invoked for the first module implementing hook_theme() for a theme hook.
+ * only invoked for the first module implementing HOOK_theme() for a theme hook.
  *
  * HOOK is the least-specific version of the hook being called. For example, if
  * '#theme' => 'node__article' is called, then node_theme_suggestions_node()
  * will be invoked, not node_theme_suggestions_node__article(). The specific
  * hook called (in this case 'node__article') is available in
- * $variables['theme_hook_original'].
+ * $variables['theme_HOOK_original'].
  *
  * @todo Add @code sample.
  *
@@ -232,9 +232,9 @@ function hook_preprocess_HOOK(&$variables) {
  * @return array
  *   An array of theme suggestions.
  *
- * @see hook_theme_suggestions_HOOK_alter()
+ * @see HOOK_theme_suggestions_HOOK_alter()
  */
-function hook_theme_suggestions_HOOK(array $variables) {
+function HOOK_theme_suggestions_HOOK(array $variables) {
   $suggestions = array();
 
   $suggestions[] = 'node__' . $variables['elements']['#langcode'];
@@ -246,7 +246,7 @@ function hook_theme_suggestions_HOOK(array $variables) {
  * Alters named suggestions for all theme hooks.
  *
  * This hook is invoked for all theme hooks, if you are targeting a specific
- * theme hook it's best to use hook_theme_suggestions_HOOK_alter().
+ * theme hook it's best to use HOOK_theme_suggestions_HOOK_alter().
  *
  * The call order is as follows: all existing suggestion alter functions are
  * called for module A, then all for module B, etc., followed by all for any
@@ -254,8 +254,8 @@ function hook_theme_suggestions_HOOK(array $variables) {
  * determined by system weight, then by extension (module or theme) name.
  *
  * Within each module or theme, suggestion alter hooks are called in the
- * following order: first, hook_theme_suggestions_alter(); second,
- * hook_theme_suggestions_HOOK_alter(). So, for each module or theme, the more
+ * following order: first, HOOK_theme_suggestions_alter(); second,
+ * HOOK_theme_suggestions_HOOK_alter(). So, for each module or theme, the more
  * general hooks are called first followed by the more specific.
  *
  * In the following example, we provide an alternative template suggestion to
@@ -279,14 +279,14 @@ function hook_theme_suggestions_HOOK(array $variables) {
  *   The base hook name. For example, if '#theme' => 'node__article' is called,
  *   then $hook will be 'node', not 'node__article'. The specific hook called
  *   (in this case 'node__article') is available in
- *   $variables['theme_hook_original'].
+ *   $variables['theme_HOOK_original'].
  *
  * @return array
  *   An array of theme suggestions.
  *
- * @see hook_theme_suggestions_HOOK_alter()
+ * @see HOOK_theme_suggestions_HOOK_alter()
  */
-function hook_theme_suggestions_alter(array &$suggestions, array $variables, $hook) {
+function HOOK_theme_suggestions_alter(array &$suggestions, array $variables, $hook) {
   // Add an interface-language specific suggestion to all theme hooks.
   $suggestions[] = $hook . '__' . \Drupal::languageManager()->getCurrentLanguage()->id;
 }
@@ -296,13 +296,13 @@ function hook_theme_suggestions_alter(array &$suggestions, array $variables, $ho
  *
  * This hook allows any module or theme to provide altenative theme function or
  * template name suggestions and reorder or remove suggestions provided by
- * hook_theme_suggestions_HOOK() or by earlier invocations of this hook.
+ * HOOK_theme_suggestions_HOOK() or by earlier invocations of this hook.
  *
  * HOOK is the least-specific version of the hook being called. For example, if
  * '#theme' => 'node__article' is called, then node_theme_suggestions_node()
  * will be invoked, not node_theme_suggestions_node__article(). The specific
  * hook called (in this case 'node__article') is available in
- * $variables['theme_hook_original'].
+ * $variables['theme_HOOK_original'].
  *
  * @todo Add @code sample.
  *
@@ -312,10 +312,10 @@ function hook_theme_suggestions_alter(array &$suggestions, array $variables, $ho
  *   An array of variables passed to the theme hook. Note that this hook is
  *   invoked before any preprocessing.
  *
- * @see hook_theme_suggestions_alter()
- * @see hook_theme_suggestions_HOOK()
+ * @see HOOK_theme_suggestions_alter()
+ * @see HOOK_theme_suggestions_HOOK()
  */
-function hook_theme_suggestions_HOOK_alter(array &$suggestions, array $variables) {
+function HOOK_theme_suggestions_HOOK_alter(array &$suggestions, array $variables) {
   if (empty($variables['header'])) {
     $suggestions[] = 'hookname__' . 'no_header';
   }
@@ -329,7 +329,7 @@ function hook_theme_suggestions_HOOK_alter(array &$suggestions, array $variables
  *
  * @see theme_enable()
  */
-function hook_themes_enabled($theme_list) {
+function HOOK_themes_enabled($theme_list) {
   foreach ($theme_list as $theme) {
     block_theme_initialize($theme);
   }
@@ -343,7 +343,7 @@ function hook_themes_enabled($theme_list) {
  *
  * @see theme_disable()
  */
-function hook_themes_disabled($theme_list) {
+function HOOK_themes_disabled($theme_list) {
  // Clear all update module caches.
   update_storage_clear();
 }

@@ -6,7 +6,7 @@
  */
 
 /**
- * Implements hook_toolbar().
+ * Implements HOOK_toolbar().
  */
 function toolbar_test_toolbar() {
 

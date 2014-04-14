@@ -6,7 +6,7 @@
  */
 
 /**
- * Implements hook_permission().
+ * Implements HOOK_permission().
  */
 function rest_permission() {
   $permissions = array();
@@ -22,7 +22,7 @@ function rest_permission() {
 }
 
 /**
- * Implements hook_help().
+ * Implements HOOK_help().
  */
 function rest_help($path, $arg) {
   switch ($path) {

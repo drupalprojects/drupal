@@ -113,7 +113,7 @@ class EntityViewBuilder extends EntityControllerBase implements EntityController
       $entities_by_bundle[$entity->bundle()][$id] = $entity;
     }
 
-    // Invoke hook_entity_prepare_view().
+    // Invoke HOOK_entity_prepare_view().
     \Drupal::moduleHandler()->invokeAll('entity_prepare_view', array($this->entityTypeId, $entities, $displays, $view_mode));
 
     // Let the displays build their render arrays.

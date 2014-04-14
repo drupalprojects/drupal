@@ -54,7 +54,7 @@ class ViewListBuilderTest extends UnitTestCase {
           array(
             'id' => 'page',
             'title' => 'Page',
-            'uses_hook_menu' => TRUE,
+            'uses_HOOK_menu' => TRUE,
             'uses_route' => TRUE,
             'contextual_links_locations' => array('page'),
             'theme' => 'views_view',

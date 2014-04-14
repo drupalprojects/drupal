@@ -1933,7 +1933,7 @@ function form_process_machine_name($element, &$form_state) {
   );
   // A form element that only wants to set one #machine_name property (usually
   // 'source' only) would leave all other properties undefined, if the defaults
-  // were defined in hook_element_info(). Therefore, we apply the defaults here.
+  // were defined in HOOK_element_info(). Therefore, we apply the defaults here.
   $element['#machine_name'] += array(
     'source' => array('label'),
     'target' => '#' . $element['#id'],

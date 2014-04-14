@@ -29,7 +29,7 @@ use Drupal\Core\Database\StatementEmpty;
  * advanced text conditions (such as negative or phrase matches).
  *
  * The used query object has the tag 'search_$type' and can be further
- * extended with hook_query_alter().
+ * extended with HOOK_query_alter().
  */
 class SearchQuery extends SelectExtender {
   /**

@@ -9,7 +9,7 @@ use Drupal\Core\Database\Database;
 use Drupal\Core\Language\Language;
 
 /**
- * Implements hook_schema().
+ * Implements HOOK_schema().
  */
 function shortcut_schema() {
   $schema['shortcut'] = array(

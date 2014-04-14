@@ -194,7 +194,7 @@ class ViewsData {
   }
 
   /**
-   * Gets all data invoked by hook_views_data().
+   * Gets all data invoked by HOOK_views_data().
    *
    * This is requested from the cache before being rebuilt.
    *

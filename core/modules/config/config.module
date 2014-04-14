@@ -6,7 +6,7 @@
  */
 
 /**
- * Implements hook_help().
+ * Implements HOOK_help().
  */
 function config_help($path, $arg) {
   switch ($path) {
@@ -26,7 +26,7 @@ function config_help($path, $arg) {
 }
 
 /**
- * Implements hook_permission().
+ * Implements HOOK_permission().
  */
 function config_permission() {
   $permissions['synchronize configuration'] = array(
@@ -45,7 +45,7 @@ function config_permission() {
 }
 
 /**
- * Implements hook_file_download().
+ * Implements HOOK_file_download().
  */
 function config_file_download($uri) {
   $scheme = file_uri_scheme($uri);

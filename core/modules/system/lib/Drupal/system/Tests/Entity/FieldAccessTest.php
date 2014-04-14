@@ -50,7 +50,7 @@ class FieldAccessTest extends DrupalUnitTestBase {
   }
 
   /**
-   * Tests hook_entity_field_access() and hook_entity_field_access_alter().
+   * Tests HOOK_entity_field_access() and HOOK_entity_field_access_alter().
    *
    * @see entity_test_entity_field_access()
    * @see entity_test_entity_field_access_alter()

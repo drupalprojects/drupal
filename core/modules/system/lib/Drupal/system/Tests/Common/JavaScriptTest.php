@@ -584,7 +584,7 @@ class JavaScriptTest extends DrupalUnitTestBase {
   }
 
   /**
-   * Tests altering a JavaScript's weight via hook_js_alter().
+   * Tests altering a JavaScript's weight via HOOK_js_alter().
    *
    * @see simpletest_js_alter()
    */

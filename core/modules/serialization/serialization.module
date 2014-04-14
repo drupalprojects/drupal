@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Implements hook_help().
+ * Implements HOOK_help().
  */
 function serialization_help($path, $arg) {
   switch ($path) {

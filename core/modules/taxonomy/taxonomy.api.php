@@ -21,7 +21,7 @@ use Drupal\Core\Entity\EntityInterface;
  * @param \Drupal\taxonomy\Entity\Vocabulary $vocabulary
  *   The vocabulary object.
  */
-function hook_taxonomy_vocabulary_create(\Drupal\taxonomy\Entity\Vocabulary $vocabulary) {
+function HOOK_taxonomy_vocabulary_create(\Drupal\taxonomy\Entity\Vocabulary $vocabulary) {
   if (!isset($vocabulary->foo)) {
     $vocabulary->foo = NULL;
   }
@@ -36,7 +36,7 @@ function hook_taxonomy_vocabulary_create(\Drupal\taxonomy\Entity\Vocabulary $voc
  * @param array $vocabularies
  *   An array of taxonomy vocabulary entities.
  */
-function hook_taxonomy_vocabulary_load(array $vocabularies) {
+function HOOK_taxonomy_vocabulary_load(array $vocabularies) {
   $result = db_select('mytable', 'm')
     ->fields('m', array('vid', 'foo'))
     ->condition('m.vid', array_keys($vocabularies), 'IN')
@@ -55,7 +55,7 @@ function hook_taxonomy_vocabulary_load(array $vocabularies) {
  * @param \Drupal\taxonomy\Entity\Vocabulary $vocabulary
  *   A taxonomy vocabulary entity.
  */
-function hook_taxonomy_vocabulary_presave(Drupal\taxonomy\Entity\Vocabulary $vocabulary) {
+function HOOK_taxonomy_vocabulary_presave(Drupal\taxonomy\Entity\Vocabulary $vocabulary) {
   $vocabulary->foo = 'bar';
 }
 
@@ -68,7 +68,7 @@ function hook_taxonomy_vocabulary_presave(Drupal\taxonomy\Entity\Vocabulary $voc
  * @param \Drupal\taxonomy\Entity\Vocabulary $vocabulary
  *   A taxonomy vocabulary entity.
  */
-function hook_taxonomy_vocabulary_insert(Drupal\taxonomy\Entity\Vocabulary $vocabulary) {
+function HOOK_taxonomy_vocabulary_insert(Drupal\taxonomy\Entity\Vocabulary $vocabulary) {
   if ($vocabulary->id() == 'my_vocabulary') {
     $vocabulary->weight = 100;
   }
@@ -82,7 +82,7 @@ function hook_taxonomy_vocabulary_insert(Drupal\taxonomy\Entity\Vocabulary $voca
  * @param \Drupal\taxonomy\Entity\Vocabulary $vocabulary
  *   A taxonomy vocabulary entity.
  */
-function hook_taxonomy_vocabulary_update(Drupal\taxonomy\Entity\Vocabulary $vocabulary) {
+function HOOK_taxonomy_vocabulary_update(Drupal\taxonomy\Entity\Vocabulary $vocabulary) {
   db_update('mytable')
     ->fields(array('foo' => $vocabulary->foo))
     ->condition('vid', $vocabulary->id())
@@ -98,9 +98,9 @@ function hook_taxonomy_vocabulary_update(Drupal\taxonomy\Entity\Vocabulary $voca
  * @param \Drupal\taxonomy\Entity\Vocabulary $vocabulary
  *   The taxonomy vocabulary entity that is about to be deleted.
  *
- * @see hook_taxonomy_vocabulary_delete()
+ * @see HOOK_taxonomy_vocabulary_delete()
  */
-function hook_taxonomy_vocabulary_predelete(Drupal\taxonomy\Entity\Vocabulary $vocabulary) {
+function HOOK_taxonomy_vocabulary_predelete(Drupal\taxonomy\Entity\Vocabulary $vocabulary) {
   db_delete('mytable_index')
     ->condition('vid', $vocabulary->id())
     ->execute();
@@ -115,9 +115,9 @@ function hook_taxonomy_vocabulary_predelete(Drupal\taxonomy\Entity\Vocabulary $v
  * @param \Drupal\taxonomy\Entity\Vocabulary $vocabulary
  *   The taxonomy vocabulary entity that has been deleted.
  *
- * @see hook_taxonomy_vocabulary_predelete()
+ * @see HOOK_taxonomy_vocabulary_predelete()
  */
-function hook_taxonomy_vocabulary_delete(Drupal\taxonomy\Entity\Vocabulary $vocabulary) {
+function HOOK_taxonomy_vocabulary_delete(Drupal\taxonomy\Entity\Vocabulary $vocabulary) {
   db_delete('mytable')
     ->condition('vid', $vocabulary->id())
     ->execute();
@@ -132,7 +132,7 @@ function hook_taxonomy_vocabulary_delete(Drupal\taxonomy\Entity\Vocabulary $voca
  * @param \Drupal\taxonomy\Entity\Term $term
  *   The term object.
  */
-function hook_taxonomy_term_create(\Drupal\taxonomy\Entity\Term $term) {
+function HOOK_taxonomy_term_create(\Drupal\taxonomy\Entity\Term $term) {
   if (!isset($term->foo)) {
     $term->foo = 'some_initial_value';
   }
@@ -154,7 +154,7 @@ function hook_taxonomy_term_create(\Drupal\taxonomy\Entity\Term $term) {
  * @param array $terms
  *   An array of taxonomy term entities, indexed by tid.
  */
-function hook_taxonomy_term_load(array $terms) {
+function HOOK_taxonomy_term_load(array $terms) {
   $result = db_select('mytable', 'm')
     ->fields('m', array('tid', 'foo'))
     ->condition('m.tid', array_keys($terms), 'IN')
@@ -173,7 +173,7 @@ function hook_taxonomy_term_load(array $terms) {
  * @param \Drupal\taxonomy\Term $term
  *   A taxonomy term entity.
  */
-function hook_taxonomy_term_presave(Drupal\taxonomy\Term $term) {
+function HOOK_taxonomy_term_presave(Drupal\taxonomy\Term $term) {
   $term->foo = 'bar';
 }
 
@@ -186,7 +186,7 @@ function hook_taxonomy_term_presave(Drupal\taxonomy\Term $term) {
  * @param \Drupal\taxonomy\Term $term
  *   A taxonomy term entity.
  */
-function hook_taxonomy_term_insert(Drupal\taxonomy\Term $term) {
+function HOOK_taxonomy_term_insert(Drupal\taxonomy\Term $term) {
   db_insert('mytable')
     ->fields(array(
       'tid' => $term->id(),
@@ -203,7 +203,7 @@ function hook_taxonomy_term_insert(Drupal\taxonomy\Term $term) {
  * @param \Drupal\taxonomy\Term $term
  *   A taxonomy term entity.
  */
-function hook_taxonomy_term_update(Drupal\taxonomy\Term $term) {
+function HOOK_taxonomy_term_update(Drupal\taxonomy\Term $term) {
   db_update('mytable')
     ->fields(array('foo' => $term->foo))
     ->condition('tid', $term->id())
@@ -219,7 +219,7 @@ function hook_taxonomy_term_update(Drupal\taxonomy\Term $term) {
  * @param \Drupal\taxonomy\Term $term
  *   The taxonomy term entity that is about to be deleted.
  */
-function hook_taxonomy_term_predelete(Drupal\taxonomy\Term $term) {
+function HOOK_taxonomy_term_predelete(Drupal\taxonomy\Term $term) {
   db_delete('mytable_index')
     ->condition('tid', $term->id())
     ->execute();
@@ -234,7 +234,7 @@ function hook_taxonomy_term_predelete(Drupal\taxonomy\Term $term) {
  * @param \Drupal\taxonomy\Term $term
  *   The taxonomy term entity that has been deleted.
  */
-function hook_taxonomy_term_delete(Drupal\taxonomy\Term $term) {
+function HOOK_taxonomy_term_delete(Drupal\taxonomy\Term $term) {
   db_delete('mytable')
     ->condition('tid', $term->id())
     ->execute();
@@ -257,12 +257,12 @@ function hook_taxonomy_term_delete(Drupal\taxonomy\Term $term) {
  * @param $langcode
  *   The language code used for rendering.
  *
- * @see hook_entity_view()
+ * @see HOOK_entity_view()
  */
-function hook_taxonomy_term_view(\Drupal\taxonomy\Entity\Term $term, \Drupal\Core\Entity\Display\EntityViewDisplayInterface $display, $view_mode, $langcode) {
+function HOOK_taxonomy_term_view(\Drupal\taxonomy\Entity\Term $term, \Drupal\Core\Entity\Display\EntityViewDisplayInterface $display, $view_mode, $langcode) {
   // Only do the extra work if the component is configured to be displayed.
   // This assumes a 'mymodule_addition' extra field has been defined for the
-  // vocabulary in hook_entity_extra_field_info().
+  // vocabulary in HOOK_entity_extra_field_info().
   if ($display->getComponent('mymodule_addition')) {
     $term->content['mymodule_addition'] = array(
       '#markup' => mymodule_addition($term),
@@ -281,7 +281,7 @@ function hook_taxonomy_term_view(\Drupal\taxonomy\Entity\Term $term, \Drupal\Cor
  * If the module wishes to act on the rendered HTML of the term rather than the
  * structured content array, it may use this hook to add a #post_render
  * callback. Alternatively, it could also implement
- * hook_preprocess_HOOK() for taxonomy-term.html.twig. See drupal_render() and
+ * HOOK_preprocess_HOOK() for taxonomy-term.html.twig. See drupal_render() and
  * _theme() documentation respectively for details.
  *
  * @param $build
@@ -292,9 +292,9 @@ function hook_taxonomy_term_view(\Drupal\taxonomy\Entity\Term $term, \Drupal\Cor
  *   The entity view display holding the display options configured for the term
  *   components.
  *
- * @see hook_entity_view_alter()
+ * @see HOOK_entity_view_alter()
  */
-function hook_taxonomy_term_view_alter(&$build, \Drupal\taxonomy\Entity\Term $term, \Drupal\Core\Entity\Display\EntityViewDisplayInterface $display) {
+function HOOK_taxonomy_term_view_alter(&$build, \Drupal\taxonomy\Entity\Term $term, \Drupal\Core\Entity\Display\EntityViewDisplayInterface $display) {
   if ($build['#view_mode'] == 'full' && isset($build['an_additional_field'])) {
     // Change its weight.
     $build['an_additional_field']['#weight'] = -10;

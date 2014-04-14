@@ -978,7 +978,7 @@ function drupal_check_profile($profile, array $install_state) {
  *
  * @param $requirements
  *   An array of requirements, in the same format as is returned by
- *   hook_requirements().
+ *   HOOK_requirements().
  *
  * @return
  *   The highest severity in the array.

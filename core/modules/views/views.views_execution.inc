@@ -9,7 +9,7 @@ use Drupal\Core\Language\Language;
 use Drupal\views\ViewExecutable;
 
 /**
- * Implements hook_views_query_substitutions().
+ * Implements HOOK_views_query_substitutions().
  *
  * Substitute current time; this works with cached queries.
  */

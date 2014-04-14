@@ -11,7 +11,7 @@
 const SIMPLETEST_MINIMUM_PHP_MEMORY_LIMIT = '64M';
 
 /**
- * Implements hook_requirements().
+ * Implements HOOK_requirements().
  */
 function simpletest_requirements($phase) {
   $requirements = array();
@@ -84,7 +84,7 @@ function simpletest_requirements($phase) {
 }
 
 /**
- * Implements hook_schema().
+ * Implements HOOK_schema().
  */
 function simpletest_schema() {
   $schema['simpletest'] = array(
@@ -176,7 +176,7 @@ function simpletest_schema() {
 }
 
 /**
- * Implements hook_uninstall().
+ * Implements HOOK_uninstall().
  */
 function simpletest_uninstall() {
   // Do not clean the environment in case the Simpletest module is uninstalled

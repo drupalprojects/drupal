@@ -8,7 +8,7 @@
 use Drupal\Core\Language\Language;
 
 /**
- * Implements hook_theme_suggestions_HOOK().
+ * Implements HOOK_theme_suggestions_HOOK().
  */
 function search_theme_suggestions_search_result(array $variables) {
   return array('search_result__' . $variables['plugin_id']);

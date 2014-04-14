@@ -319,7 +319,7 @@ function _locale_translation_batch_status_operations($projects, $langcodes, $opt
  * translation directory is checked for the po file. When a server_pattern is
  * defined the specified location is checked. The server_pattern can be set in
  * the module's .info.yml file or by using
- * hook_locale_translation_projects_alter().
+ * HOOK_locale_translation_projects_alter().
  *
  * @param array $projects
  *   Array of project names for which to check the state of translation files.

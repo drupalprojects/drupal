@@ -9,7 +9,7 @@ use Drupal\Component\Utility\Html;
 use Drupal\Core\Entity\EntityInterface;
 
 /**
- * Implements hook_help().
+ * Implements HOOK_help().
  */
 function text_help($path, $arg) {
   switch ($path) {
@@ -158,21 +158,21 @@ function text_summary($text, $format = NULL, $size = NULL) {
 }
 
 /**
- * Implements hook_filter_format_update().
+ * Implements HOOK_filter_format_update().
  */
 function text_filter_format_update($format) {
   field_cache_clear();
 }
 
 /**
- * Implements hook_filter_format_disable().
+ * Implements HOOK_filter_format_disable().
  */
 function text_filter_format_disable($format) {
   field_cache_clear();
 }
 
 /**
- * Implements hook_field_formatter_info_alter().
+ * Implements HOOK_field_formatter_info_alter().
  */
 function text_field_formatter_info_alter(&$info) {
   $info['string']['field_types'][] = 'text';

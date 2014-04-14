@@ -111,7 +111,7 @@ class ThemeRegistry extends CacheCollector implements DestructableInterface {
   public function get($key) {
     // If the offset is set but empty, it is a registered theme hook that has
     // not yet been requested. Offsets that do not exist at all were not
-    // registered in hook_theme().
+    // registered in HOOK_theme().
     if (isset($this->storage[$key])) {
       return $this->storage[$key];
     }

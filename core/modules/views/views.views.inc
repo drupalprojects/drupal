@@ -8,7 +8,7 @@
 use Drupal\system\ActionConfigEntityInterface;
 
 /**
- * Implements hook_views_data().
+ * Implements HOOK_views_data().
  */
 function views_views_data() {
   $data['views']['table']['group'] = t('Global');

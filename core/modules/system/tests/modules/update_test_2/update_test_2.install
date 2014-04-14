@@ -6,7 +6,7 @@
  */
 
 /**
- * Implements hook_update_dependencies().
+ * Implements HOOK_update_dependencies().
  *
  * @see update_test_1_update_dependencies()
  * @see update_test_3_update_dependencies()

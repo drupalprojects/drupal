@@ -143,7 +143,7 @@ class DownloadTest extends FileManagedTestBase {
     $this->assertEqual($url, $expected_url, 'Generated URL matches expected URL.');
 
     if ($scheme == 'private') {
-      // Tell the implementation of hook_file_download() in file_test.module
+      // Tell the implementation of HOOK_file_download() in file_test.module
       // that this file may be downloaded.
       file_test_set_return('download', array('x-foo' => 'Bar'));
     }

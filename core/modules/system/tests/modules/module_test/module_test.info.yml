@@ -6,7 +6,7 @@ version: VERSION
 core: 8.x
 hidden: true
 # Depends on the Node module to test making a module required using
-# hook_system_info_alter() and ensuring that its dependencies also become
+# HOOK_system_info_alter() and ensuring that its dependencies also become
 # required.
 dependencies:
   - node

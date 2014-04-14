@@ -310,7 +310,7 @@ abstract class ConfigTranslationFormBase extends FormBase implements BaseFormIdI
       else {
         $definition = $element->getDataDefinition();
 
-        // Invoke hook_config_translation_type_info_alter() implementations to
+        // Invoke HOOK_config_translation_type_info_alter() implementations to
         // alter the configuration types.
         $definitions = array(
           $definition['type'] => &$definition,

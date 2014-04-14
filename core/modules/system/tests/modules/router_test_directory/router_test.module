@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Implements hook_permission().
+ * Implements HOOK_permission().
  */
 function router_test_permission() {
   return array(

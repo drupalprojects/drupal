@@ -8,7 +8,7 @@
 use Drupal\Component\Uuid\Uuid;
 
 /**
- * Implements hook_install().
+ * Implements HOOK_install().
  */
 function menu_ui_install() {
   // Rebuild all the menu data.
@@ -29,7 +29,7 @@ function menu_ui_install() {
 }
 
 /**
- * Implements hook_uninstall().
+ * Implements HOOK_uninstall().
  */
 function menu_ui_uninstall() {
   \Drupal::service('router.builder')->setRebuildNeeded();

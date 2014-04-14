@@ -17,7 +17,7 @@ class AlterTest extends DatabaseTestBase {
   public static function getInfo() {
     return array(
       'name' => 'Query altering tests',
-      'description' => 'Test the hook_query_alter capabilities of the Select builder.',
+      'description' => 'Test the HOOK_query_alter capabilities of the Select builder.',
       'group' => 'Database',
     );
   }
@@ -121,7 +121,7 @@ class AlterTest extends DatabaseTestBase {
   /**
    * Tests that we can remove a range() value from a query.
    *
-   * This also tests hook_query_TAG_alter().
+   * This also tests HOOK_query_TAG_alter().
    */
   function testAlterRemoveRange() {
     $query = db_select('test');

@@ -8,7 +8,7 @@
 use Drupal\views\ViewExecutable;
 
 /**
- * Implements hook_views_pre_render().
+ * Implements HOOK_views_pre_render().
  */
 function test_subtheme_views_pre_render(ViewExecutable $view) {
   // We append the function name to the title for test to check for.
@@ -16,7 +16,7 @@ function test_subtheme_views_pre_render(ViewExecutable $view) {
 }
 
 /**
- * Implements hook_views_post_render().
+ * Implements HOOK_views_post_render().
  */
 function test_subtheme_views_post_render(ViewExecutable $view) {
   // We append the function name to the title for test to check for.

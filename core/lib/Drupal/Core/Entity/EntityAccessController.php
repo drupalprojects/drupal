@@ -62,7 +62,7 @@ class EntityAccessController extends EntityControllerBase implements EntityAcces
       return $access;
     }
 
-    // Invoke hook_entity_access() and hook_ENTITY_TYPE_access(). Hook results
+    // Invoke HOOK_entity_access() and HOOK_ENTITY_TYPE_access(). Hook results
     // take precedence over overridden implementations of
     // EntityAccessController::checkAccess(). Entities that have checks that
     // need to be done before the hook is invoked should do so by overriding
@@ -209,7 +209,7 @@ class EntityAccessController extends EntityControllerBase implements EntityAcces
       return $access;
     }
 
-    // Invoke hook_entity_create_access() and hook_ENTITY_TYPE_create_access().
+    // Invoke HOOK_entity_create_access() and HOOK_ENTITY_TYPE_create_access().
     // Hook results take precedence over overridden implementations of
     // EntityAccessController::checkAccess(). Entities that have checks that
     // need to be done before the hook is invoked should do so by overriding
@@ -286,8 +286,8 @@ class EntityAccessController extends EntityControllerBase implements EntityAcces
     // Invoke hook and collect grants/denies for field access from other
     // modules. Our default access flag is masked under the ':default' key.
     $grants = array(':default' => $default);
-    $hook_implementations = $this->moduleHandler()->getImplementations('entity_field_access');
-    foreach ($hook_implementations as $module) {
+    $HOOK_implementations = $this->moduleHandler()->getImplementations('entity_field_access');
+    foreach ($HOOK_implementations as $module) {
       $grants = array_merge($grants, array($module => $this->moduleHandler()->invoke($module, 'entity_field_access', array($operation, $field_definition, $account, $items))));
     }
 

@@ -8,7 +8,7 @@
 use Drupal\Component\Utility\String;
 
 /**
- * Implements hook_token_info().
+ * Implements HOOK_token_info().
  */
 function views_token_info() {
   $info['types']['view'] = array(
@@ -66,7 +66,7 @@ function views_token_info() {
 }
 
 /**
- * Implements hook_tokens().
+ * Implements HOOK_tokens().
  */
 function views_tokens($type, $tokens, array $data = array(), array $options = array()) {
   $token_service = \Drupal::token();

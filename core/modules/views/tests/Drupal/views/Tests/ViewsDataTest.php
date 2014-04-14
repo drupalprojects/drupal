@@ -14,7 +14,7 @@ use Drupal\views\ViewsData;
 /**
  * Tests the fetching of views data.
  *
- * @see hook_views_data
+ * @see HOOK_views_data
  *
  * @see \Drupal\views\ViewsData
  */

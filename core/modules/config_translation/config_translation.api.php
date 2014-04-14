@@ -27,11 +27,11 @@
  *   name list mapping. The values of the associative array are arrays
  *   themselves in the same structure as the *.config_translation.yml files.
  *
- * @see hook_config_translation_info_alter()
+ * @see HOOK_config_translation_info_alter()
  * @see \Drupal\config_translation\ConfigMapperManagerInterface
  * @see \Drupal\config_translation\Routing\RouteSubscriber::routes()
  */
-function hook_config_translation_info(&$info) {
+function HOOK_config_translation_info(&$info) {
   $entity_manager = \Drupal::entityManager();
   $route_provider = \Drupal::service('router.route_provider');
 
@@ -77,10 +77,10 @@ function hook_config_translation_info(&$info) {
  *   name list mapping. The values of the associative array are arrays
  *   themselves in the same structure as the *.config_translation.yml files.
  *
- * @see hook_translation_info()
+ * @see HOOK_translation_info()
  * @see \Drupal\config_translation\ConfigMapperManagerInterface
  */
-function hook_config_translation_info_alter(&$info) {
+function HOOK_config_translation_info_alter(&$info) {
   // Add additional site settings to the site information screen, so it shows
   // up on the translation screen. (Form alter in the elements whose values are
   // stored in this config file using regular form altering on the original
@@ -99,7 +99,7 @@ function hook_config_translation_info_alter(&$info) {
  *   Associative array of configuration type definitions keyed by schema type
  *   names. The elements are themselves array with information about the type.
  */
-function hook_config_translation_type_info_alter(&$definitions) {
+function HOOK_config_translation_type_info_alter(&$definitions) {
   // Enhance the text and date type definitions with classes to generate proper
   // form elements in ConfigTranslationFormBase. Other translatable types will
   // appear as a one line textfield.

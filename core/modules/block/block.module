@@ -28,7 +28,7 @@ const BLOCK_VISIBILITY_PHP = 2;
 
 
 /**
- * Implements hook_help().
+ * Implements HOOK_help().
  */
 function block_help($path, $arg) {
   switch ($path) {
@@ -68,7 +68,7 @@ function block_help($path, $arg) {
 }
 
 /**
- * Implements hook_theme().
+ * Implements HOOK_theme().
  */
 function block_theme() {
   return array(
@@ -84,7 +84,7 @@ function block_theme() {
 }
 
 /**
- * Implements hook_permission().
+ * Implements HOOK_permission().
  */
 function block_permission() {
   return array(
@@ -95,7 +95,7 @@ function block_permission() {
 }
 
 /**
- * Implements hook_page_build().
+ * Implements HOOK_page_build().
  *
  * Renders blocks into their regions.
  */
@@ -117,7 +117,7 @@ function block_page_build(&$page) {
     }
     // Once we've finished attaching all blocks to the page, clear the static
     // cache to allow modules to alter the block list differently in different
-    // contexts. For example, any code that triggers hook_page_build() more
+    // contexts. For example, any code that triggers HOOK_page_build() more
     // than once in the same page request may need to alter the block list
     // differently each time, so that only certain parts of the page are
     // actually built. We do not clear the cache any earlier than this, though,
@@ -315,7 +315,7 @@ function block_load($entity_id) {
 }
 
 /**
- * Implements hook_rebuild().
+ * Implements HOOK_rebuild().
  */
 function block_rebuild() {
   foreach (list_themes() as $name => $data) {
@@ -326,7 +326,7 @@ function block_rebuild() {
 }
 
 /**
- * Implements hook_theme_suggestions_HOOK().
+ * Implements HOOK_theme_suggestions_HOOK().
  */
 function block_theme_suggestions_block(array $variables) {
   $suggestions = array();
@@ -405,7 +405,7 @@ function template_preprocess_block(&$variables) {
 }
 
 /**
- * Implements hook_user_role_delete().
+ * Implements HOOK_user_role_delete().
  *
  * Removes deleted role from blocks that use it.
  */
@@ -421,7 +421,7 @@ function block_user_role_delete($role) {
 }
 
 /**
- * Implements hook_menu_delete().
+ * Implements HOOK_menu_delete().
  */
 function block_menu_delete(Menu $menu) {
   if (!$menu->isSyncing()) {
@@ -434,7 +434,7 @@ function block_menu_delete(Menu $menu) {
 }
 
 /**
- * Implements hook_ENTITY_TYPE_delete() for 'language_entity'.
+ * Implements HOOK_ENTITY_TYPE_delete() for 'language_entity'.
  *
  * Delete the potential block visibility settings of the deleted language.
  */

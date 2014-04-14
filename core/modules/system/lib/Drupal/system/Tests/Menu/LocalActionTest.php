@@ -38,7 +38,7 @@ class LocalActionTest extends WebTestBase {
     // Ensure that both menu and route based actions are shown.
     $this->assertLocalAction(array(
       'menu-test-local-action/dynamic-title' => 'My dynamic-title action',
-      'menu-test-local-action/hook_menu' => 'My hook_menu action',
+      'menu-test-local-action/HOOK_menu' => 'My HOOK_menu action',
       'menu-test-local-action/routing' => 'My YAML discovery action',
       'menu-test-local-action/routing2' => 'Title override',
     ));

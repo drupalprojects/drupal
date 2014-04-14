@@ -13,7 +13,7 @@ use Symfony\Component\Routing\Route;
 use Symfony\Component\HttpFoundation\Request;
 
 /**
- * Determines access to routes based on permissions defined via hook_permission().
+ * Determines access to routes based on permissions defined via HOOK_permission().
  */
 class PermissionAccessCheck implements AccessInterface {
 

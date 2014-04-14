@@ -191,7 +191,7 @@ class SelectExtender implements SelectInterface {
   public function execute() {
     // By calling preExecute() here, we force it to preprocess the extender
     // object rather than just the base query object.  That means
-    // hook_query_alter() gets access to the extended object.
+    // HOOK_query_alter() gets access to the extended object.
     if (!$this->preExecute($this)) {
       return NULL;
     }

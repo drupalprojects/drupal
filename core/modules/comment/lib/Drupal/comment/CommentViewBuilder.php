@@ -182,12 +182,12 @@ class CommentViewBuilder extends EntityViewBuilder {
       $links['comment'] = self::buildLinks($entity, $commented_entity);
 
       // Allow other modules to alter the comment links.
-      $hook_context = array(
+      $HOOK_context = array(
         'view_mode' => $context['view_mode'],
         'langcode' => $context['langcode'],
         'commented_entity' => $commented_entity
       );
-      \Drupal::moduleHandler()->alter('comment_links', $links, $entity, $hook_context);
+      \Drupal::moduleHandler()->alter('comment_links', $links, $entity, $HOOK_context);
     }
 
     return $links;

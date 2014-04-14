@@ -99,11 +99,11 @@ class NodeViewBuilder extends EntityViewBuilder {
       $links['node'] = self::buildLinks($entity, $context['view_mode']);
 
       // Allow other modules to alter the node links.
-      $hook_context = array(
+      $HOOK_context = array(
         'view_mode' => $context['view_mode'],
         'langcode' => $context['langcode'],
       );
-      \Drupal::moduleHandler()->alter('node_links', $links, $entity, $hook_context);
+      \Drupal::moduleHandler()->alter('node_links', $links, $entity, $HOOK_context);
     }
 
     return $links;

@@ -20,10 +20,10 @@
  * @param \Drupal\system\MenuInterface $menu
  *   The menu entity that was created.
  *
- * @see hook_menu_update()
- * @see hook_menu_delete()
+ * @see HOOK_menu_update()
+ * @see HOOK_menu_delete()
  */
-function hook_menu_insert(\Drupal\system\MenuInterface $menu) {
+function HOOK_menu_insert(\Drupal\system\MenuInterface $menu) {
   drupal_set_message(t('You have just created a menu with a machine name %id.', array(
     '%id' => $menu->id(),
   )));
@@ -39,10 +39,10 @@ function hook_menu_insert(\Drupal\system\MenuInterface $menu) {
  * @param \Drupal\system\MenuInterface $menu
  *   The menu entity that was updated.
  *
- * @see hook_menu_insert()
- * @see hook_menu_delete()
+ * @see HOOK_menu_insert()
+ * @see HOOK_menu_delete()
  */
-function hook_menu_update(\Drupal\system\MenuInterface $menu) {
+function HOOK_menu_update(\Drupal\system\MenuInterface $menu) {
   if ($type->original->id() != $type->id()) {
     drupal_set_message(t('You have just changed the machine name of the menu %old_id to %id.', array(
       '%old_id' => $menu->original->id(),
@@ -62,10 +62,10 @@ function hook_menu_update(\Drupal\system\MenuInterface $menu) {
  * @param \Drupal\system\MenuInterface $menu
  *   The menu entity that was deleted.
  *
- * @see hook_menu_insert()
- * @see hook_menu_update()
+ * @see HOOK_menu_insert()
+ * @see HOOK_menu_update()
  */
-function hook_menu_delete(\Drupal\system\MenuInterface $menu) {
+function HOOK_menu_delete(\Drupal\system\MenuInterface $menu) {
   drupal_set_message(t('You have just deleted the menu with machine name %id.', array(
     '%id' => $menu->id(),
   )));

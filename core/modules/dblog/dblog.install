@@ -6,7 +6,7 @@
  */
 
 /**
- * Implements hook_schema().
+ * Implements HOOK_schema().
  */
 function dblog_schema() {
   $schema['watchdog'] = array(

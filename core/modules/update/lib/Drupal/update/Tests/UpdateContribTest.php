@@ -352,11 +352,11 @@ class UpdateContribTest extends UpdateTestBase {
   }
 
   /**
-   * Checks that hook_update_status_alter() works to change a status.
+   * Checks that HOOK_update_status_alter() works to change a status.
    *
    * We provide the same external data as if aaa_update_test 8.x-1.0 were
    * installed and that was the latest release. Then we use
-   * hook_update_status_alter() to try to mark this as missing a security
+   * HOOK_update_status_alter() to try to mark this as missing a security
    * update, then assert if we see the appropriate warnings on the right pages.
    */
   function testHookUpdateStatusAlter() {

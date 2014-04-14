@@ -10,7 +10,7 @@ use Drupal\Core\Entity\Display\EntityViewDisplayInterface;
 use Drupal\node\NodeInterface;
 
 /**
- * Implements hook_help().
+ * Implements HOOK_help().
  */
 function statistics_help($path, $arg) {
   switch ($path) {
@@ -32,7 +32,7 @@ function statistics_help($path, $arg) {
 }
 
 /**
- * Implements hook_permission().
+ * Implements HOOK_permission().
  */
 function statistics_permission() {
   return array(
@@ -46,7 +46,7 @@ function statistics_permission() {
 }
 
 /**
- * Implements hook_node_view().
+ * Implements HOOK_node_view().
  */
 function statistics_node_view(EntityInterface $node, EntityViewDisplayInterface $display, $view_mode) {
   if (!$node->isNew() && $view_mode == 'full' && node_is_page($node) && empty($node->in_preview)) {
@@ -60,7 +60,7 @@ function statistics_node_view(EntityInterface $node, EntityViewDisplayInterface 
 }
 
 /**
- * Implements hook_node_links_alter().
+ * Implements HOOK_node_links_alter().
  */
 function statistics_node_links_alter(array &$node_links, NodeInterface $entity, array &$context) {
   if ($context['view_mode'] != 'rss') {
@@ -79,7 +79,7 @@ function statistics_node_links_alter(array &$node_links, NodeInterface $entity, 
 }
 
 /**
- * Implements hook_cron().
+ * Implements HOOK_cron().
  */
 function statistics_cron() {
   $statistics_timestamp = \Drupal::state()->get('statistics.day_timestamp') ?: 0;
@@ -193,7 +193,7 @@ function _statistics_format_item($title, $path) {
 }
 
 /**
- * Implements hook_node_predelete().
+ * Implements HOOK_node_predelete().
  */
 function statistics_node_predelete(EntityInterface $node) {
   // clean up statistics table when node is deleted
@@ -203,7 +203,7 @@ function statistics_node_predelete(EntityInterface $node) {
 }
 
 /**
- * Implements hook_ranking().
+ * Implements HOOK_ranking().
  */
 function statistics_ranking() {
   if (\Drupal::config('statistics.settings')->get('count_content_views')) {
@@ -228,7 +228,7 @@ function statistics_ranking() {
 }
 
 /**
- * Implements hook_preprocess_HOOK() for block templates.
+ * Implements HOOK_preprocess_HOOK() for block templates.
  */
 function statistics_preprocess_block(&$variables) {
   if ($variables['configuration']['provider'] == 'statistics') {
@@ -237,7 +237,7 @@ function statistics_preprocess_block(&$variables) {
 }
 
 /**
- * Implements hook_block_alter().
+ * Implements HOOK_block_alter().
  *
  * Removes the "popular" block from display if the module is not configured
  * to count content views.

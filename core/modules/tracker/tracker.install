@@ -6,14 +6,14 @@
  */
 
 /**
- * Implements hook_uninstall().
+ * Implements HOOK_uninstall().
  */
 function tracker_uninstall() {
   \Drupal::state()->delete('tracker.index_nid');
 }
 
 /**
- * Implements hook_install().
+ * Implements HOOK_install().
  */
 function tracker_install() {
   $max_nid = db_query('SELECT MAX(nid) FROM {node}')->fetchField();
@@ -26,7 +26,7 @@ function tracker_install() {
 }
 
 /**
- * Implements hook_schema().
+ * Implements HOOK_schema().
  */
 function tracker_schema() {
   $schema['tracker_node'] = array(

@@ -16,7 +16,7 @@ use Drupal\user\RoleInterface;
 use Drupal\user\UserInterface;
 
 /**
- * Implements hook_help().
+ * Implements HOOK_help().
  */
 function toolbar_help($path, $arg) {
   switch ($path) {
@@ -33,7 +33,7 @@ function toolbar_help($path, $arg) {
 }
 
 /**
- * Implements hook_permission().
+ * Implements HOOK_permission().
  */
 function toolbar_permission() {
   return array(
@@ -44,7 +44,7 @@ function toolbar_permission() {
 }
 
 /**
- * Implements hook_theme().
+ * Implements HOOK_theme().
  */
 function toolbar_theme($existing, $type, $theme, $path) {
   $items['toolbar'] = array(
@@ -59,7 +59,7 @@ function toolbar_theme($existing, $type, $theme, $path) {
 }
 
 /**
- * Implements hook_element_info().
+ * Implements HOOK_element_info().
  */
 function toolbar_element_info() {
   $elements = array();
@@ -147,7 +147,7 @@ function _toolbar_initialize_page_cache() {
 }
 
 /**
- * Implements hook_page_build().
+ * Implements HOOK_page_build().
  *
  * Add admin toolbar to the page_top region automatically.
  */
@@ -192,9 +192,9 @@ function toolbar_pre_render($element) {
     );
   }
 
-  // Get toolbar items from all modules that implement hook_toolbar().
+  // Get toolbar items from all modules that implement HOOK_toolbar().
   $items = \Drupal::moduleHandler()->invokeAll('toolbar');
-  // Allow for altering of hook_toolbar().
+  // Allow for altering of HOOK_toolbar().
   \Drupal::moduleHandler()->alter('toolbar', $items);
   // Sort the children.
   uasort($items, array('\Drupal\Component\Utility\SortArray', 'sortByWeightProperty'));
@@ -324,7 +324,7 @@ function toolbar_pre_render_item($element) {
 }
 
 /**
- * Implements hook_toolbar().
+ * Implements HOOK_toolbar().
  */
 function toolbar_toolbar() {
   $items = array();
@@ -530,21 +530,21 @@ function _toolbar_get_subtrees_hash($langcode) {
 }
 
 /**
- * Implements hook_modules_installed().
+ * Implements HOOK_modules_installed().
  */
 function toolbar_modules_installed($modules) {
   _toolbar_clear_user_cache();
 }
 
 /**
- * Implements hook_modules_uninstalled().
+ * Implements HOOK_modules_uninstalled().
  */
 function toolbar_modules_uninstalled($modules) {
   _toolbar_clear_user_cache();
 }
 
 /**
- * Implements hook_ENTITY_TYPE_update().
+ * Implements HOOK_ENTITY_TYPE_update().
  */
 function toolbar_menu_link_update(MenuLinkInterface $menu_link) {
   if ($menu_link->menu_name === 'admin') {
@@ -553,14 +553,14 @@ function toolbar_menu_link_update(MenuLinkInterface $menu_link) {
 }
 
 /**
- * Implements hook_ENTITY_TYPE_update().
+ * Implements HOOK_ENTITY_TYPE_update().
  */
 function toolbar_user_update(UserInterface $user) {
   _toolbar_clear_user_cache($user->id());
 }
 
 /**
- * Implements hook_ENTITY_TYPE_update().
+ * Implements HOOK_ENTITY_TYPE_update().
  */
 function toolbar_user_role_update(RoleInterface $role) {
   _toolbar_clear_user_cache();

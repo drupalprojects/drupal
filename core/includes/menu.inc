@@ -43,11 +43,11 @@ use Symfony\Cmf\Component\Routing\RouteObjectInterface;
  *
  * @todo The rest of this topic has not been reviewed or updated for Drupal 8.x
  *   and is not correct!
- * @todo It is quite likely that hook_menu() will be replaced with a different
+ * @todo It is quite likely that HOOK_menu() will be replaced with a different
  *   hook, configuration system, or plugin system before the 8.0 release.
  *
  * Drupal's menu system follows a simple hierarchy defined by paths.
- * Implementations of hook_menu() define menu items and assign them to
+ * Implementations of HOOK_menu() define menu items and assign them to
  * paths (which should be unique). The menu system aggregates these items
  * and determines the menu hierarchy from the paths. For example, if the
  * paths defined were a, a/b, e, a/b/c/d, f/g, and a/b/h, the menu system
@@ -98,7 +98,7 @@ use Symfony\Cmf\Component\Routing\RouteObjectInterface;
  *
  * Everything described so far is stored in the menu_router table. The
  * menu_links table holds the visible menu links. By default these are
- * derived from the same hook_menu definitions, however you are free to
+ * derived from the same HOOK_menu definitions, however you are free to
  * add more with menu_link_save().
  */
 
@@ -499,8 +499,8 @@ function menu_navigation_links($menu_name, $level = 0) {
  *   - root_path: The router path for the current page. If the current page is
  *     a default local task, then this corresponds to the parent tab.
  *
- * @see hook_menu_local_tasks()
- * @see hook_menu_local_tasks_alter()
+ * @see HOOK_menu_local_tasks()
+ * @see HOOK_menu_local_tasks_alter()
  */
 function menu_local_tasks($level = 0) {
   $data = &drupal_static(__FUNCTION__);

@@ -19,7 +19,7 @@
  *
  * @see \Drupal\Core\Path\PathInterface::save()
  */
-function hook_path_insert($path) {
+function HOOK_path_insert($path) {
   db_insert('mytable')
     ->fields(array(
       'alias' => $path['alias'],
@@ -37,7 +37,7 @@ function hook_path_insert($path) {
  *
  * @see \Drupal\Core\Path\PathInterface::save()
  */
-function hook_path_update($path) {
+function HOOK_path_update($path) {
   db_update('mytable')
     ->fields(array('alias' => $path['alias']))
     ->condition('pid', $path['pid'])
@@ -53,7 +53,7 @@ function hook_path_update($path) {
  *
  * @see \Drupal\Core\Path\PathInterface::delete()
  */
-function hook_path_delete($path) {
+function HOOK_path_delete($path) {
   db_delete('mytable')
     ->condition('pid', $path['pid'])
     ->execute();

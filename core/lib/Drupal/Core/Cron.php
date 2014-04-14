@@ -103,7 +103,7 @@ class Cron implements CronInterface {
     $original_user = $this->currentUser->getAccount();
     $this->currentUser->setAccount(new AnonymousUserSession());
 
-    // Try to allocate enough time to run all the hook_cron implementations.
+    // Try to allocate enough time to run all the HOOK_cron implementations.
     drupal_set_time_limit(240);
 
     $return = FALSE;

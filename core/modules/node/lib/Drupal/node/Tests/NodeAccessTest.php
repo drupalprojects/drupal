@@ -10,9 +10,9 @@ namespace Drupal\node\Tests;
 /**
  * Tests basic node_access functionality.
  *
- * Note that hook_node_access_records() is covered in another test class.
+ * Note that HOOK_node_access_records() is covered in another test class.
  *
- * @todo Cover hook_node_access in a separate test class.
+ * @todo Cover HOOK_node_access in a separate test class.
  */
 class NodeAccessTest extends NodeTestBase {
   public static function getInfo() {

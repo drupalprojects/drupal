@@ -14,7 +14,7 @@
  * Allow modules to define namespaces for RDF mappings.
  *
  * Many common namespace prefixes are defined in rdf_rdf_namespaces(). However,
- * if a module implements hook_rdf_mapping() and uses a prefix that is not
+ * if a module Implements HOOK_rdf_mapping() and uses a prefix that is not
  * defined in rdf_rdf_namespaces(), this hook should be used to define the new
  * namespace prefix.
  *
@@ -24,7 +24,7 @@
  *
  * @ingroup rdf
  */
-function hook_rdf_namespaces() {
+function HOOK_rdf_namespaces() {
   return array(
     'content'  => 'http://purl.org/rss/1.0/modules/content/',
     'dc'       => 'http://purl.org/dc/terms/',

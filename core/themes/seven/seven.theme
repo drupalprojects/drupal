@@ -10,7 +10,7 @@ use Drupal\Core\Template\RenderWrapper;
 use Drupal\Component\Utility\String;
 
 /**
- * Implements hook_preprocess_HOOK() for page templates.
+ * Implements HOOK_preprocess_HOOK() for page templates.
  */
 function seven_preprocess_page(&$variables) {
   /** @var \Drupal\Core\Page\HtmlPage $page_object */
@@ -257,7 +257,7 @@ function seven_menu_local_action($variables) {
 }
 
 /**
- * Implements hook_element_info_alter().
+ * Implements HOOK_element_info_alter().
  */
 function seven_element_info_alter(&$type) {
   // We require Modernizr for button styling.
@@ -267,13 +267,13 @@ function seven_element_info_alter(&$type) {
 }
 
 /**
- * Implements hook_preprocess_install_page().
+ * Implements HOOK_preprocess_install_page().
  */
 function seven_preprocess_install_page(&$variables) {
   $variables['styles'] = new RenderWrapper('drupal_get_css');
   $variables['scripts'] = new RenderWrapper('drupal_get_js');
 
-  // Normally we could attach libraries via hook_page_alter(), but when the
+  // Normally we could attach libraries via HOOK_page_alter(), but when the
   // database is inactive it's not called so we add them here.
   $libraries = array(
     '#attached' => array(
@@ -287,12 +287,12 @@ function seven_preprocess_install_page(&$variables) {
 }
 
 /**
- * Implements hook_preprocess_maintenance_page().
+ * Implements HOOK_preprocess_maintenance_page().
  */
 function seven_preprocess_maintenance_page(&$variables) {
   $variables['styles'] = new RenderWrapper('drupal_get_css');
   $variables['scripts'] = new RenderWrapper('drupal_get_js');
-  // // Normally we could attach libraries via hook_page_alter(), but when the
+  // // Normally we could attach libraries via HOOK_page_alter(), but when the
   // // database is inactive it's not called so we add them here.
   $libraries = array(
     '#attached' => array(
@@ -305,7 +305,7 @@ function seven_preprocess_maintenance_page(&$variables) {
 }
 
 /**
- * Implements hook_form_BASE_FORM_ID_alter().
+ * Implements HOOK_form_BASE_FORM_ID_alter().
  *
  * Changes vertical tabs to container and adds meta information.
  */

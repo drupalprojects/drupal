@@ -6,7 +6,7 @@
  */
 
 /**
- * Implements hook_views_data().
+ * Implements HOOK_views_data().
  */
 function tracker_views_data() {
   $data = array();
@@ -154,7 +154,7 @@ function tracker_views_data() {
 }
 
 /**
- * Implements hook_views_data_alter().
+ * Implements HOOK_views_data_alter().
  */
 function tracker_views_data_alter(&$data) {
   // Provide additional uid_touch handlers which are handled by tracker

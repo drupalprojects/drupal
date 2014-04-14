@@ -198,7 +198,7 @@ function menu_link_maintain($module, $op, $link_path, $link_title = NULL) {
 }
 
 /**
- * Implements hook_system_breadcrumb_alter().
+ * Implements HOOK_system_breadcrumb_alter().
  */
 function menu_link_system_breadcrumb_alter(array &$breadcrumb, array $attributes, array $context) {
   // Custom breadcrumb behavior for editing menu links, we append a link to

@@ -52,7 +52,7 @@ class FilterHooksTest extends WebTestBase {
     $edit['roles[' . DRUPAL_ANONYMOUS_RID . ']'] = 1;
     $this->drupalPostForm('admin/config/content/formats/add', $edit, t('Save configuration'));
     $this->assertRaw(t('Added text format %format.', array('%format' => $name)));
-    $this->assertText('hook_filter_format_insert invoked.');
+    $this->assertText('HOOK_filter_format_insert invoked.');
 
     $format_id = $edit['format'];
 
@@ -61,7 +61,7 @@ class FilterHooksTest extends WebTestBase {
     $edit['roles[' . DRUPAL_AUTHENTICATED_RID . ']'] = 1;
     $this->drupalPostForm('admin/config/content/formats/manage/' . $format_id, $edit, t('Save configuration'));
     $this->assertRaw(t('The text format %format has been updated.', array('%format' => $name)));
-    $this->assertText('hook_filter_format_update invoked.');
+    $this->assertText('HOOK_filter_format_update invoked.');
 
     // Use the format created.
     $title = $this->randomName(8);
@@ -75,6 +75,6 @@ class FilterHooksTest extends WebTestBase {
     // Disable the text format.
     $this->drupalPostForm('admin/config/content/formats/manage/' . $format_id . '/disable', array(), t('Disable'));
     $this->assertRaw(t('Disabled text format %format.', array('%format' => $name)));
-    $this->assertText('hook_filter_format_disable invoked.');
+    $this->assertText('HOOK_filter_format_disable invoked.');
   }
 }

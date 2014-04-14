@@ -144,7 +144,7 @@ class SystemManager {
    *
    * @param $requirements
    *   An array of requirements, in the same format as is returned by
-   *   hook_requirements().
+   *   HOOK_requirements().
    *
    * @return
    *   The highest severity in the array.
@@ -221,7 +221,7 @@ class SystemManager {
       _menu_link_translate($link);
       if ($link['access']) {
         // The link description, either derived from 'description' in
-        // hook_menu() or customized via menu module is used as title attribute.
+        // HOOK_menu() or customized via menu module is used as title attribute.
         if (!empty($link['localized_options']['attributes']['title'])) {
           $link['description'] = $link['localized_options']['attributes']['title'];
           unset($link['localized_options']['attributes']['title']);

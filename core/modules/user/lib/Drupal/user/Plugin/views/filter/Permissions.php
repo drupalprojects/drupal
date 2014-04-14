@@ -57,7 +57,7 @@ class Permissions extends ManyToOne {
     if (!isset($this->value_options)) {
       $module_info = system_get_info('module');
 
-      // Get a list of all the modules implementing a hook_permission() and sort by
+      // Get a list of all the modules implementing a HOOK_permission() and sort by
       // display name.
       $modules = array();
       foreach ($this->moduleHandler->getImplementations('permission') as $module) {

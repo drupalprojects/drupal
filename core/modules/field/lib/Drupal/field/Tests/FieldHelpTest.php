@@ -61,8 +61,8 @@ class FieldHelpTest extends WebTestBase {
 
     $this->drupalGet('admin/help/field');
     $this->assertLink('Options', 0, 'Options module is listed on the Field help page.');
-    $this->assertText('Field API Test', 'Modules with field types that do not implement hook_help are listed.');
-    $this->assertNoLink('Field API Test', 'Modules with field types that do not implement hook_help are not linked.');
+    $this->assertText('Field API Test', 'Modules with field types that do not implement HOOK_help are listed.');
+    $this->assertNoLink('Field API Test', 'Modules with field types that do not implement HOOK_help are not linked.');
     $this->assertNoLink('Link', 'Modules that have not been installed, are not listed.');
   }
 

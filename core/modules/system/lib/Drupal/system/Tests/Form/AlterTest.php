@@ -25,13 +25,13 @@ class AlterTest extends WebTestBase {
   public static function getInfo() {
     return array(
       'name' => 'Form alter hooks',
-      'description' => 'Tests hook_form_alter() and hook_form_FORM_ID_alter().',
+      'description' => 'Tests HOOK_form_alter() and HOOK_form_FORM_ID_alter().',
       'group' => 'Form API',
     );
   }
 
   /**
-   * Tests execution order of hook_form_alter() and hook_form_FORM_ID_alter().
+   * Tests execution order of HOOK_form_alter() and HOOK_form_FORM_ID_alter().
    */
   function testExecutionOrder() {
     $this->drupalGet('form-test/alter');

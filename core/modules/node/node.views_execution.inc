@@ -8,7 +8,7 @@
 use Drupal\views\ViewExecutable;
 
 /**
- * Implements hook_views_query_substitutions().
+ * Implements HOOK_views_query_substitutions().
  */
 function node_views_query_substitutions(ViewExecutable $view) {
   return array(
@@ -19,7 +19,7 @@ function node_views_query_substitutions(ViewExecutable $view) {
 }
 
 /**
- * Implements hook_views_analyze().
+ * Implements HOOK_views_analyze().
  */
 function node_views_analyze(ViewExecutable $view) {
   $ret = array();

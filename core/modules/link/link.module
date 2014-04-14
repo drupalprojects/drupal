@@ -8,7 +8,7 @@
 use Drupal\Component\Utility\String;
 
 /**
- * Implements hook_help().
+ * Implements HOOK_help().
  */
 function link_help($path, $arg) {
   switch ($path) {
@@ -34,7 +34,7 @@ function link_help($path, $arg) {
 }
 
 /**
- * Implements hook_theme().
+ * Implements HOOK_theme().
  */
 function link_theme() {
   return array(

@@ -75,7 +75,7 @@ function entity_invoke_bundle_hook($hook, $entity_type, $bundle, $bundle_new = N
   if (method_exists($storage, $method)) {
     $storage->$method($bundle, $bundle_new);
   }
-  // Invoke hook_entity_bundle_*() hooks.
+  // Invoke HOOK_entity_bundle_*() hooks.
   \Drupal::moduleHandler()->invokeAll('entity_bundle_' . $hook, array($entity_type, $bundle, $bundle_new));
 }
 

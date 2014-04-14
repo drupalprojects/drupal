@@ -124,7 +124,7 @@ class SystemController extends ControllerBase {
           if (!$item['access']) {
             continue;
           }
-          // The link description, either derived from 'description' in hook_menu()
+          // The link description, either derived from 'description' in HOOK_menu()
           // or customized via menu module is used as title attribute.
           if (!empty($item['localized_options']['attributes']['title'])) {
             $item['description'] = $item['localized_options']['attributes']['title'];

@@ -6,7 +6,7 @@
  */
 
 /**
- * Implements hook_test_hook().
+ * Implements HOOK_test_hook().
  */
 function module_test_test_hook() {
   return array('module_test' => 'success!');

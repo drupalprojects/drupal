@@ -6,22 +6,22 @@
  */
 
 /**
- * Implements hook_filter_format_insert().
+ * Implements HOOK_filter_format_insert().
  */
 function filter_test_filter_format_insert($format) {
-  drupal_set_message('hook_filter_format_insert invoked.');
+  drupal_set_message('HOOK_filter_format_insert invoked.');
 }
 
 /**
- * Implements hook_filter_format_update().
+ * Implements HOOK_filter_format_update().
  */
 function filter_test_filter_format_update($format) {
-  drupal_set_message('hook_filter_format_update invoked.');
+  drupal_set_message('HOOK_filter_format_update invoked.');
 }
 
 /**
- * Implements hook_filter_format_disable().
+ * Implements HOOK_filter_format_disable().
  */
 function filter_test_filter_format_disable($format) {
-  drupal_set_message('hook_filter_format_disable invoked.');
+  drupal_set_message('HOOK_filter_format_disable invoked.');
 }

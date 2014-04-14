@@ -8,7 +8,7 @@
 namespace Drupal\node\Tests;
 
 /**
- * Tests hook_node_access_records() functionality.
+ * Tests HOOK_node_access_records() functionality.
  */
 class NodeAccessRecordsTest extends NodeTestBase {
 
@@ -22,7 +22,7 @@ class NodeAccessRecordsTest extends NodeTestBase {
   public static function getInfo() {
     return array(
       'name' => 'Node access records',
-      'description' => 'Test hook_node_access_records when acquiring grants.',
+      'description' => 'Test HOOK_node_access_records when acquiring grants.',
       'group' => 'Node',
     );
   }
@@ -72,7 +72,7 @@ class NodeAccessRecordsTest extends NodeTestBase {
     $this->assertEqual($records[0]->realm, 'test_alter_realm', 'Altered grant with alter_realm acquired for node.');
     $this->assertEqual($records[0]->gid, 2, 'Altered grant with gid = 2 acquired for node.');
 
-    // Check to see if we can alter grants with hook_node_grants_alter().
+    // Check to see if we can alter grants with HOOK_node_grants_alter().
     $operations = array('view', 'update', 'delete');
     // Create a user that is allowed to access content.
     $web_user = $this->drupalCreateUser(array('access content'));

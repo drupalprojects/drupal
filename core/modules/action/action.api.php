@@ -11,7 +11,7 @@
  * @param $aid
  *   The action ID.
  */
-function hook_action_delete($aid) {
+function HOOK_action_delete($aid) {
   db_delete('actions_assignments')
     ->condition('aid', $aid)
     ->execute();

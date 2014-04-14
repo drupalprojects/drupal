@@ -53,7 +53,7 @@ class LocaleUpdateTest extends LocaleUpdateBase {
     \Drupal::state()->set('locale.test_system_info_alter', TRUE);
     $this->resetAll();
 
-    // Check if interface translation data is collected from hook_info.
+    // Check if interface translation data is collected from HOOK_info.
     $projects = locale_translation_project_list();
     $this->assertFalse(isset($projects['locale_test_translate']), 'Hidden module not found');
     $this->assertEqual($projects['locale_test']['info']['interface translation server pattern'], 'core/modules/locale/test/test.%language.po', 'Interface translation parameter found in project info.');
@@ -66,7 +66,7 @@ class LocaleUpdateTest extends LocaleUpdateBase {
    * The translation status process by default checks the status of the
    * installed projects. For testing purpose a predefined set of modules with
    * fixed file names and release versions is used. This custom project
-   * definition is applied using a hook_locale_translation_projects_alter
+   * definition is applied using a HOOK_locale_translation_projects_alter
    * implementation in the locale_test module.
    *
    * This test generates a set of local and remote translation files in their

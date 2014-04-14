@@ -145,7 +145,7 @@ class ThemeTest extends WebTestBase {
   }
 
   /**
-   * Ensures theme hook_*_alter() implementations can run before anything is rendered.
+   * Ensures theme HOOK_*_alter() implementations can run before anything is rendered.
    */
   function testAlter() {
     $this->drupalGet('theme-test/alter');

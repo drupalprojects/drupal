@@ -6,7 +6,7 @@
  */
 
 /**
- * Implements hook_help().
+ * Implements HOOK_help().
  */
 function xmlrpc_help($path, $args) {
   switch ($path) {

@@ -39,7 +39,7 @@ class SearchPreprocessLangcodeTest extends SearchTestBase {
   }
 
   /**
-   * Tests that hook_search_preprocess() returns the correct langcode.
+   * Tests that HOOK_search_preprocess() returns the correct langcode.
    */
   function testPreprocessLangcode() {
     // Create a node.
@@ -59,12 +59,12 @@ class SearchPreprocessLangcodeTest extends SearchTestBase {
     $edit = array('or' => 'Additional text');
     $this->drupalPostForm('search/node', $edit, t('Advanced search'));
 
-    // Checks if the langcode message has been set by hook_search_preprocess().
+    // Checks if the langcode message has been set by HOOK_search_preprocess().
     $this->assertText('Langcode Preprocess Test: en');
   }
 
   /**
-   * Tests stemming for hook_search_preprocess().
+   * Tests stemming for HOOK_search_preprocess().
    */
   function testPreprocessStemming() {
     // Create a node.

@@ -13,7 +13,7 @@ menu_test.local_action5:
 
 menu_test.local_action2:
   route_name: menu_test.local_action2
-  title: 'My hook_menu action'
+  title: 'My HOOK_menu action'
   weight: -10
   appears_on:
     - menu_test.local_action1

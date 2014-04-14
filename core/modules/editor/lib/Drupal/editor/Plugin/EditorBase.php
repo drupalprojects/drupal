@@ -19,7 +19,7 @@ use Drupal\editor\Plugin\EditorPluginInterface;
  *
  * Plugins extending this class need to define a plugin definition array through
  * annotation. These definition arrays may be altered through
- * hook_editor_info_alter(). The definition includes the following keys:
+ * HOOK_editor_info_alter(). The definition includes the following keys:
  *
  * - id: The unique, system-wide identifier of the text editor. Typically named
  *   the same as the editor library.

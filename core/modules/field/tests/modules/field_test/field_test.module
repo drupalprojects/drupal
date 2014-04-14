@@ -20,7 +20,7 @@ require_once __DIR__ . '/field_test.entity.inc';
 require_once __DIR__ . '/field_test.field.inc';
 
 /**
- * Implements hook_permission().
+ * Implements HOOK_permission().
  */
 function field_test_permission() {
   $perms = array(
@@ -64,7 +64,7 @@ function field_test_permission() {
  *   // retrieve and reset the memorized hook call data
  *   $mem = field_test_memorize();
  *
- *   // make sure hook_field_config_create() is invoked correctly
+ *   // make sure HOOK_field_config_create() is invoked correctly
  *   assertEqual(count($mem['field_test_field_config_create']), 1);
  *   assertEqual($mem['field_test_field_config_create'][0], array($field));
  * @endcode
@@ -99,7 +99,7 @@ function field_test_field_config_create(FieldConfigInterface $field) {
 }
 
 /**
- * Implements hook_entity_display_build_alter().
+ * Implements HOOK_entity_display_build_alter().
  */
 function field_test_entity_display_build_alter(&$output, $context) {
   $display_options = $context['display']->getComponent('test_field');
@@ -113,7 +113,7 @@ function field_test_entity_display_build_alter(&$output, $context) {
 }
 
 /**
- * Implements hook_field_widget_form_alter().
+ * Implements HOOK_field_widget_form_alter().
  */
 function field_test_field_widget_form_alter(&$element, &$form_state, $context) {
   $field_definition = $context['items']->getFieldDefinition();
@@ -129,12 +129,12 @@ function field_test_field_widget_form_alter(&$element, &$form_state, $context) {
   // Set a message if this is for the form displayed to set default value for
   // the field instance.
   if ($context['default']) {
-    drupal_set_message('From hook_field_widget_form_alter(): Default form is true.');
+    drupal_set_message('From HOOK_field_widget_form_alter(): Default form is true.');
   }
 }
 
 /**
- * Implements hook_query_TAG_alter() for tag 'efq_table_prefixing_test'.
+ * Implements HOOK_query_TAG_alter() for tag 'efq_table_prefixing_test'.
  *
  * @see \Drupal\system\Tests\Entity\EntityFieldQueryTest::testTablePrefixing()
  */
@@ -146,7 +146,7 @@ function field_test_query_efq_table_prefixing_test_alter(&$query) {
 
 
 /**
- * Implements hook_query_TAG_alter() for tag 'efq_metadata_test'.
+ * Implements HOOK_query_TAG_alter() for tag 'efq_metadata_test'.
  *
  * @see \Drupal\system\Tests\Entity\EntityQueryTest::testMetaData()
  */
@@ -156,7 +156,7 @@ function field_test_query_efq_metadata_test_alter(&$query) {
 }
 
 /**
- * Implements hook_field_widget_settings_form_alter().
+ * Implements HOOK_field_widget_settings_form_alter().
  */
 function field_test_field_widget_settings_form_alter(&$element, &$form_state, $context) {
   $element['field_test_widget_settings_form_alter'] = array(
@@ -167,7 +167,7 @@ function field_test_field_widget_settings_form_alter(&$element, &$form_state, $c
 }
 
 /**
- * Implements hook_field_widget_settings_summary_alter().
+ * Implements HOOK_field_widget_settings_summary_alter().
  */
 function field_test_field_widget_settings_summary_alter(&$summary, $context) {
   $summary[] = 'field_test_field_widget_settings_summary_alter';
@@ -175,7 +175,7 @@ function field_test_field_widget_settings_summary_alter(&$summary, $context) {
 }
 
 /**
- * Implements hook_field_formatter_settings_form_alter().
+ * Implements HOOK_field_formatter_settings_form_alter().
  */
 function field_test_field_formatter_settings_form_alter(&$element, &$form_state, $context) {
   $element['field_test_formatter_settings_form_alter'] = array(
@@ -186,7 +186,7 @@ function field_test_field_formatter_settings_form_alter(&$element, &$form_state,
 }
 
 /**
- * Implements hook_field_formatter_settings_summary_alter().
+ * Implements HOOK_field_formatter_settings_summary_alter().
  */
 function field_test_field_formatter_settings_summary_alter(&$summary, $context) {
   $summary[] = 'field_test_field_formatter_settings_summary_alter';
@@ -194,7 +194,7 @@ function field_test_field_formatter_settings_summary_alter(&$summary, $context) 
 }
 
 /**
- * Implements hook_entity_extra_field_info_alter().
+ * Implements HOOK_entity_extra_field_info_alter().
  */
 function field_test_entity_extra_field_info_alter(&$info) {
   // Remove all extra fields from the 'no_fields' content type;

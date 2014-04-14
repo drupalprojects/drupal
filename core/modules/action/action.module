@@ -6,7 +6,7 @@
  */
 
 /**
- * Implements hook_help().
+ * Implements HOOK_help().
  */
 function action_help($path, $arg) {
   switch ($path) {
@@ -34,7 +34,7 @@ function action_help($path, $arg) {
 }
 
 /**
- * Implements hook_permission().
+ * Implements HOOK_permission().
  */
 function action_permission() {
   return array(
@@ -45,7 +45,7 @@ function action_permission() {
 }
 
 /**
- * Implements hook_entity_type_build().
+ * Implements HOOK_entity_type_build().
  */
 function action_entity_type_build(array &$entity_types) {
   /** @var $entity_types \Drupal\Core\Entity\EntityTypeInterface[] */

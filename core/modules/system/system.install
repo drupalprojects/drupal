@@ -12,7 +12,7 @@ use Drupal\Core\StreamWrapper\PublicStream;
 use Drupal\Component\Utility\Settings;
 
 /**
- * Implements hook_requirements().
+ * Implements HOOK_requirements().
  */
 function system_requirements($phase) {
   $requirements = array();
@@ -564,7 +564,7 @@ function system_requirements($phase) {
 }
 
 /**
- * Implements hook_install().
+ * Implements HOOK_install().
  */
 function system_install() {
   // Enable and set the default theme. Can't use theme_enable() this early in
@@ -585,7 +585,7 @@ function system_install() {
 }
 
 /**
- * Implements hook_schema().
+ * Implements HOOK_schema().
  */
 function system_schema() {
   $schema['batch'] = array(

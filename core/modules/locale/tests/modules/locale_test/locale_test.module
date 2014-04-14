@@ -9,7 +9,7 @@ use Drupal\Core\Extension\Extension;
 use Drupal\Core\StreamWrapper\PublicStream;
 
 /**
- * Implements hook_system_info_alter().
+ * Implements HOOK_system_info_alter().
  *
  * Make the test scripts to be believe this is not a hidden test module, but
  * a regular custom module.
@@ -28,7 +28,7 @@ function locale_test_system_info_alter(&$info, Extension $file, $type) {
 }
 
 /**
- * Implements hook_locale_translation_projects_alter().
+ * Implements HOOK_locale_translation_projects_alter().
  *
  * The translation status process by default checks the status of the installed
  * projects. This function replaces the data of the installed modules by a

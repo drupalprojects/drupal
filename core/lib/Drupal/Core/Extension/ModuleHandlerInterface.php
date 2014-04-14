@@ -152,14 +152,14 @@ interface ModuleHandlerInterface {
   public function loadInclude($module, $type, $name = NULL);
 
   /**
-   * Retrieves a list of hooks that are declared through hook_hook_info().
+   * Retrieves a list of hooks that are declared through HOOK_HOOK_info().
    *
    * @return array
    *   An associative array whose keys are hook names and whose values are an
    *   associative array containing a group name. The structure of the array
-   *   is the same as the return value of hook_hook_info().
+   *   is the same as the return value of HOOK_HOOK_info().
    *
-   * @see hook_hook_info()
+   * @see HOOK_HOOK_info()
    */
   public function getHookInfo();
 
@@ -223,10 +223,10 @@ interface ModuleHandlerInterface {
   public function invokeAll($hook, array $args = array());
 
   /**
-   * Passes alterable variables to specific hook_TYPE_alter() implementations.
+   * Passes alterable variables to specific HOOK_TYPE_alter() implementations.
    *
    * This dispatch function hands off the passed-in variables to type-specific
-   * hook_TYPE_alter() implementations in modules. It ensures a consistent
+   * HOOK_TYPE_alter() implementations in modules. It ensures a consistent
    * interface for all altering operations.
    *
    * A maximum of 2 alterable arguments is supported. In case more arguments need
@@ -254,13 +254,13 @@ interface ModuleHandlerInterface {
    * @param string|array $type
    *   A string describing the type of the alterable $data. 'form', 'links',
    *   'node_content', and so on are several examples. Alternatively can be an
-   *   array, in which case hook_TYPE_alter() is invoked for each value in the
+   *   array, in which case HOOK_TYPE_alter() is invoked for each value in the
    *   array, ordered first by module, and then for each module, in the order of
    *   values in $type. For example, when Form API is using $this->alter() to
-   *   execute both hook_form_alter() and hook_form_FORM_ID_alter()
+   *   execute both HOOK_form_alter() and HOOK_form_FORM_ID_alter()
    *   implementations, it passes array('form', 'form_' . $form_id) for $type.
    * @param mixed $data
-   *   The variable that will be passed to hook_TYPE_alter() implementations to be
+   *   The variable that will be passed to HOOK_TYPE_alter() implementations to be
    *   altered. The type of this variable depends on the value of the $type
    *   argument. For example, when altering a 'form', $data will be a structured
    *   array. When altering a 'profile', $data will be an object.
@@ -279,10 +279,10 @@ interface ModuleHandlerInterface {
    * Order of events:
    * - Gather and add module dependencies to $module_list (if applicable).
    * - For each module that is being installed:
-   *   - Invoke hook_module_preinstall().
+   *   - Invoke HOOK_module_preinstall().
    *   - Install module schema and update system registries and caches.
-   *   - Invoke hook_install() and add it to the list of installed modules.
-   * - Invoke hook_modules_installed().
+   *   - Invoke HOOK_install() and add it to the list of installed modules.
+   * - Invoke HOOK_modules_installed().
    *
    * @param array $module_list
    *   An array of module names.
@@ -294,9 +294,9 @@ interface ModuleHandlerInterface {
    * @return bool
    *   FALSE if one or more dependencies are missing, TRUE otherwise.
    *
-   * @see hook_module_preinstall()
-   * @see hook_install()
-   * @see hook_modules_installed()
+   * @see HOOK_module_preinstall()
+   * @see HOOK_install()
+   * @see HOOK_modules_installed()
    */
   public function install(array $module_list, $enable_dependencies = TRUE);
 
@@ -313,9 +313,9 @@ interface ModuleHandlerInterface {
    * @return bool
    *   FALSE if one or more dependencies are missing, TRUE otherwise.
    *
-   * @see hook_module_preuninstall()
-   * @see hook_uninstall()
-   * @see hook_modules_uninstalled()
+   * @see HOOK_module_preuninstall()
+   * @see HOOK_uninstall()
+   * @see HOOK_modules_uninstalled()
    */
   public function uninstall(array $module_list, $uninstall_dependents = TRUE);
 

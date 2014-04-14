@@ -44,7 +44,7 @@ class GetNamespacesTest extends WebTestBase {
     $element = $this->xpath('//html[contains(@prefix, :prefix_binding)]', array(
       ':prefix_binding' => 'foaf: http://xmlns.com/foaf/0.1/',
     ));
-    $this->assertTrue(!empty($element), 'The same prefix declared in several implementations of hook_rdf_namespaces() is valid as long as all the namespaces are the same.');
+    $this->assertTrue(!empty($element), 'The same prefix declared in several implementations of HOOK_rdf_namespaces() is valid as long as all the namespaces are the same.');
 
     $element = $this->xpath('//html[contains(@prefix, :prefix_binding)]', array(
       ':prefix_binding' => 'foaf1: http://xmlns.com/foaf/0.1/',

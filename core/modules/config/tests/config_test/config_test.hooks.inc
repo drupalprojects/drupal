@@ -10,43 +10,43 @@
  */
 
 /**
- * Implements hook_config_test_load().
+ * Implements HOOK_config_test_load().
  */
 function config_test_config_test_load() {
-  $GLOBALS['hook_config_test']['load'] = __FUNCTION__;
+  $GLOBALS['HOOK_config_test']['load'] = __FUNCTION__;
 }
 
 /**
- * Implements hook_config_test_presave().
+ * Implements HOOK_config_test_presave().
  */
 function config_test_config_test_presave() {
-  $GLOBALS['hook_config_test']['presave'] = __FUNCTION__;
+  $GLOBALS['HOOK_config_test']['presave'] = __FUNCTION__;
 }
 
 /**
- * Implements hook_config_test_insert().
+ * Implements HOOK_config_test_insert().
  */
 function config_test_config_test_insert() {
-  $GLOBALS['hook_config_test']['insert'] = __FUNCTION__;
+  $GLOBALS['HOOK_config_test']['insert'] = __FUNCTION__;
 }
 
 /**
- * Implements hook_config_test_update().
+ * Implements HOOK_config_test_update().
  */
 function config_test_config_test_update() {
-  $GLOBALS['hook_config_test']['update'] = __FUNCTION__;
+  $GLOBALS['HOOK_config_test']['update'] = __FUNCTION__;
 }
 
 /**
- * Implements hook_config_test_predelete().
+ * Implements HOOK_config_test_predelete().
  */
 function config_test_config_test_predelete() {
-  $GLOBALS['hook_config_test']['predelete'] = __FUNCTION__;
+  $GLOBALS['HOOK_config_test']['predelete'] = __FUNCTION__;
 }
 
 /**
- * Implements hook_config_test_delete().
+ * Implements HOOK_config_test_delete().
  */
 function config_test_config_test_delete() {
-  $GLOBALS['hook_config_test']['delete'] = __FUNCTION__;
+  $GLOBALS['HOOK_config_test']['delete'] = __FUNCTION__;
 }

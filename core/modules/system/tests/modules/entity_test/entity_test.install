@@ -6,7 +6,7 @@
  */
 
 /**
- * Implements hook_install().
+ * Implements HOOK_install().
  */
 function entity_test_install() {
   $entity_types = array(
@@ -38,7 +38,7 @@ function entity_test_install() {
 }
 
 /**
- * Implements hook_schema().
+ * Implements HOOK_schema().
  */
 function entity_test_schema() {
   // Schema for simple entity.

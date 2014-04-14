@@ -2122,7 +2122,7 @@ abstract class DisplayPluginBase extends PluginBase {
    * @return array
    *   The menu links registers for this display.
    *
-   * @see hook_menu_link_defaults()
+   * @see HOOK_menu_link_defaults()
    */
   public function executeHookMenuLinkDefaults(array &$existing_links) {
     return array();

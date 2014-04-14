@@ -47,7 +47,7 @@ define('IMAGE_DERIVATIVE_TOKEN', 'itok');
 require_once __DIR__ . '/image.field.inc';
 
 /**
- * Implements hook_help().
+ * Implements HOOK_help().
  */
 function image_help($path, $arg) {
   switch ($path) {
@@ -84,7 +84,7 @@ function image_help($path, $arg) {
 }
 
 /**
- * Implements hook_theme().
+ * Implements HOOK_theme().
  */
 function image_theme() {
   return array(
@@ -156,7 +156,7 @@ function image_theme() {
 }
 
 /**
- * Implements hook_permission().
+ * Implements HOOK_permission().
  */
 function image_permission() {
   return array(
@@ -168,7 +168,7 @@ function image_permission() {
 }
 
 /**
- * Implements hook_file_download().
+ * Implements HOOK_file_download().
  *
  * Control the access to files underneath the styles directory.
  */
@@ -218,7 +218,7 @@ function image_file_download($uri) {
 }
 
 /**
- * Implements hook_file_move().
+ * Implements HOOK_file_move().
  */
 function image_file_move(File $file, File $source) {
   // Delete any image derivatives at the original image path.
@@ -226,7 +226,7 @@ function image_file_move(File $file, File $source) {
 }
 
 /**
- * Implements hook_file_predelete().
+ * Implements HOOK_file_predelete().
  */
 function image_file_predelete(File $file) {
   // Delete any image derivatives of this image.
@@ -367,7 +367,7 @@ function image_filter_keyword($value, $current_pixels, $new_pixels) {
 }
 
 /**
- * Implements hook_entity_presave().
+ * Implements HOOK_entity_presave().
  *
  * Transforms default image of image field from array into single value at save.
  */
@@ -411,7 +411,7 @@ function image_entity_presave(EntityInterface $entity) {
 }
 
 /**
- * Implements hook_ENTITY_TYPE_update() for 'field_config'.
+ * Implements HOOK_ENTITY_TYPE_update() for 'field_config'.
  */
 function image_field_config_update(FieldConfigInterface $field) {
   if ($field->type != 'image') {
@@ -451,7 +451,7 @@ function image_field_config_update(FieldConfigInterface $field) {
 }
 
 /**
- * Implements hook_ENTITY_TYPE_update() for 'field_instance_config'.
+ * Implements HOOK_ENTITY_TYPE_update() for 'field_instance_config'.
  */
 function image_field_instance_config_update(FieldInstanceConfigInterface $field_instance) {
   $field = $field_instance->getField();
@@ -489,7 +489,7 @@ function image_field_instance_config_update(FieldInstanceConfigInterface $field_
 }
 
 /**
- * Implements hook_ENTITY_TYPE_delete() for 'field_config'.
+ * Implements HOOK_ENTITY_TYPE_delete() for 'field_config'.
  */
 function image_field_config_delete(FieldConfigInterface $field) {
   if ($field->type != 'image') {
@@ -505,7 +505,7 @@ function image_field_config_delete(FieldConfigInterface $field) {
 }
 
 /**
- * Implements hook_ENTITY_TYPE_delete() for 'field_instance_config'.
+ * Implements HOOK_ENTITY_TYPE_delete() for 'field_instance_config'.
  */
 function image_field_instance_config_delete(FieldInstanceConfigInterface $field_instance) {
   $field = $field_instance->getField();

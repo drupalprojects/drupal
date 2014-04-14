@@ -6,7 +6,7 @@
  */
 
 /**
- * Implements hook_entity_type_alter().
+ * Implements HOOK_entity_type_alter().
  */
 function config_translation_test_entity_type_alter(array &$entity_types) {
   // Remove entity definition for these entity types from config_test module.
@@ -15,7 +15,7 @@ function config_translation_test_entity_type_alter(array &$entity_types) {
 }
 
 /**
- * Implements hook_config_translation_info_alter().
+ * Implements HOOK_config_translation_info_alter().
  */
 function config_translation_test_config_translation_info_alter(&$info) {
   if (\Drupal::state()->get('config_translation_test_config_translation_info_alter')) {
@@ -28,7 +28,7 @@ function config_translation_test_config_translation_info_alter(&$info) {
 }
 
 /**
- * Implements hook_form_BASE_FORM_ID_alter() for ConfigTranslationFormBase.
+ * Implements HOOK_form_BASE_FORM_ID_alter() for ConfigTranslationFormBase.
  *
  * Adds a list of configuration names to the top of the configuration
  * translation form.
@@ -42,7 +42,7 @@ function config_translation_test_form_config_translation_form_alter(&$form, &$fo
 }
 
 /**
- * Implements hook_form_FORM_ID_alter() for ConfigTranslationAddForm.
+ * Implements HOOK_form_FORM_ID_alter() for ConfigTranslationAddForm.
  *
  * Changes the title to include the source language.
  *
@@ -55,7 +55,7 @@ function config_translation_test_form_config_translation_add_form_alter(&$form, 
 }
 
 /**
- * Implements hook_form_FORM_ID_alter() for ConfigTranslationEditForm.
+ * Implements HOOK_form_FORM_ID_alter() for ConfigTranslationEditForm.
  *
  * Adds a column to the configuration translation edit form that shows the
  * current translation. Note that this column would not be displayed by default,

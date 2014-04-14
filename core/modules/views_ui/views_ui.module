@@ -14,7 +14,7 @@ use Drupal\Core\Ajax\AjaxResponse;
 use Drupal\Core\Ajax\ReplaceCommand;
 
 /**
- * Implements hook_help().
+ * Implements HOOK_help().
  */
 function views_ui_help($path, $arg) {
 
@@ -39,7 +39,7 @@ function views_ui_help($path, $arg) {
 }
 
 /**
- * Implements hook_entity_type_build().
+ * Implements HOOK_entity_type_build().
  */
 function views_ui_entity_type_build(array &$entity_types) {
   /** @var $entity_types \Drupal\Core\Entity\EntityTypeInterface[] */
@@ -62,7 +62,7 @@ function views_ui_entity_type_build(array &$entity_types) {
 }
 
 /**
- * Implements hook_theme().
+ * Implements HOOK_theme().
  */
 function views_ui_theme() {
   return array(
@@ -124,7 +124,7 @@ function views_ui_theme() {
 }
 
 /**
- * Implements hook_permission().
+ * Implements HOOK_permission().
  */
 function views_ui_permission() {
   return array(
@@ -137,7 +137,7 @@ function views_ui_permission() {
 }
 
 /**
- * Implements hook_preprocess_HOOK() for views templates.
+ * Implements HOOK_preprocess_HOOK() for views templates.
  */
 function views_ui_preprocess_views_view(&$variables) {
   $view = $variables['view'];
@@ -228,7 +228,7 @@ function views_ui_view_preview_section_rows_links(ViewExecutable $view) {
 }
 
 /**
- * Implements hook_views_plugins_display_alter().
+ * Implements HOOK_views_plugins_display_alter().
  */
 function views_ui_views_plugins_display_alter(&$plugins) {
   // Attach contextual links to each display plugin. The links will point to
@@ -243,7 +243,7 @@ function views_ui_views_plugins_display_alter(&$plugins) {
 }
 
 /**
- * Implements hook_contextual_links_view_alter().
+ * Implements HOOK_contextual_links_view_alter().
  */
 function views_ui_contextual_links_view_alter(&$element, $items) {
   // Remove contextual links from being rendered, when so desired, such as
@@ -300,7 +300,7 @@ function views_ui_contextual_links_suppress_pop() {
 }
 
 /**
- * Implements hook_views_analyze().
+ * Implements HOOK_views_analyze().
  *
  * This is the basic views analysis that checks for very minimal problems.
  * There are other analysis tools in core specific sections, such as

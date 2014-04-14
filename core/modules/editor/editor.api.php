@@ -21,7 +21,7 @@ use Drupal\filter\FilterFormatInterface;
  *
  * @see \Drupal\editor\Plugin\EditorBase
  */
-function hook_editor_info_alter(array &$editors) {
+function HOOK_editor_info_alter(array &$editors) {
   $editors['some_other_editor']['label'] = t('A different name');
   $editors['some_other_editor']['library']['module'] = 'myeditoroverride';
 }
@@ -52,7 +52,7 @@ function hook_editor_info_alter(array &$editors) {
  * @return array
  *   An array of default settings that will be merged into the editor defaults.
  */
-function hook_editor_default_settings($editor) {
+function HOOK_editor_default_settings($editor) {
   return array(
     'mymodule_new_setting1' => TRUE,
     'mymodule_new_setting2' => array(
@@ -68,7 +68,7 @@ function hook_editor_default_settings($editor) {
  * Modules that extend the behavior of other modules may use this hook to change
  * the default settings provided to new and existing editors. This hook should
  * be used when changing an existing setting to a new value. To add a new
- * default setting, hook_editor_default_settings() should be used.
+ * default setting, HOOK_editor_default_settings() should be used.
  *
  * The return value of this hook is not cached. If retrieving defaults in a
  * complex manner, the implementing module should provide its own caching inside
@@ -83,9 +83,9 @@ function hook_editor_default_settings($editor) {
  * @return array
  *   An array of default settings that will be merged into the editor defaults.
  *
- * @see hook_editor_default_settings()
+ * @see HOOK_editor_default_settings()
  */
-function hook_editor_default_settings_alter(&$default_settings, $editor) {
+function HOOK_editor_default_settings_alter(&$default_settings, $editor) {
   $default_settings['toolbar'] = array('Bold', 'Italics', 'Underline');
 }
 
@@ -96,7 +96,7 @@ function hook_editor_default_settings_alter(&$default_settings, $editor) {
  *   All the settings that will be added to the page via _drupal_add_js() for
  *   the text formats to which a user has access.
  */
-function hook_editor_js_settings_alter(array &$settings) {
+function HOOK_editor_js_settings_alter(array &$settings) {
   if (isset($settings['editor']['formats']['basic_html'])) {
     $settings['editor']['formats']['basic_html']['editor'] = 'MyDifferentEditor';
     $settings['editor']['formats']['basic_html']['editorSettings']['buttons'] = array('strong', 'italic', 'underline');
@@ -121,7 +121,7 @@ function hook_editor_js_settings_alter(array &$settings) {
  *
  * @see \Drupal\editor\EditorXssFilterInterface
  */
-function hook_editor_xss_filter_alter(&$editor_xss_filter_class, FilterFormatInterface $format, FilterFormatInterface $original_format = NULL) {
+function HOOK_editor_xss_filter_alter(&$editor_xss_filter_class, FilterFormatInterface $format, FilterFormatInterface $original_format = NULL) {
   $filters = $format->filters()->getAll();
   if (isset($filters['filter_wysiwyg']) && $filters['filter_wysiwyg']->status) {
     $editor_xss_filter_class = '\Drupal\filter_wysiwyg\EditorXssFilter\WysiwygFilter';

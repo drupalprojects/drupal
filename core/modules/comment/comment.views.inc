@@ -6,7 +6,7 @@
  */
 
 /**
- * Implements hook_views_data().
+ * Implements HOOK_views_data().
  */
 function comment_views_data() {
 
@@ -588,7 +588,7 @@ function comment_views_data() {
 }
 
 /**
- * Implements hook_views_data_alter().
+ * Implements HOOK_views_data_alter().
  */
 function comment_views_data_alter(&$data) {
   // New comments are only supported for node table because it requires the

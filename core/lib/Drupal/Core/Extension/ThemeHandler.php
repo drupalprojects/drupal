@@ -161,7 +161,7 @@ class ThemeHandler implements ThemeHandlerInterface {
 
     $this->resetSystem();
 
-    // Invoke hook_themes_enabled() after the themes have been enabled.
+    // Invoke HOOK_themes_enabled() after the themes have been enabled.
     $this->moduleHandler->invokeAll('themes_enabled', array($theme_list));
   }
 
@@ -192,7 +192,7 @@ class ThemeHandler implements ThemeHandlerInterface {
     $this->reset();
     $this->resetSystem();
 
-    // Invoke hook_themes_disabled after the themes have been disabled.
+    // Invoke HOOK_themes_disabled after the themes have been disabled.
     $this->moduleHandler->invokeAll('themes_disabled', array($theme_list));
   }
 
@@ -287,7 +287,7 @@ class ThemeHandler implements ThemeHandlerInterface {
       // contributed modules to use for ordering theme lists.
       $theme->info['mtime'] = $theme->getMTime();
 
-      // Invoke hook_system_info_alter() to give installed modules a chance to
+      // Invoke HOOK_system_info_alter() to give installed modules a chance to
       // modify the data in the .info.yml files if necessary.
       // @todo Remove $type argument, obsolete with $theme->getType().
       $type = 'theme';

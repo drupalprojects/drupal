@@ -237,7 +237,7 @@ function template_preprocess_pager(&$variables) {
           'title' => t('Go to first page'),
           'rel' => 'first',
         ),
-        // Below is ignored by default, supplied to support hook_link_alter
+        // Below is ignored by default, supplied to support HOOK_link_alter
         // implementations.
         'pager_context' => array(
           'link_type' => 'first',
@@ -255,7 +255,7 @@ function template_preprocess_pager(&$variables) {
           'title' => t('Go to previous page'),
           'rel' => 'prev',
         ),
-        // Below is ignored by default, supplied to support hook_link_alter
+        // Below is ignored by default, supplied to support HOOK_link_alter
         // implementations.
         'pager_context' => array(
           'link_type' => 'previous',
@@ -277,7 +277,7 @@ function template_preprocess_pager(&$variables) {
           'title' => t('Go to next page'),
           'rel' => 'next',
         ),
-        // Below is ignored by default, supplied to support hook_link_alter
+        // Below is ignored by default, supplied to support HOOK_link_alter
         // implementations.
         'pager_context' => array(
           'link_type' => 'next',
@@ -295,7 +295,7 @@ function template_preprocess_pager(&$variables) {
           'title' => t('Go to last page'),
           'rel' => 'last',
         ),
-        // Below is ignored by default, supplied to support hook_link_alter
+        // Below is ignored by default, supplied to support HOOK_link_alter
         // implementations.
         'pager_context' => array(
           'link_type' => 'last',
@@ -342,7 +342,7 @@ function template_preprocess_pager(&$variables) {
                 'attributes' => array(
                   'title' => t('Go to page @number', array('@number' => $i)),
                 ),
-                // Below is ignored by default, supplied to support hook_link_alter
+                // Below is ignored by default, supplied to support HOOK_link_alter
                 // implementations.
                 'pager_context' => array(
                   'link_type' => 'item',
@@ -371,7 +371,7 @@ function template_preprocess_pager(&$variables) {
                 'attributes' => array(
                   'title' => t('Go to page @number', array('@number' => $i)),
                 ),
-                // Below is ignored by default, supplied to support hook_link_alter
+                // Below is ignored by default, supplied to support HOOK_link_alter
                 // implementations.
                 'pager_context' => array(
                   'link_type' => 'item',

@@ -6,7 +6,7 @@
  */
 
 /**
- * Implements hook_plugin_test_alter().
+ * Implements HOOK_plugin_test_alter().
  */
 function plugin_test_plugin_test_alter(&$definitions) {
   foreach ($definitions as &$definition) {

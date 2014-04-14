@@ -97,7 +97,7 @@ function system_list_reset() {
 
   // Remove last known theme data state.
   // This causes system_list() to call system_rebuild_theme_data() on its next
-  // invocation. When enabling a module that implements hook_system_info_alter()
+  // invocation. When enabling a module that Implements HOOK_system_info_alter()
   // to inject a new (testing) theme or manipulate an existing theme, then that
   // will cause system_list_reset() to be called, but theme data is not
   // necessarily rebuilt afterwards.
@@ -225,7 +225,7 @@ function module_uninstall($module_list = array(), $uninstall_dependents = TRUE) 
  * The available hooks to implement are explained here in the Hooks section of
  * the developer documentation. The string "hook" is used as a placeholder for
  * the module name in the hook definitions. For example, if the module file is
- * called example.module, then hook_help() as implemented by that module would
+ * called example.module, then HOOK_help() as implemented by that module would
  * be defined as example_help().
  *
  * The example functions included are not part of the Drupal core, they are

@@ -24,7 +24,7 @@ use Drupal\views\Views;
  *   help = @Translation("Display the view as a block."),
  *   theme = "views_view",
  *   register_theme = FALSE,
- *   uses_hook_block = TRUE,
+ *   uses_HOOK_block = TRUE,
  *   contextual_links_locations = {"block"},
  *   admin = @Translation("Block")
  * )

@@ -6,7 +6,7 @@
  */
 
 /**
- * Implements hook_install().
+ * Implements HOOK_install().
  */
 function image_install() {
   // Create the styles directory and ensure it's writable.
@@ -15,7 +15,7 @@ function image_install() {
 }
 
 /**
- * Implements hook_uninstall().
+ * Implements HOOK_uninstall().
  */
 function image_uninstall() {
   // Remove the styles directory and generated images.
@@ -23,7 +23,7 @@ function image_uninstall() {
 }
 
 /**
- * Implements hook_requirements() to check the PHP GD Library.
+ * Implements HOOK_requirements() to check the PHP GD Library.
  *
  * @param $phase
  */

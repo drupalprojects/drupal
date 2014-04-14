@@ -6,7 +6,7 @@
  */
 
 /**
- * Implements hook_help().
+ * Implements HOOK_help().
  */
 function telephone_help($path, $arg) {
   switch ($path) {
@@ -26,7 +26,7 @@ function telephone_help($path, $arg) {
 }
 
 /**
- * Implements hook_field_formatter_info_alter().
+ * Implements HOOK_field_formatter_info_alter().
  */
 function telephone_field_formatter_info_alter(&$info) {
   $info['string']['field_types'][] = 'telephone';

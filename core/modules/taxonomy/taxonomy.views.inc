@@ -9,7 +9,7 @@ use Drupal\Core\Entity\ContentEntityDatabaseStorage;
 use Drupal\field\FieldConfigInterface;
 
 /**
- * Implements hook_views_data().
+ * Implements HOOK_views_data().
  */
 function taxonomy_views_data() {
   $data = array();
@@ -354,7 +354,7 @@ function taxonomy_views_data() {
 }
 
 /**
- * Implements hook_views_data_alter().
+ * Implements HOOK_views_data_alter().
  */
 function taxonomy_views_data_alter(&$data) {
   $data['node']['term_node_tid'] = array(
@@ -398,7 +398,7 @@ function taxonomy_views_data_alter(&$data) {
 }
 
 /**
- * Implements hook_field_views_data().
+ * Implements HOOK_field_views_data().
  *
  * Views integration for taxonomy_term_reference fields. Adds a term relationship to the default
  * field data.
@@ -431,7 +431,7 @@ function taxonomy_field_views_data(FieldConfigInterface $field) {
 }
 
 /**
- * Implements hook_field_views_data_views_data_alter().
+ * Implements HOOK_field_views_data_views_data_alter().
  *
  * Views integration to provide reverse relationships on term references.
  */
@@ -465,7 +465,7 @@ function taxonomy_field_views_data_views_data_alter(array &$data, FieldConfigInt
 }
 
 /**
- * Implements hook_views_plugins_argument_validator_alter().
+ * Implements HOOK_views_plugins_argument_validator_alter().
  *
  * Extend the generic entity argument validator.
  *

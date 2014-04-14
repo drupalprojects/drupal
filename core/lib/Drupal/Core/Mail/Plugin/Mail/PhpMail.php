@@ -25,7 +25,7 @@ class PhpMail implements MailInterface {
    * Concatenates and wraps the e-mail body for plain-text mails.
    *
    * @param array $message
-   *   A message array, as described in hook_mail_alter().
+   *   A message array, as described in HOOK_mail_alter().
    *
    * @return array
    *   The formatted $message.
@@ -45,7 +45,7 @@ class PhpMail implements MailInterface {
    * Sends an e-mail message.
    *
    * @param array $message
-   *   A message array, as described in hook_mail_alter().
+   *   A message array, as described in HOOK_mail_alter().
    *
    * @return bool
    *   TRUE if the mail was successfully accepted, otherwise FALSE.

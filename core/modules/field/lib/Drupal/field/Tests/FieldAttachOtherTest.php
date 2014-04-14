@@ -129,7 +129,7 @@ class FieldAttachOtherTest extends FieldUnitTestBase {
     }
     $this->assertRaw($expected_output, "Multiple formatter: all values are displayed, formatter settings are applied.");
 
-    // Test a formatter that uses hook_field_formatter_prepare_view().
+    // Test a formatter that uses HOOK_field_formatter_prepare_view().
     $entity = clone($entity_init);
     $formatter_setting = $this->randomName();
     $display->setComponent($this->field->getName(), array(

@@ -31,10 +31,10 @@ class UninstallTest extends WebTestBase {
   }
 
   /**
-   * Tests the hook_modules_uninstalled() of the user module.
+   * Tests the HOOK_modules_uninstalled() of the user module.
    */
   function testUserPermsUninstalled() {
-    // Uninstalls the module_test module, so hook_modules_uninstalled()
+    // Uninstalls the module_test module, so HOOK_modules_uninstalled()
     // is executed.
     module_uninstall(array('module_test'));
 

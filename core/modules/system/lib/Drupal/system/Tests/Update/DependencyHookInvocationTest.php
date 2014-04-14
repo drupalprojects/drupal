@@ -10,7 +10,7 @@ namespace Drupal\system\Tests\Update;
 use Drupal\simpletest\WebTestBase;
 
 /**
- * Tests the invocation of hook_update_dependencies().
+ * Tests the invocation of HOOK_update_dependencies().
  */
 class DependencyHookInvocationTest extends WebTestBase {
 
@@ -35,7 +35,7 @@ class DependencyHookInvocationTest extends WebTestBase {
   }
 
   /**
-   * Test the structure of the array returned by hook_update_dependencies().
+   * Test the structure of the array returned by HOOK_update_dependencies().
    */
   function testHookUpdateDependencies() {
     $update_dependencies = update_retrieve_dependencies();

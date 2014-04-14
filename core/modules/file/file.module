@@ -17,7 +17,7 @@ use Drupal\file\FileUsage\FileUsageInterface;
 require_once __DIR__ . '/file.field.inc';
 
 /**
- * Implements hook_help().
+ * Implements HOOK_help().
  */
 function file_help($path, $arg) {
   switch ($path) {
@@ -43,7 +43,7 @@ function file_help($path, $arg) {
 }
 
 /**
- * Implements hook_element_info().
+ * Implements HOOK_element_info().
  *
  * The managed file element may be used anywhere in Drupal.
  */
@@ -81,7 +81,7 @@ function file_element_info() {
  * @return array
  *   An array of file entities, indexed by fid.
  *
- * @see hook_file_load()
+ * @see HOOK_file_load()
  * @see file_load()
  * @see entity_load()
  * @see \Drupal\Core\Entity\Query\EntityQueryInterface
@@ -101,7 +101,7 @@ function file_load_multiple(array $fids = NULL, $reset = FALSE) {
  * @return \Drupal\file\FileInterface
  *   A file entity or NULL if the file was not found.
  *
- * @see hook_file_load()
+ * @see HOOK_file_load()
  * @see file_load_multiple()
  */
 function file_load($fid, $reset = FALSE) {
@@ -154,7 +154,7 @@ function file_usage() {
  *   File object if the copy is successful, or FALSE in the event of an error.
  *
  * @see file_unmanaged_copy()
- * @see hook_file_copy()
+ * @see HOOK_file_copy()
  */
 function file_copy(File $source, $destination = NULL, $replace = FILE_EXISTS_RENAME) {
   if (!file_valid_uri($destination)) {
@@ -217,7 +217,7 @@ function file_copy(File $source, $destination = NULL, $replace = FILE_EXISTS_REN
  *   Replace behavior when the destination file already exists:
  *   - FILE_EXISTS_REPLACE - Replace the existing file. If a managed file with
  *       the destination name exists then its database entry will be updated and
- *       $source->delete() called after invoking hook_file_move().
+ *       $source->delete() called after invoking HOOK_file_move().
  *       If no database entry is found then the source files record will be
  *       updated.
  *   - FILE_EXISTS_RENAME - Append _{incrementing number} until the filename is
@@ -228,7 +228,7 @@ function file_copy(File $source, $destination = NULL, $replace = FILE_EXISTS_REN
  *   Resulting file entity for success, or FALSE in the event of an error.
  *
  * @see file_unmanaged_move()
- * @see hook_file_move()
+ * @see HOOK_file_move()
  */
 function file_move(File $source, $destination = NULL, $replace = FILE_EXISTS_RENAME) {
   if (!file_valid_uri($destination)) {
@@ -280,7 +280,7 @@ function file_move(File $source, $destination = NULL, $replace = FILE_EXISTS_REN
 /**
  * Checks that a file meets the criteria specified by the validators.
  *
- * After executing the validator callbacks specified hook_file_validate() will
+ * After executing the validator callbacks specified HOOK_file_validate() will
  * also be called to allow other modules to report errors about the file.
  *
  * @param \Drupal\file\File $file
@@ -296,7 +296,7 @@ function file_move(File $source, $destination = NULL, $replace = FILE_EXISTS_REN
  * @return
  *   An array containing validation error messages.
  *
- * @see hook_file_validate()
+ * @see HOOK_file_validate()
  */
 function file_validate(File $file, $validators = array()) {
   // Call the validation functions specified by this function's caller.
@@ -345,7 +345,7 @@ function file_validate_name_length(File $file) {
  *   An array. If the file extension is not allowed, it will contain an error
  *   message.
  *
- * @see hook_file_validate()
+ * @see HOOK_file_validate()
  */
 function file_validate_extensions(File $file, $extensions) {
   $errors = array();
@@ -373,7 +373,7 @@ function file_validate_extensions(File $file, $extensions) {
  *   An array. If the file size exceeds limits, it will contain an error
  *   message.
  *
- * @see hook_file_validate()
+ * @see HOOK_file_validate()
  */
 function file_validate_size(File $file, $file_limit = 0, $user_limit = 0) {
   $user = \Drupal::currentUser();
@@ -400,7 +400,7 @@ function file_validate_size(File $file, $file_limit = 0, $user_limit = 0) {
  * @return
  *   An array. If the file is not an image, it will contain an error message.
  *
- * @see hook_file_validate()
+ * @see HOOK_file_validate()
  */
 function file_validate_is_image(File $file) {
   $errors = array();
@@ -439,7 +439,7 @@ function file_validate_is_image(File $file) {
  *   An array. If the file is an image and did not meet the requirements, it
  *   will contain an error message.
  *
- * @see hook_file_validate()
+ * @see HOOK_file_validate()
  */
 function file_validate_image_resolution(File $file, $maximum_dimensions = 0, $minimum_dimensions = 0) {
   $errors = array();
@@ -562,7 +562,7 @@ function file_get_content_headers(File $file) {
 }
 
 /**
- * Implements hook_theme().
+ * Implements HOOK_theme().
  */
 function file_theme() {
   return array(
@@ -594,7 +594,7 @@ function file_theme() {
 }
 
 /**
- * Implements hook_file_download().
+ * Implements HOOK_file_download().
  *
  * This function takes an extra parameter $field_type so that it may
  * be re-used by other File-like modules, such as Image.
@@ -991,14 +991,14 @@ function file_progress_implementation() {
 }
 
 /**
- * Implements hook_file_predelete().
+ * Implements HOOK_file_predelete().
  */
 function file_file_predelete(File $file) {
   // TODO: Remove references to a file that is in-use.
 }
 
 /**
- * Implements hook_tokens().
+ * Implements HOOK_tokens().
  */
 function file_tokens($type, $tokens, array $data = array(), array $options = array()) {
   $token_service = \Drupal::token();
@@ -1080,7 +1080,7 @@ function file_tokens($type, $tokens, array $data = array(), array $options = arr
 }
 
 /**
- * Implements hook_token_info().
+ * Implements HOOK_token_info().
  */
 function file_token_info() {
   $types['file'] = array(
@@ -1944,7 +1944,7 @@ function file_get_file_references(File $file, $field = NULL, $age = EntityStorag
  */
 
 /**
- * Implements hook_permission().
+ * Implements HOOK_permission().
  */
 function file_permission() {
   $perms = array(

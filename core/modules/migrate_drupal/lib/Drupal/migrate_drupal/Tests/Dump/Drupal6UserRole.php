@@ -35,7 +35,7 @@ class Drupal6UserRole extends Drupal6DumpBase {
    * Defines schema for this database dump.
    *
    * @return array
-   *   Associative array having the structure as is returned by hook_schema().
+   *   Associative array having the structure as is returned by HOOK_schema().
    */
   protected static function getSchema() {
     return array(

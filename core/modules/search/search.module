@@ -63,7 +63,7 @@ define('PREG_CLASS_CJK', '\x{1100}-\x{11FF}\x{3040}-\x{309F}\x{30A1}-\x{318E}' .
   '\x{20000}-\x{2FFFD}\x{30000}-\x{3FFFD}');
 
 /**
- * Implements hook_help().
+ * Implements HOOK_help().
  */
 function search_help($path, $arg) {
   switch ($path) {
@@ -99,7 +99,7 @@ function search_help($path, $arg) {
 }
 
 /**
- * Implements hook_theme().
+ * Implements HOOK_theme().
  */
 function search_theme() {
   return array(
@@ -112,7 +112,7 @@ function search_theme() {
 }
 
 /**
- * Implements hook_permission().
+ * Implements HOOK_permission().
  */
 function search_permission() {
   return array(
@@ -129,7 +129,7 @@ function search_permission() {
 }
 
 /**
- * Implements hook_preprocess_HOOK() for block templates.
+ * Implements HOOK_preprocess_HOOK() for block templates.
  */
 function search_preprocess_block(&$variables) {
   if ($variables['plugin_id'] == 'search_form_block') {
@@ -196,7 +196,7 @@ function search_dirty($word = NULL) {
 }
 
 /**
- * Implements hook_cron().
+ * Implements HOOK_cron().
  *
  * Fires updateIndex() in the plugins for all indexable active search pages,
  * and cleans up dirty words.
@@ -257,7 +257,7 @@ function search_update_totals() {
  * @return
  *   Simplified text.
  *
- * @see hook_search_preprocess()
+ * @see HOOK_search_preprocess()
  */
 function search_simplify($text, $langcode = NULL) {
   // Decode entities to UTF-8
@@ -381,7 +381,7 @@ function _search_index_truncate(&$text) {
 }
 
 /**
- * Invokes hook_search_preprocess() in modules.
+ * Invokes HOOK_search_preprocess() in modules.
  */
 function search_invoke_preprocess(&$text, $langcode = NULL) {
   foreach (\Drupal::moduleHandler()->getImplementations('search_preprocess') as $module) {
@@ -557,7 +557,7 @@ function search_mark_for_reindex($type, $sid) {
  *
  * There are three ways to interact with the search system:
  * - Specifically for searching nodes, you can implement
- *   hook_node_update_index() and hook_node_search_result(). However, note that
+ *   HOOK_node_update_index() and HOOK_node_search_result(). However, note that
  *   the search system already indexes all visible output of a node; i.e.,
  *   everything displayed normally during node viewing. This is
  *   usually sufficient. You should only use this mechanism if you want
@@ -809,7 +809,7 @@ function _search_find_match_with_simplify($key, $text, $boundary, $langcode = NU
 }
 
 /**
- * Implements hook_module_preinstall().
+ * Implements HOOK_module_preinstall().
  */
 function search_module_preinstall() {
   // @todo Remove in https://drupal.org/node/2155635.

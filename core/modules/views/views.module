@@ -23,7 +23,7 @@ use Drupal\views\Views;
 use Drupal\field\FieldInstanceConfigInterface;
 
 /**
- * Implements hook_help().
+ * Implements HOOK_help().
  */
 function views_help($path, $arg) {
   switch($path) {
@@ -45,7 +45,7 @@ function views_help($path, $arg) {
 }
 
 /**
- * Implements hook_element_info().
+ * Implements HOOK_element_info().
  */
 function views_element_info() {
   $types['view'] = array(
@@ -59,7 +59,7 @@ function views_element_info() {
 }
 
 /**
- * Implements hook_views_pre_render().
+ * Implements HOOK_views_pre_render().
  */
 function views_views_pre_render($view) {
   // If using AJAX, send identifying data about this view.
@@ -104,7 +104,7 @@ function views_pre_render_view_element($element) {
 }
 
 /**
- * Implements hook_theme().
+ * Implements HOOK_theme().
  *
  * Register views theming functions and those that are defined via views plugin
  * definitions.
@@ -196,7 +196,7 @@ function views_theme($existing, $type, $theme, $path) {
      // a template file shall be used. By default this file is located in the
      // /templates directory of the module's folder.
      // If a module wants to define its own location it has to set
-     // register_theme of the plugin to FALSE and implement hook_theme() by
+     // register_theme of the plugin to FALSE and implement HOOK_theme() by
      // itself.
       if (!function_exists('theme_' . $def['theme'])) {
         $hooks[$def['theme']]['path'] = $module_dir;
@@ -253,7 +253,7 @@ function views_preprocess_node(&$variables) {
 }
 
 /**
- * Implements hook_theme_suggestions_HOOK_alter().
+ * Implements HOOK_theme_suggestions_HOOK_alter().
  */
 function views_theme_suggestions_node_alter(array &$suggestions, array $variables) {
   $node = $variables['elements']['#node'];
@@ -278,7 +278,7 @@ function views_preprocess_comment(&$variables) {
 }
 
 /**
- * Implements hook_theme_suggestions_HOOK_alter().
+ * Implements HOOK_theme_suggestions_HOOK_alter().
  */
 function views_theme_suggestions_comment_alter(array &$suggestions, array $variables) {
   $comment = $variables['elements']['#comment'];
@@ -291,7 +291,7 @@ function views_theme_suggestions_comment_alter(array &$suggestions, array $varia
 }
 
 /**
- * Implements hook_permission().
+ * Implements HOOK_permission().
  */
 function views_permission() {
   return array(
@@ -304,12 +304,12 @@ function views_permission() {
 }
 
 /**
- * Implements hook_menu_link_defaults_alter().
+ * Implements HOOK_menu_link_defaults_alter().
  */
 function views_menu_link_defaults_alter(array &$links) {
   // @todo Decide what to do with all the crazy logic in views_menu_alter() in
   // https://drupal.org/node/2107533.
-  $views = Views::getApplicableViews('uses_hook_menu');
+  $views = Views::getApplicableViews('uses_HOOK_menu');
   foreach ($views as $data) {
     /** @var \Drupal\views\ViewExecutable $view */
     list($view, $display_id) = $data;
@@ -321,7 +321,7 @@ function views_menu_link_defaults_alter(array &$links) {
 }
 
 /**
- * Implements hook_page_alter().
+ * Implements HOOK_page_alter().
  */
 function views_page_alter(&$page) {
   // If the main content of this page contains a view, attach its contextual
@@ -524,7 +524,7 @@ function views_language_list($field = 'name', $flags = Language::STATE_ALL) {
 }
 
 /**
- * Implements hook_ENTITY_TYPE_create() for 'field_instance_config'.
+ * Implements HOOK_ENTITY_TYPE_create() for 'field_instance_config'.
  */
 function views_field_instance_config_create(FieldInstanceConfigInterface $field_instance) {
   // @todo: Is this necessary? Use cache tags to only delete Views' cache data?
@@ -532,7 +532,7 @@ function views_field_instance_config_create(FieldInstanceConfigInterface $field_
 }
 
 /**
- * Implements hook_ENTITY_TYPE_update() for 'field_instance_config'.
+ * Implements HOOK_ENTITY_TYPE_update() for 'field_instance_config'.
  */
 function views_field_instance_config_update(FieldInstanceConfigInterface $field_instance) {
   Cache::deleteTags(array('extension' => 'views'));
@@ -540,7 +540,7 @@ function views_field_instance_config_update(FieldInstanceConfigInterface $field_
 }
 
 /**
- * Implements hook_ENTITY_TYPE_delete() for 'field_instance_config'.
+ * Implements HOOK_ENTITY_TYPE_delete() for 'field_instance_config'.
  */
 function views_field_instance_config_delete(FieldInstanceConfigInterface $field_instance) {
   Cache::deleteTags(array('extension' => 'views'));
@@ -626,9 +626,9 @@ function &views_get_current_view() {
 }
 
 /**
- * Implements hook_hook_info().
+ * Implements HOOK_HOOK_info().
  */
-function views_hook_info() {
+function views_HOOK_info() {
   $hooks = array();
 
   $hooks += array_fill_keys(array(
@@ -729,7 +729,7 @@ function views_get_enabled_display_extenders() {
  * setting in their display's plugin settings.
  *
  * @param string $type
- *   A flag from the display plugin definitions (e.g, 'uses_hook_menu').
+ *   A flag from the display plugin definitions (e.g, 'uses_HOOK_menu').
  *
  * @return array
  *   A list of arrays containing the $view and $display_id.
@@ -894,7 +894,7 @@ function views_pre_render_views_form_views_form($element) {
     $search[] = $substitution['placeholder'];
     $replace[] = isset($element[$field_name][$row_id]) ? drupal_render($element[$field_name][$row_id]) : '';
   }
-  // Add in substitutions from hook_views_form_substitutions().
+  // Add in substitutions from HOOK_views_form_substitutions().
   $substitutions = \Drupal::moduleHandler()->invokeAll('views_form_substitutions');
   foreach ($substitutions as $placeholder => $substitution) {
     $search[] = $placeholder;
@@ -911,7 +911,7 @@ function views_pre_render_views_form_views_form($element) {
 }
 
 /**
- * Implement hook_form_alter for the exposed form.
+ * Implement HOOK_form_alter for the exposed form.
  *
  * Since the exposed form is a GET form, we don't want it to send a wide
  * variety of information.
@@ -923,10 +923,10 @@ function views_form_views_exposed_form_alter(&$form, &$form_state) {
 }
 
 /**
- * Implements hook_query_TAG_alter().
+ * Implements HOOK_query_TAG_alter().
  *
- * This is the hook_query_alter() for queries tagged by Views and is used to
- * add in substitutions from hook_views_query_substitutions().
+ * This is the HOOK_query_alter() for queries tagged by Views and is used to
+ * add in substitutions from HOOK_views_query_substitutions().
  */
 function views_query_views_alter(AlterableInterface $query) {
   $substitutions = $query->getMetaData('views_substitutions');
@@ -1078,7 +1078,7 @@ function views_element_validate_tags($element, &$form_state) {
 }
 
 /**
- * Implements hook_local_tasks_alter().
+ * Implements HOOK_local_tasks_alter().
  */
 function views_local_tasks_alter(&$local_tasks) {
   $container = \Drupal::getContainer();

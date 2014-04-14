@@ -153,7 +153,7 @@ function locale_translation_build_sources($projects = array(), $langcodes = arra
  * po file we are looking for. The file name defaults to
  * %project-%version.%language.po. Per project this value can be overridden
  * using the server_pattern directive in the module's .info.yml file or by using
- * hook_locale_translation_projects_alter().
+ * HOOK_locale_translation_projects_alter().
  *
  * @param object $source
  *   Translation source object.

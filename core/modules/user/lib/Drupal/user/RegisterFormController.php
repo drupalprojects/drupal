@@ -33,7 +33,7 @@ class RegisterFormController extends AccountFormController {
     $admin = $user->hasPermission('administer users');
     // Pass access information to the submit handler. Running an access check
     // inside the submit function interferes with form processing and breaks
-    // hook_form_alter().
+    // HOOK_form_alter().
     $form['administer_users'] = array(
       '#type' => 'value',
       '#value' => $admin,

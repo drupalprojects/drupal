@@ -100,7 +100,7 @@ class Date {
    *     'long', 'html_datetime', 'html_date', 'html_time',
    *     'html_yearless_date', 'html_week', 'html_month', 'html_year'.
    *   - The name of a date type defined by a module in
-   *     hook_date_format_types(), if it's been assigned a format.
+   *     HOOK_date_format_types(), if it's been assigned a format.
    *   - The machine name of an administrator-defined date format.
    *   - 'custom', to use $format.
    *   Defaults to 'medium'.

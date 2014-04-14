@@ -9,14 +9,14 @@ use Drupal\Component\Uuid\Uuid;
 use Drupal\Core\Language\Language;
 
 /**
- * Implements hook_requirements().
+ * Implements HOOK_requirements().
  */
 function node_requirements($phase) {
   $requirements = array();
   if ($phase === 'runtime') {
     // Only show rebuild button if there are either 0, or 2 or more, rows
     // in the {node_access} table, or if there are modules that
-    // implement hook_node_grants().
+    // implement HOOK_node_grants().
     $grant_count = \Drupal::entityManager()->getAccessController('node')->countGrants();
     if ($grant_count != 1 || count(\Drupal::moduleHandler()->getImplementations('node_grants')) > 0) {
       $value = format_plural($grant_count, 'One permission in use', '@count permissions in use', array('@count' => $grant_count));
@@ -36,7 +36,7 @@ function node_requirements($phase) {
 }
 
 /**
- * Implements hook_schema().
+ * Implements HOOK_schema().
  */
 function node_schema() {
   $schema['node'] = array(
@@ -420,12 +420,12 @@ function node_schema() {
 }
 
 /**
- * Implements hook_install().
+ * Implements HOOK_install().
  */
 function node_install() {
   // Enable default permissions for system roles.
   // IMPORTANT: Modules SHOULD NOT automatically grant any user role access
-  // permissions in hook_install().
+  // permissions in HOOK_install().
   // However, the 'access content' permission is a very special case, since
   // there is hardly a point in installing the Node module without granting
   // these permissions. Doing so also allows tests to continue to operate as
@@ -449,7 +449,7 @@ function node_install() {
 }
 
 /**
- * Implements hook_uninstall().
+ * Implements HOOK_uninstall().
  *
  * @see node_ranking()
  * @see _node_rankings()
