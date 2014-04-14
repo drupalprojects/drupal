@@ -597,7 +597,7 @@ function update_get_update_function_list($starting_updates) {
  * The function takes into account standard dependencies within each module, as
  * shown above (i.e., the fact that each module's updates must run in numerical
  * order), but also finds any cross-module dependencies that are defined by
- * modules which implement hook_update_dependencies(), and builds them into the
+ * modules which implement HOOK_update_dependencies(), and builds them into the
  * graph as well.
  *
  * @param $update_functions
@@ -697,7 +697,7 @@ function update_already_performed($module, $number) {
 }
 
 /**
- * Invokes hook_update_dependencies() in all installed modules.
+ * Invokes HOOK_update_dependencies() in all installed modules.
  *
  * This function is similar to \Drupal::moduleHandler()->invokeAll(), with the
  * main difference that it does not require that a module be enabled to invoke
@@ -706,10 +706,10 @@ function update_already_performed($module, $number) {
  *
  * @return
  *   An array of return values obtained by merging the results of the
- *   hook_update_dependencies() implementations in all installed modules.
+ *   HOOK_update_dependencies() implementations in all installed modules.
  *
  * @see \Drupal::moduleHandler()->invokeAll()
- * @see hook_update_dependencies()
+ * @see HOOK_update_dependencies()
  */
 function update_retrieve_dependencies() {
   $return = array();
@@ -725,7 +725,7 @@ function update_retrieve_dependencies() {
     module_load_install($module);
     if (function_exists($function)) {
       $result = $function();
-      // Each implementation of hook_update_dependencies() returns a
+      // Each implementation of HOOK_update_dependencies() returns a
       // multidimensional, associative array containing some keys that
       // represent module names (which are strings) and other keys that
       // represent update function numbers (which are integers). We cannot use
@@ -742,7 +742,7 @@ function update_retrieve_dependencies() {
               // one update from a particular module), record the dependency on
               // the highest numbered update here, since that automatically
               // implies the previous ones. For example, if one module's
-              // implementation of hook_update_dependencies() required this
+              // implementation of HOOK_update_dependencies() required this
               // ordering:
               //
               // system_update_8002 ---> user_update_8001

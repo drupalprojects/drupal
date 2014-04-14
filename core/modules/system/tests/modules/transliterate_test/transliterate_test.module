@@ -6,7 +6,7 @@
  */
 
 /**
- * Implements hook_transliteration_overrides_alter().
+ * Implements HOOK_transliteration_overrides_alter().
  */
 function transliterate_test_transliteration_overrides_alter(&$overrides, $langcode) {
   if ($langcode == 'zz') {

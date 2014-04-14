@@ -6,7 +6,7 @@
  */
 
 /**
- * Implements hook_install().
+ * Implements HOOK_install().
  */
 function syslog_install() {
   // The default facility setting depends on the operating system, so it needs

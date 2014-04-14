@@ -909,7 +909,7 @@ class EntityManagerTest extends UnitTestCase {
     $entity_type_id = $this->randomName();
     $bundle = $this->randomName();
     $language_code = 'en';
-    $hook_bundle_extra_fields = array(
+    $HOOK_bundle_extra_fields = array(
       $entity_type_id => array(
         $bundle => array(
           'form' => array(
@@ -920,7 +920,7 @@ class EntityManagerTest extends UnitTestCase {
         ),
       ),
     );
-    $processed_hook_bundle_extra_fields = $hook_bundle_extra_fields;
+    $processed_hook_bundle_extra_fields = $HOOK_bundle_extra_fields;
     $processed_hook_bundle_extra_fields[$entity_type_id][$bundle] += array(
       'display' => array(),
     );
@@ -940,10 +940,10 @@ class EntityManagerTest extends UnitTestCase {
     $this->moduleHandler->expects($this->once())
       ->method('invokeAll')
       ->with('entity_extra_field_info')
-      ->will($this->returnValue($hook_bundle_extra_fields));
+      ->will($this->returnValue($HOOK_bundle_extra_fields));
     $this->moduleHandler->expects($this->once())
       ->method('alter')
-      ->with('entity_extra_field_info', $hook_bundle_extra_fields);
+      ->with('entity_extra_field_info', $HOOK_bundle_extra_fields);
 
     $this->cache->expects($this->once())
       ->method('set')

@@ -49,8 +49,8 @@ use Drupal\Core\Extension\ModuleHandlerInterface;
  * node, and 'mail' is a placeholder available for any 'user'.
  *
  * @see Token::replace()
- * @see hook_tokens()
- * @see hook_token_info()
+ * @see HOOK_tokens()
+ * @see HOOK_token_info()
  */
 class Token {
 
@@ -210,8 +210,8 @@ class Token {
    *   tokens that were found in the source text. For example:
    *   $results['[node:title]'] = 'My new node';
    *
-   * @see hook_tokens()
-   * @see hook_tokens_alter()
+   * @see HOOK_tokens()
+   * @see HOOK_tokens_alter()
    */
   public function generate($type, array $tokens, array $data = array(), array $options = array()) {
     $options += array('sanitize' => TRUE);
@@ -276,9 +276,9 @@ class Token {
    *
    * @return array
    *   An associative array of token information, grouped by token type. The
-   *   array structure is identical to that of hook_token_info().
+   *   array structure is identical to that of HOOK_token_info().
    *
-   * @see hook_token_info()
+   * @see HOOK_token_info()
    */
   public function getInfo() {
     if (is_null($this->tokenInfo)) {
@@ -294,9 +294,9 @@ class Token {
    *
    * @param array $tokens
    *   Token metadata that has an identical structure to the return value of
-   *   hook_token_info().
+   *   HOOK_token_info().
    *
-   * @see hook_token_info()
+   * @see HOOK_token_info()
    */
   public function setInfo(array $tokens) {
     $this->tokenInfo = $tokens;

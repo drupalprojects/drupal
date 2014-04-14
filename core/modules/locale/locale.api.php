@@ -59,7 +59,7 @@
  * properties in their .info.yml file too.
  *
  * To change the interface translation settings of modules and themes hosted at
- * drupal.org use hook_locale_translation_projects_alter(). Possible changes
+ * drupal.org use HOOK_locale_translation_projects_alter(). Possible changes
  * include changing the po file location (server pattern) or removing the
  * project from the translation update list.
  *
@@ -111,7 +111,7 @@
  *
  * @see locale_translation_project_list().
  */
-function hook_locale_translation_projects_alter(&$projects) {
+function HOOK_locale_translation_projects_alter(&$projects) {
   // The translations are located at a custom translation sever.
   $projects['existing_project'] = array(
     'info' => array(

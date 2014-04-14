@@ -14,7 +14,7 @@
 use Drupal\Core\Database\Database;
 
 /**
- * Implements hook_help().
+ * Implements HOOK_help().
  */
 function dblog_help($path, $arg) {
   switch ($path) {
@@ -36,7 +36,7 @@ function dblog_help($path, $arg) {
 }
 
 /**
- * Implements hook_menu_link_defaults_alter().
+ * Implements HOOK_menu_link_defaults_alter().
  */
 function dblog_menu_link_defaults_alter(&$links) {
   if (\Drupal::moduleHandler()->moduleExists('search')) {
@@ -52,7 +52,7 @@ function dblog_menu_link_defaults_alter(&$links) {
 }
 
 /**
- * Implements hook_page_build().
+ * Implements HOOK_page_build().
  */
 function dblog_page_build(&$page) {
   if (arg(0) == 'admin' && arg(1) == 'reports') {
@@ -61,7 +61,7 @@ function dblog_page_build(&$page) {
 }
 
 /**
- * Implements hook_cron().
+ * Implements HOOK_cron().
  *
  * Controls the size of the log table, paring it to 'dblog_row_limit' messages.
  */
@@ -106,7 +106,7 @@ function _dblog_get_message_types() {
 }
 
 /**
- * Implements hook_watchdog().
+ * Implements HOOK_watchdog().
  *
  * Note: Some values may be truncated to meet database column size restrictions.
  */
@@ -131,7 +131,7 @@ function dblog_watchdog(array $log_entry) {
 }
 
 /**
- * Implements hook_form_FORM_ID_alter() for system_logging_settings().
+ * Implements HOOK_form_FORM_ID_alter() for system_logging_settings().
  */
 function dblog_form_system_logging_settings_alter(&$form, $form_state) {
   $row_limits = array(100, 1000, 10000, 100000, 1000000);

@@ -1179,7 +1179,7 @@ function watchdog_exception($type, Exception $exception, $message = NULL, $varia
  *   A link to associate with the message.
  *
  * @see watchdog_severity_levels()
- * @see hook_watchdog()
+ * @see HOOK_watchdog()
  */
 function watchdog($type, $message, array $variables = NULL, $severity = WATCHDOG_NOTICE, $link = NULL) {
   global $user, $base_root;
@@ -1742,7 +1742,7 @@ function module_invoke_all($hook) {
 }
 
 /**
- * Passes alterable variables to specific hook_TYPE_alter() implementations.
+ * Passes alterable variables to specific HOOK_TYPE_alter() implementations.
  *
  * @deprecated in Drupal 8.x-dev, will be removed before Drupal 8.0.
  *   Use \Drupal::moduleHandler()->alter($hook).

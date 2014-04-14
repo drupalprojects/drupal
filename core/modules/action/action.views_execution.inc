@@ -8,7 +8,7 @@
 use Drupal\Component\Utility\String;
 
 /**
- * Implements hook_views_form_substitutions().
+ * Implements HOOK_views_form_substitutions().
  */
 function action_views_form_substitutions() {
   // Views String::checkPlain()s the column label, so we need to match that.

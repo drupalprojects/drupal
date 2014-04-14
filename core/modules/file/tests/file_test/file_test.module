@@ -14,7 +14,7 @@ const FILE_URL_TEST_CDN_1 = 'http://cdn1.example.com';
 const FILE_URL_TEST_CDN_2 = 'http://cdn2.example.com';
 
 /**
- * Implements hook_stream_wrappers().
+ * Implements HOOK_stream_wrappers().
  */
 function file_test_stream_wrappers() {
   return array(
@@ -69,7 +69,7 @@ function file_test_reset() {
  * file_test_reset() was last called.
  *
  * @param $op
- *   One of the hook_file_* operations: 'load', 'validate', 'download',
+ *   One of the HOOK_file_* operations: 'load', 'validate', 'download',
  *   'insert', 'update', 'copy', 'move', 'delete'.
  *
  * @return
@@ -99,7 +99,7 @@ function file_test_get_all_calls() {
  * Store the values passed to a hook invocation.
  *
  * @param $op
- *   One of the hook_file_* operations: 'load', 'validate', 'download',
+ *   One of the HOOK_file_* operations: 'load', 'validate', 'download',
  *   'insert', 'update', 'copy', 'move', 'delete'.
  * @param $args
  *   Values passed to hook.
@@ -117,7 +117,7 @@ function _file_test_log_call($op, $args) {
  * Load the appropriate return value.
  *
  * @param $op
- *   One of the hook_file_[validate,download] operations.
+ *   One of the HOOK_file_[validate,download] operations.
  *
  * @return
  *   Value set by file_test_set_return().
@@ -134,7 +134,7 @@ function _file_test_get_return($op) {
  * Assign a return value for a given operation.
  *
  * @param $op
- *   One of the hook_file_[validate,download] operations.
+ *   One of the HOOK_file_[validate,download] operations.
  * @param $value
  *   Value for the hook to return.
  *
@@ -148,7 +148,7 @@ function file_test_set_return($op, $value) {
 }
 
 /**
- * Implements hook_file_load().
+ * Implements HOOK_file_load().
  */
 function file_test_file_load($files) {
   foreach ($files as $file) {
@@ -160,7 +160,7 @@ function file_test_file_load($files) {
 }
 
 /**
- * Implements hook_file_validate().
+ * Implements HOOK_file_validate().
  */
 function file_test_file_validate(File $file) {
   _file_test_log_call('validate', array($file->id()));
@@ -168,7 +168,7 @@ function file_test_file_validate(File $file) {
 }
 
 /**
- * Implements hook_file_download().
+ * Implements HOOK_file_download().
  */
 function file_test_file_download($uri) {
   _file_test_log_call('download', array($uri));
@@ -176,47 +176,47 @@ function file_test_file_download($uri) {
 }
 
 /**
- * Implements hook_file_insert().
+ * Implements HOOK_file_insert().
  */
 function file_test_file_insert(File $file) {
   _file_test_log_call('insert', array($file->id()));
 }
 
 /**
- * Implements hook_file_update().
+ * Implements HOOK_file_update().
  */
 function file_test_file_update(File $file) {
   _file_test_log_call('update', array($file->id()));
 }
 
 /**
- * Implements hook_file_copy().
+ * Implements HOOK_file_copy().
  */
 function file_test_file_copy(File $file, $source) {
   _file_test_log_call('copy', array($file->id(), $source->id()));
 }
 
 /**
- * Implements hook_file_move().
+ * Implements HOOK_file_move().
  */
 function file_test_file_move(File $file, File $source) {
   _file_test_log_call('move', array($file->id(), $source->id()));
 }
 
 /**
- * Implements hook_file_predelete().
+ * Implements HOOK_file_predelete().
  */
 function file_test_file_predelete(File $file) {
   _file_test_log_call('delete', array($file->id()));
 }
 
 /**
- * Implements hook_file_url_alter().
+ * Implements HOOK_file_url_alter().
  */
 function file_test_file_url_alter(&$uri) {
   // Only run this hook when this variable is set. Otherwise, we'd have to add
   // another hidden test module just for this hook.
-  $alter_mode = \Drupal::state()->get('file_test.hook_file_url_alter');
+  $alter_mode = \Drupal::state()->get('file_test.HOOK_file_url_alter');
   if (!$alter_mode) {
     return;
   }
@@ -305,7 +305,7 @@ function file_test_file_url_alter(&$uri) {
 }
 
 /**
- * Implements hook_file_mimetype_mapping_alter().
+ * Implements HOOK_file_mimetype_mapping_alter().
  */
 function file_test_file_mimetype_mapping_alter(&$mapping) {
   // Add new mappings.

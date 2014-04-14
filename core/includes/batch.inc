@@ -147,7 +147,7 @@ function _batch_progress_page() {
   }
 
   // Merge required query parameters for batch processing into those provided by
-  // batch_set() or hook_batch_alter().
+  // batch_set() or HOOK_batch_alter().
   $batch['url_options']['query']['id'] = $batch['id'];
   $batch['url_options']['query']['op'] = $new_op;
 

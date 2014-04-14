@@ -127,7 +127,7 @@ class CacheTest extends PluginTestBase {
    */
   function testHeaderStorage() {
     // Create a view with output caching enabled.
-    // Some hook_views_pre_render in views_test_data.module adds the test css/js file.
+    // Some HOOK_views_pre_render in views_test_data.module adds the test css/js file.
     // so they should be added to the css/js storage.
     $view = Views::getView('test_view');
     $view->setDisplay();
@@ -156,7 +156,7 @@ class CacheTest extends PluginTestBase {
 
     $this->assertTrue(isset($css[basename($css_path)]), 'Make sure the css is added for cached views.');
     $this->assertTrue(isset($js[$js_path]), 'Make sure the js is added for cached views.');
-    $this->assertFalse(!empty($view->build_info['pre_render_called']), 'Make sure hook_views_pre_render is not called for the cached view.');
+    $this->assertFalse(!empty($view->build_info['pre_render_called']), 'Make sure HOOK_views_pre_render is not called for the cached view.');
 
     // Now add some css/jss before running the view.
     // Make sure that this css is not added when running the cached view.

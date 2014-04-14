@@ -6,7 +6,7 @@
  */
 
 /**
- * Implements hook_views_data_alter().
+ * Implements HOOK_views_data_alter().
  */
 function contextual_views_data_alter(&$data) {
   $data['views']['contextual_links'] = array(

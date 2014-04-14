@@ -6,7 +6,7 @@
  */
 
 /**
- * Implements hook_views_data().
+ * Implements HOOK_views_data().
  */
 function forum_views_data() {
 

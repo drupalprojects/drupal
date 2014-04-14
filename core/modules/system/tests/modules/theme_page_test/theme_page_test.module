@@ -3,7 +3,7 @@
 use Drupal\Core\Extension\Extension;
 
 /**
- * Implements hook_system_info_alter().
+ * Implements HOOK_system_info_alter().
  */
 function theme_page_test_system_info_alter(&$info, Extension $file, $type) {
   // Make sure that all themes are visible on the Appearance form.

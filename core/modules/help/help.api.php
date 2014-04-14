@@ -13,7 +13,7 @@
 /**
  * Provide online user help.
  *
- * By implementing hook_help(), a module can make documentation available to
+ * By implementing HOOK_help(), a module can make documentation available to
  * the user for the module as a whole, or for specific paths.  Help for
  * developers should usually be provided via function header comments in the
  * code, or in special API example files.
@@ -21,10 +21,10 @@
  * For a detailed usage example, see page_example.module.
  *
  * @param $path
- *   The router menu path, as defined in hook_menu(), for the help that is
+ *   The router menu path, as defined in HOOK_menu(), for the help that is
  *   being requested; e.g., 'admin/people' or 'user/register'.  If the router
  *   path includes a wildcard, then this will appear in $path as %, even if it
- *   is a named %autoloader wildcard in the hook_menu() implementation; for
+ *   is a named %autoloader wildcard in the HOOK_menu() implementation; for
  *   example, node pages would have $path equal to 'node/%' or 'node/%/view'.
  *   To provide a help page for a whole module with a listing on admin/help,
  *   your hook implementation should match a path with a special descriptor
@@ -40,13 +40,13 @@
  *   array should always be used rather than directly invoking arg(), because
  *   your hook implementation may be called for other purposes besides building
  *   the current page's help. Note that depending on which module is invoking
- *   hook_help, $arg may contain only empty strings. Regardless, $arg[0] to
+ *   HOOK_help, $arg may contain only empty strings. Regardless, $arg[0] to
  *   $arg[11] will always be set.
  *
  * @return
  *   A localized string containing the help text.
  */
-function hook_help($path, $arg) {
+function HOOK_help($path, $arg) {
   switch ($path) {
     // Main module help for the block module.
     case 'admin/help#block':

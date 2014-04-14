@@ -12,7 +12,7 @@ use Drupal\Core\Entity\Display\EntityViewDisplayInterface;
 use Drupal\node\NodeInterface;
 
 /**
- * Implements hook_node_view().
+ * Implements HOOK_node_view().
  */
 function node_test_node_view(NodeInterface $node, EntityViewDisplayInterface $display, $view_mode) {
   if ($view_mode == 'rss') {
@@ -39,7 +39,7 @@ function node_test_node_view(NodeInterface $node, EntityViewDisplayInterface $di
 }
 
 /**
- * Implements hook_node_grants().
+ * Implements HOOK_node_grants().
  */
 function node_test_node_grants($account, $op) {
   // Give everyone full grants so we don't break other node tests.
@@ -53,7 +53,7 @@ function node_test_node_grants($account, $op) {
 }
 
 /**
- * Implements hook_node_access_records().
+ * Implements HOOK_node_access_records().
  */
 function node_test_node_access_records(NodeInterface $node) {
   // Return nothing when testing for empty responses.
@@ -87,7 +87,7 @@ function node_test_node_access_records(NodeInterface $node) {
 }
 
 /**
- * Implements hook_node_access_records_alter().
+ * Implements HOOK_node_access_records_alter().
  */
 function node_test_node_access_records_alter(&$grants, NodeInterface $node) {
   if (!empty($grants)) {
@@ -102,7 +102,7 @@ function node_test_node_access_records_alter(&$grants, NodeInterface $node) {
 }
 
 /**
- * Implements hook_node_grants_alter().
+ * Implements HOOK_node_grants_alter().
  */
 function node_test_node_grants_alter(&$grants, $account, $op) {
   // Return an empty array of grants to prove that we can alter by reference.
@@ -110,7 +110,7 @@ function node_test_node_grants_alter(&$grants, $account, $op) {
 }
 
 /**
- * Implements hook_node_presave().
+ * Implements HOOK_node_presave().
  */
 function node_test_node_presave(NodeInterface $node) {
   if ($node->getTitle() == 'testing_node_presave') {
@@ -128,7 +128,7 @@ function node_test_node_presave(NodeInterface $node) {
 }
 
 /**
- * Implements hook_node_update().
+ * Implements HOOK_node_update().
  */
 function node_test_node_update(NodeInterface $node) {
   // Determine changes on update.
@@ -140,7 +140,7 @@ function node_test_node_update(NodeInterface $node) {
 }
 
 /**
- * Implements hook_entity_view_mode_alter().
+ * Implements HOOK_entity_view_mode_alter().
  */
 function node_test_entity_view_mode_alter(&$view_mode, Drupal\Core\Entity\EntityInterface $entity, $context) {
   // Only alter the view mode if we are on the test callback.
@@ -151,7 +151,7 @@ function node_test_entity_view_mode_alter(&$view_mode, Drupal\Core\Entity\Entity
 }
 
 /**
- * Implements hook_node_insert().
+ * Implements HOOK_node_insert().
  *
  * This tests saving a node on node insert.
  *

@@ -65,7 +65,7 @@ class FilterFormat extends DrupalSqlBase {
         'settings' => array(),
       );
       // Load the filter settings for the filter module, modules can use
-      // hook_migration_d6_filter_formats_prepare_row() to add theirs.
+      // HOOK_migration_d6_filter_formats_prepare_row() to add theirs.
       if ($raw_filter['module'] == 'filter') {
         if (!$delta) {
           if ($setting = $this->variableGet("allowed_html_$format", NULL)) {

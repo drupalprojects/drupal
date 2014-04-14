@@ -7,7 +7,7 @@
 use Drupal\Core\Language\Language;
 
 /**
- * Implements hook_requirements().
+ * Implements HOOK_requirements().
  */
 function aggregator_requirements($phase) {
   $has_curl = function_exists('curl_init');
@@ -24,7 +24,7 @@ function aggregator_requirements($phase) {
 }
 
 /**
- * Implements hook_schema().
+ * Implements HOOK_schema().
  */
 function aggregator_schema() {
   $schema['aggregator_feed'] = array(

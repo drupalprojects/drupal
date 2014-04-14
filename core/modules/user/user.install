@@ -9,7 +9,7 @@ use Drupal\Core\Language\Language;
 use Drupal\field\Field;
 
 /**
- * Implements hook_schema().
+ * Implements HOOK_schema().
  */
 function user_schema() {
   // The table name here is plural, despite Drupal table naming standards,
@@ -217,7 +217,7 @@ function user_schema() {
 }
 
 /**
- * Implements hook_install().
+ * Implements HOOK_install().
  */
 function user_install() {
   // Insert a row for the anonymous user.

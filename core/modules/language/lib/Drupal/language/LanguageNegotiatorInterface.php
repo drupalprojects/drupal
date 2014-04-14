@@ -29,8 +29,8 @@ use Symfony\Component\HttpFoundation\Request;
  *   this value will be used by url() as a default if no explicit preference is
  *   provided.
  * Modules can define additional language types through
- * hook_language_types_info(), and alter existing language type definitions
- * through hook_language_types_info_alter().
+ * HOOK_language_types_info(), and alter existing language type definitions
+ * through HOOK_language_types_info_alter().
  *
  * Language types may be configurable or fixed. The language negotiation
  * methods associated with a configurable language type can be explicitly
@@ -72,7 +72,7 @@ use Symfony\Component\HttpFoundation\Request;
  *
  * Modules can define additional language negotiation methods by simply provide
  * the related plugins, and alter existing methods through
- * hook_language_negotiation_info_alter(). Here is an example snippet that lets
+ * HOOK_language_negotiation_info_alter(). Here is an example snippet that lets
  * path prefixes be ignored for administrative paths:
  * @code
  * function mymodule_language_negotiation_info_alter(&$negotiation_info) {

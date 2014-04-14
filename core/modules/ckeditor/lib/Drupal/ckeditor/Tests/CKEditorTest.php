@@ -237,10 +237,10 @@ class CKEditorTest extends DrupalUnitTestBase {
     $expected = $this->getDefaultContentsCssConfig();
     $this->assertIdentical($expected, $this->ckeditor->buildContentsCssJSSetting($editor), '"contentsCss" configuration part of JS settings built correctly for default toolbar.');
 
-    // Enable the editor_test module, which implements hook_ckeditor_css_alter().
+    // Enable the editor_test module, which Implements HOOK_ckeditor_css_alter().
     $this->enableModules(array('ckeditor_test'));
     $expected[] = file_create_url('core/modules/ckeditor/tests/modules/ckeditor_test.css');
-    $this->assertIdentical($expected, $this->ckeditor->buildContentsCssJSSetting($editor), '"contentsCss" configuration part of JS settings built correctly while a hook_ckeditor_css_alter() implementation exists.');
+    $this->assertIdentical($expected, $this->ckeditor->buildContentsCssJSSetting($editor), '"contentsCss" configuration part of JS settings built correctly while a HOOK_ckeditor_css_alter() implementation exists.');
 
     // @todo test coverage for _ckeditor_theme_css(), by including a custom theme in this test with a "ckeditor_stylesheets" entry in its .info file.
   }

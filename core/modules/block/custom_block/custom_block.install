@@ -8,7 +8,7 @@
 use Drupal\Core\Entity\EntityTypeInterface;
 
 /**
- * Implements hook_schema().
+ * Implements HOOK_schema().
  */
 function custom_block_schema() {
   $schema = array();
@@ -125,7 +125,7 @@ function custom_block_schema() {
 }
 
 /**
- * Implements hook_schema_0().
+ * Implements HOOK_schema_0().
  */
 function custom_block_schema_0() {
   $schema = array();

@@ -73,7 +73,7 @@ menu_test.local_action1:
     _access: 'TRUE'
 
 menu_test.local_action2:
-  path: '/menu-test-local-action/hook_menu'
+  path: '/menu-test-local-action/HOOK_menu'
   defaults:
     _content: '\Drupal\menu_test\TestControllers::test2'
   requirements:

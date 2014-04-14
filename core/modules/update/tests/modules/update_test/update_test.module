@@ -10,7 +10,7 @@ use Symfony\Component\HttpFoundation\BinaryFileResponse;
  */
 
 /**
- * Implements hook_system_info_alter().
+ * Implements HOOK_system_info_alter().
  *
  * Checks the 'update_test.settings:system_info' configuration and sees if we
  * need to alter the system info for the given $file based on the setting. The
@@ -32,7 +32,7 @@ function update_test_system_info_alter(&$info, Extension $file) {
 }
 
 /**
- * Implements hook_update_status_alter().
+ * Implements HOOK_update_status_alter().
  *
  * Checks the 'update_test.settings:update_status' configuration and sees if we
  * need to alter the update status for the given project based on the setting.
@@ -108,7 +108,7 @@ function update_test_mock_page($project_name) {
 }
 
 /**
- * Implements hook_archiver_info_alter().
+ * Implements HOOK_archiver_info_alter().
  */
 function update_test_archiver_info_alter(&$definitions) {
   // We only care about the extensions for now and the only way to add a new
@@ -121,7 +121,7 @@ function update_test_archiver_info_alter(&$definitions) {
 }
 
 /**
- * Implements hook_filetransfer_info().
+ * Implements HOOK_filetransfer_info().
  */
 function update_test_filetransfer_info() {
   // Define a mock file transfer method, to ensure that there will always be

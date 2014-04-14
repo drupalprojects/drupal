@@ -13,7 +13,7 @@ use Drupal\Component\Annotation\Plugin;
  * Defines an archiver annotation object.
  *
  * @see \Drupal\Core\Archiver\ArchiverManager
- * @see hook_archiver_info_alter()
+ * @see HOOK_archiver_info_alter()
  *
  * @Annotation
  */

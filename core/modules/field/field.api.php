@@ -16,7 +16,7 @@ use Drupal\field\FieldConfigUpdateForbiddenException;
  * In the Field API, each field has a type, which determines what kind of data
  * (integer, string, date, etc.) the field can hold, which settings it provides,
  * and so on. The data type(s) accepted by a field are defined in
- * hook_field_schema().
+ * HOOK_field_schema().
  *
  * The Field Types API also defines two kinds of pluggable handlers: widgets
  * and formatters. @link field_widget Widgets @endlink specify how the field
@@ -35,7 +35,7 @@ use Drupal\field\FieldConfigUpdateForbiddenException;
  *   Array of information on field types as collected by the "field type" plugin
  *   manager.
  */
-function hook_field_info_alter(&$info) {
+function HOOK_field_info_alter(&$info) {
   // Change the default widget for fields of type 'foo'.
   if (isset($info['foo'])) {
     $info['foo']['default widget'] = 'mymodule_widget';
@@ -80,7 +80,7 @@ function hook_field_info_alter(&$info) {
  *   An array of information on existing widget types, as collected by the
  *   annotation discovery mechanism.
  */
-function hook_field_widget_info_alter(array &$info) {
+function HOOK_field_widget_info_alter(array &$info) {
   // Let a new field type re-use an existing widget.
   $info['options_select']['field_types'][] = 'my_field_type';
 }
@@ -89,7 +89,7 @@ function hook_field_widget_info_alter(array &$info) {
  * Alter forms for field widgets provided by other modules.
  *
  * @param $element
- *   The field widget form element as constructed by hook_field_widget_form().
+ *   The field widget form element as constructed by HOOK_field_widget_form().
  * @param $form_state
  *   An associative array containing the current state of the form.
  * @param $context
@@ -104,9 +104,9 @@ function hook_field_widget_info_alter(array &$info) {
  *     form to set default values.
  *
  * @see \Drupal\Core\Field\WidgetBase::formSingleElement()
- * @see hook_field_widget_WIDGET_TYPE_form_alter()
+ * @see HOOK_field_widget_WIDGET_TYPE_form_alter()
  */
-function hook_field_widget_form_alter(&$element, &$form_state, $context) {
+function HOOK_field_widget_form_alter(&$element, &$form_state, $context) {
   // Add a css class to widget form elements for all fields of type mytype.
   $field_definition = $context['items']->getFieldDefinition();
   if ($field_definition->getType() == 'mytype') {
@@ -118,24 +118,24 @@ function hook_field_widget_form_alter(&$element, &$form_state, $context) {
 /**
  * Alter widget forms for a specific widget provided by another module.
  *
- * Modules can implement hook_field_widget_WIDGET_TYPE_form_alter() to modify a
- * specific widget form, rather than using hook_field_widget_form_alter() and
+ * Modules can implement HOOK_field_widget_WIDGET_TYPE_form_alter() to modify a
+ * specific widget form, rather than using HOOK_field_widget_form_alter() and
  * checking the widget type.
  *
  * @param $element
- *   The field widget form element as constructed by hook_field_widget_form().
+ *   The field widget form element as constructed by HOOK_field_widget_form().
  * @param $form_state
  *   An associative array containing the current state of the form.
  * @param $context
- *   An associative array. See hook_field_widget_form_alter() for the structure
+ *   An associative array. See HOOK_field_widget_form_alter() for the structure
  *   and content of the array.
  *
  * @see \Drupal\Core\Field\WidgetBase::formSingleElement()
- * @see hook_field_widget_form_alter()
+ * @see HOOK_field_widget_form_alter()
  */
-function hook_field_widget_WIDGET_TYPE_form_alter(&$element, &$form_state, $context) {
+function HOOK_field_widget_WIDGET_TYPE_form_alter(&$element, &$form_state, $context) {
   // Code here will only act on widgets of type WIDGET_TYPE.  For example,
-  // hook_field_widget_mymodule_autocomplete_form_alter() will only act on
+  // HOOK_field_widget_mymodule_autocomplete_form_alter() will only act on
   // widgets of type 'mymodule_autocomplete'.
   $element['#autocomplete_route_name'] = 'mymodule.autocomplete_route';
 }
@@ -175,7 +175,7 @@ function hook_field_widget_WIDGET_TYPE_form_alter(&$element, &$form_state, $cont
  *   An array of information on existing formatter types, as collected by the
  *   annotation discovery mechanism.
  */
-function hook_field_formatter_info_alter(array &$info) {
+function HOOK_field_formatter_info_alter(array &$info) {
   // Let a new field type re-use an existing formatter.
   $info['text_default']['field types'][] = 'my_field_type';
 }
@@ -204,7 +204,7 @@ function hook_field_formatter_info_alter(array &$info) {
  *   The maximum weight of the entity's components, or NULL if no components
  *   were found.
  */
-function hook_field_info_max_weight($entity_type, $bundle, $context, $context_mode) {
+function HOOK_field_info_max_weight($entity_type, $bundle, $context, $context_mode) {
   $weights = array();
 
   foreach (my_module_entity_additions($entity_type, $bundle, $context, $context_mode) as $addition) {
@@ -237,7 +237,7 @@ function hook_field_info_max_weight($entity_type, $bundle, $context, $context_mo
  * @param \Drupal\field\FieldConfigInterface $prior_field
  *   The field as it is pre-update.
  */
-function hook_field_config_update_forbid(\Drupal\field\FieldConfigInterface $field, \Drupal\field\FieldConfigInterface $prior_field) {
+function HOOK_field_config_update_forbid(\Drupal\field\FieldConfigInterface $field, \Drupal\field\FieldConfigInterface $prior_field) {
   // A 'list' field stores integer keys mapped to display values. If
   // the new field will have fewer values, and any data exists for the
   // abandoned keys, the field will have no way to display them. So,
@@ -268,7 +268,7 @@ function hook_field_config_update_forbid(\Drupal\field\FieldConfigInterface $fie
  * @param $field
  *   The field being purged.
  */
-function hook_field_purge_field($field) {
+function HOOK_field_purge_field($field) {
   db_delete('my_module_field_info')
     ->condition('id', $field['id'])
     ->execute();
@@ -285,7 +285,7 @@ function hook_field_purge_field($field) {
  * @param $instance
  *   The instance being purged.
  */
-function hook_field_purge_instance($instance) {
+function HOOK_field_purge_instance($instance) {
   db_delete('my_module_field_instance_info')
     ->condition('id', $instance['id'])
     ->execute();

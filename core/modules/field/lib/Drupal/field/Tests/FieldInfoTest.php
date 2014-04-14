@@ -329,7 +329,7 @@ class FieldInfoTest extends FieldUnitTestBase {
   function testWidgetDefinition() {
     $widget_definition = \Drupal::service('plugin.manager.field.widget')->getDefinition('test_field_widget_multiple');
 
-    // Test if hook_field_widget_info_alter is beïng called.
+    // Test if HOOK_field_widget_info_alter is beïng called.
     $this->assertTrue(in_array('test_field', $widget_definition['field_types']), "The 'test_field_widget_multiple' widget is enabled for the 'test_field' field type in field_test_field_widget_info_alter().");
   }
 

@@ -6,7 +6,7 @@
  */
 
 /**
- * Implements hook_schema().
+ * Implements HOOK_schema().
  */
 function node_access_test_schema() {
   $schema['node_access_test'] = array(

@@ -2,7 +2,7 @@
 
 /**
  * @file
- * Tests for Block module regarding hook_entity_operations_alter().
+ * Tests for Block module regarding HOOK_entity_operations_alter().
  */
 
 namespace Drupal\block\Tests;
@@ -11,7 +11,7 @@ use Drupal\Component\Utility\Unicode;
 use Drupal\simpletest\WebTestBase;
 
 /**
- * Functional tests for the hook_entity_operations_alter().
+ * Functional tests for the HOOK_entity_operations_alter().
  */
 class BlockHookOperationTest extends WebTestBase {
 

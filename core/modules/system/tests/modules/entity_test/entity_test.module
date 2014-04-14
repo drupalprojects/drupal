@@ -59,7 +59,7 @@ function entity_test_entity_types($filter = NULL) {
 }
 
 /**
- * Implements hook_entity_type_alter().
+ * Implements HOOK_entity_type_alter().
  */
 function entity_test_entity_type_alter(array &$entity_types) {
   /** @var $entity_types \Drupal\Core\Entity\EntityTypeInterface[] */
@@ -74,7 +74,7 @@ function entity_test_entity_type_alter(array &$entity_types) {
 }
 
 /**
- * Implements hook_entity_base_field_info_alter().
+ * Implements HOOK_entity_base_field_info_alter().
  */
 function entity_test_entity_base_field_info_alter(&$fields, EntityTypeInterface $entity_type) {
   if ($entity_type->id() == 'entity_test_mulrev' && ($names = \Drupal::state()->get('entity_test.field_definitions.translatable'))) {
@@ -142,7 +142,7 @@ function entity_test_delete_bundle($bundle, $entity_type = 'entity_test') {
 }
 
 /**
- * Implements hook_entity_bundle_info().
+ * Implements HOOK_entity_bundle_info().
  */
 function entity_test_entity_bundle_info() {
   $bundles = array();
@@ -156,7 +156,7 @@ function entity_test_entity_bundle_info() {
 }
 
 /**
- * Implements hook_entity_view_mode_info_alter().
+ * Implements HOOK_entity_view_mode_info_alter().
  */
 function entity_test_entity_view_mode_info_alter(&$view_modes) {
   $entity_info = \Drupal::entityManager()->getDefinitions();
@@ -179,7 +179,7 @@ function entity_test_entity_view_mode_info_alter(&$view_modes) {
 }
 
 /**
- * Implements hook_entity_form_mode_info_alter().
+ * Implements HOOK_entity_form_mode_info_alter().
  */
 function entity_test_entity_form_mode_info_alter(&$form_modes) {
   $entity_info = \Drupal::entityManager()->getDefinitions();
@@ -196,7 +196,7 @@ function entity_test_entity_form_mode_info_alter(&$form_modes) {
 }
 
 /**
- * Implements hook_entity_extra_field_info().
+ * Implements HOOK_entity_extra_field_info().
  */
 function entity_test_entity_extra_field_info() {
   $extra['entity_test']['bundle_with_extra_fields'] = array(
@@ -222,7 +222,7 @@ function entity_test_entity_extra_field_info() {
 }
 
 /**
- * Implements hook_permission().
+ * Implements HOOK_permission().
  */
 function entity_test_permission() {
   $permissions = array(
@@ -241,7 +241,7 @@ function entity_test_permission() {
 }
 
 /**
- * Implements hook_form_BASE_FORM_ID_alter().
+ * Implements HOOK_form_BASE_FORM_ID_alter().
  */
 function entity_test_form_node_form_alter(&$form, &$form_state, $form_id) {
   $langcode = $form_state['controller']->getFormLangcode($form_state);
@@ -309,7 +309,7 @@ function entity_test_mulrev_load($id, $reset = FALSE) {
 }
 
 /**
- * Implements hook_ENTITY_TYPE_insert().
+ * Implements HOOK_ENTITY_TYPE_insert().
  */
 function entity_test_entity_test_insert($entity) {
   if ($entity->name->value == 'fail_insert') {
@@ -318,7 +318,7 @@ function entity_test_entity_test_insert($entity) {
 }
 
 /**
- * Implements hook_entity_field_access().
+ * Implements HOOK_entity_field_access().
  *
  * @see \Drupal\system\Tests\Entity\FieldAccessTest::testFieldAccess()
  */
@@ -336,7 +336,7 @@ function entity_test_entity_field_access($operation, FieldDefinitionInterface $f
 }
 
 /**
- * Implements hook_entity_field_access_alter().
+ * Implements HOOK_entity_field_access_alter().
  *
  * @see \Drupal\system\Tests\Entity\FieldAccessTest::testFieldAccess()
  */
@@ -347,7 +347,7 @@ function entity_test_entity_field_access_alter(array &$grants, array $context) {
 }
 
 /**
- * Implements hook_entity_form_display_alter().
+ * Implements HOOK_entity_form_display_alter().
  */
 function entity_test_entity_form_display_alter(EntityFormDisplay $form_display, $context) {
   // Make the field_test_text field 42 characters for entity_test_mul.
@@ -360,7 +360,7 @@ function entity_test_entity_form_display_alter(EntityFormDisplay $form_display, 
 }
 
 /**
- * Implements hook_entity_presave()
+ * Implements HOOK_entity_presave()
  */
 function entity_test_entity_presave(EntityInterface $entity) {
   if (isset($GLOBALS['entity_test_throw_exception'])) {
@@ -369,7 +369,7 @@ function entity_test_entity_presave(EntityInterface $entity) {
 }
 
 /**
- * Implements hook_entity_predelete()
+ * Implements HOOK_entity_predelete()
  */
 function entity_test_entity_predelete(EntityInterface $entity) {
   if (isset($GLOBALS['entity_test_throw_exception'])) {
@@ -378,7 +378,7 @@ function entity_test_entity_predelete(EntityInterface $entity) {
 }
 
 /**
- * Implements hook_entity_operation_alter().
+ * Implements HOOK_entity_operation_alter().
  */
 function entity_test_entity_operation_alter(array &$operations, EntityInterface $entity) {
   $operations['test_operation'] = array(
@@ -389,28 +389,28 @@ function entity_test_entity_operation_alter(array &$operations, EntityInterface 
 }
 
 /**
- * Implements hook_entity_translation_insert().
+ * Implements HOOK_entity_translation_insert().
  */
 function entity_test_entity_translation_insert(EntityInterface $translation) {
   _entity_test_record_hooks('entity_translation_insert', $translation->language()->id);
 }
 
 /**
- * Implements hook_entity_translation_delete().
+ * Implements HOOK_entity_translation_delete().
  */
 function entity_test_entity_translation_delete(EntityInterface $translation) {
   _entity_test_record_hooks('entity_translation_delete', $translation->language()->id);
 }
 
 /**
- * Implements hook_ENTITY_TYPE_translation_insert().
+ * Implements HOOK_ENTITY_TYPE_translation_insert().
  */
 function entity_test_entity_test_mul_translation_insert(EntityInterface $translation) {
   _entity_test_record_hooks('entity_test_mul_translation_insert', $translation->language()->id);
 }
 
 /**
- * Implements hook_ENTITY_TYPE_translation_delete().
+ * Implements HOOK_ENTITY_TYPE_translation_delete().
  */
 function entity_test_entity_test_mul_translation_delete(EntityInterface $translation) {
   _entity_test_record_hooks('entity_test_mul_translation_delete', $translation->language()->id);
@@ -449,7 +449,7 @@ function _entity_test_record_hooks($hook, $data) {
 }
 
 /**
- * Implements hook_entity_prepare_view().
+ * Implements HOOK_entity_prepare_view().
  */
 function entity_test_entity_prepare_view($entity_type, array $entities, array $displays) {
   // Add a dummy field item attribute on field_test_text if it exists.
@@ -465,7 +465,7 @@ function entity_test_entity_prepare_view($entity_type, array $entities, array $d
 }
 
 /**
- * Implements hook_entity_access().
+ * Implements HOOK_entity_access().
  */
 function entity_test_entity_access(EntityInterface $entity, $operation, AccountInterface $account, $langcode) {
   \Drupal::state()->set('entity_test_entity_access', TRUE);
@@ -473,21 +473,21 @@ function entity_test_entity_access(EntityInterface $entity, $operation, AccountI
 }
 
 /**
- * Implements hook_ENTITY_TYPE_access().
+ * Implements HOOK_ENTITY_TYPE_access().
  */
 function entity_test_entity_test_access(EntityInterface $entity, $operation, AccountInterface $account, $langcode) {
   \Drupal::state()->set('entity_test_entity_test_access', TRUE);
 }
 
 /**
- * Implements hook_entity_create_access().
+ * Implements HOOK_entity_create_access().
  */
 function entity_test_entity_create_access(AccountInterface $account, $langcode) {
   \Drupal::state()->set('entity_test_entity_create_access', TRUE);
 }
 
 /**
- * Implements hook_ENTITY_TYPE_create_access().
+ * Implements HOOK_ENTITY_TYPE_create_access().
  */
 function entity_test_entity_test_create_access(AccountInterface $account, $langcode) {
   \Drupal::state()->set('entity_test_entity_test_create_access', TRUE);

@@ -16,7 +16,7 @@
  * @param $effects
  *   The array of image effects, keyed on the machine-readable effect name.
  */
-function hook_image_effect_info_alter(&$effects) {
+function HOOK_image_effect_info_alter(&$effects) {
   // Override the Image module's 'Scale and Crop' effect label.
   $effects['image_scale_and_crop']['label'] = t('Bangers and Mash');
 }
@@ -33,7 +33,7 @@ function hook_image_effect_info_alter(&$effects) {
  * @param \Drupal\image\ImageStyleInterface $style
  *   The image style object that is being flushed.
  */
-function hook_image_style_flush($style) {
+function HOOK_image_style_flush($style) {
   // Empty cached data that contains information about the style.
   \Drupal::cache('mymodule')->deleteAll();
 }

@@ -6,7 +6,7 @@
  */
 
 /**
- * Implements hook_help().
+ * Implements HOOK_help().
  */
 function syslog_help($path, $arg) {
   switch ($path) {
@@ -26,7 +26,7 @@ function syslog_help($path, $arg) {
 }
 
 /**
- * Implements hook_form_FORM_ID_alter().
+ * Implements HOOK_form_FORM_ID_alter().
  */
 function syslog_form_system_logging_settings_alter(&$form, &$form_state) {
   $config = \Drupal::config('syslog.settings');
@@ -89,7 +89,7 @@ function syslog_facility_list() {
 }
 
 /**
- * Implements hook_watchdog().
+ * Implements HOOK_watchdog().
  */
 function syslog_watchdog(array $log_entry) {
   global $base_url;

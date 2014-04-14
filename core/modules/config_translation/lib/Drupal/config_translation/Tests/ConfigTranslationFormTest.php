@@ -65,12 +65,12 @@ class ConfigTranslationFormTest extends WebTestBase {
     $add_form = $form_builder->getForm('Drupal\config_translation\Form\ConfigTranslationAddForm', \Drupal::request(), $this->pluginId, $this->langcode);
     $edit_form = $form_builder->getForm('Drupal\config_translation\Form\ConfigTranslationEditForm', \Drupal::request(), $this->pluginId, $this->langcode);
 
-    // Test that hook_form_BASE_FORM_ID_alter() was called for the base form ID
+    // Test that HOOK_form_BASE_FORM_ID_alter() was called for the base form ID
     // 'config_translation_form'.
     $this->assertTrue($add_form['#base_altered']);
     $this->assertTrue($edit_form['#base_altered']);
 
-    // Test that hook_form_FORM_ID_alter() was called for the form IDs
+    // Test that HOOK_form_FORM_ID_alter() was called for the form IDs
     // 'config_translation_add_form' and 'config_translation_edit_form'.
     $this->assertTrue($add_form['#altered']);
     $this->assertTrue($edit_form['#altered']);

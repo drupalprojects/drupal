@@ -22,7 +22,7 @@
  * The toolbar provides a construct called a 'tray'. The tray is a container
  * for content. The tray may be associated with a toggle in the administration
  * bar. The toggle shows or hides the tray and is optimized for small and
- * large screens. To create this association, hook_toolbar() returns one or
+ * large screens. To create this association, HOOK_toolbar() returns one or
  * more render elements of type 'toolbar_item', containing the toggle and tray
  * elements in its 'tab' and 'tray' properties.
  *
@@ -42,7 +42,7 @@
  * @see toolbar_pre_render()
  * @ingroup toolbar_tabs
  */
-function hook_toolbar() {
+function HOOK_toolbar() {
   $items = array();
 
   // Add a search field to the toolbar. The search field employs no toolbar
@@ -149,17 +149,17 @@ function hook_toolbar() {
 }
 
 /**
- * Alter the toolbar menu after hook_toolbar() is invoked.
+ * Alter the toolbar menu after HOOK_toolbar() is invoked.
  *
- * This hook is invoked by toolbar_view() immediately after hook_toolbar(). The
+ * This hook is invoked by toolbar_view() immediately after HOOK_toolbar(). The
  * toolbar definitions are passed in by reference. Each element of the $items
- * array is one item returned by a module from hook_toolbar(). Additional items
+ * array is one item returned by a module from HOOK_toolbar(). Additional items
  * may be added, or existing items altered.
  *
  * @param $items
- *   Associative array of toolbar menu definitions returned from hook_toolbar().
+ *   Associative array of toolbar menu definitions returned from HOOK_toolbar().
  */
-function hook_toolbar_alter(&$items) {
+function HOOK_toolbar_alter(&$items) {
   // Move the User tab to the right.
   $items['commerce']['#weight'] = 5;
 }

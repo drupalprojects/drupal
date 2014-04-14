@@ -14,7 +14,7 @@ use Drupal\Core\Field\FieldDefinition;
 use Drupal\node\NodeInterface;
 
 /**
- * Implements hook_node_grants().
+ * Implements HOOK_node_grants().
  */
 function node_access_test_node_grants($account, $op) {
   $grants = array();
@@ -32,7 +32,7 @@ function node_access_test_node_grants($account, $op) {
 }
 
 /**
- * Implements hook_node_access_records().
+ * Implements HOOK_node_access_records().
  */
 function node_access_test_node_access_records(NodeInterface $node) {
   $grants = array();
@@ -70,7 +70,7 @@ function node_access_test_node_access_records(NodeInterface $node) {
 }
 
 /**
- * Implements hook_permission().
+ * Implements HOOK_permission().
  *
  * Sets up permissions for this module.
  */
@@ -79,7 +79,7 @@ function node_access_test_permission() {
 }
 
 /**
- * Implements hook_entity_base_field_info().
+ * Implements HOOK_entity_base_field_info().
  */
 function node_access_test_entity_base_field_info(EntityTypeInterface $entity_type) {
   if ($entity_type->id() === 'node') {
@@ -92,7 +92,7 @@ function node_access_test_entity_base_field_info(EntityTypeInterface $entity_typ
 }
 
 /**
- * Implements hook_form_BASE_FORM_ID_alter().
+ * Implements HOOK_form_BASE_FORM_ID_alter().
  */
 function node_access_test_form_node_form_alter(&$form, $form_state) {
   // Only show this checkbox for NodeAccessBaseTableTestCase.
@@ -108,7 +108,7 @@ function node_access_test_form_node_form_alter(&$form, $form_state) {
 }
 
 /**
- * Implements hook_node_load().
+ * Implements HOOK_node_load().
  */
 function node_access_test_node_load($nodes) {
   $result = db_query('SELECT nid, private FROM {node_access_test} WHERE nid IN(:nids)', array(':nids' => array_keys($nodes)));
@@ -118,7 +118,7 @@ function node_access_test_node_load($nodes) {
 }
 
 /**
- * Implements hook_node_predelete().
+ * Implements HOOK_node_predelete().
  */
 
 function node_access_test_node_predelete(NodeInterface $node) {
@@ -126,14 +126,14 @@ function node_access_test_node_predelete(NodeInterface $node) {
 }
 
 /**
- * Implements hook_node_insert().
+ * Implements HOOK_node_insert().
  */
 function node_access_test_node_insert(NodeInterface $node) {
   _node_access_test_node_write($node);
 }
 
 /**
- * Implements hook_nodeapi_update().
+ * Implements HOOK_nodeapi_update().
  */
 function node_access_test_node_update(NodeInterface $node) {
   _node_access_test_node_write($node);
@@ -150,7 +150,7 @@ function _node_access_test_node_write(NodeInterface $node) {
 }
 
 /**
- * Implements hook_node_access().
+ * Implements HOOK_node_access().
  */
 function node_access_test_node_access($node, $op, $account, $langcode) {
   $secret_catalan = \Drupal::state()->get('node_access_test_secret_catalan') ?: 0;

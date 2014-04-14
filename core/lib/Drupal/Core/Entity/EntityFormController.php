@@ -56,7 +56,7 @@ class EntityFormController extends FormBase implements EntityFormControllerInter
    */
   public function getBaseFormID() {
     // Assign ENTITYTYPE_form as base form ID to invoke corresponding
-    // hook_form_alter(), #validate, #submit, and #theme callbacks, but only if
+    // HOOK_form_alter(), #validate, #submit, and #theme callbacks, but only if
     // it is different from the actual form ID, since callbacks would be invoked
     // twice otherwise.
     $base_form_id = $this->entity->getEntityTypeId() . '_form';

@@ -26,7 +26,7 @@ use Drupal\entity\EntityFormModeInterface;
  *
  * @see \Drupal\Core\Entity\EntityManagerInterface::getAllFormModes()
  * @see \Drupal\Core\Entity\EntityManagerInterface::getFormModes()
- * @see hook_entity_form_mode_info_alter()
+ * @see HOOK_entity_form_mode_info_alter()
  *
  * @ConfigEntityType(
  *   id = "form_mode",

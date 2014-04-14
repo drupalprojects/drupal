@@ -24,7 +24,7 @@ class FolderTest extends WebTestBase {
   public static function getInfo() {
     return array(
       'name' => 'Testing SimpleTest setUp',
-      'description' => "This test will check SimpleTest's treatment of hook_install during setUp.  Image module is used for test.",
+      'description' => "This test will check SimpleTest's treatment of HOOK_install during setUp.  Image module is used for test.",
       'group' => 'SimpleTest',
     );
   }

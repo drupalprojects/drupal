@@ -59,14 +59,14 @@ interface WidgetInterface extends WidgetBaseInterface {
    * formElement() method will be called as many times as needed.
    *
    * Other modules may alter the form element provided by this function using
-   * hook_field_widget_form_alter() or
-   * hook_field_widget_WIDGET_TYPE_form_alter().
+   * HOOK_field_widget_form_alter() or
+   * HOOK_field_widget_WIDGET_TYPE_form_alter().
    *
    * The FAPI element callbacks (such as #process, #element_validate,
    * #value_callback...) used by the widget do not have access to the original
    * $field_definition passed to the widget's constructor. Therefore, if any
    * information is needed from that definition by those callbacks, the widget
-   * implementing this method, or a hook_field_widget[_WIDGET_TYPE]_form_alter()
+   * implementing this method, or a HOOK_field_widget[_WIDGET_TYPE]_form_alter()
    * implementation, must extract the needed properties from the field
    * definition and set them as ad-hoc $element['#custom'] properties, for later
    * use by its element callbacks.
@@ -106,8 +106,8 @@ interface WidgetInterface extends WidgetBaseInterface {
    * @return array
    *   The form elements for a single widget for this field.
    *
-   * @see hook_field_widget_form_alter()
-   * @see hook_field_widget_WIDGET_TYPE_form_alter()
+   * @see HOOK_field_widget_form_alter()
+   * @see HOOK_field_widget_WIDGET_TYPE_form_alter()
    */
   public function formElement(FieldItemListInterface $items, $delta, array $element, array &$form, array &$form_state);
 

@@ -99,7 +99,7 @@ class NodeAccessLanguageAwareCombinationTest extends NodeTestBase {
     // The node_access_test_language module allows individual translations of a
     // node to be marked private (not viewable by normal users), and the
     // node_access_test module allows whole nodes to be marked private. (In a
-    // real-world implementation, hook_node_access_records_alter() might be
+    // real-world implementation, HOOK_node_access_records_alter() might be
     // implemented by one or both modules to enforce that private nodes or
     // translations are always private, but we want to test the default,
     // additive behavior of node access).

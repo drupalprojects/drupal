@@ -8,7 +8,7 @@
 use Drupal\block\BlockPluginInterface;
 
 /**
- * Implements hook_block_alter().
+ * Implements HOOK_block_alter().
  */
 function block_test_block_alter(&$block_info) {
   if (\Drupal::state()->get('block_test_info_alter') && isset($block_info['test_block_instantiation'])) {
@@ -17,7 +17,7 @@ function block_test_block_alter(&$block_info) {
 }
 
 /**
- * Implements hook_block_view_BASE_BLOCK_ID_alter().
+ * Implements HOOK_block_view_BASE_BLOCK_ID_alter().
  */
 function block_test_block_view_test_cache_alter(array &$build, BlockPluginInterface $block) {
   if (\Drupal::state()->get('block_test_view_alter_suffix') !== NULL) {

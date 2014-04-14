@@ -86,7 +86,7 @@ class DependencyTest extends ModuleTestBase {
   }
 
   /**
-   * Tests enabling a module that depends on a module which fails hook_requirements().
+   * Tests enabling a module that depends on a module which fails HOOK_requirements().
    */
   function testEnableRequirementsFailureDependency() {
     \Drupal::moduleHandler()->install(array('comment'));

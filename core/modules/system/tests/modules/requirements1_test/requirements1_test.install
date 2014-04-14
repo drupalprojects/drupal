@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Implements hook_requirements().
+ * Implements HOOK_requirements().
  */
 function requirements1_test_requirements($phase) {
   $requirements = array();

@@ -37,7 +37,7 @@ class ValidateTest extends FileManagedUnitTestBase {
     $this->assertEqual(file_validate($file, $passing), array(), 'Validating passes.');
     $this->assertFileHooksCalled(array('validate'));
 
-    // Now test for failures in validators passed in and by hook_validate.
+    // Now test for failures in validators passed in and by HOOK_validate.
     file_test_reset();
     file_test_set_return('validate', array('Epic fail'));
     $failing = array('file_test_validator' => array(array('Failed', 'Badly')));

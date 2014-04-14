@@ -8,7 +8,7 @@
 use Drupal\Core\Extension\Extension;
 
 /**
- * Implements hook_theme().
+ * Implements HOOK_theme().
  */
 function twig_theme($existing, $type, $theme, $path) {
   $templates = drupal_find_theme_functions($existing, array($theme));
@@ -17,14 +17,14 @@ function twig_theme($existing, $type, $theme, $path) {
 }
 
 /**
- * Implements hook_extension().
+ * Implements HOOK_extension().
  */
 function twig_extension() {
   return '.html.twig';
 }
 
 /**
- * Implements hook_init().
+ * Implements HOOK_init().
  */
 function twig_init(Extension $theme) {
   $theme->load();

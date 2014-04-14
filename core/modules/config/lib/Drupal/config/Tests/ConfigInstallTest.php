@@ -26,7 +26,7 @@ class ConfigInstallTest extends DrupalUnitTestBase {
 
     // Ensure the global variable being asserted by this test does not exist;
     // a previous test executed in this request/process might have set it.
-    unset($GLOBALS['hook_config_test']);
+    unset($GLOBALS['HOOK_config_test']);
   }
 
   /**
@@ -63,12 +63,12 @@ class ConfigInstallTest extends DrupalUnitTestBase {
 
     // Verify that config_test API hooks were invoked for the dynamic default
     // configuration entity.
-    $this->assertFalse(isset($GLOBALS['hook_config_test']['load']));
-    $this->assertTrue(isset($GLOBALS['hook_config_test']['presave']));
-    $this->assertTrue(isset($GLOBALS['hook_config_test']['insert']));
-    $this->assertFalse(isset($GLOBALS['hook_config_test']['update']));
-    $this->assertFalse(isset($GLOBALS['hook_config_test']['predelete']));
-    $this->assertFalse(isset($GLOBALS['hook_config_test']['delete']));
+    $this->assertFalse(isset($GLOBALS['HOOK_config_test']['load']));
+    $this->assertTrue(isset($GLOBALS['HOOK_config_test']['presave']));
+    $this->assertTrue(isset($GLOBALS['HOOK_config_test']['insert']));
+    $this->assertFalse(isset($GLOBALS['HOOK_config_test']['update']));
+    $this->assertFalse(isset($GLOBALS['HOOK_config_test']['predelete']));
+    $this->assertFalse(isset($GLOBALS['HOOK_config_test']['delete']));
 
     // Ensure that data type casting is applied during config installation.
     $config = \Drupal::config('config_test.schema_in_install');

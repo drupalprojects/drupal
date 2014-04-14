@@ -75,7 +75,7 @@ class HelpTest extends WebTestBase {
     // Verify that help topics text appears.
     $this->assertRaw('<h2>' . t('Help topics') . '</h2><p>' . t('Help is available on the following items:') . '</p>', 'Help topics text correctly appears.');
 
-    // Make sure links are properly added for modules implementing hook_help().
+    // Make sure links are properly added for modules implementing HOOK_help().
     foreach ($this->getModuleList() as $module => $name) {
       $this->assertLink($name, 0, format_string('Link properly added to @name (admin/help/@module)', array('@module' => $module, '@name' => $name)));
     }
@@ -100,7 +100,7 @@ class HelpTest extends WebTestBase {
   }
 
   /**
-   * Gets the list of enabled modules that implement hook_help().
+   * Gets the list of enabled modules that implement HOOK_help().
    *
    * @return array
    *   A list of enabled modules.

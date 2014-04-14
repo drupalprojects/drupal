@@ -15,13 +15,13 @@ use Drupal\Core\Database\Database;
  * Tests invocation of hooks when performing an action.
  *
  * Tested hooks are:
- * - hook_entity_insert()
- * - hook_entity_load()
- * - hook_entity_update()
- * - hook_entity_predelete()
- * - hook_entity_delete()
- * As well as all type-specific hooks, like hook_node_insert(),
- * hook_comment_update(), etc.
+ * - HOOK_entity_insert()
+ * - HOOK_entity_load()
+ * - HOOK_entity_update()
+ * - HOOK_entity_predelete()
+ * - HOOK_entity_delete()
+ * As well as all type-specific hooks, like HOOK_node_insert(),
+ * HOOK_comment_update(), etc.
  */
 class EntityCrudHookTest extends EntityUnitTestBase {
 

@@ -27,7 +27,7 @@ const DATETIME_DATETIME_STORAGE_FORMAT = 'Y-m-d\TH:i:s';
 const DATETIME_DATE_STORAGE_FORMAT = 'Y-m-d';
 
 /**
- * Implements hook_element_info().
+ * Implements HOOK_element_info().
  */
 function datetime_element_info() {
   $format_type = datetime_default_format_type();
@@ -77,7 +77,7 @@ function datetime_element_info() {
 }
 
 /**
- * Implements hook_theme().
+ * Implements HOOK_theme().
  */
 function datetime_theme() {
   return array(
@@ -986,7 +986,7 @@ function datetime_range_years($string, $date = NULL) {
 }
 
 /**
- * Implements hook_form_BASE_FORM_ID_alter() for node forms.
+ * Implements HOOK_form_BASE_FORM_ID_alter() for node forms.
  */
 function datetime_form_node_form_alter(&$form, &$form_state, $form_id) {
   $format_type = datetime_default_format_type();
@@ -1000,7 +1000,7 @@ function datetime_form_node_form_alter(&$form, &$form_state, $form_id) {
 }
 
 /**
- * Implements hook_node_prepare_form().
+ * Implements HOOK_node_prepare_form().
  */
 function datetime_node_prepare_form(NodeInterface $node, $operation, array &$form_state) {
   // Prepare the 'Authored on' date to use datetime.

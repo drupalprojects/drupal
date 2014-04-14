@@ -6,7 +6,7 @@
  */
 
 /**
- * Implements hook_help().
+ * Implements HOOK_help().
  */
 function ban_help($path, $arg) {
   switch ($path) {
@@ -27,7 +27,7 @@ function ban_help($path, $arg) {
 }
 
 /**
- * Implements hook_permission().
+ * Implements HOOK_permission().
  */
 function ban_permission() {
   return array(

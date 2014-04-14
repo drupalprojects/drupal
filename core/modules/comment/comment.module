@@ -69,7 +69,7 @@ const COMMENT_FORM_BELOW = 1;
 define('COMMENT_NEW_LIMIT', REQUEST_TIME - 30 * 24 * 60 * 60);
 
 /**
- * Implements hook_help().
+ * Implements HOOK_help().
  */
 function comment_help($path, $arg) {
   switch ($path) {
@@ -92,7 +92,7 @@ function comment_help($path, $arg) {
 }
 
 /**
- * Implements hook_entity_bundle_info().
+ * Implements HOOK_entity_bundle_info().
  */
 function comment_entity_bundle_info() {
   $bundles = array();
@@ -123,7 +123,7 @@ function comment_uri(CommentInterface $comment) {
 }
 
 /**
- * Implements hook_entity_extra_field_info().
+ * Implements HOOK_entity_extra_field_info().
  */
 function comment_entity_extra_field_info() {
   $return = array();
@@ -150,7 +150,7 @@ function comment_entity_extra_field_info() {
 }
 
 /**
- * Implements hook_theme().
+ * Implements HOOK_theme().
  */
 function comment_theme() {
   return array(
@@ -166,7 +166,7 @@ function comment_theme() {
 }
 
 /**
- * Implements hook_menu_link_defaults_alter()
+ * Implements HOOK_menu_link_defaults_alter()
  */
 function comment_menu_link_defaults_alter(&$links) {
   if (isset($links['node.content_overview'])) {
@@ -191,7 +191,7 @@ function comment_count_unpublished() {
 }
 
 /**
- * Implements hook_ENTITY_TYPE_insert() for 'field_instance_config'.
+ * Implements HOOK_ENTITY_TYPE_insert() for 'field_instance_config'.
  */
 function comment_field_instance_config_insert(FieldInstanceConfigInterface $instance) {
   if ($instance->getType() == 'comment' && !$instance->isSyncing()) {
@@ -200,7 +200,7 @@ function comment_field_instance_config_insert(FieldInstanceConfigInterface $inst
 }
 
 /**
- * Implements hook_ENTITY_TYPE_create() for 'field_instance_config'.
+ * Implements HOOK_ENTITY_TYPE_create() for 'field_instance_config'.
  */
 function comment_field_instance_config_create(FieldInstanceConfigInterface $instance) {
   if ($instance->getType() == 'comment' && !$instance->isSyncing()) {
@@ -221,7 +221,7 @@ function comment_field_instance_config_create(FieldInstanceConfigInterface $inst
 }
 
 /**
- * Implements hook_ENTITY_TYPE_update() for 'field_instance_config'.
+ * Implements HOOK_ENTITY_TYPE_update() for 'field_instance_config'.
  */
 function comment_field_instance_config_update(FieldInstanceConfigInterface $instance) {
   if ($instance->getType() == 'comment') {
@@ -232,7 +232,7 @@ function comment_field_instance_config_update(FieldInstanceConfigInterface $inst
 }
 
 /**
- * Implements hook_ENTITY_TYPE_delete() for 'field_config'.
+ * Implements HOOK_ENTITY_TYPE_delete() for 'field_config'.
  */
 function comment_field_config_delete(FieldConfigInterface $field) {
   if ($field->getType() == 'comment') {
@@ -242,7 +242,7 @@ function comment_field_config_delete(FieldConfigInterface $field) {
 }
 
 /**
- * Implements hook_ENTITY_TYPE_delete() for 'field_instance_config'.
+ * Implements HOOK_ENTITY_TYPE_delete() for 'field_instance_config'.
  */
 function comment_field_instance_config_delete(FieldInstanceConfigInterface $instance) {
   if ($instance->getType() == 'comment') {
@@ -256,7 +256,7 @@ function comment_field_instance_config_delete(FieldInstanceConfigInterface $inst
 }
 
 /**
- * Implements hook_permission().
+ * Implements HOOK_permission().
  */
 function comment_permission() {
   return array(
@@ -359,7 +359,7 @@ function comment_new_page_count($num_comments, $new_replies, EntityInterface $en
 }
 
 /**
- * Implements hook_entity_view_alter().
+ * Implements HOOK_entity_view_alter().
  */
 function comment_entity_view_alter(&$build, EntityInterface $entity, EntityViewDisplayInterface $display) {
   // Add the comment page number to the cache key if render caching is enabled.
@@ -376,7 +376,7 @@ function comment_entity_view_alter(&$build, EntityInterface $entity, EntityViewD
 }
 
 /**
- * Implements hook_node_links_alter().
+ * Implements HOOK_node_links_alter().
  */
 function comment_node_links_alter(array &$node_links, NodeInterface $node, array &$context) {
   // Comment links are only added to node entity type for backwards
@@ -532,7 +532,7 @@ function comment_node_links_alter(array &$node_links, NodeInterface $node, array
 }
 
 /**
- * Implements hook_node_view_alter().
+ * Implements HOOK_node_view_alter().
  */
 function comment_node_view_alter(&$build, EntityInterface $node, EntityViewDisplayInterface $display) {
   if (\Drupal::moduleHandler()->moduleExists('history')) {
@@ -760,7 +760,7 @@ function comment_view_multiple($comments, $view_mode = 'full', $langcode = NULL)
 }
 
 /**
- * Implements hook_form_FORM_ID_alter().
+ * Implements HOOK_form_FORM_ID_alter().
  */
 function comment_form_field_ui_field_instance_edit_form_alter(&$form, $form_state) {
   if ($form['#field']->getType() == 'comment') {
@@ -775,7 +775,7 @@ function comment_form_field_ui_field_instance_edit_form_alter(&$form, $form_stat
 }
 
 /**
- * Implements hook_form_FORM_ID_alter().
+ * Implements HOOK_form_FORM_ID_alter().
  */
 function comment_form_field_ui_field_overview_form_alter(&$form, $form_state) {
   $request = \Drupal::request();
@@ -785,7 +785,7 @@ function comment_form_field_ui_field_overview_form_alter(&$form, $form_state) {
 }
 
 /**
- * Implements hook_form_FORM_ID_alter().
+ * Implements HOOK_form_FORM_ID_alter().
  */
 function comment_form_field_ui_form_display_overview_form_alter(&$form, $form_state) {
   $request = \Drupal::request();
@@ -795,7 +795,7 @@ function comment_form_field_ui_form_display_overview_form_alter(&$form, $form_st
 }
 
 /**
- * Implements hook_form_FORM_ID_alter().
+ * Implements HOOK_form_FORM_ID_alter().
  */
 function comment_form_field_ui_display_overview_form_alter(&$form, $form_state) {
   $request = \Drupal::request();
@@ -805,7 +805,7 @@ function comment_form_field_ui_display_overview_form_alter(&$form, $form_state) 
 }
 
 /**
- * Implements hook_form_FORM_ID_alter().
+ * Implements HOOK_form_FORM_ID_alter().
  */
 function comment_form_field_ui_field_edit_form_alter(&$form, $form_state) {
   if ($form['#field']->getType() == 'comment') {
@@ -839,7 +839,7 @@ function comment_translation_configuration_element_submit($form, &$form_state) {
 }
 
 /**
- * Implements hook_entity_load().
+ * Implements HOOK_entity_load().
  *
  * @see \Drupal\comment\Plugin\Field\FieldType\CommentItem::propertyDefinitions()
  */
@@ -869,7 +869,7 @@ function comment_entity_load($entities, $entity_type) {
 }
 
 /**
- * Implements hook_entity_insert().
+ * Implements HOOK_entity_insert().
  */
 function comment_entity_insert(EntityInterface $entity) {
   // Allow bulk updates and inserts to temporarily disable the
@@ -881,7 +881,7 @@ function comment_entity_insert(EntityInterface $entity) {
 }
 
 /**
- * Implements hook_entity_predelete().
+ * Implements HOOK_entity_predelete().
  */
 function comment_entity_predelete(EntityInterface $entity) {
   // Entities can have non-numeric IDs, but {comment} and
@@ -903,7 +903,7 @@ function comment_entity_predelete(EntityInterface $entity) {
 }
 
 /**
- * Implements hook_node_update_index().
+ * Implements HOOK_node_update_index().
  */
 function comment_node_update_index(EntityInterface $node, $langcode) {
   $index_comments = &drupal_static(__FUNCTION__);
@@ -954,7 +954,7 @@ function comment_node_update_index(EntityInterface $node, $langcode) {
 }
 
 /**
- * Implements hook_cron().
+ * Implements HOOK_cron().
  */
 function comment_cron() {
   // Store the maximum possible comments per thread (used for node search
@@ -963,7 +963,7 @@ function comment_cron() {
 }
 
 /**
- * Implements hook_node_search_result().
+ * Implements HOOK_node_search_result().
  *
  * Formats a comment count string and returns it, for display with search
  * results.
@@ -995,7 +995,7 @@ function comment_node_search_result(EntityInterface $node) {
 }
 
 /**
- * Implements hook_user_cancel().
+ * Implements HOOK_user_cancel().
  */
 function comment_user_cancel($edit, $account, $method) {
   switch ($method) {
@@ -1019,7 +1019,7 @@ function comment_user_cancel($edit, $account, $method) {
 }
 
 /**
- * Implements hook_user_predelete().
+ * Implements HOOK_user_predelete().
  */
 function comment_user_predelete($account) {
   $cids = db_query('SELECT c.cid FROM {comment} c WHERE uid = :uid', array(':uid' => $account->id()))->fetchCol();
@@ -1257,7 +1257,7 @@ function comment_preview(CommentInterface $comment, array &$form_state) {
 }
 
 /**
- * Implements hook_preprocess_HOOK() for block templates.
+ * Implements HOOK_preprocess_HOOK() for block templates.
  */
 function comment_preprocess_block(&$variables) {
   if ($variables['configuration']['provider'] == 'comment') {
@@ -1461,14 +1461,14 @@ function _comment_per_page() {
 }
 
 /**
- * Implements hook_ranking().
+ * Implements HOOK_ranking().
  */
 function comment_ranking() {
   return \Drupal::service('comment.statistics')->getRankingInfo();
 }
 
 /**
- * Implements hook_file_download_access().
+ * Implements HOOK_file_download_access().
  */
 function comment_file_download_access($field, EntityInterface $entity, FileInterface $file) {
   if ($entity instanceof CommentInterface) {

@@ -395,7 +395,7 @@ class ModulesListForm extends FormBase {
     // Make sure the install API is available.
     include_once DRUPAL_ROOT . '/core/includes/install.inc';
 
-    // Invoke hook_requirements('install'). If failures are detected, make
+    // Invoke HOOK_requirements('install'). If failures are detected, make
     // sure the dependent modules aren't installed either.
     foreach (array_keys($modules['install']) as $module) {
       if (!drupal_check_module($module)) {

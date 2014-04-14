@@ -12,7 +12,7 @@ use Drupal\Core\Entity\ContentEntityInterface;
 use Drupal\Core\Field\FieldDefinition;
 
 /**
- * Implements hook_help().
+ * Implements HOOK_help().
  */
 function path_help($path, $arg) {
   switch ($path) {
@@ -41,7 +41,7 @@ function path_help($path, $arg) {
 }
 
 /**
- * Implements hook_permission().
+ * Implements HOOK_permission().
  */
 function path_permission() {
   return array(
@@ -55,7 +55,7 @@ function path_permission() {
 }
 
 /**
- * Implements hook_form_BASE_FORM_ID_alter() for node_form().
+ * Implements HOOK_form_BASE_FORM_ID_alter() for node_form().
  *
  * @see path_form_element_validate()
  */
@@ -138,7 +138,7 @@ function path_form_element_validate($element, &$form_state, $complete_form) {
 }
 
 /**
- * Implements hook_form_FORM_ID_alter() for taxonomy_term_form().
+ * Implements HOOK_form_FORM_ID_alter() for taxonomy_term_form().
  */
 function path_form_taxonomy_term_form_alter(&$form, $form_state) {
   $account = \Drupal::currentUser();
@@ -175,7 +175,7 @@ function path_form_taxonomy_term_form_alter(&$form, $form_state) {
 }
 
 /**
- * Implements hook_entity_base_field_info().
+ * Implements HOOK_entity_base_field_info().
  */
 function path_entity_base_field_info(EntityTypeInterface $entity_type) {
   if ($entity_type->id() === 'taxonomy_term' || $entity_type->id() === 'node') {

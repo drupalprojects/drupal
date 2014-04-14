@@ -8,7 +8,7 @@
 use Drupal\menu_link\Entity\MenuLink;
 
 /**
- * Implements hook_menu_link_defaults_alter().
+ * Implements HOOK_menu_link_defaults_alter().
  *
  * Many of the machine names here are slightly different from the route name.
  * Since the machine name is arbitrary, this helps ensure that core does not
@@ -20,7 +20,7 @@ function menu_test_menu_link_defaults_alter(&$links) {
 }
 
 /**
- * Implements hook_menu_local_tasks().
+ * Implements HOOK_menu_local_tasks().
  *
  * If the menu_test.settings configuration 'tasks.add' has been set, adds
  * several local tasks to menu-test/tasks.
@@ -50,7 +50,7 @@ function menu_test_menu_local_tasks(&$data, $route_name) {
 }
 
 /**
- * Implements hook_menu_local_tasks_alter().
+ * Implements HOOK_menu_local_tasks_alter().
  *
  * If the menu_test.settings configuration 'tasks.alter' has been set, adds
  * several local tasks to menu-test/tasks.
@@ -160,21 +160,21 @@ function menu_test_menu_name($new_name = '') {
 }
 
 /**
- * Implements hook_menu_link_insert().
+ * Implements HOOK_menu_link_insert().
  */
 function menu_test_menu_link_insert(MenuLink $item) {
   menu_test_static_variable('insert');
 }
 
 /**
- * Implements hook_menu_link_update().
+ * Implements HOOK_menu_link_update().
  */
 function menu_test_menu_link_update(MenuLink $item) {
   menu_test_static_variable('update');
 }
 
 /**
- * Implements hook_menu_link_delete().
+ * Implements HOOK_menu_link_delete().
  */
 function menu_test_menu_link_delete(MenuLink $item) {
   menu_test_static_variable('delete');

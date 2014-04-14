@@ -51,7 +51,7 @@ class MenuRouterTest extends WebTestBase {
   }
 
   function setUp() {
-    // Enable dummy module that implements hook_menu.
+    // Enable dummy module that Implements HOOK_menu.
     parent::setUp();
 
     $this->drupalPlaceBlock('system_menu_block:tools');
@@ -206,13 +206,13 @@ class MenuRouterTest extends WebTestBase {
   protected function doTestMenuItemHooks() {
     // Create an item.
     menu_link_maintain('menu_test', 'insert', 'menu_test_maintain/4', 'Menu link #4');
-    $this->assertEqual(menu_test_static_variable(), 'insert', 'hook_menu_link_insert() fired correctly');
+    $this->assertEqual(menu_test_static_variable(), 'insert', 'HOOK_menu_link_insert() fired correctly');
     // Update the item.
     menu_link_maintain('menu_test', 'update', 'menu_test_maintain/4', 'Menu link updated');
-    $this->assertEqual(menu_test_static_variable(), 'update', 'hook_menu_link_update() fired correctly');
+    $this->assertEqual(menu_test_static_variable(), 'update', 'HOOK_menu_link_update() fired correctly');
     // Delete the item.
     menu_link_maintain('menu_test', 'delete', 'menu_test_maintain/4', '');
-    $this->assertEqual(menu_test_static_variable(), 'delete', 'hook_menu_link_delete() fired correctly');
+    $this->assertEqual(menu_test_static_variable(), 'delete', 'HOOK_menu_link_delete() fired correctly');
   }
 
   /**

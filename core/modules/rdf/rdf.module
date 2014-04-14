@@ -9,7 +9,7 @@ use Drupal\Core\Template\Attribute;
 use Symfony\Cmf\Component\Routing\RouteObjectInterface;
 
 /**
- * Implements hook_help().
+ * Implements HOOK_help().
  */
 function rdf_help($path, $arg) {
   switch ($path) {
@@ -83,7 +83,7 @@ function rdf_get_mapping($entity_type, $bundle) {
 }
 
 /**
- * Implements hook_rdf_namespaces().
+ * Implements HOOK_rdf_namespaces().
  */
 function rdf_rdf_namespaces() {
   return array(
@@ -103,7 +103,7 @@ function rdf_rdf_namespaces() {
 /**
  * Retrieves RDF namespaces.
  *
- * Invokes hook_rdf_namespaces() and collects RDF namespaces from modules that
+ * Invokes HOOK_rdf_namespaces() and collects RDF namespaces from modules that
  * implement it.
  */
 function rdf_get_namespaces() {
@@ -202,7 +202,7 @@ function rdf_rdfa_attributes($mapping, $data = NULL) {
  */
 
 /**
- * Implements hook_entity_prepare_view().
+ * Implements HOOK_entity_prepare_view().
  */
 function rdf_entity_prepare_view($entity_type, array $entities, array $displays) {
   // Iterate over the RDF mappings for each entity and prepare the RDFa
@@ -223,7 +223,7 @@ function rdf_entity_prepare_view($entity_type, array $entities, array $displays)
 }
 
 /**
- * Implements hook_comment_load().
+ * Implements HOOK_comment_load().
  */
 function rdf_comment_load($comments) {
   foreach ($comments as $comment) {
@@ -242,7 +242,7 @@ function rdf_comment_load($comments) {
 }
 
 /**
- * Implements hook_theme().
+ * Implements HOOK_theme().
  */
 function rdf_theme() {
   return array(
@@ -254,7 +254,7 @@ function rdf_theme() {
 }
 
 /**
- * Implements hook_preprocess_HOOK() for HTML document templates.
+ * Implements HOOK_preprocess_HOOK() for HTML document templates.
  */
 function rdf_preprocess_html(&$variables) {
   // Adds RDF namespace prefix bindings in the form of an RDFa 1.1 prefix
@@ -268,7 +268,7 @@ function rdf_preprocess_html(&$variables) {
 }
 
 /**
- * Implements hook_preprocess_HOOK() for node templates.
+ * Implements HOOK_preprocess_HOOK() for node templates.
  */
 function rdf_preprocess_node(&$variables) {
   // Adds RDFa markup to the node container. The about attribute specifies the
@@ -334,7 +334,7 @@ function rdf_preprocess_node(&$variables) {
 }
 
 /**
- * Implements hook_preprocess_HOOK() for user templates.
+ * Implements HOOK_preprocess_HOOK() for user templates.
  */
 function rdf_preprocess_user(&$variables) {
   /** @var $account \Drupal\user\UserInterface */
@@ -371,7 +371,7 @@ function rdf_preprocess_user(&$variables) {
 }
 
 /**
- * Implements hook_preprocess_HOOK() for theme_username().
+ * Implements HOOK_preprocess_HOOK() for theme_username().
  */
 function rdf_preprocess_username(&$variables) {
   $attributes = array();
@@ -434,7 +434,7 @@ function rdf_preprocess_username(&$variables) {
 }
 
 /**
- * Implements hook_preprocess_HOOK() for comment templates.
+ * Implements HOOK_preprocess_HOOK() for comment templates.
  */
 function rdf_preprocess_comment(&$variables) {
   $comment = $variables['comment'];
@@ -522,7 +522,7 @@ function rdf_preprocess_comment(&$variables) {
 }
 
 /**
- * Implements hook_preprocess_HOOK() for taxonomy term templates.
+ * Implements HOOK_preprocess_HOOK() for taxonomy term templates.
  */
 function rdf_preprocess_taxonomy_term(&$variables) {
   $term = $variables['term'];
@@ -543,7 +543,7 @@ function rdf_preprocess_taxonomy_term(&$variables) {
 }
 
 /**
- * Implements hook_preprocess_HOOK() for theme_image().
+ * Implements HOOK_preprocess_HOOK() for theme_image().
  */
 function rdf_preprocess_image(&$variables) {
   // Adds the RDF type for image.  We cannot use the usual entity-based mapping

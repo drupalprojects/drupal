@@ -7,7 +7,7 @@ use Drupal\Core\Entity\EntityInterface;
  */
 
 /**
- * Implements hook_entity_type_build().
+ * Implements HOOK_entity_type_build().
  */
 function field_test_entity_type_build() {
   /** @var $entity_info \Drupal\Core\Entity\EntityTypeInterface[] */
@@ -19,7 +19,7 @@ function field_test_entity_type_build() {
 }
 
 /**
- * Implements hook_entity_type_alter().
+ * Implements HOOK_entity_type_alter().
  */
 function field_test_entity_type_alter(array &$entity_types) {
   /** @var $entity_types \Drupal\Core\Entity\EntityTypeInterface[] */

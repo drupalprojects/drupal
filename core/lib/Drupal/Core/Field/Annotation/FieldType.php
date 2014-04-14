@@ -13,7 +13,7 @@ use Drupal\Core\TypedData\Annotation\DataType;
  * Defines a FieldType annotation object.
  *
  * Additional annotation keys for field types can be defined in
- * hook_field_info_alter().
+ * HOOK_field_info_alter().
  *
  * @Annotation
  */

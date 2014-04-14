@@ -322,7 +322,7 @@ class NodeFormController extends ContentEntityFormController {
       $this->setFormError('date', $form_state, $this->t('You have to specify a valid date.'));
     }
 
-    // Invoke hook_node_validate() for validation needed by modules.
+    // Invoke HOOK_node_validate() for validation needed by modules.
     // Can't use \Drupal::moduleHandler()->invokeAll(), because $form_state must
     // be receivable by reference.
     foreach (\Drupal::moduleHandler()->getImplementations('node_validate') as $module) {

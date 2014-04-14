@@ -92,7 +92,7 @@ class ManageDisplayTest extends FieldUiTestBase {
     $this->assertEqual($current_format, $format, 'The formatter was updated.');
     $this->assertEqual($current_setting_value, $setting_value, 'The setting was updated.');
 
-    // Assert that hook_field_formatter_settings_summary_alter() is called.
+    // Assert that HOOK_field_formatter_settings_summary_alter() is called.
     $this->assertText('field_test_field_formatter_settings_summary_alter');
 
     // Click on the formatter settings button to open the formatter settings
@@ -102,7 +102,7 @@ class ManageDisplayTest extends FieldUiTestBase {
     // Assert that the field added in
     // field_test_field_formatter_settings_form_alter() is present.
     $fieldname = 'fields[field_test][settings_edit_form][settings][field_test_formatter_settings_form_alter]';
-    $this->assertField($fieldname, 'The field added in hook_field_formatter_settings_form_alter() is present on the settings form.');
+    $this->assertField($fieldname, 'The field added in HOOK_field_formatter_settings_form_alter() is present on the settings form.');
     $edit = array($fieldname => 'foo');
     $this->drupalPostAjaxForm(NULL, $edit, "field_test_plugin_settings_update");
 
@@ -186,7 +186,7 @@ class ManageDisplayTest extends FieldUiTestBase {
     $this->assertEqual($current_widget, $widget_type, 'The widget was updated.');
     $this->assertEqual($current_setting_value, $setting_value, 'The setting was updated.');
 
-    // Assert that hook_field_widget_settings_summary_alter() is called.
+    // Assert that HOOK_field_widget_settings_summary_alter() is called.
     $this->assertText('field_test_field_widget_settings_summary_alter');
 
     // Click on the widget settings button to open the widget settings form.
@@ -195,7 +195,7 @@ class ManageDisplayTest extends FieldUiTestBase {
     // Assert that the field added in
     // field_test_field_widget_settings_form_alter() is present.
     $fieldname = 'fields[field_test][settings_edit_form][settings][field_test_widget_settings_form_alter]';
-    $this->assertField($fieldname, 'The field added in hook_field_widget_settings_form_alter() is present on the settings form.');
+    $this->assertField($fieldname, 'The field added in HOOK_field_widget_settings_form_alter() is present on the settings form.');
     $edit = array($fieldname => 'foo');
     $this->drupalPostAjaxForm(NULL, $edit, "field_test_plugin_settings_update");
 

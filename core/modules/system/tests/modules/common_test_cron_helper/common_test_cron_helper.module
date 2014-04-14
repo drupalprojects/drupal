@@ -6,7 +6,7 @@
  */
 
 /**
- * Implements hook_cron().
+ * Implements HOOK_cron().
  *
  * common_test_cron() throws an exception, but the execution should reach this
  * function as well.

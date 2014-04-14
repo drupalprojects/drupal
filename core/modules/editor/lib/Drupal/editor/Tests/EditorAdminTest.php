@@ -153,8 +153,8 @@ class EditorAdminTest extends WebTestBase {
     $this->assertIdentical($editor->editor, 'unicorn', 'The text editor is configured correctly.');
     $this->assertIdentical($editor->settings['foo'], $foo, 'The text editor settings are stored correctly.');
     $this->assertIdentical($editor->settings['ponies too'], true, 'The text editor defaults are retrieved correctly.');
-    $this->assertIdentical($editor->settings['rainbows'], true, 'The text editor defaults added by hook_editor_settings_defaults() are retrieved correctly.');
-    $this->assertIdentical($editor->settings['sparkles'], false, 'The text editor defaults modified by hook_editor_settings_defaults_alter() are retrieved correctly.');
+    $this->assertIdentical($editor->settings['rainbows'], true, 'The text editor defaults added by HOOK_editor_settings_defaults() are retrieved correctly.');
+    $this->assertIdentical($editor->settings['sparkles'], false, 'The text editor defaults modified by HOOK_editor_settings_defaults_alter() are retrieved correctly.');
     $this->drupalGet('admin/config/content/formats/manage/'. $format_id);
     $select = $this->xpath('//select[@name="editor[editor]"]');
     $select_is_disabled = $this->xpath('//select[@name="editor[editor]" and @disabled="disabled"]');

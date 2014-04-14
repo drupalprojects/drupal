@@ -13,7 +13,7 @@ function image_module_test_file_download($uri) {
 }
 
 /**
- * Implements hook_image_effect_info_alter().
+ * Implements HOOK_image_effect_info_alter().
  *
  * Used to keep a count of cache misses in \Drupal\image\ImageEffectManager.
  */

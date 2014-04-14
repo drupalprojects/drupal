@@ -257,12 +257,12 @@ class EditController extends ControllerBase {
    *   The name of the language for which the field is being edited.
    * @param string $view_mode_id
    *   The view mode the field should be rerendered in. Either an Entity Display
-   *   view mode ID, or a custom one. See hook_edit_render_field().
+   *   view mode ID, or a custom one. See HOOK_edit_render_field().
    *
    * @return string
    *   Rendered HTML.
    *
-   * @see hook_edit_render_field()
+   * @see HOOK_edit_render_field()
    */
   protected function renderField(EntityInterface $entity, $field_name, $langcode, $view_mode_id) {
     $entity_view_mode_ids = array_keys($this->entityManager()->getViewModes($entity->getEntityTypeId()));

@@ -26,12 +26,12 @@
  *   \Drupal\Core\Menu\ContextualLinkManagerInterface::getContextualLinksArrayByGroup(),
  *   which were used to build $element['#links'].
  *
- * @see hook_contextual_links_alter()
- * @see hook_contextual_links_plugins_alter()
+ * @see HOOK_contextual_links_alter()
+ * @see HOOK_contextual_links_plugins_alter()
  * @see contextual_pre_render_links()
  * @see contextual_element_info()
  */
-function hook_contextual_links_view_alter(&$element, $items) {
+function HOOK_contextual_links_view_alter(&$element, $items) {
   // Add another class to all contextual link lists to facilitate custom
   // styling.
   $element['#attributes']['class'][] = 'custom-class';

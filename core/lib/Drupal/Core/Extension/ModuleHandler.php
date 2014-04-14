@@ -49,7 +49,7 @@ class ModuleHandler implements ModuleHandlerInterface {
   protected $implementations;
 
   /**
-   * Information returned by hook_hook_info() implementations.
+   * Information returned by HOOK_hook_info() implementations.
    *
    * @var array
    */
@@ -281,10 +281,10 @@ class ModuleHandler implements ModuleHandlerInterface {
       return TRUE;
     }
     // If the hook implementation does not exist, check whether it lives in an
-    // optional include file registered via hook_hook_info().
-    $hook_info = $this->getHookInfo();
-    if (isset($hook_info[$hook]['group'])) {
-      $this->loadInclude($module, 'inc', $module . '.' . $hook_info[$hook]['group']);
+    // optional include file registered via HOOK_hook_info().
+    $HOOK_info = $this->getHookInfo();
+    if (isset($HOOK_info[$hook]['group'])) {
+      $this->loadInclude($module, 'inc', $module . '.' . $HOOK_info[$hook]['group']);
       if (function_exists($function)) {
         return TRUE;
       }
@@ -447,20 +447,20 @@ class ModuleHandler implements ModuleHandlerInterface {
    * @return array
    *   An array whose keys are the names of the modules which are implementing
    *   this hook and whose values are either an array of information from
-   *   hook_hook_info() or FALSE if the implementation is in the module file.
+   *   HOOK_hook_info() or FALSE if the implementation is in the module file.
    */
   protected function getImplementationInfo($hook) {
     if (isset($this->implementations[$hook])) {
       return $this->implementations[$hook];
     }
     $this->implementations[$hook] = array();
-    $hook_info = $this->getHookInfo();
+    $HOOK_info = $this->getHookInfo();
     foreach ($this->moduleList as $module => $filename) {
-      $include_file = isset($hook_info[$hook]['group']) && $this->loadInclude($module, 'inc', $module . '.' . $hook_info[$hook]['group']);
+      $include_file = isset($HOOK_info[$hook]['group']) && $this->loadInclude($module, 'inc', $module . '.' . $HOOK_info[$hook]['group']);
       // Since $this->implementsHook() may needlessly try to load the include
       // file again, function_exists() is used directly here.
       if (function_exists($module . '_' . $hook)) {
-        $this->implementations[$hook][$module] = $include_file ? $hook_info[$hook]['group'] : FALSE;
+        $this->implementations[$hook][$module] = $include_file ? $HOOK_info[$hook]['group'] : FALSE;
       }
     }
     // Allow modules to change the weight of specific implementations but avoid
@@ -693,7 +693,7 @@ class ModuleHandler implements ModuleHandlerInterface {
 
         // If the module has no current updates, but has some that were
         // previously removed, set the version to the value of
-        // hook_update_last_removed().
+        // HOOK_update_last_removed().
         if ($last_removed = $this->invoke($module, 'update_last_removed')) {
           $version = max($version, $last_removed);
         }
@@ -709,7 +709,7 @@ class ModuleHandler implements ModuleHandlerInterface {
       }
     }
 
-    // If any modules were newly installed, invoke hook_modules_installed().
+    // If any modules were newly installed, invoke HOOK_modules_installed().
     if (!empty($modules_installed)) {
       $this->invokeAll('modules_installed', array($modules_installed));
     }

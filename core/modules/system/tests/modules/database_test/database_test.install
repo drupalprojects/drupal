@@ -6,7 +6,7 @@
  */
 
 /**
- * Implements hook_schema().
+ * Implements HOOK_schema().
  *
  * The database tests use the database API which depends on schema
  * information for certain operations on certain databases.

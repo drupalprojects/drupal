@@ -14,7 +14,7 @@ use Drupal\Component\Utility\Xss;
 const AGGREGATOR_CLEAR_NEVER = 0;
 
 /**
- * Implements hook_help().
+ * Implements HOOK_help().
  */
 function aggregator_help($path, $arg) {
   switch ($path) {
@@ -47,7 +47,7 @@ function aggregator_help($path, $arg) {
 }
 
 /**
- * Implements hook_theme().
+ * Implements HOOK_theme().
  */
 function aggregator_theme() {
   return array(
@@ -88,7 +88,7 @@ function aggregator_theme() {
 }
 
 /**
- * Implements hook_permission().
+ * Implements HOOK_permission().
  */
 function aggregator_permission() {
   return array(
@@ -102,7 +102,7 @@ function aggregator_permission() {
 }
 
 /**
- * Implements hook_cron().
+ * Implements HOOK_cron().
  *
  * Queues news feeds for updates once their refresh interval has elapsed.
  */
@@ -134,7 +134,7 @@ function aggregator_cron() {
 }
 
 /**
- * Implements hook_queue_info().
+ * Implements HOOK_queue_info().
  */
 function aggregator_queue_info() {
   $queues['aggregator_feeds'] = array(
@@ -176,7 +176,7 @@ function aggregator_filter_xss($value) {
 }
 
 /**
- * Implements hook_preprocess_HOOK() for block templates.
+ * Implements HOOK_preprocess_HOOK() for block templates.
  */
 function aggregator_preprocess_block(&$variables) {
   if ($variables['configuration']['provider'] == 'aggregator') {

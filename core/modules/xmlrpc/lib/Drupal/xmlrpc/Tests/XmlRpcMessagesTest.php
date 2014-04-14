@@ -44,7 +44,7 @@ class XmlRpcMessagesTest extends WebTestBase {
   }
 
   /**
-   * Ensure that hook_xmlrpc_alter() can hide even builtin methods.
+   * Ensure that HOOK_xmlrpc_alter() can hide even builtin methods.
    */
   protected function testAlterListMethods() {
     // Ensure xmlrpc_test.alter() is disabled and retrieve regular list of methods.
@@ -57,9 +57,9 @@ class XmlRpcMessagesTest extends WebTestBase {
     $methods2 = xmlrpc($url, array('system.listMethods' => array()));
 
     $diff = array_diff($methods1, $methods2);
-    $this->assertTrue(is_array($diff) && !empty($diff), 'Method list is altered by hook_xmlrpc_alter');
+    $this->assertTrue(is_array($diff) && !empty($diff), 'Method list is altered by HOOK_xmlrpc_alter');
     $removed = reset($diff);
-    $this->assertEqual($removed, 'system.methodSignature', 'Hiding builting system.methodSignature with hook_xmlrpc_alter works');
+    $this->assertEqual($removed, 'system.methodSignature', 'Hiding builting system.methodSignature with HOOK_xmlrpc_alter works');
   }
 
 }

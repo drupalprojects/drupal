@@ -71,7 +71,7 @@ const REGIONS_ALL = 'all';
 const EMAIL_MAX_LENGTH = 254;
 
 /**
- * Implements hook_help().
+ * Implements HOOK_help().
  */
 function system_help($path, $arg) {
   global $base_url;
@@ -138,7 +138,7 @@ function system_help($path, $arg) {
 }
 
 /**
- * Implements hook_theme().
+ * Implements HOOK_theme().
  */
 function system_theme() {
   return array_merge(drupal_common_theme(), array(
@@ -204,7 +204,7 @@ function system_theme() {
 }
 
 /**
- * Implements hook_permission().
+ * Implements HOOK_permission().
  */
 function system_permission() {
   return array(
@@ -239,7 +239,7 @@ function system_permission() {
 }
 
 /**
- * Implements hook_hook_info().
+ * Implements HOOK_hook_info().
  */
 function system_hook_info() {
   $hooks['token_info'] = array(
@@ -259,7 +259,7 @@ function system_hook_info() {
 }
 
 /**
- * Implements hook_element_info().
+ * Implements HOOK_element_info().
  */
 function system_element_info() {
   // Top level elements.
@@ -636,21 +636,21 @@ function system_element_info() {
 }
 
 /**
- * Implements hook_theme_suggestions_HOOK().
+ * Implements HOOK_theme_suggestions_HOOK().
  */
 function system_theme_suggestions_html(array $variables) {
   return theme_get_suggestions(arg(), 'html');
 }
 
 /**
- * Implements hook_theme_suggestions_HOOK().
+ * Implements HOOK_theme_suggestions_HOOK().
  */
 function system_theme_suggestions_page(array $variables) {
   return theme_get_suggestions(arg(), 'page');
 }
 
 /**
- * Implements hook_theme_suggestions_HOOK().
+ * Implements HOOK_theme_suggestions_HOOK().
  */
 function system_theme_suggestions_maintenance_page(array $variables) {
   $suggestions = array();
@@ -673,7 +673,7 @@ function system_theme_suggestions_maintenance_page(array $variables) {
 }
 
 /**
- * Implements hook_theme_suggestions_HOOK().
+ * Implements HOOK_theme_suggestions_HOOK().
  */
 function system_theme_suggestions_region(array $variables) {
   $suggestions = array();
@@ -684,7 +684,7 @@ function system_theme_suggestions_region(array $variables) {
 }
 
 /**
- * Implements hook_theme_suggestions_HOOK().
+ * Implements HOOK_theme_suggestions_HOOK().
  */
 function system_theme_suggestions_field(array $variables) {
   $suggestions = array();
@@ -700,7 +700,7 @@ function system_theme_suggestions_field(array $variables) {
 }
 
 /**
- * Implements hook_stream_wrappers().
+ * Implements HOOK_stream_wrappers().
  */
 function system_stream_wrappers() {
   $wrappers = array(
@@ -776,7 +776,7 @@ function _system_themes_access($theme) {
  *
  * @see authorize.php
  * @see \Drupal\Core\FileTransfer\FileTransfer
- * @see hook_filetransfer_info()
+ * @see HOOK_filetransfer_info()
  */
 
 /**
@@ -887,7 +887,7 @@ function system_authorized_batch_process() {
  */
 
 /**
- * Implements hook_updater_info().
+ * Implements HOOK_updater_info().
  */
 function system_updater_info() {
   return array(
@@ -905,7 +905,7 @@ function system_updater_info() {
 }
 
 /**
- * Implements hook_filetransfer_info().
+ * Implements HOOK_filetransfer_info().
  */
 function system_filetransfer_info() {
   $backends = array();
@@ -932,7 +932,7 @@ function system_filetransfer_info() {
 }
 
 /**
- * Implements hook_page_build().
+ * Implements HOOK_page_build().
  *
  * @see template_preprocess_maintenance_page()
  * @see \Drupal\system\Controller\SystemController::setLinkActiveClass()
@@ -969,7 +969,7 @@ function system_page_build(&$page) {
 }
 
 /**
- * Implements hook_form_FORM_ID_alter().
+ * Implements HOOK_form_FORM_ID_alter().
  */
 function system_form_user_form_alter(&$form, &$form_state) {
   if (\Drupal::config('system.date')->get('timezone.user.configurable')) {
@@ -978,7 +978,7 @@ function system_form_user_form_alter(&$form, &$form_state) {
 }
 
 /**
- * Implements hook_form_FORM_ID_alter().
+ * Implements HOOK_form_FORM_ID_alter().
  */
 function system_form_user_register_form_alter(&$form, &$form_state) {
   $config = \Drupal::config('system.date');
@@ -988,7 +988,7 @@ function system_form_user_register_form_alter(&$form, &$form_state) {
 }
 
 /**
- * Implements hook_user_presave().
+ * Implements HOOK_user_presave().
  */
 function system_user_presave(UserInterface $account) {
   $config = \Drupal::config('system.date');
@@ -998,7 +998,7 @@ function system_user_presave(UserInterface $account) {
 }
 
 /**
- * Implements hook_user_login().
+ * Implements HOOK_user_login().
  */
 function system_user_login($account) {
   $config = \Drupal::config('system.date');
@@ -1036,7 +1036,7 @@ function system_user_timezone(&$form, &$form_state) {
 }
 
 /**
- * Implements hook_preprocess_HOOK() for block templates.
+ * Implements HOOK_preprocess_HOOK() for block templates.
  */
 function system_preprocess_block(&$variables) {
   switch ($variables['base_plugin_id']) {
@@ -1207,7 +1207,7 @@ function _system_rebuild_module_data() {
       $modules[$key]->info['hidden'] = TRUE;
     }
 
-    // Invoke hook_system_info_alter() to give installed modules a chance to
+    // Invoke HOOK_system_info_alter() to give installed modules a chance to
     // modify the data in the .info.yml files if necessary.
     // @todo Remove $type argument, obsolete with $module->getType().
     $type = 'module';
@@ -1215,7 +1215,7 @@ function _system_rebuild_module_data() {
   }
 
   // It is possible that a module was marked as required by
-  // hook_system_info_alter() and modules that it depends on are not required.
+  // HOOK_system_info_alter() and modules that it depends on are not required.
   foreach ($modules as $module) {
     _system_rebuild_module_data_ensure_required($module, $modules);
   }
@@ -1404,7 +1404,7 @@ function system_sort_themes($a, $b) {
 }
 
 /**
- * Implements hook_system_info_alter().
+ * Implements HOOK_system_info_alter().
  */
 function system_system_info_alter(&$info, Extension $file, $type) {
   // Remove page-top and page-bottom from the blocks UI since they are reserved for
@@ -1540,7 +1540,7 @@ function system_get_module_admin_tasks($module, array $info) {
 }
 
 /**
- * Implements hook_cron().
+ * Implements HOOK_cron().
  *
  * Remove older rows from flood and batch table. Remove old temporary files.
  */
@@ -1570,7 +1570,7 @@ function system_cron() {
 }
 
 /**
- * Implements hook_mail().
+ * Implements HOOK_mail().
  */
 function system_mail($key, &$message, $params) {
   $token_service = \Drupal::token();
@@ -1686,7 +1686,7 @@ function system_retrieve_file($url, $destination = NULL, $managed = FALSE, $repl
 }
 
 /**
- * Implements hook_page_alter().
+ * Implements HOOK_page_alter().
  */
 function system_page_alter(&$page) {
   // Find all non-empty page regions, and add a theme wrapper function that
@@ -1701,7 +1701,7 @@ function system_page_alter(&$page) {
 }
 
 /**
- * Implements hook_block_view_BASE_BLOCK_ID_alter().
+ * Implements HOOK_block_view_BASE_BLOCK_ID_alter().
  */
 function system_block_view_system_main_block_alter(array &$build, BlockPluginInterface $block) {
   // Contextual links on the system_main block would basically duplicate the
@@ -1710,7 +1710,7 @@ function system_block_view_system_main_block_alter(array &$build, BlockPluginInt
 }
 
 /**
- * Implements hook_block_view_BASE_BLOCK_ID_alter().
+ * Implements HOOK_block_view_BASE_BLOCK_ID_alter().
  */
 function system_block_view_system_help_block_alter(array &$build, BlockPluginInterface $block) {
   // Assume that most users do not need or want to perform contextual actions on
@@ -1735,21 +1735,21 @@ function theme_system_config_form($variables) {
 }
 
 /**
- * Implements hook_path_update().
+ * Implements HOOK_path_update().
  */
 function system_path_update() {
   \Drupal::service('path.alias_manager.cached')->cacheClear();
 }
 
 /**
- * Implements hook_path_insert().
+ * Implements HOOK_path_insert().
  */
 function system_path_insert() {
   \Drupal::service('path.alias_manager.cached')->cacheClear();
 }
 
 /**
- * Implements hook_path_delete().
+ * Implements HOOK_path_delete().
  */
 function system_path_delete($path) {
   \Drupal::service('path.alias_manager.cached')->cacheClear();

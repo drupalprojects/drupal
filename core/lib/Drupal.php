@@ -30,19 +30,19 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
  *
  * @code
  *   // Legacy procedural code.
- *   function hook_do_stuff() {
+ *   function HOOK_do_stuff() {
  *     $lock = lock()->acquire('stuff_lock');
  *     // ...
  *   }
  *
  *   // Correct procedural code.
- *   function hook_do_stuff() {
+ *   function HOOK_do_stuff() {
  *     $lock = \Drupal::lock()->acquire('stuff_lock');
  *     // ...
  *   }
  *
  *   // The preferred way: dependency injected code.
- *   function hook_do_stuff() {
+ *   function HOOK_do_stuff() {
  *     // Move the actual implementation to a class and instantiate it.
  *     $instance = new StuffDoingClass(\Drupal::lock());
  *     $instance->doStuff();

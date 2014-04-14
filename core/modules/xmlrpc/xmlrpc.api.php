@@ -38,7 +38,7 @@
  *     purposes.
  *   Both forms are shown in the example.
  */
-function hook_xmlrpc() {
+function HOOK_xmlrpc() {
   return array(
     'drupal.login' => 'drupal_login',
     array(
@@ -56,17 +56,17 @@ function hook_xmlrpc() {
  * XML-RPC methods, right before they are invoked by a client. Methods may be
  * added, or existing methods may be altered.
  *
- * Note that hook_xmlrpc() supports two distinct and incompatible formats to
+ * Note that HOOK_xmlrpc() supports two distinct and incompatible formats to
  * define a callback, so care must be taken when altering other methods.
  *
  * @param $methods
  *   An asssociative array of method callback definitions, as returned from
- *   hook_xmlrpc() implementations.
+ *   HOOK_xmlrpc() implementations.
  *
- * @see hook_xmlrpc()
+ * @see HOOK_xmlrpc()
  * @see xmlrpc_server()
  */
-function hook_xmlrpc_alter(&$methods) {
+function HOOK_xmlrpc_alter(&$methods) {
   // Directly change a simple method.
   $methods['drupal.login'] = 'mymodule_login';
 

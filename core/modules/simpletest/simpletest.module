@@ -13,7 +13,7 @@ use Symfony\Component\Process\PhpExecutableFinder;
  */
 
 /**
- * Implements hook_help().
+ * Implements HOOK_help().
  */
 function simpletest_help($path, $arg) {
   switch ($path) {
@@ -36,7 +36,7 @@ function simpletest_help($path, $arg) {
 }
 
 /**
- * Implements hook_permission().
+ * Implements HOOK_permission().
  */
 function simpletest_permission() {
   return array(
@@ -48,7 +48,7 @@ function simpletest_permission() {
 }
 
 /**
- * Implements hook_theme().
+ * Implements HOOK_theme().
  */
 function simpletest_theme() {
   return array(
@@ -60,7 +60,7 @@ function simpletest_theme() {
 }
 
 /**
- * Implements hook_js_alter().
+ * Implements HOOK_js_alter().
  */
 function simpletest_js_alter(&$javascript) {
   // Since SimpleTest is a special use case for the table select, stick the
@@ -724,7 +724,7 @@ function simpletest_clean_results_table($test_id = NULL) {
 }
 
 /**
- * Implements hook_mail_alter().
+ * Implements HOOK_mail_alter().
  *
  * Aborts sending of messages with ID 'simpletest_cancel_test'.
  *

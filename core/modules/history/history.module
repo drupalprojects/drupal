@@ -21,7 +21,7 @@ use Drupal\Core\Entity\Display\EntityViewDisplayInterface;
 define('HISTORY_READ_LIMIT', REQUEST_TIME - 30 * 24 * 60 * 60);
 
 /**
- * Implements hook_help().
+ * Implements HOOK_help().
  */
 function history_help($path, $arg) {
   switch ($path) {
@@ -120,7 +120,7 @@ function history_write($nid, $account = NULL) {
 }
 
 /**
- * Implements hook_cron().
+ * Implements HOOK_cron().
  */
 function history_cron() {
   db_delete('history')
@@ -129,7 +129,7 @@ function history_cron() {
 }
 
 /**
- * Implements hook_node_view_alter().
+ * Implements HOOK_node_view_alter().
  */
 function history_node_view_alter(&$build, EntityInterface $node, EntityViewDisplayInterface $display) {
   // Update the history table, stating that this user viewed this node.
@@ -153,7 +153,7 @@ function history_node_view_alter(&$build, EntityInterface $node, EntityViewDispl
 }
 
 /**
- * Implements hook_node_delete().
+ * Implements HOOK_node_delete().
  */
 function history_node_delete(EntityInterface $node) {
   db_delete('history')
@@ -162,7 +162,7 @@ function history_node_delete(EntityInterface $node) {
 }
 
 /**
- * Implements hook_user_cancel().
+ * Implements HOOK_user_cancel().
  */
 function history_user_cancel($edit, $account, $method) {
   switch ($method) {
@@ -175,7 +175,7 @@ function history_user_cancel($edit, $account, $method) {
 }
 
 /**
- * Implements hook_user_delete().
+ * Implements HOOK_user_delete().
  */
 function history_user_delete($account) {
   db_delete('history')

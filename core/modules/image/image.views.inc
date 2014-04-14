@@ -9,7 +9,7 @@ use Drupal\Core\Entity\ContentEntityDatabaseStorage;
 use Drupal\field\FieldConfigInterface;
 
 /**
- * Implements hook_field_views_data().
+ * Implements HOOK_field_views_data().
  *
  * Views integration for image fields. Adds an image relationship to the default
  * field data.
@@ -32,7 +32,7 @@ function image_field_views_data(FieldConfigInterface $field) {
 }
 
 /**
- * Implements hook_field_views_data_views_data_alter().
+ * Implements HOOK_field_views_data_views_data_alter().
  *
  * Views integration to provide reverse relationships on image fields.
  */

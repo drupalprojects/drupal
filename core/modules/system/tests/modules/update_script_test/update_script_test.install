@@ -6,7 +6,7 @@
  */
 
 /**
- * Implements hook_requirements().
+ * Implements HOOK_requirements().
  */
 function update_script_test_requirements($phase) {
   $requirements = array();
@@ -38,7 +38,7 @@ function update_script_test_requirements($phase) {
 }
 
 /**
- * Implements hook_update_last_removed().
+ * Implements HOOK_update_last_removed().
  */
 function update_script_test_update_last_removed() {
   return 7110;

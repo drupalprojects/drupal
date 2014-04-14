@@ -67,7 +67,7 @@ class Registry implements DestructableInterface {
    *     hook is executed by _theme().
    *   - file: (optional) A filename to add to 'includes', either prefixed with
    *     the value of 'path', or the path of the extension implementing
-   *     hook_theme().
+   *     HOOK_theme().
    *   In case of a theme base hook, one of the following:
    *   - variables: An associative array whose keys are variable names and whose
    *     values are default values of the variables to use for this theme hook.
@@ -76,7 +76,7 @@ class Registry implements DestructableInterface {
    *   In case of a theme template file:
    *   - path: The path to the template file to use. Defaults to the
    *     subdirectory 'templates' of the path of the extension implementing
-   *     hook_theme(); e.g., 'core/modules/node/templates' for Node module.
+   *     HOOK_theme(); e.g., 'core/modules/node/templates' for Node module.
    *   - template: The basename of the template file to use, without extension
    *     (as the extension is specific to the theme engine). The template file
    *     is in the directory defined by 'path'.
@@ -292,7 +292,7 @@ class Registry implements DestructableInterface {
    * determined based on the full registry and classified as 'base hook'.
    *
    * @see _theme()
-   * @see hook_theme_registry_alter()
+   * @see HOOK_theme_registry_alter()
    *
    * @return \Drupal\Core\Utility\ThemeRegistry
    *   The build theme registry.
@@ -350,7 +350,7 @@ class Registry implements DestructableInterface {
   }
 
   /**
-   * Process a single implementation of hook_theme().
+   * Process a single implementation of HOOK_theme().
    *
    * @param $cache
    *   The theme registry that will eventually be cached; It is an associative
@@ -359,29 +359,29 @@ class Registry implements DestructableInterface {
    *   - 'type': The passed-in $type.
    *   - 'theme path': The passed-in $path.
    *   - 'function': The name of the function generating output for this theme
-   *     hook. Either defined explicitly in hook_theme() or, if neither
+   *     hook. Either defined explicitly in HOOK_theme() or, if neither
    *     'function' nor 'template' is defined, then the default theme function
    *     name is used. The default theme function name is the theme hook
    *     prefixed by either 'theme_' for modules or '$name_' for everything
    *     else. If 'function' is defined, 'template' is not used.
    *   - 'template': The filename of the template generating output for this
    *     theme hook. The template is in the directory defined by the 'path' key
-   *     of hook_theme() or defaults to "$path/templates".
+   *     of HOOK_theme() or defaults to "$path/templates".
    *   - 'variables': The variables for this theme hook as defined in
-   *     hook_theme(). If there is more than one implementation and 'variables'
+   *     HOOK_theme(). If there is more than one implementation and 'variables'
    *     is not specified in a later one, then the previous definition is kept.
    *   - 'render element': The renderable element for this theme hook as defined
-   *     in hook_theme(). If there is more than one implementation and
+   *     in HOOK_theme(). If there is more than one implementation and
    *     'render element' is not specified in a later one, then the previous
    *     definition is kept.
    *   - 'preprocess functions': See _theme() for detailed documentation.
    * @param string $name
    *   The name of the module, theme engine, base theme engine, theme or base
-   *   theme implementing hook_theme().
+   *   theme implementing HOOK_theme().
    * @param string $type
    *   One of 'module', 'theme_engine', 'base_theme_engine', 'theme', or
    *   'base_theme'. Unlike regular hooks that can only be implemented by
-   *   modules, each of these can implement hook_theme(). This function is
+   *   modules, each of these can implement HOOK_theme(). This function is
    *   called in aforementioned order and new entries override older ones. For
    *   example, if a theme hook is both defined by a module and a theme, then
    *   the definition in the theme will be used.
@@ -392,13 +392,13 @@ class Registry implements DestructableInterface {
    *   themes/bartik.
    *
    * @see _theme()
-   * @see hook_theme()
+   * @see HOOK_theme()
    * @see list_themes()
    */
   protected function processExtension(&$cache, $name, $type, $theme, $path) {
     $result = array();
 
-    $hook_defaults = array(
+    $HOOK_defaults = array(
       'variables' => TRUE,
       'render element' => TRUE,
       'pattern' => TRUE,
@@ -407,7 +407,7 @@ class Registry implements DestructableInterface {
 
     $module_list = array_keys((array) $this->moduleHandler->getModuleList());
 
-    // Invoke the hook_theme() implementation, preprocess what is returned, and
+    // Invoke the HOOK_theme() implementation, preprocess what is returned, and
     // merge it into $cache.
     $function = $name . '_theme';
     if (function_exists($function)) {
@@ -447,7 +447,7 @@ class Registry implements DestructableInterface {
         // If the default keys are not set, use the default values registered
         // by the module.
         if (isset($cache[$hook])) {
-          $result[$hook] += array_intersect_key($cache[$hook], $hook_defaults);
+          $result[$hook] += array_intersect_key($cache[$hook], $HOOK_defaults);
         }
 
         // The following apply only to theming hooks implemented as templates.

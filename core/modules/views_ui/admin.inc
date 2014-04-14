@@ -22,7 +22,7 @@ use Drupal\views\Views;
  *
  * To use this function, call it directly from your form builder function
  * immediately after you have defined the form element that will serve as the
- * JavaScript trigger. Calling it elsewhere (such as in hook_form_alter()) may
+ * JavaScript trigger. Calling it elsewhere (such as in HOOK_form_alter()) may
  * mean that the non-JavaScript fallback button does not appear in the correct
  * place in the form.
  *

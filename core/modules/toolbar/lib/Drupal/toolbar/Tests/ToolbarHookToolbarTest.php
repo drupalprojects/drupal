@@ -23,8 +23,8 @@ class ToolbarHookToolbarTest extends WebTestBase {
 
   public static function getInfo() {
     return array(
-      'name' => 'Toolbar hook_toolbar',
-      'description' => 'Tests the implementation of hook_toolbar() by a module.',
+      'name' => 'Toolbar HOOK_toolbar',
+      'description' => 'Tests the implementation of HOOK_toolbar() by a module.',
       'group' => 'Toolbar',
     );
   }
@@ -38,7 +38,7 @@ class ToolbarHookToolbarTest extends WebTestBase {
   }
 
   /**
-   * Tests for a tab and tray provided by a module implementing hook_toolbar().
+   * Tests for a tab and tray provided by a module implementing HOOK_toolbar().
    */
   function testHookToolbar() {
     $this->drupalGet('test-page');

@@ -163,12 +163,12 @@ abstract class EntityStorageBase extends EntityControllerBase implements EntityS
   protected function postLoad(array &$queried_entities) {
     $entity_class = $this->entityType->getClass();
     $entity_class::postLoad($this, $queried_entities);
-    // Call hook_entity_load().
+    // Call HOOK_entity_load().
     foreach ($this->moduleHandler()->getImplementations('entity_load') as $module) {
       $function = $module . '_entity_load';
       $function($queried_entities, $this->entityTypeId);
     }
-    // Call hook_TYPE_load().
+    // Call HOOK_TYPE_load().
     foreach ($this->moduleHandler()->getImplementations($this->entityTypeId . '_load') as $module) {
       $function = $module . '_' . $this->entityTypeId . '_load';
       $function($queried_entities);

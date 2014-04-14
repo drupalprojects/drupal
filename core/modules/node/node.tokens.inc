@@ -8,7 +8,7 @@
 use Drupal\Core\Language\Language;
 
 /**
- * Implements hook_token_info().
+ * Implements HOOK_token_info().
  */
 function node_token_info() {
   $type = array(
@@ -83,7 +83,7 @@ function node_token_info() {
 }
 
 /**
- * Implements hook_tokens().
+ * Implements HOOK_tokens().
  */
 function node_tokens($type, $tokens, array $data = array(), array $options = array()) {
   $token_service = \Drupal::token();

@@ -6,7 +6,7 @@
  */
 
 /**
- * Implements hook_token_info().
+ * Implements HOOK_token_info().
  */
 function statistics_token_info() {
   $node['total-count'] = array(
@@ -29,7 +29,7 @@ function statistics_token_info() {
 }
 
 /**
- * Implements hook_tokens().
+ * Implements HOOK_tokens().
  */
 function statistics_tokens($type, $tokens, array $data = array(), array $options = array()) {
   $token_service = \Drupal::token();

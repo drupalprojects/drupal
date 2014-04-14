@@ -83,7 +83,7 @@ class ConfigMapperManager extends DefaultPluginManager implements ConfigMapperMa
 
     $this->factory = new ContainerFactory($this);
 
-    // Let others alter definitions with hook_config_translation_info_alter().
+    // Let others alter definitions with HOOK_config_translation_info_alter().
     $this->moduleHandler = $module_handler;
     $this->themeHandler = $theme_handler;
 

@@ -48,7 +48,7 @@ class DeleteTest extends FileManagedUnitTestBase {
     $this->assertTrue(file_exists($file->getFileUri()), 'File still exists on the disk.');
     $this->assertTrue(file_load($file->id()), 'File still exists in the database.');
 
-    // Clear out the call to hook_file_load().
+    // Clear out the call to HOOK_file_load().
     file_test_reset();
 
     $file_usage->delete($file, 'testing', 'test', 1);

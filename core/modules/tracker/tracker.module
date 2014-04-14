@@ -11,7 +11,7 @@ use Drupal\node\NodeInterface;
 use Drupal\Core\Session\AccountInterface;
 
 /**
- * Implements hook_help().
+ * Implements HOOK_help().
  */
 function tracker_help($path, $arg) {
   switch ($path) {
@@ -32,7 +32,7 @@ function tracker_help($path, $arg) {
 }
 
 /**
- * Implements hook_cron().
+ * Implements HOOK_cron().
  *
  * Updates tracking information for any items still to be tracked. The state
  * 'tracker.index_nid' is set to ((the last node ID that was indexed) - 1) and
@@ -154,7 +154,7 @@ function _tracker_user_access($account) {
 }
 
 /**
- * Implements hook_node_insert().
+ * Implements HOOK_node_insert().
  *
  * Adds new tracking information for this node since it's new.
  */
@@ -163,7 +163,7 @@ function tracker_node_insert(NodeInterface $node, $arg = 0) {
 }
 
 /**
- * Implements hook_node_update().
+ * Implements HOOK_node_update().
  *
  * Adds tracking information for this node since it's been updated.
  */
@@ -172,7 +172,7 @@ function tracker_node_update(NodeInterface $node, $arg = 0) {
 }
 
 /**
- * Implements hook_node_predelete().
+ * Implements HOOK_node_predelete().
  *
  * Deletes tracking information for a node.
  */
@@ -186,13 +186,13 @@ function tracker_node_predelete(EntityInterface $node, $arg = 0) {
 }
 
 /**
- * Implements hook_comment_update().
+ * Implements HOOK_comment_update().
  *
- * Comment module doesn't call hook_comment_unpublish() when saving individual
+ * Comment module doesn't call HOOK_comment_unpublish() when saving individual
  * comments so we need to check for those here.
  */
 function tracker_comment_update(CommentInterface $comment) {
-  // $comment->save() calls hook_comment_publish() for all published comments
+  // $comment->save() calls HOOK_comment_publish() for all published comments
   // so we need to handle all other values here.
   if (!$comment->isPublished() && $comment->getCommentedEntityTypeId() == 'node') {
     _tracker_remove($comment->getCommentedEntityId(), $comment->getOwnerId(), $comment->getChangedTime());
@@ -200,10 +200,10 @@ function tracker_comment_update(CommentInterface $comment) {
 }
 
 /**
- * Implements hook_comment_publish().
+ * Implements HOOK_comment_publish().
  *
  * This actually handles the insert and update of published nodes since
- * $comment->save() calls hook_comment_publish() for all published comments.
+ * $comment->save() calls HOOK_comment_publish() for all published comments.
  */
 function tracker_comment_publish(CommentInterface $comment) {
   if ($comment->getCommentedEntityTypeId() == 'node') {
@@ -212,7 +212,7 @@ function tracker_comment_publish(CommentInterface $comment) {
 }
 
 /**
- * Implements hook_comment_unpublish().
+ * Implements HOOK_comment_unpublish().
  */
 function tracker_comment_unpublish(CommentInterface $comment) {
   if ($comment->getCommentedEntityTypeId() == 'node') {
@@ -221,7 +221,7 @@ function tracker_comment_unpublish(CommentInterface $comment) {
 }
 
 /**
- * Implements hook_comment_delete().
+ * Implements HOOK_comment_delete().
  */
 function tracker_comment_delete(CommentInterface $comment) {
   if ($comment->getCommentedEntityTypeId() == 'node') {

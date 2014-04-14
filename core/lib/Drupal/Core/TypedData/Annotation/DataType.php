@@ -30,7 +30,7 @@ use Drupal\Component\Annotation\Plugin;
  *
  * @see \Drupal::typedDataManager()
  * @see \Drupal\Core\TypedData\TypedDataManager::create()
- * @see hook_data_type_info_alter()
+ * @see HOOK_data_type_info_alter()
  *
  * @Annotation
  */

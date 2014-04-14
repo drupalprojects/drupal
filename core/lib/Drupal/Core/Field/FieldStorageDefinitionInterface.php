@@ -23,7 +23,7 @@ namespace Drupal\Core\Field;
  * and settings on the storage definition must be present on the bundle field as
  * well.
  *
- * @see hook_entity_field_storage_info()
+ * @see HOOK_entity_field_storage_info()
  */
 interface FieldStorageDefinitionInterface {
 
@@ -211,7 +211,7 @@ interface FieldStorageDefinitionInterface {
    *
    * @return array[]
    *   The field schema, as an array of key/value pairs in the format returned
-   *   by hook_field_schema():
+   *   by HOOK_field_schema():
    *   - columns: An array of Schema API column specifications, keyed by column
    *     name. This specifies what comprises a single value for a given field.
    *     No assumptions should be made on how storage backends internally use

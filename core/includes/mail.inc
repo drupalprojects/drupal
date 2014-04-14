@@ -15,8 +15,8 @@ use Drupal\Component\Utility\Xss;
  * Sending an e-mail works with defining an e-mail template (subject, text
  * and possibly e-mail headers) and the replacement values to use in the
  * appropriate places in the template. Processed e-mail templates are
- * requested from hook_mail() from the module sending the e-mail. Any module
- * can modify the composed e-mail message array using hook_mail_alter().
+ * requested from HOOK_mail() from the module sending the e-mail. Any module
+ * can modify the composed e-mail message array using HOOK_mail_alter().
  * Finally drupal_mail_system()->mail() sends the e-mail, which can
  * be reused if the exact same composed e-mail is to be sent to multiple
  * recipients.
@@ -81,7 +81,7 @@ use Drupal\Component\Utility\Xss;
  * @endcode
  *
  * @param string $module
- *   A module name to invoke hook_mail() on. The {$module}_mail() hook will be
+ *   A module name to invoke HOOK_mail() on. The {$module}_mail() hook will be
  *   called to complete the $message structure which will already contain common
  *   defaults.
  * @param string $key
@@ -105,7 +105,7 @@ use Drupal\Component\Utility\Xss;
  * @param bool $send
  *   If TRUE, drupal_mail() will call drupal_mail_system()->mail() to deliver
  *   the message, and store the result in $message['result']. Modules
- *   implementing hook_mail_alter() may cancel sending by setting
+ *   implementing HOOK_mail_alter() may cancel sending by setting
  *   $message['send'] to FALSE.
  *
  * @return
@@ -155,14 +155,14 @@ function drupal_mail($module, $key, $to, $langcode, $params = array(), $reply = 
   $message['headers'] = $headers;
 
   // Build the e-mail (get subject and body, allow additional headers) by
-  // invoking hook_mail() on this module. We cannot use
+  // invoking HOOK_mail() on this module. We cannot use
   // moduleHandler()->invoke() as we need to have $message by reference in
-  // hook_mail().
+  // HOOK_mail().
   if (function_exists($function = $module . '_mail')) {
     $function($key, $message, $params);
   }
 
-  // Invoke hook_mail_alter() to allow all modules to alter the resulting e-mail.
+  // Invoke HOOK_mail_alter() to allow all modules to alter the resulting e-mail.
   \Drupal::moduleHandler()->alter('mail', $message);
 
   // Retrieve the responsible implementation for this message.
@@ -174,7 +174,7 @@ function drupal_mail($module, $key, $to, $langcode, $params = array(), $reply = 
   // Optionally send e-mail.
   if ($send) {
     // The original caller requested sending. Sending was canceled by one or
-    // more hook_mail_alter() implementations. We set 'result' to NULL, because
+    // more HOOK_mail_alter() implementations. We set 'result' to NULL, because
     // FALSE indicates an error in sending.
     if (empty($message['send'])) {
       $message['result'] = NULL;
@@ -197,7 +197,7 @@ function drupal_mail($module, $key, $to, $langcode, $params = array(), $reply = 
  * Returns an instance of the mail plugin to use for a given message ID.
  *
  * @param string $module
- *   The module name which was used by drupal_mail() to invoke hook_mail().
+ *   The module name which was used by drupal_mail() to invoke HOOK_mail().
  * @param string $key
  *   A key to identify the e-mail sent. The final message ID for the e-mail
  *   alter hook in drupal_mail() would have been {$module}_{$key}.

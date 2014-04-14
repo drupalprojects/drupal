@@ -30,7 +30,7 @@ class UpdateModuleHandler extends ModuleHandler {
       return array('system');
     }
     switch ($hook) {
-      // hook_requirements is necessary for updates to work.
+      // HOOK_requirements is necessary for updates to work.
       case 'requirements':
       // Allow logging.
       case 'watchdog':
@@ -127,7 +127,7 @@ class UpdateModuleHandler extends ModuleHandler {
       $this->moduleList[$module] = drupal_get_filename('module', $module);
       $this->load($module);
       drupal_classloader_register($module, dirname($this->moduleList[$module]));
-      // @todo Figure out what to do about hook_install() and hook_enable().
+      // @todo Figure out what to do about HOOK_install() and HOOK_enable().
     }
     return $old_schema;
   }

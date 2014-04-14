@@ -73,16 +73,16 @@ class HookDiscoveryTest extends UnitTestCase {
     $this->moduleHandler->expects($this->once())
       ->method('getImplementations')
       ->with('test_plugin')
-      ->will($this->returnValue(array('hook_discovery_test', 'hook_discovery_test2')));
+      ->will($this->returnValue(array('HOOK_discovery_test', 'HOOK_discovery_test2')));
 
     $this->moduleHandler->expects($this->at(1))
       ->method('invoke')
-      ->with('hook_discovery_test', 'test_plugin')
-      ->will($this->returnValue(hook_discovery_test_test_plugin()));
+      ->with('HOOK_discovery_test', 'test_plugin')
+      ->will($this->returnValue(HOOK_discovery_test_test_plugin()));
     $this->moduleHandler->expects($this->at(2))
       ->method('invoke')
-      ->with('hook_discovery_test2', 'test_plugin')
-      ->will($this->returnValue(hook_discovery_test2_test_plugin()));
+      ->with('HOOK_discovery_test2', 'test_plugin')
+      ->will($this->returnValue(HOOK_discovery_test2_test_plugin()));
 
     $definitions = $this->hookDiscovery->getDefinitions();
 
@@ -92,9 +92,9 @@ class HookDiscoveryTest extends UnitTestCase {
     $this->assertEquals($definitions['test_id_3']['class'], 'Drupal\plugin_test\Plugin\plugin_test\fruit\Cherry');
 
     // Ensure that the module was set.
-    $this->assertEquals($definitions['test_id_1']['module'], 'hook_discovery_test');
-    $this->assertEquals($definitions['test_id_2']['module'], 'hook_discovery_test');
-    $this->assertEquals($definitions['test_id_3']['module'], 'hook_discovery_test2');
+    $this->assertEquals($definitions['test_id_1']['module'], 'HOOK_discovery_test');
+    $this->assertEquals($definitions['test_id_2']['module'], 'HOOK_discovery_test');
+    $this->assertEquals($definitions['test_id_3']['module'], 'HOOK_discovery_test2');
   }
 
   /**
@@ -106,13 +106,13 @@ class HookDiscoveryTest extends UnitTestCase {
     $this->moduleHandler->expects($this->exactly(4))
       ->method('getImplementations')
       ->with('test_plugin')
-      ->will($this->returnValue(array('hook_discovery_test', 'hook_discovery_test2')));
+      ->will($this->returnValue(array('HOOK_discovery_test', 'HOOK_discovery_test2')));
 
     $this->moduleHandler->expects($this->any())
       ->method('invoke')
       ->will($this->returnValueMap(array(
-          array('hook_discovery_test', 'test_plugin', array(), hook_discovery_test_test_plugin()),
-          array('hook_discovery_test2', 'test_plugin', array(), hook_discovery_test2_test_plugin()),
+          array('HOOK_discovery_test', 'test_plugin', array(), HOOK_discovery_test_test_plugin()),
+          array('HOOK_discovery_test2', 'test_plugin', array(), HOOK_discovery_test2_test_plugin()),
         )
       ));
 
@@ -120,15 +120,15 @@ class HookDiscoveryTest extends UnitTestCase {
 
     $plugin_definition = $this->hookDiscovery->getDefinition('test_id_1');
     $this->assertEquals($plugin_definition['class'], 'Drupal\plugin_test\Plugin\plugin_test\fruit\Apple');
-    $this->assertEquals($plugin_definition['module'], 'hook_discovery_test');
+    $this->assertEquals($plugin_definition['module'], 'HOOK_discovery_test');
 
     $plugin_definition = $this->hookDiscovery->getDefinition('test_id_2');
     $this->assertEquals($plugin_definition['class'], 'Drupal\plugin_test\Plugin\plugin_test\fruit\Orange');
-    $this->assertEquals($plugin_definition['module'], 'hook_discovery_test');
+    $this->assertEquals($plugin_definition['module'], 'HOOK_discovery_test');
 
     $plugin_definition = $this->hookDiscovery->getDefinition('test_id_3');
     $this->assertEquals($plugin_definition['class'], 'Drupal\plugin_test\Plugin\plugin_test\fruit\Cherry');
-    $this->assertEquals($plugin_definition['module'], 'hook_discovery_test2');
+    $this->assertEquals($plugin_definition['module'], 'HOOK_discovery_test2');
   }
 
 }
@@ -136,13 +136,13 @@ class HookDiscoveryTest extends UnitTestCase {
 }
 
 namespace {
-  function hook_discovery_test_test_plugin() {
+  function HOOK_discovery_test_test_plugin() {
     return array(
       'test_id_1' => array('class' => 'Drupal\plugin_test\Plugin\plugin_test\fruit\Apple'),
       'test_id_2' => array('class' => 'Drupal\plugin_test\Plugin\plugin_test\fruit\Orange'),
     );
   }
-  function hook_discovery_test2_test_plugin() {
+  function HOOK_discovery_test2_test_plugin() {
     return array(
       'test_id_3' => array('class' => 'Drupal\plugin_test\Plugin\plugin_test\fruit\Cherry'),
     );

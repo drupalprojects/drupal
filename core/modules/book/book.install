@@ -6,7 +6,7 @@
  */
 
 /**
- * Implements hook_uninstall().
+ * Implements HOOK_uninstall().
  */
 function book_uninstall() {
   // Clear book data out of the cache.
@@ -14,7 +14,7 @@ function book_uninstall() {
 }
 
 /**
- * Implements hook_schema().
+ * Implements HOOK_schema().
  */
 function book_schema() {
   $schema['book'] = array(

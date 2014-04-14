@@ -10,7 +10,7 @@ use Drupal\breakpoint\Entity\BreakpointGroup;
 use Drupal\Core\Config\Entity\ConfigEntityStorage;
 
 /**
- * Implements hook_help().
+ * Implements HOOK_help().
  */
 function breakpoint_help($path, $arg) {
   switch ($path) {

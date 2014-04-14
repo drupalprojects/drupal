@@ -15,12 +15,12 @@ use Drupal\Core\Entity\EntityInterface;
 interface CommentStatisticsInterface {
 
   /**
-   * Returns an array of ranking information for hook_ranking().
+   * Returns an array of ranking information for HOOK_ranking().
    *
    * @return array
-   *   Array of ranking information as expected by hook_ranking().
+   *   Array of ranking information as expected by HOOK_ranking().
    *
-   * @see hook_ranking()
+   * @see HOOK_ranking()
    * @see comment_ranking()
    */
   public function getRankingInfo();

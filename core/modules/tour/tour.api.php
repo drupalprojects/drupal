@@ -13,10 +13,10 @@
  * @param \Drupal\Core\Entity\EntityInterface $entity
  *   The tour which contains the $tour_tips.
  */
-function hook_tour_tips_alter(array &$tour_tips, Drupal\Core\Entity\EntityInterface $entity) {
+function HOOK_tour_tips_alter(array &$tour_tips, Drupal\Core\Entity\EntityInterface $entity) {
   foreach ($tour_tips as $tour_tip) {
     if ($tour_tip->get('id') == 'tour-code-test-1') {
-      $tour_tip->set('body', 'Altered by hook_tour_tips_alter');
+      $tour_tip->set('body', 'Altered by HOOK_tour_tips_alter');
     }
   }
 }
@@ -29,7 +29,7 @@ function hook_tour_tips_alter(array &$tour_tips, Drupal\Core\Entity\EntityInterf
  *
  * @see \Drupal\tour\Annotation\Tip
  */
-function hook_tour_tips_info_alter(&$info) {
+function HOOK_tour_tips_info_alter(&$info) {
   // Swap out the class used for this tip plugin.
   if (isset($info['text'])) {
     $info['class'] = 'Drupal\mymodule\Plugin\tour\tip\MyCustomTipPlugin';
@@ -42,7 +42,7 @@ function hook_tour_tips_info_alter(&$info) {
  * @param array $entities
  *   An array of \Drupal\tour\Entity\Tour objects, indexed by id.
  */
-function hook_tour_load($entities) {
+function HOOK_tour_load($entities) {
   if (isset($entities['tour-entity-create-test-en'])) {
     $entities['tour-entity-create-test-en']->loaded = 'Load hooks work';
   }
@@ -56,10 +56,10 @@ function hook_tour_load($entities) {
  * @param \Drupal\tour\Entity\Tour $entity
  *   The tour object.
  *
- * @see hook_tour_insert()
- * @see hook_tour_update()
+ * @see HOOK_tour_insert()
+ * @see HOOK_tour_update()
  */
-function hook_tour_presave($entity) {
+function HOOK_tour_presave($entity) {
   if ($entity->id() == 'tour-entity-create-test-en') {
     $entity->set('label', $entity->label() . ' alter');
   }
@@ -71,7 +71,7 @@ function hook_tour_presave($entity) {
  * @param \Drupal\tour\Entity\Tour $entity
  *   The tour object being inserted.
  */
-function hook_tour_insert($entity) {
+function HOOK_tour_insert($entity) {
   \Drupal::service('plugin.manager.tour.tip')->clearCachedDefinitions();
   \Drupal\Core\Cache\Cache::deleteTags(array('tour_items'));
 }
@@ -82,7 +82,7 @@ function hook_tour_insert($entity) {
  * @param \Drupal\tour\Entity\Tour $entity
  *   The tour object being updated.
  */
-function hook_tour_update($entity) {
+function HOOK_tour_update($entity) {
   \Drupal::service('plugin.manager.tour.tip')->clearCachedDefinitions();
   \Drupal\Core\Cache\Cache::deleteTags(array('tour_items'));
 }

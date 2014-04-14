@@ -6,7 +6,7 @@
  */
 
 /**
- * Implements hook_config_import_steps_alter().
+ * Implements HOOK_config_import_steps_alter().
  */
 function config_import_test_config_import_steps_alter(&$sync_steps) {
   $sync_steps[] = '_config_import_test_config_import_steps_alter';
@@ -19,7 +19,7 @@ function config_import_test_config_import_steps_alter(&$sync_steps) {
  *   The batch context.
  */
 function _config_import_test_config_import_steps_alter(&$context) {
-  $GLOBALS['hook_config_test']['config_import_steps_alter'] = TRUE;
+  $GLOBALS['HOOK_config_test']['config_import_steps_alter'] = TRUE;
   $context['finished'] = 1;
   return;
 }

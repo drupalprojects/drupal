@@ -816,7 +816,7 @@ function update_manager_archive_extract($file, $directory) {
 /**
  * Verifies an archive after it has been downloaded and extracted.
  *
- * This function is responsible for invoking hook_verify_update_archive().
+ * This function is responsible for invoking HOOK_verify_update_archive().
  *
  * @param string $project
  *   The short name of the project to download.

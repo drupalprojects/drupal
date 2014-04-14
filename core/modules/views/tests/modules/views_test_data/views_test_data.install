@@ -6,14 +6,14 @@
  */
 
 /**
- * Implements hook_schema().
+ * Implements HOOK_schema().
  */
 function views_test_data_schema() {
   return \Drupal::state()->get('views_test_data_schema');
 }
 
 /**
- * Implements hook_install().
+ * Implements HOOK_install().
  */
 function views_test_data_install() {
   // Add the marquee tag to possible html elements to test the field handler.

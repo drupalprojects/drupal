@@ -11,7 +11,7 @@ use Drupal\field\FieldConfigInterface;
 use Drupal\field\FieldConfigUpdateForbiddenException;
 
 /**
- * Implements hook_help().
+ * Implements HOOK_help().
  */
 function options_help($path, $arg) {
   switch ($path) {
@@ -33,14 +33,14 @@ function options_help($path, $arg) {
 }
 
 /**
- * Implements hook_ENTITY_TYPE_update() for 'field_config'.
+ * Implements HOOK_ENTITY_TYPE_update() for 'field_config'.
  */
 function options_field_config_update(FieldConfigInterface $field) {
   drupal_static_reset('options_allowed_values');
 }
 
 /**
- * Implements hook_ENTITY_TYPE_delete() for 'field_config'.
+ * Implements HOOK_ENTITY_TYPE_delete() for 'field_config'.
  */
 function options_field_config_delete(FieldConfigInterface $field) {
   drupal_static_reset('options_allowed_values');
@@ -90,7 +90,7 @@ function options_allowed_values(FieldDefinitionInterface $field_definition, Enti
 }
 
 /**
- * Implements hook_field_config_update_forbid().
+ * Implements HOOK_field_config_update_forbid().
  */
 function options_field_config_update_forbid(FieldConfigInterface $field, FieldConfigInterface $prior_field) {
   if ($field->module == 'options' && $field->hasData()) {

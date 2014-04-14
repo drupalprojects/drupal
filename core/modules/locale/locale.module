@@ -131,7 +131,7 @@ const LOCALE_TRANSLATION_LOCAL = 'local';
 const LOCALE_TRANSLATION_CURRENT = 'current';
 
 /**
- * Implements hook_help().
+ * Implements HOOK_help().
  */
 function locale_help($path, $arg) {
   switch ($path) {
@@ -169,7 +169,7 @@ function locale_help($path, $arg) {
 }
 
 /**
- * Implements hook_permission().
+ * Implements HOOK_permission().
  */
 function locale_permission() {
   return array(
@@ -181,7 +181,7 @@ function locale_permission() {
 }
 
 /**
- * Implements hook_theme().
+ * Implements HOOK_theme().
  */
 function locale_theme() {
   return array(
@@ -203,7 +203,7 @@ function locale_theme() {
 }
 
 /**
- * Implements hook_stream_wrappers().
+ * Implements HOOK_stream_wrappers().
  */
 function locale_stream_wrappers() {
   $wrappers = array(
@@ -218,7 +218,7 @@ function locale_stream_wrappers() {
 }
 
 /**
- * Implements hook_ENTITY_TYPE_insert() for 'language_entity'.
+ * Implements HOOK_ENTITY_TYPE_insert() for 'language_entity'.
  */
 function locale_language_entity_insert(LanguageEntity $language) {
   // @todo move these two cache clears out. See http://drupal.org/node/1293252
@@ -229,7 +229,7 @@ function locale_language_entity_insert(LanguageEntity $language) {
 }
 
 /**
- * Implements hook_ENTITY_TYPE_update() for 'language_entity'.
+ * Implements HOOK_ENTITY_TYPE_update() for 'language_entity'.
  */
 function locale_language_entity_update(LanguageEntity $language) {
   // @todo move these two cache clears out. See http://drupal.org/node/1293252
@@ -240,7 +240,7 @@ function locale_language_entity_update(LanguageEntity $language) {
 }
 
 /**
- * Implements hook_ENTITY_TYPE_delete() for 'language_entity'.
+ * Implements HOOK_ENTITY_TYPE_delete() for 'language_entity'.
  */
 function locale_language_entity_delete(LanguageEntity $language) {
   // Remove translations.
@@ -333,7 +333,7 @@ function locale_get_plural($count, $langcode = NULL) {
 
 
 /**
- * Implements hook_modules_installed().
+ * Implements HOOK_modules_installed().
  */
 function locale_modules_installed($modules) {
   $components['module'] = $modules;
@@ -341,7 +341,7 @@ function locale_modules_installed($modules) {
 }
 
 /**
- * Implements hook_modules_uninstalled().
+ * Implements HOOK_modules_uninstalled().
  */
 function locale_modules_uninstalled($modules) {
   $components['module'] = $modules;
@@ -349,7 +349,7 @@ function locale_modules_uninstalled($modules) {
 }
 
 /**
- * Implements hook_themes_enabled().
+ * Implements HOOK_themes_enabled().
  *
  * @todo This is technically wrong. We must not import upon enabling, but upon
  *   initial installation. The theme system is missing an installation hook.
@@ -360,7 +360,7 @@ function locale_themes_enabled($themes) {
 }
 
 /**
- * Implements hook_themes_disabled().
+ * Implements HOOK_themes_disabled().
  */
 function locale_themes_disabled($themes) {
   $components['theme'] = $themes;
@@ -368,7 +368,7 @@ function locale_themes_disabled($themes) {
 }
 
 /**
- * Implements hook_cron().
+ * Implements HOOK_cron().
  *
  * @see locale_queue_info()
  */
@@ -384,7 +384,7 @@ function locale_cron() {
 }
 
 /**
- * Implements hook_queue_info().
+ * Implements HOOK_queue_info().
  */
 function locale_queue_info() {
   $queues['locale_translation'] = array(
@@ -534,7 +534,7 @@ function locale_system_remove($components) {
 }
 
 /**
- * Implements hook_js_alter().
+ * Implements HOOK_js_alter().
  */
 function locale_js_alter(&$javascript) {
   $files = array();
@@ -614,7 +614,7 @@ function locale_js_translate(array $files = array()) {
 }
 
 /**
- * Implements hook_library_alter().
+ * Implements HOOK_library_alter().
  *
  * Provides the language support for the jQuery UI Date Picker.
  */
@@ -637,7 +637,7 @@ function locale_library_alter(array &$library, $name) {
 }
 
 /**
- * Implements hook_form_FORM_ID_alter() for language_admin_overview_form().
+ * Implements HOOK_form_FORM_ID_alter() for language_admin_overview_form().
  */
 function locale_form_language_admin_overview_form_alter(&$form, &$form_state) {
   $languages = $form['languages']['#languages'];
@@ -690,7 +690,7 @@ function locale_form_language_admin_overview_form_alter(&$form, &$form_state) {
 }
 
 /**
- * Implements hook_form_FORM_ID_alter() for language_admin_add_form(().
+ * Implements HOOK_form_FORM_ID_alter() for language_admin_add_form(().
  */
 function locale_form_language_admin_add_form_alter(&$form, &$form_state) {
   $form['predefined_submit']['#submit'][] = 'locale_form_language_admin_add_form_alter_submit';
@@ -726,7 +726,7 @@ function locale_form_language_admin_add_form_alter_submit($form, $form_state) {
 }
 
 /**
- * Implements hook_form_FORM_ID_alter() for language_admin_edit_form().
+ * Implements HOOK_form_FORM_ID_alter() for language_admin_edit_form().
  */
 function locale_form_language_admin_edit_form_alter(&$form, &$form_state) {
   if ($form['langcode']['#type'] == 'value' && $form['langcode']['#value'] == 'en') {
@@ -757,7 +757,7 @@ function locale_translate_english() {
 }
 
 /**
- * Implements hook_form_FORM_ID_alter() for system_file_system_settings().
+ * Implements HOOK_form_FORM_ID_alter() for system_file_system_settings().
  *
  * Add interface translation directory setting to directories configuration.
  */
@@ -796,7 +796,7 @@ function locale_system_file_system_settings_submit(&$form, $form_state) {
 }
 
 /**
- * Implements hook_preprocess_HOOK() for node templates.
+ * Implements HOOK_preprocess_HOOK() for node templates.
  */
 function locale_preprocess_node(&$variables) {
   if ($variables['node']->language()->id != Language::LANGCODE_NOT_SPECIFIED) {

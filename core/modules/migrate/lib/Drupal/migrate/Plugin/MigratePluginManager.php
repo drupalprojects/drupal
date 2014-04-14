@@ -19,7 +19,7 @@ use Drupal\migrate\MigrateException;
 /**
  * Manages migrate plugins.
  *
- * @see hook_migrate_info_alter()
+ * @see HOOK_migrate_info_alter()
  */
 class MigratePluginManager extends DefaultPluginManager {
 

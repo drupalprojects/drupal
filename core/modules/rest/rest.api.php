@@ -16,7 +16,7 @@
  * @param array $definitions
  *   The collection of resource definitions.
  */
-function hook_rest_resource_alter(&$definitions) {
+function HOOK_rest_resource_alter(&$definitions) {
   if (isset($definitions['entity:node'])) {
     // We want to handle REST requests regarding nodes with our own plugin
     // class.

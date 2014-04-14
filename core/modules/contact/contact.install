@@ -8,7 +8,7 @@
 use Drupal\Core\Language\Language;
 
 /**
- * Implements hook_install().
+ * Implements HOOK_install().
  */
 function contact_install() {
   $site_mail = \Drupal::config('system.site')->get('mail');

@@ -16,7 +16,7 @@ use Drupal\Component\Annotation\Plugin;
  * instantiated and invoked by an EntityDisplay object.
  *
  * Additional annotation keys for formatters can be defined in
- * hook_field_formatter_info_alter().
+ * HOOK_field_formatter_info_alter().
  *
  * @Annotation
  *

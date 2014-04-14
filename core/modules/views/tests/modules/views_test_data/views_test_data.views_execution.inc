@@ -9,35 +9,35 @@ use Drupal\views\ViewExecutable;
 use Drupal\views\ViewStorageInterface;
 
 /**
- * Implements hook_views_query_substitutions().
+ * Implements HOOK_views_query_substitutions().
  */
 function views_test_data_views_query_substitutions(ViewExecutable $view) {
   \Drupal::state()->set('views_hook_test_views_query_substitutions', TRUE);
 }
 
 /**
- * Implements hook_views_form_substitutions().
+ * Implements HOOK_views_form_substitutions().
  */
 function views_test_data_views_form_substitutions(ViewExecutable $view) {
   \Drupal::state()->set('views_hook_test_views_form_substitutions', TRUE);
 }
 
 /**
- * Implements hook_field_views_data().
+ * Implements HOOK_field_views_data().
  */
 function views_test_data_field_views_data($field) {
   \Drupal::state()->set('views_hook_test_field_views_data', TRUE);
 }
 
 /**
- * Implements hook_field_views_data_alter().
+ * Implements HOOK_field_views_data_alter().
  */
 function views_test_data_field_views_data_alter(&$data, $field, $module) {
   \Drupal::state()->set('views_hook_test_field_views_data_alter', TRUE);
 }
 
 /**
- * Implements hook_views_pre_render().
+ * Implements HOOK_views_pre_render().
  *
  * @see \Drupal\views\Tests\Plugin\CacheTest
  * @see \Drupal\views\Tests\Plugin\RenderTest
@@ -55,21 +55,21 @@ function views_test_data_views_pre_render(ViewExecutable $view) {
 }
 
 /**
- * Implements hook_views_post_render().
+ * Implements HOOK_views_post_render().
  */
 function views_test_data_views_post_render(ViewExecutable $view) {
   \Drupal::state()->set('views_hook_test_views_post_render', TRUE);
 }
 
 /**
- * Implements hook_views_pre_build().
+ * Implements HOOK_views_pre_build().
  */
 function views_test_data_views_pre_build(ViewExecutable $view) {
   \Drupal::state()->set('views_hook_test_views_pre_build', TRUE);
 }
 
 /**
- * Implements hook_views_post_build().
+ * Implements HOOK_views_post_build().
  */
 function views_test_data_views_post_build(ViewExecutable $view) {
   \Drupal::state()->set('views_hook_test_views_post_build', TRUE);
@@ -85,28 +85,28 @@ function views_test_data_views_post_build(ViewExecutable $view) {
 }
 
 /**
- * Implements hook_views_pre_view().
+ * Implements HOOK_views_pre_view().
  */
 function views_test_data_views_pre_view(ViewExecutable $view) {
   \Drupal::state()->set('views_hook_test_views_pre_view', TRUE);
 }
 
 /**
- * Implements hook_views_pre_execute().
+ * Implements HOOK_views_pre_execute().
  */
 function views_test_data_views_pre_execute(ViewExecutable $view) {
   \Drupal::state()->set('views_hook_test_views_pre_execute', TRUE);
 }
 
 /**
- * Implements hook_views_post_execute().
+ * Implements HOOK_views_post_execute().
  */
 function views_test_data_views_post_execute(ViewExecutable $view) {
   \Drupal::state()->set('views_hook_test_views_post_execute', TRUE);
 }
 
 /**
- * Implements hook_views_query_alter().
+ * Implements HOOK_views_query_alter().
  */
 function views_test_data_views_query_alter(ViewExecutable $view) {
   \Drupal::state()->set('views_hook_test_views_query_alter', TRUE);

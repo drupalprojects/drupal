@@ -44,7 +44,7 @@ const USER_REGISTER_VISITORS = 'visitors';
 const USER_REGISTER_VISITORS_ADMINISTRATIVE_APPROVAL = 'visitors_admin_approval';
 
 /**
- * Implement hook_help().
+ * Implement HOOK_help().
  */
 function user_help($path, $arg) {
   switch ($path) {
@@ -91,7 +91,7 @@ function user_help($path, $arg) {
 }
 
 /**
- * Implements hook_theme().
+ * Implements HOOK_theme().
  */
 function user_theme() {
   return array(
@@ -114,7 +114,7 @@ function user_theme() {
 }
 
 /**
- * Implements hook_page_build().
+ * Implements HOOK_page_build().
  */
 function user_page_build(&$page) {
   $path = drupal_get_path('module', 'user');
@@ -122,7 +122,7 @@ function user_page_build(&$page) {
 }
 
 /**
- * Implements hook_js_alter().
+ * Implements HOOK_js_alter().
  */
 function user_js_alter(&$javascript) {
   // If >=1 JavaScript asset has declared a dependency on drupalSettings, the
@@ -146,7 +146,7 @@ function user_js_alter(&$javascript) {
 }
 
 /**
- * Implements hook_entity_bundle_info().
+ * Implements HOOK_entity_bundle_info().
  */
 function user_entity_bundle_info() {
   $bundles['user']['user']['label'] = t('User');
@@ -203,7 +203,7 @@ function user_picture_enabled() {
 }
 
 /**
- * Implements hook_entity_extra_field_info().
+ * Implements HOOK_entity_extra_field_info().
  */
 function user_entity_extra_field_info() {
   $fields['user']['user']['form']['account'] = array(
@@ -466,7 +466,7 @@ function user_is_blocked($name) {
 }
 
 /**
- * Implements hook_permission().
+ * Implements HOOK_permission().
  */
 function user_permission() {
   return array(
@@ -501,7 +501,7 @@ function user_permission() {
 }
 
 /**
- * Implements hook_user_view().
+ * Implements HOOK_user_view().
  */
 function user_user_view(UserInterface $account, EntityViewDisplayInterface $display) {
   if ($display->getComponent('member_for')) {
@@ -549,7 +549,7 @@ function user_validate_current_pass(&$form, &$form_state) {
 }
 
 /**
- * Implements hook_preprocess_HOOK() for block templates.
+ * Implements HOOK_preprocess_HOOK() for block templates.
  */
 function user_preprocess_block(&$variables) {
   if ($variables['configuration']['provider'] == 'user') {
@@ -580,7 +580,7 @@ function user_format_name(AccountInterface $account) {
 }
 
 /**
- * Implements hook_template_preprocess_default_variables_alter().
+ * Implements HOOK_template_preprocess_default_variables_alter().
  *
  * @see user_user_login()
  * @see user_user_logout()
@@ -691,7 +691,7 @@ function theme_username($variables) {
 }
 
 /**
- * Implements hook_menu_link_presave().
+ * Implements HOOK_menu_link_presave().
  */
 function user_menu_link_presave(MenuLink $menu_link) {
   // The path 'user' must be accessible for anonymous users, but only visible
@@ -704,7 +704,7 @@ function user_menu_link_presave(MenuLink $menu_link) {
 }
 
 /**
- * Implements hook_menu_breadcrumb_alter().
+ * Implements HOOK_menu_breadcrumb_alter().
  */
 function user_menu_breadcrumb_alter(&$active_trail, $item) {
   // Remove "My account" from the breadcrumb when $item is descendant-or-self
@@ -715,7 +715,7 @@ function user_menu_breadcrumb_alter(&$active_trail, $item) {
 }
 
 /**
- * Implements hook_translated_menu_link_alter().
+ * Implements HOOK_translated_menu_link_alter().
  */
 function user_translated_menu_link_alter(MenuLink &$menu_link) {
   // Hide the "User account" link for anonymous users.
@@ -745,7 +745,7 @@ function user_authenticate($name, $password) {
  * Finalizes the login process and logs in a user.
  *
  * The function logs in the user, records a watchdog message about the new
- * session, saves the login timestamp, calls hook_user_login(), and generates a
+ * session, saves the login timestamp, calls HOOK_user_login(), and generates a
  * new session.
  *
  * The global $user object is replaced with the passed in account.
@@ -753,7 +753,7 @@ function user_authenticate($name, $password) {
  * @param \Drupal\user\UserInterface $account
  *   The account to log in.
  *
- * @see hook_user_login()
+ * @see HOOK_user_login()
  */
 function user_login_finalize(UserInterface $account) {
   global $user;
@@ -767,7 +767,7 @@ function user_login_finalize(UserInterface $account) {
     ->updateLastLoginTimestamp($account);
 
   // Regenerate the session ID to prevent against session fixation attacks.
-  // This is called before hook_user in case one of those functions fails
+  // This is called before HOOK_user in case one of those functions fails
   // or incorrectly does a redirect which would leave the old session in place.
   \Drupal::service('session_manager')->regenerate();
 
@@ -775,7 +775,7 @@ function user_login_finalize(UserInterface $account) {
 }
 
 /**
- * Implements hook_user_login().
+ * Implements HOOK_user_login().
  */
 function user_user_login($account) {
   // Reset static cache of default variables in template_preprocess() to reflect
@@ -784,7 +784,7 @@ function user_user_login($account) {
 }
 
 /**
- * Implements hook_user_logout().
+ * Implements HOOK_user_logout().
  */
 function user_user_logout($account) {
   // Reset static cache of default variables in template_preprocess() to reflect
@@ -902,7 +902,7 @@ function user_cancel($edit, $uid, $method) {
   batch_set($batch);
 
   // When the 'user_cancel_delete' method is used, user_delete() is called,
-  // which invokes hook_user_predelete() and hook_user_delete(). Modules
+  // which invokes HOOK_user_predelete() and HOOK_user_delete(). Modules
   // should use those hooks to respond to the account deletion.
   if ($method != 'user_cancel_delete') {
     // Allow modules to add further sets to this batch.
@@ -993,12 +993,12 @@ function _user_cancel_session_regenerate() {
 /**
  * Helper function to return available account cancellation methods.
  *
- * See documentation of hook_user_cancel_methods_alter().
+ * See documentation of HOOK_user_cancel_methods_alter().
  *
  * @return array
  *   An array containing all account cancellation methods as form elements.
  *
- * @see hook_user_cancel_methods_alter()
+ * @see HOOK_user_cancel_methods_alter()
  * @see user_admin_settings()
  */
 function user_cancel_methods() {
@@ -1062,8 +1062,8 @@ function user_delete($uid) {
  * @param $uids
  *   An array of user IDs.
  *
- * @see hook_user_predelete()
- * @see hook_user_delete()
+ * @see HOOK_user_predelete()
+ * @see HOOK_user_delete()
  */
 function user_delete_multiple(array $uids) {
   entity_delete_multiple('user', $uids);
@@ -1116,7 +1116,7 @@ function user_view_multiple($accounts, $view_mode = 'full', $langcode = NULL) {
 }
 
 /**
- * Implements hook_mail().
+ * Implements HOOK_mail().
  */
 function user_mail($key, &$message, $params) {
   $token_service = \Drupal::token();
@@ -1187,7 +1187,7 @@ function user_role_names($membersonly = FALSE, $permission = NULL) {
 }
 
 /**
- * Implements hook_user_role_insert().
+ * Implements HOOK_user_role_insert().
  */
 function user_user_role_insert(RoleInterface $role) {
   // Ignore the authenticated and anonymous roles or the role is being synced.
@@ -1224,7 +1224,7 @@ function user_user_role_insert(RoleInterface $role) {
 }
 
 /**
- * Implements hook_user_role_delete().
+ * Implements HOOK_user_role_delete().
  */
 function user_user_role_delete(RoleInterface $role) {
   // Ignore the authenticated and anonymous roles or the role is being synced.
@@ -1530,7 +1530,7 @@ function user_form_process_password_confirm($element) {
 }
 
 /**
- * Implements hook_modules_installed().
+ * Implements HOOK_modules_installed().
  */
 function user_modules_installed($modules) {
   // Assign all available permissions to the administrator role.
@@ -1549,7 +1549,7 @@ function user_modules_installed($modules) {
 }
 
 /**
- * Implements hook_modules_uninstalled().
+ * Implements HOOK_modules_uninstalled().
  */
 function user_modules_uninstalled($modules) {
   // Remove any potentially orphan module data stored for users.
@@ -1584,7 +1584,7 @@ function user_cookie_delete($cookie_name) {
 }
 
 /**
- * Implements hook_file_download_access().
+ * Implements HOOK_file_download_access().
  */
 function user_file_download_access($field, EntityInterface $entity, File $file) {
   if ($entity->getEntityTypeId() == 'user') {
@@ -1593,7 +1593,7 @@ function user_file_download_access($field, EntityInterface $entity, File $file) 
 }
 
 /**
- * Implements hook_toolbar().
+ * Implements HOOK_toolbar().
  */
 function user_toolbar() {
   $user = \Drupal::currentUser();

@@ -8,7 +8,7 @@
 use Drupal\filter\FilterFormatInterface;
 
 /**
- * Implements hook_editor_default_settings().
+ * Implements HOOK_editor_default_settings().
  */
 function editor_test_editor_default_settings($editor) {
   if ($editor === 'unicorn') {
@@ -20,7 +20,7 @@ function editor_test_editor_default_settings($editor) {
 }
 
 /**
- * Implements hook_editor_default_settings_alter().
+ * Implements HOOK_editor_default_settings_alter().
  */
 function editor_test_editor_default_settings_alter(&$settings, $editor) {
   if ($editor === 'unicorn' && isset($settings['sparkles'])) {
@@ -29,7 +29,7 @@ function editor_test_editor_default_settings_alter(&$settings, $editor) {
 }
 
 /**
- * Implements hook_editor_js_settings_alter().
+ * Implements HOOK_editor_js_settings_alter().
  */
 function editor_test_editor_js_settings_alter(&$settings) {
   // Allow tests to enable or disable this alter hook.
@@ -43,7 +43,7 @@ function editor_test_editor_js_settings_alter(&$settings) {
 }
 
 /**
- * Implements hook_editor_xss_filter_alter().
+ * Implements HOOK_editor_xss_filter_alter().
  */
 function editor_test_editor_xss_filter_alter(&$editor_xss_filter_class, FilterFormatInterface $format, FilterFormatInterface $original_format = NULL) {
   // Allow tests to enable or disable this alter hook.

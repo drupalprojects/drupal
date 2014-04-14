@@ -27,7 +27,7 @@ class ConfigInstallWebTest extends WebTestBase {
 
     // Ensure the global variable being asserted by this test does not exist;
     // a previous test executed in this request/process might have set it.
-    unset($GLOBALS['hook_config_test']);
+    unset($GLOBALS['HOOK_config_test']);
   }
 
   /**

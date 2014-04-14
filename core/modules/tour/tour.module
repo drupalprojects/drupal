@@ -8,7 +8,7 @@ use Drupal\Core\Cache\CacheBackendInterface;
 use Symfony\Cmf\Component\Routing\RouteObjectInterface;
 
 /**
- * Implements hook_help().
+ * Implements HOOK_help().
  */
 function tour_help($path, $arg) {
   switch ($path) {
@@ -28,7 +28,7 @@ function tour_help($path, $arg) {
 }
 
 /**
- * Implements hook_permission().
+ * Implements HOOK_permission().
  */
 function tour_permission() {
   return array(
@@ -40,7 +40,7 @@ function tour_permission() {
 }
 
 /**
- * Implements hook_toolbar().
+ * Implements HOOK_toolbar().
  */
 function tour_toolbar() {
   if (!\Drupal::currentUser()->hasPermission('access tour')) {
@@ -74,7 +74,7 @@ function tour_toolbar() {
 }
 
 /**
- * Implements hook_preprocess_HOOK() for page templates.
+ * Implements HOOK_preprocess_HOOK() for page templates.
  */
 function tour_preprocess_page(&$variables) {
   if (!\Drupal::currentUser()->hasPermission('access tour')) {
@@ -102,14 +102,14 @@ function tour_preprocess_page(&$variables) {
 }
 
 /**
- * Implements hook_tour_insert().
+ * Implements HOOK_tour_insert().
  */
 function tour_tour_insert($entity) {
   \Drupal::service('plugin.manager.tour.tip')->clearCachedDefinitions();
 }
 
 /**
- * Implements hook_tour_update().
+ * Implements HOOK_tour_update().
  */
 function tour_tour_update($entity) {
   \Drupal::service('plugin.manager.tour.tip')->clearCachedDefinitions();

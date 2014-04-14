@@ -168,7 +168,7 @@ class FieldAttachStorageTest extends FieldUnitTestBase {
         }
         // The field value loaded matches the one inserted.
         $this->assertEqual($entity->{$field_name}->value, $values[$index][$field_name], format_string('Entity %index: expected value was found.', array('%index' => $index)));
-        // The value added in hook_field_load() is found.
+        // The value added in HOOK_field_load() is found.
         $this->assertEqual($entity->{$field_name}->additional_key, 'additional_value', format_string('Entity %index: extra information was found', array('%index' => $index)));
       }
     }

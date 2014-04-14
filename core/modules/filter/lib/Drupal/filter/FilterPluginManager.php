@@ -21,7 +21,7 @@ use Drupal\Core\Plugin\Factory\ContainerFactory;
 /**
  * Manages text processing filters.
  *
- * @see hook_filter_info_alter()
+ * @see HOOK_filter_info_alter()
  */
 class FilterPluginManager extends DefaultPluginManager {
 

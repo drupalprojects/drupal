@@ -30,14 +30,14 @@ class UrlRewritingTest extends FileTestBase {
   }
 
   /**
-   * Tests the rewriting of shipped file URLs by hook_file_url_alter().
+   * Tests the rewriting of shipped file URLs by HOOK_file_url_alter().
    */
   function testShippedFileURL()  {
     // Test generating an URL to a shipped file (i.e. a file that is part of
     // Drupal core, a module or a theme, for example a JavaScript file).
 
     // Test alteration of file URLs to use a CDN.
-    \Drupal::state()->set('file_test.hook_file_url_alter', 'cdn');
+    \Drupal::state()->set('file_test.HOOK_file_url_alter', 'cdn');
     $filepath = 'core/assets/vendor/jquery/jquery.js';
     $url = file_create_url($filepath);
     $this->assertEqual(FILE_URL_TEST_CDN_1 . '/' . $filepath, $url, 'Correctly generated a CDN URL for a shipped file.');
@@ -46,7 +46,7 @@ class UrlRewritingTest extends FileTestBase {
     $this->assertEqual(FILE_URL_TEST_CDN_2 . '/' . $filepath, $url, 'Correctly generated a CDN URL for a shipped file.');
 
     // Test alteration of file URLs to use root-relative URLs.
-    \Drupal::state()->set('file_test.hook_file_url_alter', 'root-relative');
+    \Drupal::state()->set('file_test.HOOK_file_url_alter', 'root-relative');
     $filepath = 'core/assets/vendor/jquery/jquery.js';
     $url = file_create_url($filepath);
     $this->assertEqual(base_path() . '/' . $filepath, $url, 'Correctly generated a root-relative URL for a shipped file.');
@@ -55,7 +55,7 @@ class UrlRewritingTest extends FileTestBase {
     $this->assertEqual(base_path() . '/' . $filepath, $url, 'Correctly generated a root-relative URL for a shipped file.');
 
     // Test alteration of file URLs to use protocol-relative URLs.
-    \Drupal::state()->set('file_test.hook_file_url_alter', 'protocol-relative');
+    \Drupal::state()->set('file_test.HOOK_file_url_alter', 'protocol-relative');
     $filepath = 'core/assets/vendor/jquery/jquery.js';
     $url = file_create_url($filepath);
     $this->assertEqual('/' . base_path() . '/' . $filepath, $url, 'Correctly generated a protocol-relative URL for a shipped file.');
@@ -65,26 +65,26 @@ class UrlRewritingTest extends FileTestBase {
   }
 
   /**
-   * Tests the rewriting of public managed file URLs by hook_file_url_alter().
+   * Tests the rewriting of public managed file URLs by HOOK_file_url_alter().
    */
   function testPublicManagedFileURL() {
     // Test generating an URL to a managed file.
 
     // Test alteration of file URLs to use a CDN.
-    \Drupal::state()->set('file_test.hook_file_url_alter', 'cdn');
+    \Drupal::state()->set('file_test.HOOK_file_url_alter', 'cdn');
     $uri = $this->createUri();
     $url = file_create_url($uri);
     $public_directory_path = file_stream_wrapper_get_instance_by_scheme('public')->getDirectoryPath();
     $this->assertEqual(FILE_URL_TEST_CDN_2 . '/' . $public_directory_path . '/' . drupal_basename($uri), $url, 'Correctly generated a CDN URL for a created file.');
 
     // Test alteration of file URLs to use root-relative URLs.
-    \Drupal::state()->set('file_test.hook_file_url_alter', 'root-relative');
+    \Drupal::state()->set('file_test.HOOK_file_url_alter', 'root-relative');
     $uri = $this->createUri();
     $url = file_create_url($uri);
     $this->assertEqual(base_path() . '/' . $public_directory_path . '/' . drupal_basename($uri), $url, 'Correctly generated a root-relative URL for a created file.');
 
     // Test alteration of file URLs to use a protocol-relative URLs.
-    \Drupal::state()->set('file_test.hook_file_url_alter', 'protocol-relative');
+    \Drupal::state()->set('file_test.HOOK_file_url_alter', 'protocol-relative');
     $uri = $this->createUri();
     $url = file_create_url($uri);
     $this->assertEqual('/' . base_path() . '/' . $public_directory_path . '/' . drupal_basename($uri), $url, 'Correctly generated a protocol-relative URL for a created file.');
@@ -94,8 +94,8 @@ class UrlRewritingTest extends FileTestBase {
    * Test file_url_transform_relative().
    */
   function testRelativeFileURL() {
-    // Disable file_test.module's hook_file_url_alter() implementation.
-    \Drupal::state()->set('file_test.hook_file_url_alter', NULL);
+    // Disable file_test.module's HOOK_file_url_alter() implementation.
+    \Drupal::state()->set('file_test.HOOK_file_url_alter', NULL);
 
     // Create a mock Request for file_url_transform_relative().
     $request = Request::create($GLOBALS['base_url']);

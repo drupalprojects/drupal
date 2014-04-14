@@ -65,7 +65,7 @@ class ViewsDisplay extends ViewsPluginAnnotationBase {
   public $help = '';
 
   /**
-   * Whether or not to use hook_menu() to register a route.
+   * Whether or not to use HOOK_menu() to register a route.
    *
    * @var bool
    */

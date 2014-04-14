@@ -51,19 +51,19 @@ class CachedModuleHandler extends ModuleHandler implements CachedModuleHandlerIn
   public function getHookInfo() {
     // When this function is indirectly invoked from bootstrap_invoke_all() prior
     // to all modules being loaded, we do not want to cache an incomplete
-    // hook_hookInfo() result, so instead return an empty array. This requires
+    // HOOK_hookInfo() result, so instead return an empty array. This requires
     // bootstrap hook implementations to reside in the .module file, which is
     // optimal for performance anyway.
     if (!$this->loaded) {
       return array();
     }
     if (!isset($this->hookInfo)) {
-      if ($cache = $this->bootstrapCache->get('hook_info')) {
+      if ($cache = $this->bootstrapCache->get('HOOK_info')) {
         $this->hookInfo = $cache->data;
       }
       else {
         $this->hookInfo = parent::getHookInfo();
-        $this->bootstrapCache->set('hook_info', $this->hookInfo);
+        $this->bootstrapCache->set('HOOK_info', $this->hookInfo);
       }
     }
     return $this->hookInfo;
@@ -85,7 +85,7 @@ class CachedModuleHandler extends ModuleHandler implements CachedModuleHandlerIn
     // called several thousand times per request.
     parent::resetImplementations();
     $this->bootstrapCache->set('module_implements', array());
-    $this->bootstrapCache->delete('hook_info');
+    $this->bootstrapCache->delete('HOOK_info');
   }
 
   /**

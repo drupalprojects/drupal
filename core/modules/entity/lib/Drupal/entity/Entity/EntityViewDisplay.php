@@ -50,7 +50,7 @@ class EntityViewDisplay extends EntityDisplayBase implements EntityViewDisplayIn
    * use the 'default' display too. Those options will then be effectively
    * applied only if the view mode is configured to use them.
    *
-   * hook_entity_view_display_alter() is invoked on each display, allowing 3rd
+   * HOOK_entity_view_display_alter() is invoked on each display, allowing 3rd
    * party code to alter the display options held in the display before they are
    * used to generate render arrays.
    *
@@ -64,7 +64,7 @@ class EntityViewDisplay extends EntityDisplayBase implements EntityViewDisplayIn
    *   bundle.
    *
    * @see entity_get_display()
-   * @see hook_entity_view_display_alter()
+   * @see HOOK_entity_view_display_alter()
    */
   public static function collectRenderDisplays($entities, $view_mode) {
     if (empty($entities)) {

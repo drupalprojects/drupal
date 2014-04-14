@@ -251,7 +251,7 @@ function language_content_settings_form(array $form, array $form_state, array $s
 }
 
 /**
- * Implements hook_preprocess_HOOK() for theme_language_content_settings_table().
+ * Implements HOOK_preprocess_HOOK() for theme_language_content_settings_table().
  */
 function template_preprocess_language_content_settings_table(&$variables) {
   // Add a render element representing the bundle language settings table.

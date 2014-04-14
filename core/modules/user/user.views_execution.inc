@@ -8,7 +8,7 @@
 use Drupal\views\ViewExecutable;
 
 /**
- * Implements hook_views_query_substitutions().
+ * Implements HOOK_views_query_substitutions().
  *
  * Allow replacement of current userid so we can cache these queries.
  */

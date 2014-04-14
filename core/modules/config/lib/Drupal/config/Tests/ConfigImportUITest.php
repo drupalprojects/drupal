@@ -137,7 +137,7 @@ class ConfigImportUITest extends WebTestBase {
     $this->assertIdentical($original_dynamic_data, \Drupal::config($dynamic_name)->get());
 
     // Verify the cache got cleared.
-    $this->assertTrue(isset($GLOBALS['hook_cache_flush']));
+    $this->assertTrue(isset($GLOBALS['HOOK_cache_flush']));
 
     $this->rebuildContainer();
     $this->assertTrue(\Drupal::moduleHandler()->moduleExists('ban'), 'Ban module installed during import.');

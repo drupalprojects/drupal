@@ -10,7 +10,7 @@ use Drupal\Component\Utility\UrlHelper;
 use Drupal\Core\Template\Attribute;
 
 /**
- * Implements hook_toolbar().
+ * Implements HOOK_toolbar().
  */
 function contextual_toolbar() {
 
@@ -44,7 +44,7 @@ function contextual_toolbar() {
 }
 
 /**
- * Implements hook_page_build().
+ * Implements HOOK_page_build().
  *
  * Adds the drupal.contextual-links library to the page for any user who has the
  * 'access contextual links' permission.
@@ -61,7 +61,7 @@ function contextual_page_build(&$page) {
 }
 
 /**
- * Implements hook_help().
+ * Implements HOOK_help().
  */
 function contextual_help($path, $arg) {
   switch ($path) {
@@ -79,7 +79,7 @@ function contextual_help($path, $arg) {
 }
 
 /**
- * Implements hook_permission().
+ * Implements HOOK_permission().
  */
 function contextual_permission() {
   return array(
@@ -91,7 +91,7 @@ function contextual_permission() {
 }
 
 /**
- * Implements hook_element_info().
+ * Implements HOOK_element_info().
  */
 function contextual_element_info() {
   $types['contextual_links_placeholder'] = array(
@@ -113,7 +113,7 @@ function contextual_element_info() {
 }
 
 /**
- * Implements hook_preprocess().
+ * Implements HOOK_preprocess().
  *
  * @see contextual_pre_render_placeholder()
  * @see contextual_page_build()
@@ -234,7 +234,7 @@ function contextual_pre_render_links($element) {
 }
 
 /**
- * Implements hook_contextual_links_view_alter().
+ * Implements HOOK_contextual_links_view_alter().
  *
  * @see \Drupal\contextual\Plugin\views\field\ContextualLinks::render()
  */

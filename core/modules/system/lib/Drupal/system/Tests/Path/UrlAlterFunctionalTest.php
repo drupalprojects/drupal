@@ -10,7 +10,7 @@ namespace Drupal\system\Tests\Path;
 use Drupal\simpletest\WebTestBase;
 
 /**
- * Tests hook_url_alter functions.
+ * Tests HOOK_url_alter functions.
  */
 class UrlAlterFunctionalTest extends WebTestBase {
 

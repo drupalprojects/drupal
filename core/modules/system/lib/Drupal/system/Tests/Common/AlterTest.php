@@ -74,6 +74,6 @@ class AlterTest extends WebTestBase {
     $array_copy = $array;
     $array_expected = array('foo' => 'Drupal block theme');
     \Drupal::moduleHandler()->alter(array('drupal_alter', 'drupal_alter_foo'), $array_copy);
-    $this->assertEqual($array_copy, $array_expected, 'hook_TYPE_alter() implementations ran in correct order.');
+    $this->assertEqual($array_copy, $array_expected, 'HOOK_TYPE_alter() implementations ran in correct order.');
   }
 }

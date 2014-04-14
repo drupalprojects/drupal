@@ -30,7 +30,7 @@
  *   The name of the shortcut set that this module recommends for that user, if
  *   there is one.
  */
-function hook_shortcut_default_set($account) {
+function HOOK_shortcut_default_set($account) {
   // Use a special set of default shortcuts for administrators only.
   if (in_array(\Drupal::config('user.settings')->get('admin_role'), $account->getRoles())) {
     return 'admin-shortcuts';

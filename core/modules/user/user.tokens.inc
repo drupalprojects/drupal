@@ -6,7 +6,7 @@
  */
 
 /**
- * Implements hook_token_info().
+ * Implements HOOK_token_info().
  */
 function user_token_info() {
   $types['user'] = array(
@@ -59,7 +59,7 @@ function user_token_info() {
 }
 
 /**
- * Implements hook_tokens().
+ * Implements HOOK_tokens().
  */
 function user_tokens($type, $tokens, array $data = array(), array $options = array()) {
 

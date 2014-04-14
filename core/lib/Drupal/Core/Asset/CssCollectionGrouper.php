@@ -48,7 +48,7 @@ class CssCollectionGrouper implements AssetCollectionGrouperInterface {
       // FALSE. We put items into a group that can be aggregated together:
       // whether they will be aggregated is up to the _drupal_css_aggregate()
       // function or an
-      // override of that function specified in hook_css_alter(), but regardless
+      // override of that function specified in HOOK_css_alter(), but regardless
       // of the details of that function, a group represents items that can be
       // aggregated. Since a group may be rendered with a single HTML tag, all
       // items in the group must share the same information that would need to

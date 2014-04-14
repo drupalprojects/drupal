@@ -45,7 +45,7 @@ class DefaultHtmlFragmentRenderer implements HtmlFragmentRendererInterface {
     $page_content['#title'] = $fragment->getTitle();
 
     // Build the full page array by calling drupal_prepare_page(), which invokes
-    // hook_page_build(). This adds the other regions to the page.
+    // HOOK_page_build(). This adds the other regions to the page.
     $page_array = drupal_prepare_page($page_content);
 
     // Build the HtmlPage object.

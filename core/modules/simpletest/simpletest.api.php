@@ -18,7 +18,7 @@
  *   getInfo) the second is the name of the class and the value is the return
  *   value of the getInfo method.
  */
-function hook_simpletest_alter(&$groups) {
+function HOOK_simpletest_alter(&$groups) {
   // An alternative session handler module would not want to run the original
   // Session HTTPS handling test because it checks the sessions table in the
   // database.
@@ -30,7 +30,7 @@ function hook_simpletest_alter(&$groups) {
  *
  * This hook is called just once at the beginning of a test group.
  */
-function hook_test_group_started() {
+function HOOK_test_group_started() {
 }
 
 /**
@@ -38,7 +38,7 @@ function hook_test_group_started() {
  *
  * This hook is called just once at the end of a test group.
  */
-function hook_test_group_finished() {
+function HOOK_test_group_finished() {
 }
 
 /**
@@ -52,7 +52,7 @@ function hook_test_group_finished() {
  *
  * @see \Drupal\simpletest\WebTestBase->results()
  */
-function hook_test_finished($results) {
+function HOOK_test_finished($results) {
 }
 
 

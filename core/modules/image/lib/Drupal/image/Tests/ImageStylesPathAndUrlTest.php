@@ -121,7 +121,7 @@ class ImageStylesPathAndUrlTest extends WebTestBase {
     $file = array_shift($files);
     $original_uri = file_unmanaged_copy($file->uri, $scheme . '://', FILE_EXISTS_RENAME);
     // Let the image_module_test module know about this file, so it can claim
-    // ownership in hook_file_download().
+    // ownership in HOOK_file_download().
     \Drupal::state()->set('image.test_file_download', $original_uri);
     $this->assertNotIdentical(FALSE, $original_uri, 'Created the generated image file.');
 
@@ -217,7 +217,7 @@ class ImageStylesPathAndUrlTest extends WebTestBase {
     $file = array_shift($files);
     $original_uri = file_unmanaged_copy($file->uri, $scheme . '://', FILE_EXISTS_RENAME);
     // Let the image_module_test module know about this file, so it can claim
-    // ownership in hook_file_download().
+    // ownership in HOOK_file_download().
     \Drupal::state()->set('image.test_file_download', $original_uri);
 
     // Suppress the security token in the URL, then get the URL of a file that

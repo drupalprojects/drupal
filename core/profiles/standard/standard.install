@@ -7,7 +7,7 @@
 use Drupal\comment\Plugin\Field\FieldType\CommentItemInterface;
 
 /**
- * Implements hook_install().
+ * Implements HOOK_install().
  *
  * Perform actions to set up the site for this profile.
  *

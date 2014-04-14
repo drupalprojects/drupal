@@ -12,7 +12,7 @@ namespace Drupal\Core\Entity;
  *
  * All entity controller classes specified via the "controllers['storage']" key
  * returned by \Drupal\Core\Entity\EntityManagerInterface or
- * hook_entity_type_alter() have to implement this interface.
+ * HOOK_entity_type_alter() have to implement this interface.
  *
  * Most simple, SQL-based entity controllers will do better by extending
  * Drupal\Core\Entity\ContentEntityDatabaseStorage instead of implementing this

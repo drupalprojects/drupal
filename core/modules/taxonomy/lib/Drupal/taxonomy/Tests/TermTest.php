@@ -104,7 +104,7 @@ class TermTest extends TaxonomyTestBase {
   }
 
   /**
-   * Test that hook_node_$op implementations work correctly.
+   * Test that HOOK_node_$op implementations work correctly.
    *
    * Save & edit a node and assert that taxonomy terms are saved/loaded properly.
    */

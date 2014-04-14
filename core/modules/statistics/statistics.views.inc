@@ -6,7 +6,7 @@
  */
 
 /**
- * Implements hook_views_data().
+ * Implements HOOK_views_data().
  */
 function statistics_views_data() {
   $data['node_counter']['table']['group']  = t('Content statistics');

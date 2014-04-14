@@ -41,7 +41,7 @@ abstract class FileManagedUnitTestBase extends DrupalUnitTestBase {
   }
 
   /**
-   * Assert that all of the specified hook_file_* hooks were called once, other
+   * Assert that all of the specified HOOK_file_* hooks were called once, other
    * values result in failure.
    *
    * @param $expected
@@ -74,7 +74,7 @@ abstract class FileManagedUnitTestBase extends DrupalUnitTestBase {
   }
 
   /**
-   * Assert that a hook_file_* hook was called a certain number of times.
+   * Assert that a HOOK_file_* hook was called a certain number of times.
    *
    * @param $hook
    *   String with the hook name, e.g. 'load', 'save', 'insert', etc.
@@ -88,13 +88,13 @@ abstract class FileManagedUnitTestBase extends DrupalUnitTestBase {
 
     if (!isset($message)) {
       if ($actual_count == $expected_count) {
-        $message = format_string('hook_file_@name was called correctly.', array('@name' => $hook));
+        $message = format_string('HOOK_file_@name was called correctly.', array('@name' => $hook));
       }
       elseif ($expected_count == 0) {
-        $message = format_plural($actual_count, 'hook_file_@name was not expected to be called but was actually called once.', 'hook_file_@name was not expected to be called but was actually called @count times.', array('@name' => $hook, '@count' => $actual_count));
+        $message = format_plural($actual_count, 'HOOK_file_@name was not expected to be called but was actually called once.', 'HOOK_file_@name was not expected to be called but was actually called @count times.', array('@name' => $hook, '@count' => $actual_count));
       }
       else {
-        $message = format_string('hook_file_@name was expected to be called %expected times but was called %actual times.', array('@name' => $hook, '%expected' => $expected_count, '%actual' => $actual_count));
+        $message = format_string('HOOK_file_@name was expected to be called %expected times but was called %actual times.', array('@name' => $hook, '%expected' => $expected_count, '%actual' => $actual_count));
       }
     }
     $this->assertEqual($actual_count, $expected_count, $message);

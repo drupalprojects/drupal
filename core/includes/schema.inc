@@ -22,7 +22,7 @@ const SCHEMA_UNINSTALLED = -1;
  * Gets the schema definition of a table, or the whole database schema.
  *
  * The returned schema will include any modifications made by any
- * module that implements hook_schema_alter().
+ * module that Implements HOOK_schema_alter().
  *
  * @param string $table
  *   The name of the table. If not given, the schema of all tables is returned.
@@ -51,7 +51,7 @@ function drupal_get_schema($table = NULL, $rebuild = FALSE) {
  * Gets the whole database schema.
  *
  * The returned schema will include any modifications made by any
- * module that implements hook_schema_alter().
+ * module that Implements HOOK_schema_alter().
  *
  * @param bool $rebuild
  *   If TRUE, the schema will be rebuilt instead of retrieved from the cache.
@@ -67,13 +67,13 @@ function drupal_get_complete_schema($rebuild = FALSE) {
     // Otherwise, rebuild the schema cache.
     else {
       $schema = array();
-      // Load the .install files to get hook_schema.
+      // Load the .install files to get HOOK_schema.
       \Drupal::moduleHandler()->loadAllIncludes('install');
 
       require_once __DIR__ . '/common.inc';
-      // Invoke hook_schema for all modules.
+      // Invoke HOOK_schema for all modules.
       foreach (\Drupal::moduleHandler()->getImplementations('schema') as $module) {
-        // Cast the result of hook_schema() to an array, as a NULL return value
+        // Cast the result of HOOK_schema() to an array, as a NULL return value
         // would cause array_merge() to set the $schema variable to NULL as well.
         // That would break modules which use $schema further down the line.
         $current = (array) \Drupal::moduleHandler()->invoke($module, 'schema');
@@ -113,11 +113,11 @@ function drupal_get_schema_versions($module) {
       $updates[$loaded_module] = array();
     }
 
-    // Prepare regular expression to match all possible defined hook_update_N().
+    // Prepare regular expression to match all possible defined HOOK_update_N().
     $regexp = '/^(?<module>.+)_update_(?<version>\d+)$/';
     $functions = get_defined_functions();
     // Narrow this down to functions ending with an integer, since all
-    // hook_update_N() functions end this way, and there are other
+    // HOOK_update_N() functions end this way, and there are other
     // possible functions which match '_update_'. We use preg_grep() here
     // instead of foreaching through all defined functions, since the loop
     // through all PHP functions can take significant page execution time
@@ -189,10 +189,10 @@ function drupal_set_installed_schema_version($module, $version) {
 }
 
 /**
- * Creates all tables defined in a module's hook_schema().
+ * Creates all tables defined in a module's HOOK_schema().
  *
  * Note: This function does not pass the module's schema through
- * hook_schema_alter(). The module's tables will be created exactly as the
+ * HOOK_schema_alter(). The module's tables will be created exactly as the
  * module defines them.
  *
  * @param string $module
@@ -208,10 +208,10 @@ function drupal_install_schema($module) {
 }
 
 /**
- * Removes all tables defined in a module's hook_schema().
+ * Removes all tables defined in a module's HOOK_schema().
  *
  * Note: This function does not pass the module's schema through
- * hook_schema_alter(). The module's tables will be created exactly as the
+ * HOOK_schema_alter(). The module's tables will be created exactly as the
  * module defines them.
  *
  * @param string $module
@@ -239,18 +239,18 @@ function drupal_uninstall_schema($module) {
  *
  * Use this function only if you explicitly need the original
  * specification of a schema, as it was defined in a module's
- * hook_schema(). No additional default values will be set,
- * hook_schema_alter() is not invoked and these unprocessed
+ * HOOK_schema(). No additional default values will be set,
+ * HOOK_schema_alter() is not invoked and these unprocessed
  * definitions won't be cached.
  *
  * This function can be used to retrieve a schema specification in
- * hook_schema(), so it allows you to derive your tables from existing
+ * HOOK_schema(), so it allows you to derive your tables from existing
  * specifications.
  *
  * It is also used by drupal_install_schema() and
  * drupal_uninstall_schema() to ensure that a module's tables are
  * created exactly as specified without any changes introduced by a
- * module that implements hook_schema_alter().
+ * module that Implements HOOK_schema_alter().
  *
  * @param string $module
  *   The module to which the table belongs.
@@ -259,7 +259,7 @@ function drupal_uninstall_schema($module) {
  *   is returned.
  */
 function drupal_get_schema_unprocessed($module, $table = NULL) {
-  // Load the .install file to get hook_schema.
+  // Load the .install file to get HOOK_schema.
   module_load_install($module);
   $schema = \Drupal::moduleHandler()->invoke($module, 'schema');
 
@@ -276,13 +276,13 @@ function drupal_get_schema_unprocessed($module, $table = NULL) {
 }
 
 /**
- * Fills in required default values for table definitions from hook_schema().
+ * Fills in required default values for table definitions from HOOK_schema().
  *
  * @param array $schema
  *   The schema definition array as it was returned by the module's
- *   hook_schema().
+ *   HOOK_schema().
  * @param string $module
- *   The module for which hook_schema() was invoked.
+ *   The module for which HOOK_schema() was invoked.
  * @param bool $remove_descriptions
  *   (optional) Whether to additionally remove 'description' keys of all tables
  *   and fields to improve performance of serialize() and unserialize().
@@ -339,12 +339,12 @@ function drupal_schema_fields_sql($table, $prefix = NULL) {
 /**
  * Saves (inserts or updates) a record to the database based upon the schema.
  *
- * Do not use drupal_write_record() within hook_update_N() functions, since the
+ * Do not use drupal_write_record() within HOOK_update_N() functions, since the
  * database schema cannot be relied upon when a user is running a series of
  * updates. Instead, use db_insert() or db_update() to save the record.
  *
  * @param string $table
- *   The name of the table; this must be defined by a hook_schema()
+ *   The name of the table; this must be defined by a HOOK_schema()
  *   implementation.
  * @param object|array $record
  *   An object or array representing the record to write, passed in by

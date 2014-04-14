@@ -6,7 +6,7 @@
  */
 
 /**
- * Implements hook_views_data_alter().
+ * Implements HOOK_views_data_alter().
  */
 function contact_views_data_alter(&$data) {
   $data['users']['contact'] = array(

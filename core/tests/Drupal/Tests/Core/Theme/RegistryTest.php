@@ -79,7 +79,7 @@ class RegistryTest extends UnitTestCase {
     $this->registry->setTheme(new Extension('theme', 'core/modules/system/tests/themes/test_theme/test_theme.info.yml', 'test_theme.theme'));
     $this->registry->setBaseThemes(array());
 
-    // Include the module so that hook_theme can be called.
+    // Include the module so that HOOK_theme can be called.
     include_once DRUPAL_ROOT . '/core/modules/system/tests/modules/theme_test/theme_test.module';
     $this->moduleHandler->expects($this->once())
       ->method('getImplementations')

@@ -24,7 +24,7 @@
  * @param $path
  *   The current path.
  */
-function hook_language_switch_links_alter(array &$links, $type, $path) {
+function HOOK_language_switch_links_alter(array &$links, $type, $path) {
   $language_interface = \Drupal::languageManager()->getCurrentLanguage();
 
   if ($type == \Drupal\Core\Language\Language::TYPE_CONTENT && isset($links[$language_interface->id])) {
@@ -78,7 +78,7 @@ function hook_language_switch_links_alter(array &$links, $type, $path) {
  *
  * Drupal Core provides the generic transliteration character tables and
  * overrides for a few common languages; modules can implement
- * hook_transliteration_overrides_alter() to provide further language-specific
+ * HOOK_transliteration_overrides_alter() to provide further language-specific
  * overrides (including providing transliteration for Unicode characters that
  * are longer than 4 bytes). Modules can also completely override the
  * transliteration classes in \Drupal\Core\CoreServiceProvider.
@@ -102,7 +102,7 @@ function hook_language_switch_links_alter(array &$links, $type, $path) {
  *
  * @ingroup hooks
  */
-function hook_transliteration_overrides_alter(&$overrides, $langcode) {
+function HOOK_transliteration_overrides_alter(&$overrides, $langcode) {
   // Provide special overrides for German for a custom site.
   if ($langcode == 'de') {
     // The core-provided transliteration of Ä is Ae, but we want just A.

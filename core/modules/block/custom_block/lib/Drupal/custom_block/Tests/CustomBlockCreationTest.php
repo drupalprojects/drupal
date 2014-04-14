@@ -17,7 +17,7 @@ class CustomBlockCreationTest extends CustomBlockTestBase {
   /**
    * Modules to enable.
    *
-   * Enable dummy module that implements hook_block_insert() for exceptions.
+   * Enable dummy module that Implements HOOK_block_insert() for exceptions.
    *
    * @var array
    */

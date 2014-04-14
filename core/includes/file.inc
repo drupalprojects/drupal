@@ -81,7 +81,7 @@ define('STREAM_WRAPPERS_READ_VISIBLE', STREAM_WRAPPERS_READ | STREAM_WRAPPERS_VI
 
 /**
  * Stream wrapper type flag -- the default when 'type' is omitted from
- * hook_stream_wrappers(). This does not include STREAM_WRAPPERS_LOCAL,
+ * HOOK_stream_wrappers(). This does not include STREAM_WRAPPERS_LOCAL,
  * because PHP grants a greater trust level to local files (for example, they
  * can be used in an "include" statement, regardless of the "allow_url_include"
  * setting), so stream wrappers need to explicitly opt-in to this.
@@ -194,13 +194,13 @@ const FILE_STATUS_PERMANENT = 1;
  *
  * @return
  *   An array keyed by scheme, with values containing an array of information
- *   about the stream wrapper, as returned by hook_stream_wrappers(). If $filter
+ *   about the stream wrapper, as returned by HOOK_stream_wrappers(). If $filter
  *   is omitted or set to STREAM_WRAPPERS_ALL, the entire Drupal stream wrapper
  *   registry is returned. Otherwise only the stream wrappers whose 'type'
  *   bitmask has an on bit for each bit specified in $filter are returned.
  *
- * @see hook_stream_wrappers()
- * @see hook_stream_wrappers_alter()
+ * @see HOOK_stream_wrappers()
+ * @see HOOK_stream_wrappers_alter()
  */
 function file_get_stream_wrappers($filter = STREAM_WRAPPERS_ALL) {
   $wrappers_storage = &drupal_static(__FUNCTION__, array());
@@ -642,7 +642,7 @@ function file_htaccess_lines($private = TRUE) {
  *
  * There must be a scheme and it must be a Drupal-provided scheme like
  * 'public', 'private', 'temporary', or an extension provided with
- * hook_stream_wrappers().
+ * HOOK_stream_wrappers().
  *
  * @param $uri
  *   The URI to be tested.

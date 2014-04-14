@@ -44,7 +44,7 @@ interface FormBuilderInterface extends FormErrorInterface {
    *   \Drupal::formBuilder()->getForm(), including the unique form constructor
    *   function. For example, the node_edit form requires that a node object is
    *   passed in here when it is called. These are available to implementations
-   *   of hook_form_alter() and hook_form_FORM_ID_alter() as the array
+   *   of HOOK_form_alter() and HOOK_form_FORM_ID_alter() as the array
    *   $form_state['build_info']['args'].
    *
    * @return array
@@ -373,17 +373,17 @@ interface FormBuilderInterface extends FormErrorInterface {
   /**
    * Prepares a structured form array.
    *
-   * Adds required elements, executes any hook_form_alter functions, and
+   * Adds required elements, executes any HOOK_form_alter functions, and
    * optionally inserts a validation token to prevent tampering.
    *
    * @param string $form_id
    *   A unique string identifying the form for validation, submission,
-   *   theming, and hook_form_alter functions.
+   *   theming, and HOOK_form_alter functions.
    * @param array $form
    *   An associative array containing the structure of the form.
    * @param array $form_state
    *   A keyed array containing the current state of the form. Passed
-   *   in here so that hook_form_alter() calls can use it, as well.
+   *   in here so that HOOK_form_alter() calls can use it, as well.
    */
   public function prepareForm($form_id, &$form, &$form_state);
 
@@ -392,7 +392,7 @@ interface FormBuilderInterface extends FormErrorInterface {
    *
    * @param $form_id
    *   A unique string identifying the form for validation, submission,
-   *   theming, and hook_form_alter functions.
+   *   theming, and HOOK_form_alter functions.
    * @param $form
    *   An associative array containing the structure of the form, which is
    *   passed by reference. Form validation handlers are able to alter the form
@@ -536,9 +536,9 @@ interface FormBuilderInterface extends FormErrorInterface {
    * appropriate callback property, rather than implementing their own recursive
    * traversal of a form array. This facilitates proper integration between
    * multiple modules. For example, module developers are familiar with the
-   * relative order in which hook_form_alter() implementations and #process
+   * relative order in which HOOK_form_alter() implementations and #process
    * functions run. A custom traversal function that affects the building of a
-   * form is likely to not integrate with hook_form_alter() and #process in the
+   * form is likely to not integrate with HOOK_form_alter() and #process in the
    * expected way. Also, deep recursion within PHP is both slow and memory
    * intensive, so it is best to minimize how often it's done.
    *
@@ -578,7 +578,7 @@ interface FormBuilderInterface extends FormErrorInterface {
    *
    * @param string $form_id
    *   A unique string identifying the form for validation, submission,
-   *   theming, and hook_form_alter functions.
+   *   theming, and HOOK_form_alter functions.
    * @param array $element
    *   An associative array containing the structure of the current element.
    * @param array $form_state
@@ -601,7 +601,7 @@ interface FormBuilderInterface extends FormErrorInterface {
    * Note that form validation functions are specified in the '#validate'
    * component of the form array (the value of $form['#validate'] is an array of
    * validation function names). If the form does not originate in your module,
-   * you can implement hook_form_FORM_ID_alter() to add a validation function
+   * you can implement HOOK_form_FORM_ID_alter() to add a validation function
    * to $form['#validate'].
    *
    * @param $element

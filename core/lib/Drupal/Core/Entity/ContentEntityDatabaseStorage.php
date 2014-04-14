@@ -164,7 +164,7 @@ class ContentEntityDatabaseStorage extends ContentEntityStorageBase {
 
     // Pass all entities loaded from the database through $this->postLoad(),
     // which attaches fields (if supported by the entity type) and calls the
-    // entity type specific load callback, for example hook_node_load().
+    // entity type specific load callback, for example HOOK_node_load().
     if (!empty($queried_entities)) {
       $this->postLoad($queried_entities);
       $entities += $queried_entities;
@@ -323,7 +323,7 @@ class ContentEntityDatabaseStorage extends ContentEntityStorageBase {
 
     // Pass the loaded entities from the database through $this->postLoad(),
     // which attaches fields (if supported by the entity type) and calls the
-    // entity type specific load callback, for example hook_node_load().
+    // entity type specific load callback, for example HOOK_node_load().
     if (!empty($queried_entities)) {
       $this->postLoad($queried_entities);
     }
@@ -441,9 +441,9 @@ class ContentEntityDatabaseStorage extends ContentEntityStorageBase {
    * Attaches data to entities upon loading.
    *
    * This will attach fields, if the entity is fieldable. It calls
-   * hook_entity_load() for modules which need to add data to all entities.
-   * It also calls hook_TYPE_load() on the loaded entities. For example
-   * hook_node_load() or hook_user_load(). If your hook_TYPE_load()
+   * HOOK_entity_load() for modules which need to add data to all entities.
+   * It also calls HOOK_TYPE_load() on the loaded entities. For example
+   * HOOK_node_load() or HOOK_user_load(). If your HOOK_TYPE_load()
    * expects special parameters apart from the queried entities, you can set
    * $this->hookLoadArguments prior to calling the method.
    * See Drupal\node\NodeStorage::attachLoad() for an example.
@@ -1170,10 +1170,10 @@ class ContentEntityDatabaseStorage extends ContentEntityStorageBase {
    *   The field schema array. Mandatory for upgrades, omit otherwise.
    *
    * @return array
-   *   The same as a hook_schema() implementation for the data and the
+   *   The same as a HOOK_schema() implementation for the data and the
    *   revision tables.
    *
-   * @see hook_schema()
+   * @see HOOK_schema()
    */
   public static function _fieldSqlSchema(FieldConfigInterface $field, array $schema = NULL) {
     if ($field->deleted) {

@@ -85,7 +85,7 @@ class CronRunTest extends WebTestBase {
   }
 
   /**
-   * Make sure exceptions thrown on hook_cron() don't affect other modules.
+   * Make sure exceptions thrown on HOOK_cron() don't affect other modules.
    */
   function testCronExceptions() {
     \Drupal::state()->delete('common_test.cron');
@@ -94,7 +94,7 @@ class CronRunTest extends WebTestBase {
     // The common_test_cron_helper module sets the 'common_test_cron' variable.
     $this->cronRun();
     $result = \Drupal::state()->get('common_test.cron');
-    $this->assertEqual($result, 'success', 'Cron correctly handles exceptions thrown during hook_cron() invocations.');
+    $this->assertEqual($result, 'success', 'Cron correctly handles exceptions thrown during HOOK_cron() invocations.');
   }
 
   /**

@@ -167,9 +167,9 @@ class TourTest extends TourTestBasic {
 
     // Load it back from the database and verify storage worked.
     $entity_save_tip = entity_load('tour', 'tour-entity-create-test-en');
-    // Verify that hook_ENTITY_TYPE_load() integration worked.
+    // Verify that HOOK_ENTITY_TYPE_load() integration worked.
     $this->assertEqual($entity_save_tip->loaded, 'Load hooks work');
-    // Verify that hook_ENTITY_TYPE_presave() integration worked.
+    // Verify that HOOK_ENTITY_TYPE_presave() integration worked.
     $this->assertEqual($entity_save_tip->label(), 'Tour test english alter');
 
     // Navigate to tour-test-1 and verify the new tip is found.
@@ -188,8 +188,8 @@ class TourTest extends TourTestBasic {
     ));
     $this->assertEqual(count($elements), 1, 'Found code tip was weighted last and had "End tour".');
 
-    // Test hook_tour_alter().
-    $this->assertText('Altered by hook_tour_tips_alter');
+    // Test HOOK_tour_alter().
+    $this->assertText('Altered by HOOK_tour_tips_alter');
 
     // Navigate to tour-test-3 and verify the tour_test_1 tip is found with
     // appropriate classes.

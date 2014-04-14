@@ -17,7 +17,7 @@ use Drupal\Core\TypedData\TranslatableInterface;
 use Drupal\node\NodeInterface;
 
 /**
- * Implements hook_help().
+ * Implements HOOK_help().
  */
 function content_translation_help($path, $arg) {
   switch ($path) {
@@ -51,7 +51,7 @@ function content_translation_help($path, $arg) {
 }
 
 /**
- * Implements hook_module_implements_alter().
+ * Implements HOOK_module_implements_alter().
  */
 function content_translation_module_implements_alter(&$implementations, $hook) {
   switch ($hook) {
@@ -65,7 +65,7 @@ function content_translation_module_implements_alter(&$implementations, $hook) {
 }
 
 /**
- * Implements hook_language_type_info_alter().
+ * Implements HOOK_language_type_info_alter().
  */
 function content_translation_language_types_info_alter(array &$language_types) {
   // Make content language negotiation configurable by removing the 'locked'
@@ -75,10 +75,10 @@ function content_translation_language_types_info_alter(array &$language_types) {
 }
 
 /**
- * Implements hook_entity_type_alter().
+ * Implements HOOK_entity_type_alter().
  *
  * The content translation UI relies on the entity info to provide its features.
- * See the documentation of hook_entity_type_build() in the Entity API documentation
+ * See the documentation of HOOK_entity_type_build() in the Entity API documentation
  * for more details on all the entity info keys that may be defined.
  *
  * To make Content Translation automatically support an entity type some keys
@@ -132,7 +132,7 @@ function content_translation_entity_type_alter(array &$entity_types) {
 }
 
 /**
- * Implements hook_entity_bundle_info_alter().
+ * Implements HOOK_entity_bundle_info_alter().
  */
 function content_translation_entity_bundle_info_alter(&$bundles) {
   foreach ($bundles as $entity_type => &$info) {
@@ -144,7 +144,7 @@ function content_translation_entity_bundle_info_alter(&$bundles) {
 }
 
 /**
- * Implements hook_entity_base_field_info_alter().
+ * Implements HOOK_entity_base_field_info_alter().
  */
 function content_translation_entity_base_field_info_alter(&$fields, EntityTypeInterface $entity_type) {
   $translation_settings = \Drupal::config('content_translation.settings')->get($entity_type->id());
@@ -152,7 +152,7 @@ function content_translation_entity_base_field_info_alter(&$fields, EntityTypeIn
   if ($translation_settings) {
     // Currently field translatability is defined per-field but we may want to
     // make it per-instance instead. In that case, we will need to implement
-    // hook_bundle_field_info_alter() instead.
+    // HOOK_bundle_field_info_alter() instead.
     $field_settings = array();
     foreach ($translation_settings as $bundle => $settings) {
       $field_settings += !empty($settings['content_translation']['fields']) ? $settings['content_translation']['fields'] : array();
@@ -167,7 +167,7 @@ function content_translation_entity_base_field_info_alter(&$fields, EntityTypeIn
 }
 
 /**
- * Implements hook_field_info_alter().
+ * Implements HOOK_field_info_alter().
  *
  * Content translation extends the @FieldType annotation with following key:
  * - column_groups: contains information about the field type properties
@@ -188,7 +188,7 @@ function content_translation_field_info_alter(&$info) {
 }
 
 /**
- * Implements hook_entity_operation_alter().
+ * Implements HOOK_entity_operation_alter().
  */
 function content_translation_entity_operation_alter(array &$operations, \Drupal\Core\Entity\EntityInterface $entity) {
   // @todo Use an access permission.
@@ -200,7 +200,7 @@ function content_translation_entity_operation_alter(array &$operations, \Drupal\
 }
 
 /**
- * Implements hook_menu_link_defaults_alter().
+ * Implements HOOK_menu_link_defaults_alter().
  */
 function content_translation_menu_link_defaults_alter(array &$links) {
   // Clarify where translation settings are located.
@@ -397,7 +397,7 @@ function content_translation_access(EntityInterface $entity, $op) {
 }
 
 /**
- * Implements hook_permission().
+ * Implements HOOK_permission().
  */
 function content_translation_permission() {
   $permission = array(
@@ -452,7 +452,7 @@ function content_translation_permission() {
 }
 
 /**
- * Implements hook_form_alter().
+ * Implements HOOK_form_alter().
  */
 function content_translation_form_alter(array &$form, array &$form_state) {
   $form_controller = content_translation_form_controller($form_state);
@@ -481,7 +481,7 @@ function content_translation_form_alter(array &$form, array &$form_state) {
 }
 
 /**
- * Implements hook_language_fallback_candidates_OPERATION_alter().
+ * Implements HOOK_language_fallback_candidates_OPERATION_alter().
  *
  * Performs language fallback for unaccessible translations.
  */
@@ -499,7 +499,7 @@ function content_translation_language_fallback_candidates_entity_view_alter(&$ca
 }
 
 /**
- * Implements hook_entity_load().
+ * Implements HOOK_entity_load().
  */
 function content_translation_entity_load(array $entities, $entity_type) {
   $enabled_entities = array();
@@ -545,7 +545,7 @@ function content_translation_load_translation_metadata(array $entities, $entity_
 }
 
 /**
- * Implements hook_entity_insert().
+ * Implements HOOK_entity_insert().
  */
 function content_translation_entity_insert(EntityInterface $entity) {
   // Only do something if translation support for the given entity is enabled.
@@ -585,7 +585,7 @@ function content_translation_entity_insert(EntityInterface $entity) {
 }
 
 /**
- * Implements hook_entity_delete().
+ * Implements HOOK_entity_delete().
  */
 function content_translation_entity_delete(EntityInterface $entity) {
   // Only do something if translation support for the given entity is enabled.
@@ -600,7 +600,7 @@ function content_translation_entity_delete(EntityInterface $entity) {
 }
 
 /**
- * Implements hook_entity_update().
+ * Implements HOOK_entity_update().
  */
 function content_translation_entity_update(EntityInterface $entity) {
   // Only do something if translation support for the given entity is enabled.
@@ -614,7 +614,7 @@ function content_translation_entity_update(EntityInterface $entity) {
 }
 
 /**
- * Implements hook_entity_extra_field_info().
+ * Implements HOOK_entity_extra_field_info().
  */
 function content_translation_entity_extra_field_info() {
   $extra = array();
@@ -635,7 +635,7 @@ function content_translation_entity_extra_field_info() {
 }
 
 /**
- * Implements hook_form_FORM_ID_alter() for 'field_ui_field_edit_form'.
+ * Implements HOOK_form_FORM_ID_alter() for 'field_ui_field_edit_form'.
  */
 function content_translation_form_field_ui_field_edit_form_alter(array &$form, array &$form_state, $form_id) {
   $field = $form['#field'];
@@ -679,7 +679,7 @@ function content_translation_form_field_ui_field_edit_form_submit($form, array &
 }
 
 /**
- * Implements hook_form_FORM_ID_alter() for 'field_ui_field_instance_edit_form'.
+ * Implements HOOK_form_FORM_ID_alter() for 'field_ui_field_instance_edit_form'.
  */
 function content_translation_form_field_ui_field_instance_edit_form_alter(array &$form, array &$form_state, $form_id) {
   if ($form_state['instance']->isTranslatable()) {
@@ -692,7 +692,7 @@ function content_translation_form_field_ui_field_instance_edit_form_alter(array 
 }
 
 /**
- * Implements hook_entity_presave().
+ * Implements HOOK_entity_presave().
  */
 function content_translation_entity_presave(EntityInterface $entity) {
   // By default no column has to be synchronized.
@@ -714,7 +714,7 @@ function content_translation_entity_presave(EntityInterface $entity) {
 }
 
 /**
- * Implements hook_element_info_alter().
+ * Implements HOOK_element_info_alter().
  */
 function content_translation_element_info_alter(&$type) {
   if (isset($type['language_configuration'])) {
@@ -820,7 +820,7 @@ function content_translation_language_configuration_element_submit(array $form, 
 }
 
 /**
- * Implements hook_form_FORM_ID_alter() for language_content_settings_form().
+ * Implements HOOK_form_FORM_ID_alter() for language_content_settings_form().
  */
 function content_translation_form_language_content_settings_form_alter(array &$form, array &$form_state) {
   module_load_include('inc', 'content_translation', 'content_translation.admin');
@@ -828,7 +828,7 @@ function content_translation_form_language_content_settings_form_alter(array &$f
 }
 
 /**
- * Implements hook_preprocess_HOOK() for theme_language_content_settings_table().
+ * Implements HOOK_preprocess_HOOK() for theme_language_content_settings_table().
  */
 function content_translation_preprocess_language_content_settings_table(&$variables) {
   module_load_include('inc', 'content_translation', 'content_translation.admin');

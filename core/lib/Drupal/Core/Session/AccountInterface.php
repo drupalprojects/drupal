@@ -117,9 +117,9 @@ interface AccountInterface {
    * By default, the passed-in object's 'name' property is used if it exists, or
    * else, the site-defined value for the 'anonymous' variable. However, a module
    * may override this by implementing
-   * hook_user_format_name_alter(&$name, $account).
+   * HOOK_user_format_name_alter(&$name, $account).
    *
-   * @see hook_user_format_name_alter()
+   * @see HOOK_user_format_name_alter()
    *
    * @return
    *   An unsanitized string with the username to display. The code receiving

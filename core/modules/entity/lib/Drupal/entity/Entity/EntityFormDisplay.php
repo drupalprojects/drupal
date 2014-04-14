@@ -46,7 +46,7 @@ class EntityFormDisplay extends EntityDisplayBase implements EntityFormDisplayIn
    * use the 'default' display too. Those options will then be effectively
    * applied only if the form mode is configured to use them.
    *
-   * hook_entity_form_display_alter() is invoked on each display, allowing 3rd
+   * HOOK_entity_form_display_alter() is invoked on each display, allowing 3rd
    * party code to alter the display options held in the display before they are
    * used to generate render arrays.
    *
@@ -59,7 +59,7 @@ class EntityFormDisplay extends EntityDisplayBase implements EntityFormDisplayIn
    *   The display object that should be used to build the entity form.
    *
    * @see entity_get_form_display()
-   * @see hook_entity_form_display_alter()
+   * @see HOOK_entity_form_display_alter()
    */
   public static function collectRenderDisplay(ContentEntityInterface $entity, $form_mode) {
     $entity_type = $entity->getEntityTypeId();

@@ -69,7 +69,7 @@ class CustomBlockSaveTest extends CustomBlockTestBase {
   }
 
   /**
-   * Tests determing changes in hook_block_presave().
+   * Tests determing changes in HOOK_block_presave().
    *
    * Verifies the static block load cache is cleared upon save.
    */
@@ -101,7 +101,7 @@ class CustomBlockSaveTest extends CustomBlockTestBase {
    * Tests saving a block on block insert.
    *
    * This test ensures that a block has been fully saved when
-   * hook_custom_block_insert() is invoked, so that the block can be saved again
+   * HOOK_custom_block_insert() is invoked, so that the block can be saved again
    * in a hook implementation without errors.
    *
    * @see block_test_block_insert()

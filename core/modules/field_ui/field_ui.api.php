@@ -26,7 +26,7 @@
  *
  * @see \Drupal\field_ui\DisplayOverView.
  */
-function hook_field_formatter_settings_form_alter(&$element, &$form_state, $context) {
+function HOOK_field_formatter_settings_form_alter(&$element, &$form_state, $context) {
   // Add a 'mysetting' checkbox to the settings form for 'foo_formatter'
   // field formatters.
   if ($context['formatter']->getPluginId() == 'foo_formatter') {
@@ -54,7 +54,7 @@ function hook_field_formatter_settings_form_alter(&$element, &$form_state, $cont
  *
  * @see \Drupal\field_ui\FormDisplayOverView.
  */
-function hook_field_widget_settings_form_alter(&$element, &$form_state, $context) {
+function HOOK_field_widget_settings_form_alter(&$element, &$form_state, $context) {
   // Add a 'mysetting' checkbox to the settings form for 'foo_field' fields.
   if ($context['field']['type'] == 'foo_field') {
     $element['mysetting'] = array(
@@ -78,7 +78,7 @@ function hook_field_widget_settings_form_alter(&$element, &$form_state, $context
  *
  * @see \Drupal\field_ui\DisplayOverView.
  */
-function hook_field_formatter_settings_summary_alter(&$summary, $context) {
+function HOOK_field_formatter_settings_summary_alter(&$summary, $context) {
   // Append a message to the summary when an instance of foo_formatter has
   // mysetting set to TRUE for the current view mode.
   if ($context['formatter']->getPluginId() == 'foo_formatter') {
@@ -101,7 +101,7 @@ function hook_field_formatter_settings_summary_alter(&$summary, $context) {
  *
  * @see \Drupal\field_ui\FormDisplayOverView.
  */
-function hook_field_widget_settings_summary_alter(&$summary, $context) {
+function HOOK_field_widget_settings_summary_alter(&$summary, $context) {
   // Append a message to the summary when an instance of foo_field has
   // mysetting set to TRUE for the current view mode.
   if ($context['field']['type'] == 'foo_field') {

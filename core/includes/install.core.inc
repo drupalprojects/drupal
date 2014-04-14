@@ -699,7 +699,7 @@ function install_tasks($install_state) {
   // Now add any tasks defined by the installation profile.
   if (!empty($install_state['parameters']['profile'])) {
     // Load the profile install file, because it is not always loaded when
-    // hook_install_tasks() is invoked (e.g. batch processing).
+    // HOOK_install_tasks() is invoked (e.g. batch processing).
     $profile = $install_state['parameters']['profile'];
     $profile_install_file = $install_state['profiles'][$profile]->getPath() . '/' . $profile . '.install';
     if (file_exists($profile_install_file)) {
@@ -2374,7 +2374,7 @@ function install_check_requirements($install_state) {
  *   An array of information about the current installation state.
  * @param array $requirements
  *   An array of requirements, in the same format as is returned by
- *   hook_requirements().
+ *   HOOK_requirements().
  *
  * @return
  *   A themed status report, or an exception if there are requirement errors.

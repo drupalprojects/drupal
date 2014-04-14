@@ -137,7 +137,7 @@ function authorize_filetransfer_form($form, &$form_state) {
  * @return
  *   Form API array of connection settings for the given backend.
  *
- * @see hook_filetransfer_backends()
+ * @see HOOK_filetransfer_backends()
  */
 function _authorize_filetransfer_connection_settings($backend) {
   $auth_connection_config = \Drupal::config('system.authorize')->get('filetransfer_connection_settings_' . $backend);

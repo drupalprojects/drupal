@@ -17,7 +17,7 @@ namespace Drupal\node\Tests;
 class NodeRSSContentTest extends NodeTestBase {
 
   /**
-   * Enable a module that implements hook_node_view().
+   * Enable a module that Implements HOOK_node_view().
    *
    * @var array
    */
@@ -35,7 +35,7 @@ class NodeRSSContentTest extends NodeTestBase {
     parent::setUp();
 
     // Use bypass node access permission here, because the test class uses
-    // hook_grants_alter() to deny access to everyone on node_access
+    // HOOK_grants_alter() to deny access to everyone on node_access
     // queries.
     $user = $this->drupalCreateUser(array('bypass node access', 'access content', 'create article content'));
     $this->drupalLogin($user);

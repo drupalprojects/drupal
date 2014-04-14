@@ -15,7 +15,7 @@ use Drupal\filter\FilterFormatInterface;
 use Drupal\filter\Plugin\FilterInterface;
 
 /**
- * Implements hook_help().
+ * Implements HOOK_help().
  */
 function editor_help($path, $arg) {
   switch ($path) {
@@ -39,7 +39,7 @@ function editor_help($path, $arg) {
 }
 
 /**
- * Implements hook_menu_link_defaults_alter().
+ * Implements HOOK_menu_link_defaults_alter().
  *
  * Rewrites the menu entries for filter module that relate to the configuration
  * of text editors.
@@ -50,7 +50,7 @@ function editor_menu_link_defaults_alter(array &$links) {
 }
 
 /**
- * Implements hook_element_info().
+ * Implements HOOK_element_info().
  *
  * Extends the functionality of text_format elements (provided by Filter
  * module), so that selecting a text format notifies a client-side text editor
@@ -66,7 +66,7 @@ function editor_element_info() {
 }
 
 /**
- * Implements hook_form_FORM_ID_alter().
+ * Implements HOOK_form_FORM_ID_alter().
  */
 function editor_form_filter_admin_overview_alter(&$form, $form_state) {
   // @todo Cleanup column injection: http://drupal.org/node/1876718
@@ -88,7 +88,7 @@ function editor_form_filter_admin_overview_alter(&$form, $form_state) {
 }
 
 /**
- * Implements hook_form_BASE_FORM_ID_alter() for 'filter_format_form'.
+ * Implements HOOK_form_BASE_FORM_ID_alter() for 'filter_format_form'.
  */
 function editor_form_filter_format_form_alter(&$form, &$form_state) {
   if (!isset($form_state['editor'])) {
@@ -399,7 +399,7 @@ function editor_filter_xss($html, FilterFormatInterface $format, FilterFormatInt
 }
 
 /**
- * Implements hook_entity_insert().
+ * Implements HOOK_entity_insert().
  */
 function editor_entity_insert(EntityInterface $entity) {
   // Only act on content entities.
@@ -413,7 +413,7 @@ function editor_entity_insert(EntityInterface $entity) {
 }
 
 /**
- * Implements hook_entity_update().
+ * Implements HOOK_entity_update().
  */
 function editor_entity_update(EntityInterface $entity) {
   // Only act on content entities.
@@ -452,7 +452,7 @@ function editor_entity_update(EntityInterface $entity) {
 }
 
 /**
- * Implements hook_entity_delete().
+ * Implements HOOK_entity_delete().
  */
 function editor_entity_delete(EntityInterface $entity) {
   // Only act on content entities.
@@ -466,7 +466,7 @@ function editor_entity_delete(EntityInterface $entity) {
 }
 
 /**
- * Implements hook_entity_revision_delete().
+ * Implements HOOK_entity_revision_delete().
  */
 function editor_entity_revision_delete(EntityInterface $entity) {
   // Only act on content entities.

@@ -9,7 +9,7 @@ use Drupal\Component\Utility\String;
 use Drupal\Component\Utility\Xss;
 
 /**
- * Implements hook_token_info().
+ * Implements HOOK_token_info().
  */
 function taxonomy_token_info() {
   $types['term'] = array(
@@ -89,7 +89,7 @@ function taxonomy_token_info() {
 }
 
 /**
- * Implements hook_tokens().
+ * Implements HOOK_tokens().
  */
 function taxonomy_tokens($type, $tokens, array $data = array(), array $options = array()) {
   $token_service = \Drupal::token();

@@ -10,13 +10,13 @@ namespace Drupal\system\Tests\System;
 use Drupal\simpletest\WebTestBase;
 
 /**
- * Tests the effectiveness of hook_system_info_alter().
+ * Tests the effectiveness of HOOK_system_info_alter().
  */
 class InfoAlterTest extends WebTestBase {
   public static function getInfo() {
     return array(
       'name' => 'System info alter',
-      'description' => 'Tests the effectiveness of hook_system_info_alter().',
+      'description' => 'Tests the effectiveness of HOOK_system_info_alter().',
       'group' => 'System',
     );
   }
@@ -25,11 +25,11 @@ class InfoAlterTest extends WebTestBase {
    * Tests that theme .info.yml data is rebuild after enabling a module.
    *
    * Tests that info data is rebuilt after a module that implements
-   * hook_system_info_alter() is enabled. Also tests if core *_list() functions
+   * HOOK_system_info_alter() is enabled. Also tests if core *_list() functions
    * return freshly altered info.
    */
   function testSystemInfoAlter() {
-    \Drupal::state()->set('module_test.hook_system_info_alter', TRUE);
+    \Drupal::state()->set('module_test.HOOK_system_info_alter', TRUE);
     $info = system_rebuild_module_data();
     $this->assertFalse(isset($info['node']->info['required']), 'Before the module_test is installed the node module is not required.');
     // Enable seven and the test module.
@@ -50,6 +50,6 @@ class InfoAlterTest extends WebTestBase {
     system_list_reset();
     $info = system_rebuild_module_data();
     $this->assertTrue($info['node']->info['required'], 'After the module_test is installed the node module is required.');
-    \Drupal::state()->set('module_test.hook_system_info_alter', FALSE);
+    \Drupal::state()->set('module_test.HOOK_system_info_alter', FALSE);
   }
 }

@@ -133,7 +133,7 @@ class NodeQueryAlterTest extends NodeTestBase {
    * node_query_node_access_alter(). We do this by checking that a user who
    * normally would not have view privileges is able to view the nodes when we
    * add a record to {node_access} paired with a corresponding privilege in
-   * hook_node_grants().
+   * HOOK_node_grants().
    */
   function testNodeQueryAlterOverride() {
     $record = array(

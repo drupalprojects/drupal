@@ -17,7 +17,7 @@ class NoHelpTest extends WebTestBase {
   /**
    * Modules to enable.
    *
-   * Use one of the test modules that do not implement hook_help().
+   * Use one of the test modules that do not implement HOOK_help().
    *
    * @var array.
    */

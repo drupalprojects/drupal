@@ -12,7 +12,7 @@ use Symfony\Cmf\Component\Routing\RouteObjectInterface;
 use Symfony\Component\HttpFoundation\Request;
 
 /**
- * Implements hook_help().
+ * Implements HOOK_help().
  */
 function shortcut_help($path, $arg) {
   $user = \Drupal::currentUser();
@@ -43,7 +43,7 @@ function shortcut_help($path, $arg) {
 }
 
 /**
- * Implements hook_permission().
+ * Implements HOOK_permission().
  */
 function shortcut_permission() {
   return array(
@@ -320,7 +320,7 @@ function shortcut_renderable_links($shortcut_set = NULL) {
 }
 
 /**
- * Implements hook_preprocess_HOOK() for block templates.
+ * Implements HOOK_preprocess_HOOK() for block templates.
  */
 function shortcut_preprocess_block(&$variables) {
   if ($variables['configuration']['provider'] == 'shortcut') {
@@ -329,7 +329,7 @@ function shortcut_preprocess_block(&$variables) {
 }
 
 /**
- * Implements hook_preprocess_HOOK() for page templates.
+ * Implements HOOK_preprocess_HOOK() for page templates.
  */
 function shortcut_preprocess_page(&$variables) {
   // Only display the shortcut link if the user has the ability to edit
@@ -402,7 +402,7 @@ function shortcut_preprocess_page(&$variables) {
 }
 
 /**
- * Implements hook_toolbar().
+ * Implements HOOK_toolbar().
  */
 function shortcut_toolbar() {
   $items = array();

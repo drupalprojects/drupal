@@ -203,7 +203,7 @@ class Drupal6DumpBase {
             'not null' => TRUE,
             'default' => 0),
           'schema_version' => array(
-            'description' => "The module's database schema version number. -1 if the module is not installed (its tables do not exist); 0 or the largest N of the module's hook_update_N() function that has either been run
+            'description' => "The module's database schema version number. -1 if the module is not installed (its tables do not exist); 0 or the largest N of the module's HOOK_update_N() function that has either been run
    or existed when the module was first installed.",
             'type' => 'int',
             'not null' => TRUE,

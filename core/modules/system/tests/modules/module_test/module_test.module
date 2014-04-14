@@ -3,7 +3,7 @@
 use Drupal\Core\Extension\Extension;
 
 /**
- * Implements hook_permission().
+ * Implements HOOK_permission().
  */
 function module_test_permission() {
   return array(
@@ -12,7 +12,7 @@ function module_test_permission() {
 }
 
 /**
- * Implements hook_system_info_alter().
+ * Implements HOOK_system_info_alter().
  *
  * Manipulate module dependencies to test dependency chains.
  */
@@ -54,14 +54,14 @@ function module_test_system_info_alter(&$info, Extension $file, $type) {
   if ($file->getName() == 'seven' && $type == 'theme') {
     $info['regions']['test_region'] = t('Test region');
   }
-  if ($file->getName() == 'module_test' && \Drupal::state()->get('module_test.hook_system_info_alter')) {
+  if ($file->getName() == 'module_test' && \Drupal::state()->get('module_test.HOOK_system_info_alter')) {
     $info['required'] = TRUE;
-    $info['explanation'] = 'Testing hook_system_info_alter()';
+    $info['explanation'] = 'Testing HOOK_system_info_alter()';
   }
 }
 
 /**
- * Implements hook_hook_info().
+ * Implements HOOK_hook_info().
  */
 function module_test_hook_info() {
   $hooks['test_hook'] = array(
@@ -124,7 +124,7 @@ function module_test_class_loading() {
 }
 
 /**
- * Implements hook_modules_installed().
+ * Implements HOOK_modules_installed().
  */
 function module_test_modules_installed($modules) {
   // Record the ordered list of modules that were passed in to this hook so we
@@ -133,7 +133,7 @@ function module_test_modules_installed($modules) {
 }
 
 /**
- * Implements hook_modules_uninstalled().
+ * Implements HOOK_modules_uninstalled().
  */
 function module_test_modules_uninstalled($modules) {
   // Record the ordered list of modules that were passed in to this hook so we

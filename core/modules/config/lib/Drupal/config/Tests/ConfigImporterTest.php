@@ -49,7 +49,7 @@ class ConfigImporterTest extends DrupalUnitTestBase {
     // Installing config_test's default configuration pollutes the global
     // variable being used for recording hook invocations by this test already,
     // so it has to be cleared out manually.
-    unset($GLOBALS['hook_config_test']);
+    unset($GLOBALS['HOOK_config_test']);
 
     $this->copyConfig($this->container->get('config.storage'), $this->container->get('config.storage.staging'));
 
@@ -81,7 +81,7 @@ class ConfigImporterTest extends DrupalUnitTestBase {
     $this->assertIdentical($config->get('id'), 'dotted.default');
 
     // Verify that a bare \Drupal::config() does not involve module APIs.
-    $this->assertFalse(isset($GLOBALS['hook_config_test']));
+    $this->assertFalse(isset($GLOBALS['HOOK_config_test']));
   }
 
   /**
@@ -143,12 +143,12 @@ class ConfigImporterTest extends DrupalUnitTestBase {
     $this->assertIdentical($config->get('id'), NULL);
 
     // Verify that appropriate module API hooks have been invoked.
-    $this->assertTrue(isset($GLOBALS['hook_config_test']['load']));
-    $this->assertFalse(isset($GLOBALS['hook_config_test']['presave']));
-    $this->assertFalse(isset($GLOBALS['hook_config_test']['insert']));
-    $this->assertFalse(isset($GLOBALS['hook_config_test']['update']));
-    $this->assertTrue(isset($GLOBALS['hook_config_test']['predelete']));
-    $this->assertTrue(isset($GLOBALS['hook_config_test']['delete']));
+    $this->assertTrue(isset($GLOBALS['HOOK_config_test']['load']));
+    $this->assertFalse(isset($GLOBALS['HOOK_config_test']['presave']));
+    $this->assertFalse(isset($GLOBALS['HOOK_config_test']['insert']));
+    $this->assertFalse(isset($GLOBALS['HOOK_config_test']['update']));
+    $this->assertTrue(isset($GLOBALS['HOOK_config_test']['predelete']));
+    $this->assertTrue(isset($GLOBALS['HOOK_config_test']['delete']));
 
     $this->assertFalse($this->configImporter->hasUnprocessedConfigurationChanges());
     $logs = $this->configImporter->getErrors();
@@ -191,16 +191,16 @@ class ConfigImporterTest extends DrupalUnitTestBase {
     $this->assertIdentical($config->get('label'), $original_dynamic_data['label']);
 
     // Verify that appropriate module API hooks have been invoked.
-    $this->assertFalse(isset($GLOBALS['hook_config_test']['load']));
-    $this->assertTrue(isset($GLOBALS['hook_config_test']['presave']));
-    $this->assertTrue(isset($GLOBALS['hook_config_test']['insert']));
-    $this->assertFalse(isset($GLOBALS['hook_config_test']['update']));
-    $this->assertFalse(isset($GLOBALS['hook_config_test']['predelete']));
-    $this->assertFalse(isset($GLOBALS['hook_config_test']['delete']));
+    $this->assertFalse(isset($GLOBALS['HOOK_config_test']['load']));
+    $this->assertTrue(isset($GLOBALS['HOOK_config_test']['presave']));
+    $this->assertTrue(isset($GLOBALS['HOOK_config_test']['insert']));
+    $this->assertFalse(isset($GLOBALS['HOOK_config_test']['update']));
+    $this->assertFalse(isset($GLOBALS['HOOK_config_test']['predelete']));
+    $this->assertFalse(isset($GLOBALS['HOOK_config_test']['delete']));
 
-    // Verify that hook_config_import_steps_alter() can add steps to
+    // Verify that HOOK_config_import_steps_alter() can add steps to
     // configuration synchronization.
-    $this->assertTrue(isset($GLOBALS['hook_config_test']['config_import_steps_alter']));
+    $this->assertTrue(isset($GLOBALS['HOOK_config_test']['config_import_steps_alter']));
 
     // Verify that there is nothing more to import.
     $this->assertFalse($this->configImporter->hasUnprocessedConfigurationChanges());
@@ -518,12 +518,12 @@ class ConfigImporterTest extends DrupalUnitTestBase {
     $this->assertIdentical($staging->read($dynamic_name), $original_dynamic_data);
 
     // Verify that appropriate module API hooks have been invoked.
-    $this->assertTrue(isset($GLOBALS['hook_config_test']['load']));
-    $this->assertTrue(isset($GLOBALS['hook_config_test']['presave']));
-    $this->assertFalse(isset($GLOBALS['hook_config_test']['insert']));
-    $this->assertTrue(isset($GLOBALS['hook_config_test']['update']));
-    $this->assertFalse(isset($GLOBALS['hook_config_test']['predelete']));
-    $this->assertFalse(isset($GLOBALS['hook_config_test']['delete']));
+    $this->assertTrue(isset($GLOBALS['HOOK_config_test']['load']));
+    $this->assertTrue(isset($GLOBALS['HOOK_config_test']['presave']));
+    $this->assertFalse(isset($GLOBALS['HOOK_config_test']['insert']));
+    $this->assertTrue(isset($GLOBALS['HOOK_config_test']['update']));
+    $this->assertFalse(isset($GLOBALS['HOOK_config_test']['predelete']));
+    $this->assertFalse(isset($GLOBALS['HOOK_config_test']['delete']));
 
     // Verify that there is nothing more to import.
     $this->assertFalse($this->configImporter->hasUnprocessedConfigurationChanges());

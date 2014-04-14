@@ -8,7 +8,7 @@
 use Drupal\views\ViewExecutable;
 
 /**
- * Implements hook_views_data().
+ * Implements HOOK_views_data().
  */
 function user_views_data() {
 
@@ -369,7 +369,7 @@ function user_views_data() {
 }
 
 /**
- * Implements hook_views_data_alter().
+ * Implements HOOK_views_data_alter().
  */
 function user_views_data_alter(&$data) {
   $data['users']['user_bulk_form'] = array(
@@ -382,7 +382,7 @@ function user_views_data_alter(&$data) {
 }
 
 /**
- * Implements hook_views_plugins_argument_validator_alter().
+ * Implements HOOK_views_plugins_argument_validator_alter().
  */
 function user_views_plugins_argument_validator_alter(array &$plugins) {
   $plugins['entity:user']['title'] = t('User ID');

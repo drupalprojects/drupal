@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Implements hook_theme().
+ * Implements HOOK_theme().
  */
 function theme_test_theme($existing, $type, $theme, $path) {
   $items['theme_test'] = array(
@@ -56,7 +56,7 @@ function theme_test_theme($existing, $type, $theme, $path) {
 }
 
 /**
- * Implements hook_preprocess_HOOK() for HTML document templates.
+ * Implements HOOK_preprocess_HOOK() for HTML document templates.
  */
 function theme_test_preprocess_html(&$variables) {
   $variables['html_attributes']['theme_test_html_attribute'] = 'theme test html attribute value';
@@ -66,7 +66,7 @@ function theme_test_preprocess_html(&$variables) {
 }
 
 /**
- * Implements hook_page_alter().
+ * Implements HOOK_page_alter().
  */
 function theme_test_page_alter(&$page) {
   $page['page_bottom']['theme_test_page_bottom'] = array('#markup' => 'theme test page bottom markup');
@@ -122,21 +122,21 @@ function theme_theme_test_function_suggestions($variables) {
 }
 
 /**
- * Implements hook_theme_suggestions_HOOK().
+ * Implements HOOK_theme_suggestions_HOOK().
  */
 function theme_test_theme_suggestions_theme_test_suggestion_provided(array $variables) {
   return array('theme_test_suggestion_provided__' . 'foo');
 }
 
 /**
- * Implements hook_theme_suggestions_alter().
+ * Implements HOOK_theme_suggestions_alter().
  */
 function theme_test_theme_suggestions_alter(array &$suggestions, array $variables, $hook) {
   drupal_set_message(__FUNCTION__ . '() executed.');
 }
 
 /**
- * Implements hook_theme_suggestions_HOOK_alter().
+ * Implements HOOK_theme_suggestions_hook_alter().
  */
 function theme_test_theme_suggestions_theme_test_suggestions_alter(array &$suggestions, array $variables) {
   drupal_set_message(__FUNCTION__ . '() executed.');

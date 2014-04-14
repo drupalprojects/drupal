@@ -31,10 +31,10 @@
  *  @todo Rename the 'fixed' key to something more meaningful, for instance
  *     'negotiation settings'. See https://drupal.org/node/2166879.
  *
- * @see hook_language_types_info_alter()
+ * @see HOOK_language_types_info_alter()
  * @ingroup language_negotiation
  */
-function hook_language_types_info() {
+function HOOK_language_types_info() {
   return array(
     'custom_language_type' => array(
       'name' => t('Custom language'),
@@ -54,10 +54,10 @@ function hook_language_types_info() {
  * @param $language_types
  *   Array of language type definitions.
  *
- * @see hook_language_types_info()
+ * @see HOOK_language_types_info()
  * @ingroup language_negotiation
  */
-function hook_language_types_info_alter(array &$language_types) {
+function HOOK_language_types_info_alter(array &$language_types) {
   if (isset($language_types['custom_language_type'])) {
     $language_types['custom_language_type_custom']['description'] = t('A far better description.');
   }
@@ -71,7 +71,7 @@ function hook_language_types_info_alter(array &$language_types) {
  *
  * @ingroup language_negotiation
  */
-function hook_language_negotiation_info_alter(array &$negotiation_info) {
+function HOOK_language_negotiation_info_alter(array &$negotiation_info) {
   if (isset($negotiation_info['custom_language_method'])) {
     $negotiation_info['custom_language_method']['config'] = 'admin/config/regional/language/detection/custom-language-method';
   }
@@ -88,7 +88,7 @@ function hook_language_negotiation_info_alter(array &$negotiation_info) {
  *
  * @see \Drupal\Core\Language\LanguageManagerInterface::getFallbackCandidates()
  */
-function hook_language_fallback_candidates_alter(array &$candidates, array $context) {
+function HOOK_language_fallback_candidates_alter(array &$candidates, array $context) {
   $candidates = array_reverse($candidates);
 }
 
@@ -103,7 +103,7 @@ function hook_language_fallback_candidates_alter(array &$candidates, array $cont
  *
  * @see \Drupal\Core\Language\LanguageManagerInterface::getFallbackCandidates()
  */
-function hook_language_fallback_candidates_OPERATION_alter(array &$candidates, array $context) {
+function HOOK_language_fallback_candidates_OPERATION_alter(array &$candidates, array $context) {
   // We know that the current OPERATION deals with entities so no need to check
   // here.
   if ($context['data']->getEntityTypeId() == 'node') {

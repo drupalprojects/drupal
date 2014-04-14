@@ -8,14 +8,14 @@
 use Drupal\Core\Extension\Extension;
 
 /**
- * Implements hook_init().
+ * Implements HOOK_init().
  */
 function phptemplate_init(Extension $theme) {
   $theme->load();
 }
 
 /**
- * Implements hook_theme().
+ * Implements HOOK_theme().
  */
 function phptemplate_theme($existing, $type, $theme, $path) {
   $templates = drupal_find_theme_functions($existing, array($theme));
@@ -24,7 +24,7 @@ function phptemplate_theme($existing, $type, $theme, $path) {
 }
 
 /**
- * Implements hook_extension().
+ * Implements HOOK_extension().
  */
 function phptemplate_extension() {
   return '.tpl.php';

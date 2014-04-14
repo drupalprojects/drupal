@@ -6,7 +6,7 @@
  */
 
 /**
- * Implements hook_html_head_alter().
+ * Implements HOOK_html_head_alter().
  */
 function system_module_test_html_head_alter(&$head_elements) {
   // Remove the HTML5 mobile meta-tags.

@@ -46,7 +46,7 @@ class EntityFormTest extends WebTestBase {
   }
 
   /**
-   * Tests hook_entity_form_display_alter().
+   * Tests HOOK_entity_form_display_alter().
    *
    * @see entity_test_entity_form_display_alter()
    */

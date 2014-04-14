@@ -9,7 +9,7 @@ use Drupal\views\ViewExecutable;
 use Drupal\views\Analyzer;
 
 /**
- * Implements hook_views_data().
+ * Implements HOOK_views_data().
  */
 function views_test_data_views_data() {
   $state = \Drupal::service('state');
@@ -27,14 +27,14 @@ function views_test_data_views_data() {
 }
 
 /**
- * Implements hook_views_data_alter().
+ * Implements HOOK_views_data_alter().
  */
 function views_test_data_views_data_alter() {
   \Drupal::state()->set('views_hook_test_views_data_alter', TRUE);
 }
 
 /**
- * Implements hook_views_analyze().
+ * Implements HOOK_views_analyze().
  */
 function views_test_data_views_analyze(ViewExecutable $view) {
   \Drupal::state()->set('views_hook_test_views_analyze', TRUE);
@@ -49,7 +49,7 @@ function views_test_data_views_analyze(ViewExecutable $view) {
 }
 
 /**
- * Implements hook_views_invalidate_cache().
+ * Implements HOOK_views_invalidate_cache().
  */
 function views_test_data_views_invalidate_cache() {
   \Drupal::state()->set('views_hook_test_views_invalidate_cache', TRUE);

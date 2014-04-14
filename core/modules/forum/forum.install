@@ -6,7 +6,7 @@
  */
 
 /**
- * Implements hook_install().
+ * Implements HOOK_install().
  */
 function forum_install() {
   // Set the weight of the forum.module to 1 so it is loaded after the taxonomy.module.
@@ -89,7 +89,7 @@ function forum_install() {
 }
 
 /**
- * Implements hook_uninstall().
+ * Implements HOOK_uninstall().
  */
 function forum_uninstall() {
   if ($field = field_info_field('node', 'taxonomy_forums')) {
@@ -117,7 +117,7 @@ function forum_uninstall() {
 }
 
 /**
- * Implements hook_schema().
+ * Implements HOOK_schema().
  */
 function forum_schema() {
   $schema['forum'] = array(
@@ -236,7 +236,7 @@ function forum_schema() {
 }
 
 /**
- * Implements hook_update_last_removed().
+ * Implements HOOK_update_last_removed().
  */
 function forum_update_last_removed() {
   return 7003;

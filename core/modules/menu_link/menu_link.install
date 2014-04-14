@@ -6,7 +6,7 @@
  */
 
 /**
- * Implements hook_schema().
+ * Implements HOOK_schema().
  */
 function menu_link_schema() {
   $schema['menu_links'] = array(

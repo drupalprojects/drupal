@@ -49,7 +49,7 @@ class SessionTest extends WebTestBase {
     $this->drupalLogout();
 
     // Verify that the session is regenerated if a module calls exit
-    // in hook_user_login().
+    // in HOOK_user_login().
     $user->name = 'session_test_user';
     $user->save();
     $this->drupalGet('session-test/id');

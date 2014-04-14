@@ -39,7 +39,7 @@ class InvalidUpdateHook extends WebTestBase {
   public static function getInfo() {
     return array(
       'name' => 'Invalid update hook',
-      'description' => 'Tests that a module implementing hook_update_8000() causes an error to be displayed on update.',
+      'description' => 'Tests that a module implementing HOOK_update_8000() causes an error to be displayed on update.',
       'group' => 'Update API',
     );
   }
@@ -53,7 +53,7 @@ class InvalidUpdateHook extends WebTestBase {
   }
 
   function testInvalidUpdateHook() {
-    // Confirm that a module with hook_update_8000() cannot be updated.
+    // Confirm that a module with HOOK_update_8000() cannot be updated.
     $this->drupalLogin($this->update_user);
     $this->drupalGet($this->update_url);
     $this->drupalPostForm($this->update_url, array(), t('Continue'), array('external' => TRUE));

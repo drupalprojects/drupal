@@ -22,7 +22,7 @@ use Drupal\comment\CommentInterface;
  * @param \Drupal\comment\Comment $comment
  *   The comment object.
  */
-function hook_comment_presave(Drupal\comment\Comment $comment) {
+function HOOK_comment_presave(Drupal\comment\Comment $comment) {
   // Remove leading & trailing spaces from the comment subject.
   $comment->setSubject(trim($comment->getSubject()));
 }
@@ -33,7 +33,7 @@ function hook_comment_presave(Drupal\comment\Comment $comment) {
  * @param \Drupal\comment\Comment $comment
  *   The comment object.
  */
-function hook_comment_insert(Drupal\comment\Comment $comment) {
+function HOOK_comment_insert(Drupal\comment\Comment $comment) {
   // Reindex the node when comments are added.
   if ($comment->getCommentedEntityTypeId() == 'node') {
     node_reindex_node_search($comment->getCommentedEntityId());
@@ -46,7 +46,7 @@ function hook_comment_insert(Drupal\comment\Comment $comment) {
  * @param \Drupal\comment\Comment $comment
  *   The comment object.
  */
-function hook_comment_update(Drupal\comment\Comment $comment) {
+function HOOK_comment_update(Drupal\comment\Comment $comment) {
   // Reindex the node when comments are updated.
   if ($comment->getCommentedEntityTypeId() == 'node') {
     node_reindex_node_search($comment->getCommentedEntityId());
@@ -62,7 +62,7 @@ function hook_comment_update(Drupal\comment\Comment $comment) {
  * @param \Drupal\comment\Entity\Comment $comment
  *   The comment object.
  */
-function hook_comment_create(\Drupal\comment\Entity\Comment $comment) {
+function HOOK_comment_create(\Drupal\comment\Entity\Comment $comment) {
   if (!isset($comment->foo)) {
     $comment->foo = 'some_initial_value';
   }
@@ -74,7 +74,7 @@ function hook_comment_create(\Drupal\comment\Entity\Comment $comment) {
  * @param array $comments
  *  An array of comment objects indexed by cid.
  */
-function hook_comment_load(Drupal\comment\Comment $comments) {
+function HOOK_comment_load(Drupal\comment\Comment $comments) {
   $result = db_query('SELECT cid, foo FROM {mytable} WHERE cid IN (:cids)', array(':cids' => array_keys($comments)));
   foreach ($result as $record) {
     $comments[$record->cid]->foo = $record->foo;
@@ -94,12 +94,12 @@ function hook_comment_load(Drupal\comment\Comment $comments) {
  * @param $langcode
  *   The language code used for rendering.
  *
- * @see hook_entity_view()
+ * @see HOOK_entity_view()
  */
-function hook_comment_view(\Drupal\comment\Entity\Comment $comment, \Drupal\Core\Entity\Display\EntityViewDisplayInterface $display, $view_mode, $langcode) {
+function HOOK_comment_view(\Drupal\comment\Entity\Comment $comment, \Drupal\Core\Entity\Display\EntityViewDisplayInterface $display, $view_mode, $langcode) {
   // Only do the extra work if the component is configured to be displayed.
   // This assumes a 'mymodule_addition' extra field has been defined for the
-  // node type in hook_entity_extra_field_info().
+  // node type in HOOK_entity_extra_field_info().
   if ($display->getComponent('mymodule_addition')) {
     $comment->content['mymodule_addition'] = array(
       '#markup' => mymodule_addition($comment),
@@ -117,7 +117,7 @@ function hook_comment_view(\Drupal\comment\Entity\Comment $comment, \Drupal\Core
  *
  * If the module wishes to act on the rendered HTML of the comment rather than
  * the structured content array, it may use this hook to add a #post_render
- * callback. Alternatively, it could also implement hook_preprocess_HOOK() for
+ * callback. Alternatively, it could also implement HOOK_preprocess_HOOK() for
  * comment.html.twig. See drupal_render() documentation for details.
  *
  * @param $build
@@ -129,9 +129,9 @@ function hook_comment_view(\Drupal\comment\Entity\Comment $comment, \Drupal\Core
  *   comment components.
  *
  * @see comment_view()
- * @see hook_entity_view_alter()
+ * @see HOOK_entity_view_alter()
  */
-function hook_comment_view_alter(&$build, \Drupal\comment\Entity\Comment $comment, \Drupal\Core\Entity\Display\EntityViewDisplayInterface $display) {
+function HOOK_comment_view_alter(&$build, \Drupal\comment\Entity\Comment $comment, \Drupal\Core\Entity\Display\EntityViewDisplayInterface $display) {
   // Check for the existence of a field added by another module.
   if ($build['#view_mode'] == 'full' && isset($build['an_additional_field'])) {
     // Change its weight.
@@ -148,7 +148,7 @@ function hook_comment_view_alter(&$build, \Drupal\comment\Entity\Comment $commen
  * @param \Drupal\comment\Comment $comment
  *   The comment the action is being performed on.
  */
-function hook_comment_publish(Drupal\comment\Comment $comment) {
+function HOOK_comment_publish(Drupal\comment\Comment $comment) {
   drupal_set_message(t('Comment: @subject has been published', array('@subject' => $comment->getSubject())));
 }
 
@@ -158,7 +158,7 @@ function hook_comment_publish(Drupal\comment\Comment $comment) {
  * @param \Drupal\comment\Comment $comment
  *   The comment the action is being performed on.
  */
-function hook_comment_unpublish(Drupal\comment\Comment $comment) {
+function HOOK_comment_unpublish(Drupal\comment\Comment $comment) {
   drupal_set_message(t('Comment: @subject has been unpublished', array('@subject' => $comment->getSubject())));
 }
 
@@ -171,10 +171,10 @@ function hook_comment_unpublish(Drupal\comment\Comment $comment) {
  * @param \Drupal\comment\Comment $comment
  *   The comment object for the comment that is about to be deleted.
  *
- * @see hook_comment_delete()
+ * @see HOOK_comment_delete()
  * @see entity_delete_multiple()
  */
-function hook_comment_predelete(Drupal\comment\Comment $comment) {
+function HOOK_comment_predelete(Drupal\comment\Comment $comment) {
   // Delete a record associated with the comment in a custom table.
   db_delete('example_comment_table')
     ->condition('cid', $comment->id())
@@ -190,10 +190,10 @@ function hook_comment_predelete(Drupal\comment\Comment $comment) {
  * @param \Drupal\comment\Comment $comment
  *   The comment object for the comment that has been deleted.
  *
- * @see hook_comment_predelete()
+ * @see HOOK_comment_predelete()
  * @see entity_delete_multiple()
  */
-function hook_comment_delete(Drupal\comment\Comment $comment) {
+function HOOK_comment_delete(Drupal\comment\Comment $comment) {
   drupal_set_message(t('Comment: @subject has been deleted', array('@subject' => $comment->getSubject())));
 }
 
@@ -214,7 +214,7 @@ function hook_comment_delete(Drupal\comment\Comment $comment) {
  * @see \Drupal\comment\CommentViewBuilder::renderLinks()
  * @see \Drupal\comment\CommentViewBuilder::buildLinks()
  */
-function hook_comment_links_alter(array &$links, CommentInterface $entity, array &$context) {
+function HOOK_comment_links_alter(array &$links, CommentInterface $entity, array &$context) {
   $links['mymodule'] = array(
     '#theme' => 'links__comment__mymodule',
     '#attributes' => array('class' => array('links', 'inline')),

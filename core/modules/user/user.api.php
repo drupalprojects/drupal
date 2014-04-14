@@ -21,7 +21,7 @@ use Drupal\Core\Entity\EntityInterface;
  * @param \Drupal\user\UserInterface $user
  *   The user object.
  */
-function hook_user_create(\Drupal\user\Entity\User $user) {
+function HOOK_user_create(\Drupal\user\Entity\User $user) {
   if (!isset($user->foo)) {
     $user->foo = 'some_initial_value';
   }
@@ -40,7 +40,7 @@ function hook_user_create(\Drupal\user\Entity\User $user) {
  * @see user_load_multiple()
  * @see profile_user_load()
  */
-function hook_user_load($users) {
+function HOOK_user_load($users) {
   $result = db_query('SELECT uid, foo FROM {my_table} WHERE uid IN (:uids)', array(':uids' => array_keys($users)));
   foreach ($result as $record) {
     $users[$record->uid]->foo = $record->foo;
@@ -53,16 +53,16 @@ function hook_user_load($users) {
  * This hook is invoked from user_delete_multiple() before field values are
  * deleted and before the user is actually removed from the database.
  *
- * Modules should additionally implement hook_user_cancel() to process stored
+ * Modules should additionally implement HOOK_user_cancel() to process stored
  * user data for other account cancellation methods.
  *
  * @param $account
  *   The account that is about to be deleted.
  *
- * @see hook_user_delete()
+ * @see HOOK_user_delete()
  * @see user_delete_multiple()
  */
-function hook_user_predelete($account) {
+function HOOK_user_predelete($account) {
   db_delete('mytable')
     ->condition('uid', $account->id())
     ->execute();
@@ -74,16 +74,16 @@ function hook_user_predelete($account) {
  * This hook is invoked from user_delete_multiple() after field values are
  * deleted and after the user has been removed from the database.
  *
- * Modules should additionally implement hook_user_cancel() to process stored
+ * Modules should additionally implement HOOK_user_cancel() to process stored
  * user data for other account cancellation methods.
  *
  * @param $account
  *   The account that has been deleted.
  *
- * @see hook_user_predelete()
+ * @see HOOK_user_predelete()
  * @see user_delete_multiple()
  */
-function hook_user_delete($account) {
+function HOOK_user_delete($account) {
   drupal_set_message(t('User: @name has been deleted.', array('@name' => $account->getUsername())));
 }
 
@@ -94,11 +94,11 @@ function hook_user_delete($account) {
  * Depending on the account cancellation method, the module should either do
  * nothing, unpublish content, or anonymize content. See user_cancel_methods()
  * for the list of default account cancellation methods provided by User module.
- * Modules may add further methods via hook_user_cancel_methods_alter().
+ * Modules may add further methods via HOOK_user_cancel_methods_alter().
  *
  * This hook is NOT invoked for the 'user_cancel_delete' account cancellation
- * method. To react to that method, implement hook_user_predelete() or
- * hook_user_delete() instead.
+ * method. To react to that method, implement HOOK_user_predelete() or
+ * HOOK_user_delete() instead.
  *
  * Expensive operations should be added to the global account cancellation batch
  * by using batch_set().
@@ -111,9 +111,9 @@ function hook_user_delete($account) {
  *   The account cancellation method.
  *
  * @see user_cancel_methods()
- * @see hook_user_cancel_methods_alter()
+ * @see HOOK_user_cancel_methods_alter()
  */
-function hook_user_cancel($edit, $account, $method) {
+function HOOK_user_cancel($edit, $account, $method) {
   switch ($method) {
     case 'user_cancel_block_unpublish':
       // Unpublish nodes (current revisions).
@@ -162,7 +162,7 @@ function hook_user_cancel($edit, $account, $method) {
  * @see user_cancel_methods()
  * @see user_cancel_confirm_form()
  */
-function hook_user_cancel_methods_alter(&$methods) {
+function HOOK_user_cancel_methods_alter(&$methods) {
   $account = \Drupal::currentUser();
   // Limit access to disable account and unpublish content method.
   $methods['user_cancel_block_unpublish']['access'] = $account->hasPermission('administer site configuration');
@@ -194,7 +194,7 @@ function hook_user_cancel_methods_alter(&$methods) {
  *
  * @see user_format_name()
  */
-function hook_user_format_name_alter(&$name, $account) {
+function HOOK_user_format_name_alter(&$name, $account) {
   // Display the user's uid instead of name.
   if ($account->id()) {
     $name = t('User !uid', array('!uid' => $account->id()));
@@ -209,10 +209,10 @@ function hook_user_format_name_alter(&$name, $account) {
  * @param $account
  *   The user account object.
  *
- * @see hook_user_insert()
- * @see hook_user_update()
+ * @see HOOK_user_insert()
+ * @see HOOK_user_update()
  */
-function hook_user_presave($account) {
+function HOOK_user_presave($account) {
   // Ensure that our value is an array.
   if (isset($account->mymodule_foo)) {
     $account->mymodule_foo = (array) $account->mymodule_foo;
@@ -234,10 +234,10 @@ function hook_user_presave($account) {
  * @param $account
  *   The user account object.
  *
- * @see hook_user_presave()
- * @see hook_user_update()
+ * @see HOOK_user_presave()
+ * @see HOOK_user_update()
  */
-function hook_user_insert($account) {
+function HOOK_user_insert($account) {
   db_insert('user_changes')
     ->fields(array(
       'uid' => $account->id(),
@@ -261,10 +261,10 @@ function hook_user_insert($account) {
  * @param $account
  *   The user account object.
  *
- * @see hook_user_presave()
- * @see hook_user_insert()
+ * @see HOOK_user_presave()
+ * @see HOOK_user_insert()
  */
-function hook_user_update($account) {
+function HOOK_user_update($account) {
   db_insert('user_changes')
     ->fields(array(
       'uid' => $account->id(),
@@ -279,7 +279,7 @@ function hook_user_update($account) {
  * @param $account
  *   The user object on which the operation was just performed.
  */
-function hook_user_login($account) {
+function HOOK_user_login($account) {
   $config = \Drupal::config('system.date');
   // If the user has a NULL time zone, notify them to set a time zone.
   if (!$account->getTimezone() && $config->get('timezone.user.configurable') && $config->get('timezone.user.warn')) {
@@ -293,7 +293,7 @@ function hook_user_login($account) {
  * @param $account
  *   The user object on which the operation was just performed.
  */
-function hook_user_logout($account) {
+function HOOK_user_logout($account) {
   db_insert('logouts')
     ->fields(array(
       'uid' => $account->id(),
@@ -318,13 +318,13 @@ function hook_user_logout($account) {
  * @param $langcode
  *   The language code used for rendering.
  *
- * @see hook_user_view_alter()
- * @see hook_entity_view()
+ * @see HOOK_user_view_alter()
+ * @see HOOK_entity_view()
  */
-function hook_user_view(\Drupal\user\UserInterface $account, \Drupal\Core\Entity\Display\EntityViewDisplayInterface $display, $view_mode, $langcode) {
+function HOOK_user_view(\Drupal\user\UserInterface $account, \Drupal\Core\Entity\Display\EntityViewDisplayInterface $display, $view_mode, $langcode) {
   // Only do the extra work if the component is configured to be displayed.
   // This assumes a 'mymodule_addition' extra field has been defined for the
-  // user entity type in hook_entity_extra_field_info().
+  // user entity type in HOOK_entity_extra_field_info().
   if ($display->getComponent('mymodule_addition')) {
     $account->content['mymodule_addition'] = array(
       '#markup' => mymodule_addition($account),
@@ -342,7 +342,7 @@ function hook_user_view(\Drupal\user\UserInterface $account, \Drupal\Core\Entity
  *
  * If the module wishes to act on the rendered HTML of the user rather than the
  * structured content array, it may use this hook to add a #post_render callback.
- * Alternatively, it could also implement hook_preprocess_HOOK() for
+ * Alternatively, it could also implement HOOK_preprocess_HOOK() for
  * user.html.twig. See drupal_render() and _theme() documentation
  * respectively for details.
  *
@@ -355,9 +355,9 @@ function hook_user_view(\Drupal\user\UserInterface $account, \Drupal\Core\Entity
  *   components.
  *
  * @see user_view()
- * @see hook_entity_view_alter()
+ * @see HOOK_entity_view_alter()
  */
-function hook_user_view_alter(&$build, \Drupal\user\UserInterface $account, \Drupal\Core\Entity\Display\EntityViewDisplayInterface $display) {
+function HOOK_user_view_alter(&$build, \Drupal\user\UserInterface $account, \Drupal\Core\Entity\Display\EntityViewDisplayInterface $display) {
   // Check for the existence of a field added by another module.
   if (isset($build['an_additional_field'])) {
     // Change its weight.
@@ -377,10 +377,10 @@ function hook_user_view_alter(&$build, \Drupal\user\UserInterface $account, \Dru
  * @param $role
  *   A user role object.
  *
- * @see hook_user_role_insert()
- * @see hook_user_role_update()
+ * @see HOOK_user_role_insert()
+ * @see HOOK_user_role_update()
  */
-function hook_user_role_presave($role) {
+function HOOK_user_role_presave($role) {
   // Set a UUID for the user role if it doesn't already exist
   if (empty($role->uuid)) {
     $role->uuid = uuid_uuid();
@@ -398,7 +398,7 @@ function hook_user_role_presave($role) {
  * @param $role
  *   A user role object.
  */
-function hook_user_role_insert($role) {
+function HOOK_user_role_insert($role) {
   // Save extra fields provided by the module to user roles.
   db_insert('my_module_table')
     ->fields(array(
@@ -419,7 +419,7 @@ function hook_user_role_insert($role) {
  * @param $role
  *   A user role object.
  */
-function hook_user_role_update($role) {
+function HOOK_user_role_update($role) {
   // Save extra fields provided by the module to user roles.
   db_merge('my_module_table')
     ->key('rid', $role->id())
@@ -440,7 +440,7 @@ function hook_user_role_update($role) {
  * @param $role
  *   The $role object being deleted.
  */
-function hook_user_role_delete($role) {
+function HOOK_user_role_delete($role) {
   // Delete existing instances of the deleted role.
   db_delete('my_module_table')
     ->condition('rid', $role->id())

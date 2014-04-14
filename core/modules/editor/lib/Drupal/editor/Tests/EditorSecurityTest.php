@@ -404,7 +404,7 @@ class EditorSecurityTest extends WebTestBase {
     $dom_node = $this->xpath('//textarea[@id="edit-body-0-value"]');
     $this->assertIdentical(self::$sampleContentSecured, (string) $dom_node[0], 'The value was filtered by the Standard text editor XSS filter.');
 
-    // Enable editor_test.module's hook_editor_xss_filter_alter() implementation
+    // Enable editor_test.module's HOOK_editor_xss_filter_alter() implementation
     // to ater the text editor XSS filter class being used.
     \Drupal::state()->set('editor_test_editor_xss_filter_alter_enabled', TRUE);
 

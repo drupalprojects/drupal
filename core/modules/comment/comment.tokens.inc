@@ -8,7 +8,7 @@
 use Drupal\Component\Utility\Xss;
 
 /**
- * Implements hook_token_info().
+ * Implements HOOK_token_info().
  */
 function comment_token_info() {
   $type = array(
@@ -111,7 +111,7 @@ function comment_token_info() {
 }
 
 /**
- * Implements hook_tokens().
+ * Implements HOOK_tokens().
  */
 function comment_tokens($type, $tokens, array $data = array(), array $options = array()) {
   $token_service = \Drupal::token();

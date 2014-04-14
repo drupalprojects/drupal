@@ -6,7 +6,7 @@
  */
 
 /**
- * Implements hook_help().
+ * Implements HOOK_help().
  */
 function hal_help($path, $arg) {
   switch ($path) {

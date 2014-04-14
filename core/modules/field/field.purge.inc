@@ -23,7 +23,7 @@ use Drupal\field\FieldException;
  *   entity. A file field type might use this method to delete uploaded files
  *   from the filesystem.
  * - Removing the data from storage.
- * - Invoking the global hook_entity_delete() for all modules that implement it.
+ * - Invoking the global HOOK_entity_delete() for all modules that implement it.
  *   Each hook implementation receives the entity being deleted and can operate
  *   on whichever subset of the entity's bundle's fields it chooses to.
  *

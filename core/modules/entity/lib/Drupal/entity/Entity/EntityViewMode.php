@@ -27,7 +27,7 @@ use Drupal\entity\EntityViewModeInterface;
  *
  * @see \Drupal\Core\Entity\EntityManagerInterface::getAllViewModes()
  * @see \Drupal\Core\Entity\EntityManagerInterface::getViewModes()
- * @see hook_entity_view_mode_info_alter()
+ * @see HOOK_entity_view_mode_info_alter()
  *
  * @ConfigEntityType(
  *   id = "view_mode",

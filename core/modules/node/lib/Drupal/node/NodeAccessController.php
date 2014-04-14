@@ -109,7 +109,7 @@ class NodeAccessController extends EntityAccessController implements NodeAccessC
       return $grants;
     }
 
-    // If no modules implement hook_node_grants(), the default behavior is to
+    // If no modules implement HOOK_node_grants(), the default behavior is to
     // allow all users to view published nodes, so reflect that here.
     if ($operation === 'view') {
       return $status;

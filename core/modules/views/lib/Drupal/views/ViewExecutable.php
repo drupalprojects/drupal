@@ -1397,7 +1397,7 @@ class ViewExecutable extends DependencySerialization {
   /**
    * Execute the given display, with the given arguments.
    * To be called externally by whatever mechanism invokes the view,
-   * such as a page callback, hook_block, etc.
+   * such as a page callback, HOOK_block, etc.
    *
    * This function should NOT be used by anything external as this
    * returns data in the format specified by the display. It can also
@@ -1468,7 +1468,7 @@ class ViewExecutable extends DependencySerialization {
     // Let modules modify the view just prior to executing it.
     \Drupal::moduleHandler()->invokeAll('views_pre_view', array($this, $display_id, &$this->args));
 
-    // Allow hook_views_pre_view() to set the dom_id, then ensure it is set.
+    // Allow HOOK_views_pre_view() to set the dom_id, then ensure it is set.
     $this->dom_id = !empty($this->dom_id) ? $this->dom_id : hash('sha256', $this->storage->id() . REQUEST_TIME . mt_rand());
 
     // Allow the display handler to set up for execution

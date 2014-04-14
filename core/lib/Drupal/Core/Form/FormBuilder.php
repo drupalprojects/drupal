@@ -792,8 +792,8 @@ class FormBuilder implements FormBuilderInterface {
       }
     }
 
-    // Invoke hook_form_alter(), hook_form_BASE_FORM_ID_alter(), and
-    // hook_form_FORM_ID_alter() implementations.
+    // Invoke HOOK_form_alter(), HOOK_form_BASE_FORM_ID_alter(), and
+    // HOOK_form_FORM_ID_alter() implementations.
     $hooks = array('form');
     if (isset($form_state['build_info']['base_form_id'])) {
       $hooks[] = 'form_' . $form_state['build_info']['base_form_id'];
@@ -975,7 +975,7 @@ class FormBuilder implements FormBuilderInterface {
    *   not be repeated in the submission step.
    * @param $form_id
    *   A unique string identifying the form for validation, submission,
-   *   theming, and hook_form_alter functions.
+   *   theming, and HOOK_form_alter functions.
    */
   protected function doValidateForm(&$elements, &$form_state, $form_id = NULL) {
     // Recurse through all children.

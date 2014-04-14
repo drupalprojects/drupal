@@ -14,9 +14,9 @@ interface NodeAccessControllerInterface {
    * Gets the list of node access grants.
    *
    * This function is called to check the access grants for a node. It collects
-   * all node access grants for the node from hook_node_access_records()
+   * all node access grants for the node from HOOK_node_access_records()
    * implementations, allows these grants to be altered via
-   * hook_node_access_records_alter() implementations, and returns the grants to
+   * HOOK_node_access_records_alter() implementations, and returns the grants to
    * the caller.
    *
    * @param \Drupal\node\NodeInterface $node
@@ -42,7 +42,7 @@ interface NodeAccessControllerInterface {
    * @param \Drupal\node\NodeInterface $node
    *   The node whose grants are being written.
    * @param $grants
-   *   A list of grants to write. See hook_node_access_records() for the
+   *   A list of grants to write. See HOOK_node_access_records() for the
    *   expected structure of the grants array.
    * @param $realm
    *   (optional) If provided, read/write grants for that realm only. Defaults to

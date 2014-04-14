@@ -9,7 +9,7 @@ use Drupal\Core\Entity\ContentEntityDatabaseStorage;
 use Drupal\field\FieldConfigInterface;
 
 /**
- * Implements hook_views_data().
+ * Implements HOOK_views_data().
  */
 function file_views_data() {
   $data = array();
@@ -473,7 +473,7 @@ function file_views_data() {
 }
 
 /**
- * Implements hook_field_views_data().
+ * Implements HOOK_field_views_data().
  *
  * Views integration for file fields. Adds a file relationship to the default
  * field data.
@@ -497,7 +497,7 @@ function file_field_views_data(FieldConfigInterface $field) {
 }
 
 /**
- * Implements hook_field_views_data_views_data_alter().
+ * Implements HOOK_field_views_data_views_data_alter().
  *
  * Views integration to provide reverse relationships on file fields.
  */

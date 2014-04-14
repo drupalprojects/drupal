@@ -11,7 +11,7 @@
 use Drupal\Core\Config\Entity\ConfigEntityStorage;
 
 /**
- * Implements hook_help().
+ * Implements HOOK_help().
  */
 function entity_help($path, $arg) {
   switch ($path) {
@@ -34,7 +34,7 @@ function entity_help($path, $arg) {
 }
 
 /**
- * Implements hook_permission().
+ * Implements HOOK_permission().
  */
 function entity_permission() {
   return array(
@@ -45,7 +45,7 @@ function entity_permission() {
 }
 
 /**
- * Implements hook_entity_bundle_rename().
+ * Implements HOOK_entity_bundle_rename().
  */
 function entity_entity_bundle_rename($entity_type_id, $bundle_old, $bundle_new) {
   // Rename entity displays.
@@ -78,7 +78,7 @@ function entity_entity_bundle_rename($entity_type_id, $bundle_old, $bundle_new) 
 }
 
 /**
- * Implements hook_entity_bundle_delete().
+ * Implements HOOK_entity_bundle_delete().
  */
 function entity_entity_bundle_delete($entity_type_id, $bundle) {
   // Remove entity displays of the deleted bundle.
@@ -99,7 +99,7 @@ function entity_entity_bundle_delete($entity_type_id, $bundle) {
 }
 
 /**
- * Implements hook_module_preuninstall().
+ * Implements HOOK_module_preuninstall().
  */
 function entity_module_preuninstall($module) {
   // Clean up all entity bundles (including field instances) of every entity

@@ -11,7 +11,7 @@
 use Drupal\node\NodeInterface;
 
 /**
- * Implements hook_node_grants().
+ * Implements HOOK_node_grants().
  *
  * This module defines a single grant realm. All users belong to this group.
  */
@@ -21,7 +21,7 @@ function node_access_test_language_node_grants($account, $op) {
 }
 
 /**
- * Implements hook_node_access_records().
+ * Implements HOOK_node_access_records().
  */
 function node_access_test_language_node_access_records(NodeInterface $node) {
   $grants = array();

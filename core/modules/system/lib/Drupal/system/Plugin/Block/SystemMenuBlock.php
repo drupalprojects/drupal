@@ -78,10 +78,10 @@ class SystemMenuBlock extends BlockBase implements ContainerFactoryPluginInterfa
     // menu links and menu blocks will automatically invalidate corresponding
     // cache tags, therefore allowing us to cache menu blocks forever. This is
     // only not the case if there are user-specific or dynamic alterations (e.g.
-    // hook_node_access()), but in that:
+    // HOOK_node_access()), but in that:
     // 1) it is possible to set a different max age for individual blocks, since
     //    this is just the default value.
-    // 2) modules can modify caching by implementing hook_block_view_alter()
+    // 2) modules can modify caching by implementing HOOK_block_view_alter()
     return array('cache' => array('max_age' => \Drupal\Core\Cache\Cache::PERMANENT));
   }
 

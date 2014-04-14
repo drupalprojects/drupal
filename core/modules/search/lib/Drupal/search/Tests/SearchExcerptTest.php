@@ -123,7 +123,7 @@ class SearchExcerptTest extends WebTestBase {
     $result = preg_replace('| +|', ' ', search_excerpt('ipsum 0000', $text));
     $this->assertTrue(strpos($result, '<strong>ipsum</strong>') !== FALSE, 'Only valid keyword is highlighted and invalid keyword "0000" is ignored.');
 
-    // Test using the hook_search_preprocess() from the test module.
+    // Test using the HOOK_search_preprocess() from the test module.
     // The hook replaces "finding" or "finds" with "find".
     // So, if we search for "find" or "finds" or "finding", we should
     // highlight "finding".
