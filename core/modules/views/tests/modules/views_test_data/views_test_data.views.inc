@@ -13,7 +13,7 @@ use Drupal\views\Analyzer;
  */
 function views_test_data_views_data() {
   $state = \Drupal::service('state');
-  $state->set('views_HOOK_test_views_data', TRUE);
+  $state->set('views_hook_test_views_data', TRUE);
   // We use a state variable to keep track of how many times this function is
   // called so we can assert that calls to
   // \Drupal\views\ViewsData::delete() trigger a rebuild of views data.
@@ -30,14 +30,14 @@ function views_test_data_views_data() {
  * Implements HOOK_views_data_alter().
  */
 function views_test_data_views_data_alter() {
-  \Drupal::state()->set('views_HOOK_test_views_data_alter', TRUE);
+  \Drupal::state()->set('views_hook_test_views_data_alter', TRUE);
 }
 
 /**
  * Implements HOOK_views_analyze().
  */
 function views_test_data_views_analyze(ViewExecutable $view) {
-  \Drupal::state()->set('views_HOOK_test_views_analyze', TRUE);
+  \Drupal::state()->set('views_hook_test_views_analyze', TRUE);
 
   $ret = array();
 
@@ -52,5 +52,5 @@ function views_test_data_views_analyze(ViewExecutable $view) {
  * Implements HOOK_views_invalidate_cache().
  */
 function views_test_data_views_invalidate_cache() {
-  \Drupal::state()->set('views_HOOK_test_views_invalidate_cache', TRUE);
+  \Drupal::state()->set('views_hook_test_views_invalidate_cache', TRUE);
 }

@@ -350,9 +350,9 @@ function _field_create_entity_from_ids($ids) {
 }
 
 /**
- * Implements HOOK_HOOK_info().
+ * Implements HOOK_hook_info().
  */
-function field_HOOK_info() {
+function field_hook_info() {
   $hooks['field_views_data'] = array(
     'group' => 'views',
   );

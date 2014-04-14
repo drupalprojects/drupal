@@ -920,8 +920,8 @@ class EntityManagerTest extends UnitTestCase {
         ),
       ),
     );
-    $processed_HOOK_bundle_extra_fields = $HOOK_bundle_extra_fields;
-    $processed_HOOK_bundle_extra_fields[$entity_type_id][$bundle] += array(
+    $processed_hook_bundle_extra_fields = $HOOK_bundle_extra_fields;
+    $processed_hook_bundle_extra_fields[$entity_type_id][$bundle] += array(
       'display' => array(),
     );
     $cache_id = 'entity_bundle_extra_fields:' . $entity_type_id . ':' . $bundle . ':' . $language_code;
@@ -947,9 +947,9 @@ class EntityManagerTest extends UnitTestCase {
 
     $this->cache->expects($this->once())
       ->method('set')
-      ->with($cache_id, $processed_HOOK_bundle_extra_fields[$entity_type_id][$bundle]);
+      ->with($cache_id, $processed_hook_bundle_extra_fields[$entity_type_id][$bundle]);
 
-    $this->assertSame($processed_HOOK_bundle_extra_fields[$entity_type_id][$bundle], $this->entityManager->getExtraFields($entity_type_id, $bundle));
+    $this->assertSame($processed_hook_bundle_extra_fields[$entity_type_id][$bundle], $this->entityManager->getExtraFields($entity_type_id, $bundle));
   }
 
   /**

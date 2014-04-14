@@ -152,14 +152,14 @@ interface ModuleHandlerInterface {
   public function loadInclude($module, $type, $name = NULL);
 
   /**
-   * Retrieves a list of hooks that are declared through HOOK_HOOK_info().
+   * Retrieves a list of hooks that are declared through HOOK_hook_info().
    *
    * @return array
    *   An associative array whose keys are hook names and whose values are an
    *   associative array containing a group name. The structure of the array
-   *   is the same as the return value of HOOK_HOOK_info().
+   *   is the same as the return value of HOOK_hook_info().
    *
-   * @see HOOK_HOOK_info()
+   * @see HOOK_hook_info()
    */
   public function getHookInfo();
 

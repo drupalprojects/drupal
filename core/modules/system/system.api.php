@@ -32,11 +32,11 @@ use Drupal\Core\Utility\UpdateException;
  *     system will determine whether a file with the name $module.$group.inc
  *     exists, and automatically load it when required.
  *
- * See system_HOOK_info() for all hook groups defined by Drupal core.
+ * See system_hook_info() for all hook groups defined by Drupal core.
  *
- * @see HOOK_HOOK_info_alter().
+ * @see HOOK_hook_info_alter().
  */
-function HOOK_HOOK_info() {
+function HOOK_hook_info() {
   $hooks['token_info'] = array(
     'group' => 'tokens',
   );
@@ -1032,7 +1032,7 @@ function HOOK_permission() {
  *   implementations for regular calls to _theme(), the theme hook is the first
  *   argument. For theme suggestions, instead of the array key being the base
  *   theme hook, the key is a theme suggestion name with the format
- *   'base_HOOK_name__sub_HOOK_name'. For render elements, the key is the
+ *   'base_hook_name__sub_hook_name'. For render elements, the key is the
  *   machine name of the render element. The array values are themselves arrays
  *   containing information about the theme hook and its implementation. Each
  *   information array must contain either a 'variables' element (for _theme()

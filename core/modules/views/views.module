@@ -253,7 +253,7 @@ function views_preprocess_node(&$variables) {
 }
 
 /**
- * Implements HOOK_theme_suggestions_HOOK_alter().
+ * Implements HOOK_theme_suggestions_hook_alter().
  */
 function views_theme_suggestions_node_alter(array &$suggestions, array $variables) {
   $node = $variables['elements']['#node'];
@@ -278,7 +278,7 @@ function views_preprocess_comment(&$variables) {
 }
 
 /**
- * Implements HOOK_theme_suggestions_HOOK_alter().
+ * Implements HOOK_theme_suggestions_hook_alter().
  */
 function views_theme_suggestions_comment_alter(array &$suggestions, array $variables) {
   $comment = $variables['elements']['#comment'];
@@ -309,7 +309,7 @@ function views_permission() {
 function views_menu_link_defaults_alter(array &$links) {
   // @todo Decide what to do with all the crazy logic in views_menu_alter() in
   // https://drupal.org/node/2107533.
-  $views = Views::getApplicableViews('uses_HOOK_menu');
+  $views = Views::getApplicableViews('uses_hook_menu');
   foreach ($views as $data) {
     /** @var \Drupal\views\ViewExecutable $view */
     list($view, $display_id) = $data;
@@ -626,9 +626,9 @@ function &views_get_current_view() {
 }
 
 /**
- * Implements HOOK_HOOK_info().
+ * Implements HOOK_hook_info().
  */
-function views_HOOK_info() {
+function views_hook_info() {
   $hooks = array();
 
   $hooks += array_fill_keys(array(
@@ -729,7 +729,7 @@ function views_get_enabled_display_extenders() {
  * setting in their display's plugin settings.
  *
  * @param string $type
- *   A flag from the display plugin definitions (e.g, 'uses_HOOK_menu').
+ *   A flag from the display plugin definitions (e.g, 'uses_hook_menu').
  *
  * @return array
  *   A list of arrays containing the $view and $display_id.

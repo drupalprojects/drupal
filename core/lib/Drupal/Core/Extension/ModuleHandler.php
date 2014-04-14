@@ -49,7 +49,7 @@ class ModuleHandler implements ModuleHandlerInterface {
   protected $implementations;
 
   /**
-   * Information returned by HOOK_HOOK_info() implementations.
+   * Information returned by HOOK_hook_info() implementations.
    *
    * @var array
    */
@@ -244,7 +244,7 @@ class ModuleHandler implements ModuleHandlerInterface {
     // Make sure that the modules are loaded before checking.
     $this->reload();
     foreach ($this->moduleList as $module => $filename) {
-      $function = $module . '_HOOK_info';
+      $function = $module . '_hook_info';
       if (function_exists($function)) {
         $result = $function();
         if (isset($result) && is_array($result)) {
@@ -281,7 +281,7 @@ class ModuleHandler implements ModuleHandlerInterface {
       return TRUE;
     }
     // If the hook implementation does not exist, check whether it lives in an
-    // optional include file registered via HOOK_HOOK_info().
+    // optional include file registered via HOOK_hook_info().
     $HOOK_info = $this->getHookInfo();
     if (isset($HOOK_info[$hook]['group'])) {
       $this->loadInclude($module, 'inc', $module . '.' . $HOOK_info[$hook]['group']);
@@ -447,7 +447,7 @@ class ModuleHandler implements ModuleHandlerInterface {
    * @return array
    *   An array whose keys are the names of the modules which are implementing
    *   this hook and whose values are either an array of information from
-   *   HOOK_HOOK_info() or FALSE if the implementation is in the module file.
+   *   HOOK_hook_info() or FALSE if the implementation is in the module file.
    */
   protected function getImplementationInfo($hook) {
     if (isset($this->implementations[$hook])) {

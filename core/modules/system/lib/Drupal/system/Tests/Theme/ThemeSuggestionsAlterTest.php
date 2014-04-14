@@ -78,20 +78,20 @@ class ThemeSuggestionsAlterTest extends WebTestBase {
    */
   function testTemplateSuggestionsAlter() {
     $this->drupalGet('theme-test/suggestion-alter');
-    $this->assertText('Original template for testing HOOK_theme_suggestions_HOOK_alter().');
+    $this->assertText('Original template for testing HOOK_theme_suggestions_hook_alter().');
 
     // Enable test_theme and test that themes can alter template suggestions.
     \Drupal::config('system.theme')
       ->set('default', 'test_theme')
       ->save();
     $this->drupalGet('theme-test/suggestion-alter');
-    $this->assertText('Template overridden based on new theme suggestion provided by the test_theme theme via HOOK_theme_suggestions_HOOK_alter().');
+    $this->assertText('Template overridden based on new theme suggestion provided by the test_theme theme via HOOK_theme_suggestions_hook_alter().');
 
     // Enable the theme_suggestions_test module to test modules implementing
     // suggestions alter hooks.
     \Drupal::moduleHandler()->install(array('theme_suggestions_test'));
     $this->drupalGet('theme-test/suggestion-alter');
-    $this->assertText('Template overridden based on new theme suggestion provided by a module via HOOK_theme_suggestions_HOOK_alter().');
+    $this->assertText('Template overridden based on new theme suggestion provided by a module via HOOK_theme_suggestions_hook_alter().');
   }
 
   /**
@@ -161,7 +161,7 @@ class ThemeSuggestionsAlterTest extends WebTestBase {
    * Tests execution order of theme suggestion alter hooks.
    *
    * HOOK_theme_suggestions_alter() should fire before
-   * HOOK_theme_suggestions_HOOK_alter() within an extension (module or theme).
+   * HOOK_theme_suggestions_hook_alter() within an extension (module or theme).
    */
   function testExecutionOrder() {
     // Enable our test theme and module.

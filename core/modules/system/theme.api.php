@@ -95,7 +95,7 @@
  *
  * @subsection sub_alternate_suggestions Suggesting Alternate Hooks
  * Alternate hooks can be suggested by implementing the hook-specific
- * HOOK_theme_suggestions_HOOK_alter() or the generic
+ * HOOK_theme_suggestions_hook_alter() or the generic
  * HOOK_theme_suggestions_alter(). These alter hooks are used to manipulate an
  * array of suggested alternate theme hooks to use, in reverse order of
  * priority. _theme() will use the highest priority implementation that exists.
@@ -221,7 +221,7 @@ function HOOK_preprocess_HOOK(&$variables) {
  * '#theme' => 'node__article' is called, then node_theme_suggestions_node()
  * will be invoked, not node_theme_suggestions_node__article(). The specific
  * hook called (in this case 'node__article') is available in
- * $variables['theme_HOOK_original'].
+ * $variables['theme_hook_original'].
  *
  * @todo Add @code sample.
  *
@@ -232,7 +232,7 @@ function HOOK_preprocess_HOOK(&$variables) {
  * @return array
  *   An array of theme suggestions.
  *
- * @see HOOK_theme_suggestions_HOOK_alter()
+ * @see HOOK_theme_suggestions_hook_alter()
  */
 function HOOK_theme_suggestions_HOOK(array $variables) {
   $suggestions = array();
@@ -246,7 +246,7 @@ function HOOK_theme_suggestions_HOOK(array $variables) {
  * Alters named suggestions for all theme hooks.
  *
  * This hook is invoked for all theme hooks, if you are targeting a specific
- * theme hook it's best to use HOOK_theme_suggestions_HOOK_alter().
+ * theme hook it's best to use HOOK_theme_suggestions_hook_alter().
  *
  * The call order is as follows: all existing suggestion alter functions are
  * called for module A, then all for module B, etc., followed by all for any
@@ -255,7 +255,7 @@ function HOOK_theme_suggestions_HOOK(array $variables) {
  *
  * Within each module or theme, suggestion alter hooks are called in the
  * following order: first, HOOK_theme_suggestions_alter(); second,
- * HOOK_theme_suggestions_HOOK_alter(). So, for each module or theme, the more
+ * HOOK_theme_suggestions_hook_alter(). So, for each module or theme, the more
  * general hooks are called first followed by the more specific.
  *
  * In the following example, we provide an alternative template suggestion to
@@ -279,12 +279,12 @@ function HOOK_theme_suggestions_HOOK(array $variables) {
  *   The base hook name. For example, if '#theme' => 'node__article' is called,
  *   then $hook will be 'node', not 'node__article'. The specific hook called
  *   (in this case 'node__article') is available in
- *   $variables['theme_HOOK_original'].
+ *   $variables['theme_hook_original'].
  *
  * @return array
  *   An array of theme suggestions.
  *
- * @see HOOK_theme_suggestions_HOOK_alter()
+ * @see HOOK_theme_suggestions_hook_alter()
  */
 function HOOK_theme_suggestions_alter(array &$suggestions, array $variables, $hook) {
   // Add an interface-language specific suggestion to all theme hooks.
@@ -302,7 +302,7 @@ function HOOK_theme_suggestions_alter(array &$suggestions, array $variables, $ho
  * '#theme' => 'node__article' is called, then node_theme_suggestions_node()
  * will be invoked, not node_theme_suggestions_node__article(). The specific
  * hook called (in this case 'node__article') is available in
- * $variables['theme_HOOK_original'].
+ * $variables['theme_hook_original'].
  *
  * @todo Add @code sample.
  *
@@ -315,7 +315,7 @@ function HOOK_theme_suggestions_alter(array &$suggestions, array $variables, $ho
  * @see HOOK_theme_suggestions_alter()
  * @see HOOK_theme_suggestions_HOOK()
  */
-function HOOK_theme_suggestions_HOOK_alter(array &$suggestions, array $variables) {
+function HOOK_theme_suggestions_hook_alter(array &$suggestions, array $variables) {
   if (empty($variables['header'])) {
     $suggestions[] = 'hookname__' . 'no_header';
   }

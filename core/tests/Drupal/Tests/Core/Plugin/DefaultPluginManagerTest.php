@@ -108,12 +108,12 @@ class DefaultPluginManagerTest extends UnitTestCase {
     $module_handler = $this->getMock('Drupal\Core\Extension\ModuleHandler');
 
     // Configure the stub.
-    $alter_HOOK_name = $this->randomName();
+    $alter_hook_name = $this->randomName();
     $module_handler->expects($this->once())
       ->method('alter')
-      ->with($this->equalTo($alter_HOOK_name), $this->equalTo($this->expectedDefinitions));
+      ->with($this->equalTo($alter_hook_name), $this->equalTo($this->expectedDefinitions));
 
-    $plugin_manager = new TestPluginManager($this->namespaces, $this->expectedDefinitions, $module_handler, $alter_HOOK_name);
+    $plugin_manager = new TestPluginManager($this->namespaces, $this->expectedDefinitions, $module_handler, $alter_hook_name);
 
     $this->assertEquals($this->expectedDefinitions, $plugin_manager->getDefinitions());
     $this->assertEquals($this->expectedDefinitions['banana'], $plugin_manager->getDefinition('banana'));

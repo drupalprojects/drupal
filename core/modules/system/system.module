@@ -239,9 +239,9 @@ function system_permission() {
 }
 
 /**
- * Implements HOOK_HOOK_info().
+ * Implements HOOK_hook_info().
  */
-function system_HOOK_info() {
+function system_hook_info() {
   $hooks['token_info'] = array(
     'group' => 'tokens',
   );

@@ -478,7 +478,7 @@ function _theme($hook, $variables = array()) {
   }
   // Supply original caller info.
   $variables += array(
-    'theme_HOOK_original' => $original_hook,
+    'theme_hook_original' => $original_hook,
   );
 
   // Set base hook for later use. For example if '#theme' => 'node__article'
@@ -502,7 +502,7 @@ function _theme($hook, $variables = array()) {
   }
 
   // Invoke HOOK_theme_suggestions_alter() and
-  // HOOK_theme_suggestions_HOOK_alter().
+  // HOOK_theme_suggestions_hook_alter().
   $hooks = array(
     'theme_suggestions',
     'theme_suggestions_' . $base_theme_hook,
@@ -512,7 +512,7 @@ function _theme($hook, $variables = array()) {
   // Check if each suggestion exists in the theme registry, and if so,
   // use it instead of the hook that _theme() was called with. For example, a
   // function may call _theme('node', ...), but a module can add
-  // 'node__article' as a suggestion via HOOK_theme_suggestions_HOOK_alter(),
+  // 'node__article' as a suggestion via HOOK_theme_suggestions_hook_alter(),
   // enabling a theme to have an alternate template file for article nodes.
   foreach (array_reverse($suggestions) as $suggestion) {
     if ($theme_registry->has($suggestion)) {
@@ -532,20 +532,20 @@ function _theme($hook, $variables = array()) {
   // Invoke the variable preprocessors, if any.
   if (isset($info['base hook'])) {
     $base_hook = $info['base hook'];
-    $base_HOOK_info = $theme_registry->get($base_hook);
+    $base_hook_info = $theme_registry->get($base_hook);
     // Include files required by the base hook, since its variable preprocessors
     // might reside there.
-    if (!empty($base_HOOK_info['includes'])) {
-      foreach ($base_HOOK_info['includes'] as $include_file) {
+    if (!empty($base_hook_info['includes'])) {
+      foreach ($base_hook_info['includes'] as $include_file) {
         include_once DRUPAL_ROOT . '/' . $include_file;
       }
     }
     // Replace the preprocess functions with those from the base hook.
-    if (isset($base_HOOK_info['preprocess functions'])) {
-      // Set a variable for the 'theme_HOOK_suggestion'. This is used to
+    if (isset($base_hook_info['preprocess functions'])) {
+      // Set a variable for the 'theme_hook_suggestion'. This is used to
       // maintain backwards compatibility with template engines.
-      $theme_HOOK_suggestion = $hook;
-      $info['preprocess functions'] = $base_HOOK_info['preprocess functions'];
+      $theme_hook_suggestion = $hook;
+      $info['preprocess functions'] = $base_hook_info['preprocess functions'];
     }
   }
   if (isset($info['preprocess functions'])) {
@@ -618,13 +618,13 @@ function _theme($hook, $variables = array()) {
     }
     // Add the theme suggestions to the variables array just before rendering
     // the template for backwards compatibility with template engines.
-    $variables['theme_HOOK_suggestions'] = $suggestions;
-    // For backwards compatibility, pass 'theme_HOOK_suggestion' on to the
+    $variables['theme_hook_suggestions'] = $suggestions;
+    // For backwards compatibility, pass 'theme_hook_suggestion' on to the
     // template engine. This is only set when calling a direct suggestion like
     // '#theme' => 'menu_tree__shortcut_default' when the template exists in the
     // current theme.
-    if (isset($theme_HOOK_suggestion)) {
-      $variables['theme_HOOK_suggestion'] = $theme_HOOK_suggestion;
+    if (isset($theme_hook_suggestion)) {
+      $variables['theme_hook_suggestion'] = $theme_hook_suggestion;
     }
     $output = $render_function($template_file, $variables);
   }
@@ -1700,7 +1700,7 @@ function template_preprocess_item_list(&$variables) {
             }
           }
           // Lastly, inherit the original theme variables of the current list.
-          $child['#theme'] = $variables['theme_HOOK_original'];
+          $child['#theme'] = $variables['theme_hook_original'];
           $child['#list_type'] = $variables['list_type'];
         }
       }
@@ -2157,7 +2157,7 @@ function template_preprocess_page(&$variables) {
  * Generate an array of suggestions from path arguments.
  *
  * This is typically called for adding to the suggestions in
- * HOOK_theme_suggestions_HOOK_alter() or adding to 'attributes' class key
+ * HOOK_theme_suggestions_hook_alter() or adding to 'attributes' class key
  * variables from within preprocess functions, when wanting to base the
  * additional suggestions or classes on the path of the current page.
  *
@@ -2173,7 +2173,7 @@ function template_preprocess_page(&$variables) {
  *
  * @return
  *   An array of suggestions, suitable for adding to
- *   HOOK_theme_suggestions_HOOK_alter() or to $variables['attributes']['class']
+ *   HOOK_theme_suggestions_hook_alter() or to $variables['attributes']['class']
  *   if the suggestions represent extra CSS classes.
  */
 function theme_get_suggestions($args, $base, $delimiter = '__') {

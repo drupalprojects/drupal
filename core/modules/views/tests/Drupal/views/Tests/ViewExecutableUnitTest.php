@@ -47,7 +47,7 @@ class ViewExecutableUnitTest extends UnitTestCase {
     $view = new ViewExecutable($storage, $user);
 
     $expected = array(
-      'test_HOOK__test_view',
+      'test_hook__test_view',
       'test_hook'
     );
     $this->assertEquals($expected, $view->buildThemeFunctions('test_hook'));
@@ -60,12 +60,12 @@ class ViewExecutableUnitTest extends UnitTestCase {
     $view->display_handler = $display;
 
     $expected = array(
-      'test_HOOK__test_view__default',
-      'test_HOOK__default',
-      'test_HOOK__one',
-      'test_HOOK__two',
-      'test_HOOK__and_three',
-      'test_HOOK__test_view',
+      'test_hook__test_view__default',
+      'test_hook__default',
+      'test_hook__one',
+      'test_hook__two',
+      'test_hook__and_three',
+      'test_hook__test_view',
       'test_hook'
     );
     $this->assertEquals($expected, $view->buildThemeFunctions('test_hook'));
@@ -74,14 +74,14 @@ class ViewExecutableUnitTest extends UnitTestCase {
     $view->display_handler->display['display_plugin'] = 'default2';
 
     $expected = array(
-      'test_HOOK__test_view__default',
-      'test_HOOK__default',
-      'test_HOOK__one',
-      'test_HOOK__two',
-      'test_HOOK__and_three',
-      'test_HOOK__test_view__default2',
-      'test_HOOK__default2',
-      'test_HOOK__test_view',
+      'test_hook__test_view__default',
+      'test_hook__default',
+      'test_hook__one',
+      'test_hook__two',
+      'test_hook__and_three',
+      'test_hook__test_view__default2',
+      'test_hook__default2',
+      'test_hook__test_view',
       'test_hook'
     );
     $this->assertEquals($expected, $view->buildThemeFunctions('test_hook'));

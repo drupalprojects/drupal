@@ -13,17 +13,17 @@ namespace Drupal\module_test\Controller;
 class ModuleTestController {
 
   /**
-   * @todo Remove module_test_HOOK_dynamic_loading_invoke().
+   * @todo Remove module_test_hook_dynamic_loading_invoke().
    */
   public function hookDynamicLoadingInvoke() {
-    return module_test_HOOK_dynamic_loading_invoke();
+    return module_test_hook_dynamic_loading_invoke();
   }
 
   /**
-   * @todo Remove module_test_HOOK_dynamic_loading_invoke_all().
+   * @todo Remove module_test_hook_dynamic_loading_invoke_all().
    */
   public function hookDynamicLoadingInvokeAll() {
-    return module_test_HOOK_dynamic_loading_invoke_all();
+    return module_test_hook_dynamic_loading_invoke_all();
   }
 
   /**

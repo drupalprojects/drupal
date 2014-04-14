@@ -69,7 +69,7 @@ class ViewsDisplay extends ViewsPluginAnnotationBase {
    *
    * @var bool
    */
-  public $uses_HOOK_menu;
+  public $uses_hook_menu;
 
   /**
    * Does the display plugin registers routes to the route.
@@ -83,7 +83,7 @@ class ViewsDisplay extends ViewsPluginAnnotationBase {
    *
    * @var bool
    */
-  public $uses_HOOK_block;
+  public $uses_hook_block;
 
   /**
    * A list of places where contextual links should be added.

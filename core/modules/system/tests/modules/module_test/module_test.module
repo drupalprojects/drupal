@@ -61,9 +61,9 @@ function module_test_system_info_alter(&$info, Extension $file, $type) {
 }
 
 /**
- * Implements HOOK_HOOK_info().
+ * Implements HOOK_hook_info().
  */
-function module_test_HOOK_info() {
+function module_test_hook_info() {
   $hooks['test_hook'] = array(
     'group' => 'file',
   );
@@ -78,7 +78,7 @@ function module_test_HOOK_info() {
  *
  * @deprecated \Drupal\module_test\Controller\ModuleTestController::hookDynamicLoadingInvoke()
  */
-function module_test_HOOK_dynamic_loading_invoke() {
+function module_test_hook_dynamic_loading_invoke() {
   $result = \Drupal::moduleHandler()->invoke('module_test', 'test_hook');
   return $result['module_test'];
 }
@@ -91,13 +91,13 @@ function module_test_HOOK_dynamic_loading_invoke() {
  *
  * @deprecated \Drupal\module_test\Controller\ModuleTestController::hookDynamicLoadingInvokeAll()
  */
-function module_test_HOOK_dynamic_loading_invoke_all() {
+function module_test_hook_dynamic_loading_invoke_all() {
   $result = \Drupal::moduleHandler()->invokeAll('test_hook');
   return $result['module_test'];
 }
 
 /**
- * Load function used by module_test_HOOK_dynamic_loading_invoke_all_during_load().
+ * Load function used by module_test_hook_dynamic_loading_invoke_all_during_load().
  *
  * @see module_test_menu().
  */
